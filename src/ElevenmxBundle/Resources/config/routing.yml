@@ -1,0 +1,3 @@
+elevenmx_homepage:
+    path:     /
+    defaults: { _controller: ElevenmxBundle:Default:index }
