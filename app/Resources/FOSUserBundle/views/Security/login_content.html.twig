@@ -1,0 +1,64 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('../src/ElevenmxBundle/Resources/public/css/login.css') }}">
+
+{% endblock %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+    <body>
+
+    <!-- header -->
+    <header>
+
+        <div class="super-container">
+            <div class="logo">
+                <img src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/logo.png">
+            </div>
+            <div class="logoelevenmxmin">
+                <img src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/elevenmx_min.png" alt='elevenmx'>
+                <h1 id="eleven-h1">Spécialiste du kit déco motocross</h1>
+            </div>
+        </div>
+
+        <div class="main-menu">
+            <div class="container1">
+
+            </div>
+        </div>
+    </header>
+
+    <div class="page">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-6"">
+                <img class="img" src="{{ asset('../src/ElevenmxBundle/Resources/public/img/livia.jpg') }}" alt="test"  />
+            </div>
+            <div class="col-xs-2" style="margin-top:10%;">
+                <label style="margin-top:10%;margin-left:15%;" for="username">{{ 'Code Utilisateur'|trans }}</label>
+                <input type="text" class="btn btn-default" id="username" name="_username" value="{{ last_username }}" required="required" />
+                </br>
+                <label style="margin-top:10%;margin-left:15%;" for="password">{{ 'Mot de Passe'|trans }}</label>
+                <input type="password" class="btn btn-default" id="password" name="_password" required="required" />
+                </br>
+                <input  type="checkbox" id="remember_me" name="_remember_me" value="on" style="margin-top:20%;margin-left:5%;"/>
+                <label for="remember_me">{{ 'se souvenir de moi'|trans }}</label>
+                <input style="margin-top:10%;margin-left:15%;" type="submit" class="btn btn-success" id="login" name="_submit" value="{{ 'Se connecter'|trans }}" />
+            </div>
+
+        </div>
+    </div>
+
+    </body>
+
+
+</form>
