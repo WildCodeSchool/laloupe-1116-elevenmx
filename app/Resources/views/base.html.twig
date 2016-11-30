@@ -1,13 +1,196 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Eleven MX{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" media="screen"
+              href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('bundles/elevenmx/css/style.css') }}">
+    {% endblock %}
+    {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>#}
+</head>
+<header>
+
+
+    <nav class="navbar navbar-default navbar-static-top super-container">
+        <div class="container-fluid logo_bar">
+            <div class="navbar-header">
+                <a class="navbar-brand logo" href="#">
+                    <img alt="Brand" src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/logo.png">
+                </a>
+                <div class="logoelevenmxmin"> <img src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/elevenmx_min.png" alt='elevenmx'> <h1 id="eleven-h1">Spécialiste du kit déco motocross</h1> </div>
+            </div>
+            <div class="navbar-content container1">
+
+
+
+            </div>
+        </div>
+    </nav>
+
+
+</header>
+<body>
+
+
+{% block body %}{% endblock %}
+
+
+
+
+
+
+
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4">
+                <p id="float_right">Site réalisé par </p>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                <a id="btn_logo" role="button" data-toggle="modal" data-target="#myModal"><img
+                            src="{{ asset('bundles/elevenmx/img/WCS-logo.png') }}" alt="log_WCS"/></a>
+                </div>
+                <div class="col-xs-4"></div>
+
+            </div>
+
+
+            <div class="col-xs-4 txt_footer">
+            <!-- Large modal -->
+            <a href=".bs-example-modal-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Mentions
+                Légales</a>
+            </div>
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="col-xs-12">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+
+                                <p class="modal_mention">Propriétaire du site : XXX<br/>Sigle : XXX<br/>Contact mail :
+                                    XXX<br/> Contact téléphonique : XXX
+                                    <br/> Directeur de publication : XXX <br/> Responsable de
+                                    rédaction : XXX <br/> Webmaster : XXX
+
+                                </p>
+
+                            </div>
+
+                            <div class="modal-body">
+
+                                <p class="modal_mention">
+                                    Droits d'auteur-Copyright-Marques<br/>
+                                     Le contenu et la présentation du site constituent une œuvre de l'esprit et
+                                    bénéficient de la protection accordée par la législation française et
+                                    internationale en vigueur sur la propriété intellectuelle et industrielle.
+                                    L'exploitation, la reproduction, l'extraction de tout ou partie des données,
+                                    fichiers, représentations graphiques, photographiques, numériques ou
+                                    audiovisuelles ou de tout élément figurant sur le site ou encore de tout ou
+                                    partie du site lui-même sont formellement interdites sans l'accord écrit et
+                                    préalable du XXX. Les marques éventuellement citées sur le site sont la
+                                    propriété de leurs titulaires respectifs. Collecte des données personnelles
+                                    Les informations recueillies sur le formulaire de contact sont nécessaires
+                                    pour traiter votre demande d'informations ou pour votre adhésion. Elles font
+                                    l’objet d’un traitement informatique et sont destinées au secrétariat de
+                                    l’association. En application des articles 39 et suivants de la loi du 6
+                                    janvier 1978 modifiée, vous bénéficiez d’un droit d’accès et de
+                                    rectification aux informations qui vous concernent. Si vous souhaitez
+                                    exercer ce droit et obtenir communication des informations vous concernant,
+                                    veuillez vous adresser au XXX. Décharge de responsabilité : le contenu de
+                                    ce site web est amené à évoluer régulièrement. Nous déclinons toute
+                                    responsabilité concernant l'exactitude, l'exhaustivité et la qualité des
+                                    informations offertes. Nous déclinons toute responsabilité pour d'éventuels
+                                    dommages, directs ou indirects émanant de l'utilisation des informations
+                                    contenues sur le site, dans la mesure où ils ne seront pas provoqués avec
+                                    préméditation ou par négligence. Ce site propose des liens vers d'autres
+                                    sites web. Aucun contenu illicite n'a été identifié sur les sites liés lors
+                                    de la mise en ligne des liens hypertextes. N'ayant aucun moyen
+                                    d'intervention sur ces sites, nous déclinons toute responsabilité concernant
+                                    leur contenu. Chaque propriétaire de site est responsable du contenu de son
+                                    propre site. Les clauses d'exclusion de responsabilité font partie
+                                    intégrante du présent site web. Le site et l'ensemble de son contenu sont
+                                    soumis au droit français et tout litige éventuel s'y rapportant sera soumis
+                                    à la compétence des tribunaux français.
+
+                                </p>
+
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-default btn_fermer" data-dismiss="modal">
+                                    Fermer
+                                </button>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Site réalisé par:</h4></div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-4"><a class="btn btn-default"
+                                                     href="{{ asset('https://fr.linkedin.com/in/maxime-coustes') }}"
+                                                     target="_blank" role="button">Maxime</a></div>
+                            <div class="col-xs-4"><a class="btn btn-default"
+                                                     href="{{ asset('https://fr.linkedin.com/in/ludovic-quouillault-787914125') }}"
+                                                     target="_blank" role="button">Ludovic</a></div>
+                            <div class="col-xs-4"><a class="btn btn-default"
+                                                     href="{{ asset('https://fr.linkedin.com/in/yannick-le-corre-96019812a') }}"
+                                                     target="_blank" role="button">Yannick</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4"><img
+                                        src="{{ asset('bundles/elevenmx/img/COUSTES_Maxime.JPG') }}"
+                                        alt="Maxime" class="thumbnail eleve"/></div>
+                            <div class="col-xs-4"><img
+                                        src="{{ asset('bundles/elevenmx/img/QUOUILLAUD_Ludovic.JPG') }}"
+                                        alt="Ludovic" class="thumbnail eleve"/></div>
+                            <div class="col-xs-4"><img
+                                        src="{{ asset('bundles/elevenmx/img/Le_Corre_Yannick.JPG') }}"
+                                        alt="Yannick" class="thumbnail eleve"/></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-xs-4"><a class="btn btn-default"
+                                                     href="{{ asset('http://www.wildcodeschool.fr') }}"
+                                                     target="_blank" role="button">contacter l'école</a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+{% endblock %}
+
+
+</body>
 </html>
+
+

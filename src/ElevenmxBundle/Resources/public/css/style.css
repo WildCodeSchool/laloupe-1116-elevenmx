@@ -1,0 +1,103 @@
+
+/************** PAGE GLOBALE ****************/
+
+.page {
+    width: 100%;
+
+}
+
+/****************** NAVBAR *****************/
+
+.super-container {
+    width: 100%;
+    background: black;
+    height: 100px;
+}
+
+.container1 {
+    width: 100%;
+    background-color: #009DE0;
+    height: 60px;
+    padding-top: 15px;
+    margin-top: 98px;
+
+}
+
+.logo {
+    padding: 20px;
+    margin-left : 100px;
+}
+
+.logo > img {
+    margin-left: 30px;
+}
+
+.logo_bar {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.buton1 {
+    margin-left: 100px;
+}
+
+.logoelevenmxmin {
+    position: absolute;
+    z-index: 500;
+    top: 40px;
+    left: 250px;
+    height : 22px;
+    width: 272px;
+}
+
+#eleven-h1 {
+    margin-left: 0;
+    left: 157px;
+    font-size: 17px;
+    color: white;
+    margin-top: 10px;
+
+
+}
+
+.main-menu {
+    background-color: #009DE0;
+}
+
+/*************** FOOTER ***********************/
+
+footer {
+    background-color: #000;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+
+#float_right {
+    margin-top:15px;
+    float: right;
+}
+
+.txt_footer {
+    margin-top: 15px;
+}
+
+#btn_logo {
+    background-color: #000;
+}
+
+/********** Photos dans modal *******************/
+
+.eleve {
+    width: 100%;
+}
+
+.modal_mention {
+    text-align: center;
+    /*font-size: 1.35em;*/
+    color: black;
+    margin: 10px;
+}
+

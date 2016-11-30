@@ -1,0 +1,24 @@
+ElevenmxBundle\Entity\Graphiste:
+    type: entity
+    table: null
+    repositoryClass: ElevenmxBundle\Repository\GraphisteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        prenom:
+            type: string
+            length: 255
+        login:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
