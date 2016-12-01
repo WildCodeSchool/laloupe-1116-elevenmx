@@ -1,0 +1,24 @@
+graphiste_index:
+    path:     /
+    defaults: { _controller: "ElevenmxBundle:Graphiste:index" }
+    methods:  GET
+
+graphiste_show:
+    path:     /{id}/show
+    defaults: { _controller: "ElevenmxBundle:Graphiste:show" }
+    methods:  GET
+
+graphiste_new:
+    path:     /new
+    defaults: { _controller: "ElevenmxBundle:Graphiste:new" }
+    methods:  [GET, POST]
+
+graphiste_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ElevenmxBundle:Graphiste:edit" }
+    methods:  [GET, POST]
+
+graphiste_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ElevenmxBundle:Graphiste:delete" }
+    methods:  DELETE
