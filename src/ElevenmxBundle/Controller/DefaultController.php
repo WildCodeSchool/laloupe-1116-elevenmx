@@ -23,8 +23,7 @@ class DefaultController extends Controller
         $Request = $this->getRequest();
         if ($Request->getMethod() == "POST") {
             $Subject = $Request->get("Subject");
-            $message = $Request->get("message") . " " . $Request->get("Nom") . " " . $Request->get("Prénom") . " " . $Request->get("Mail") . " " . $Request->get("Téléphone") . " " . $Request->get("Entreprise") . " " . $Request->get("Login") . " " . $Request->get("Password");
-
+            $message = $Request->get("message") . " " . $Request->get("Nom") . " " . $Request->get("Prénom") . " " . $Request->get("mail") . " " . $Request->get("Téléphone") . " " . $Request->get("Entreprise") . " " . $Request->get("Login") . " " . $Request->get("Password");
 
 
             $message = \Swift_Message::newInstance('Test')
