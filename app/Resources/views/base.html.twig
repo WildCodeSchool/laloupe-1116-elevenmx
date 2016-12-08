@@ -10,25 +10,155 @@
         <link rel="stylesheet" href="{{ asset('bundles/elevenmx/css/style.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('logo_mini.ico') }}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <header>
 
 
-    <nav class="navbar navbar-default navbar-static-top super-container">
-        <div class="container-fluid logo_bar">
-            <div class="navbar-header">
-                <a class="navbar-brand logo" href="#">
-                    <img alt="Brand" src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/logo.png">
-                </a>
-                <div class="logoelevenmxmin"> <img src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/elevenmx_min.png" alt='elevenmx'> <h1 id="eleven-h1">Spécialiste du kit déco motocross</h1> </div>
+
+
+
+    <header>
+
+        <div class="super-container">
+            <div class="logo">
+                <img src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/logo.png">
             </div>
-            <div class="navbar-content container1">
-
-<!--  emplacement boutons -->
-
+            <div class="logoelevenmxmin">
+                <img src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/elevenmx_min.png" alt='elevenmx'>
+                <h1 id="eleven-h1">Spécialiste du kit déco motocross</h1>
             </div>
         </div>
-    </nav>
+
+        <div class="main-menu">
+            <div class="container1">
+                <!--  emplacement boutons -->
+
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <!-- BOUTON SUPER ADMIN -->
+                <div class="col-lg-1 col-xs-1"></div>
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new client"></a></div>
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new projet"></a></div>
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form"></a></div>
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new graph"></a></div>
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="archives"></a></div>
+                <div class="col-lg-1 col-xs-1"></div>
+
+                {% elseif is_granted('ROLE_ADMIN') %}
+                <!-- BOUTON ADMIN -->
+                <div class="col-lg-1 col-xs-1"></div>
+
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new client"></a></div>
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new projet"></a></div>
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form"></a></div>
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new graph"></a></div>
+                <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="archives"></a></div>
+                <div class="col-lg-1 col-xs-1"></div>
+
+                {% elseif is_granted('ROLE_GRAPH') %}
+                <!-- BOUTON GRAPH -->
+                <div class="col-lg-4 col-xs-1"></div>
+
+                <div class="col-lg-2 col-xs-5"> <a href="#"><input type="button" value="archives"></a></div>
+                <div class="col-lg-2 col-xs-5"> <a href="#"><input type="button" value="en cours"></a></div>
+                <div class="col-lg-4 col-xs-1"></div>
+
+
+                {% elseif is_granted('ROLE_USER') %}
+                <!-- BOUTON USER -->
+
+
+
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+    {#<nav class="navbar navbar-inverse navbar-static-top">#}
+
+    <!-- PROBLEME DE PLACEMENT DE LOG A REVOIR !!!! -->
+        {#<div class="container-fluid">#}
+
+            {#<div class="navbar-header">#}
+                {#<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">#}
+                    {#<span class="icon-bar"></span>#}
+                    {#<span class="icon-bar"></span>#}
+                    {#<span class="icon-bar"></span>#}
+                {#</button>#}
+                {#<img alt="logo" src="{{ asset('bundles/elevenmx/img/mini-logo.png') }}" id="logo">#}
+            {#</div>#}
+
+            {#<div class="collapse navbar-collapse" id="myNavbar">#}
+                {#<ul class="nav navbar-nav logo_css">#}
+                    {#<li><img src="{{ asset('bundles/elevenmx/img/elevenmx_min.png') }}" id="elevenmx_img")></li>#}
+                    {#<br>#}
+                    {#<li><h1 id="eleven-h1">Spécialiste du kit déco motocross</h1></li>#}
+                {#</ul>#}
+
+                {#<ul class="nav navbar-nav navbar-right">#}
+                    {#<div class="col-xs-2"><a href="{{ path('fos_user_security_logout') }}"#}
+                    {#class="glyphicon glyphicon-off" id="log_off"></a></div>#}
+                {#</ul>#}
+            {#</div>#}
+
+
+
+        {#</div>#}
+        {#<div>#}
+
+                {#<div class="blue">#}
+
+
+                    {#<!--  emplacement boutons -->#}
+
+                    {#{% if is_granted('ROLE_SUPER_ADMIN') %}#}
+                    {#<!-- BOUTON SUPER ADMIN -->#}
+                        {#<div class="col-lg-1 col-xs-1"></div>#}
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new client"></a></div>#}
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new projet"></a></div>#}
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form"></a></div>#}
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new graph"></a></div>#}
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="archives"></a></div>#}
+                        {#<div class="col-lg-1 col-xs-1"></div>#}
+
+                    {#{% elseif is_granted('ROLE_ADMIN') %}#}
+                    {#<!-- BOUTON ADMIN -->#}
+                        {#<div class="col-lg-1 col-xs-1"></div>#}
+
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new client"></a></div>#}
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new projet"></a></div>#}
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form"></a></div>#}
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new graph"></a></div>#}
+                    {#<div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="archives"></a></div>#}
+                        {#<div class="col-lg-1 col-xs-1"></div>#}
+
+                    {#{% elseif is_granted('ROLE_GRAPH') %}#}
+                    {#<!-- BOUTON GRAPH -->#}
+                        {#<div class="col-lg-4 col-xs-1"></div>#}
+
+                    {#<div class="col-lg-2 col-xs-5"> <a href="#"><input type="button" value="archives"></a></div>#}
+                    {#<div class="col-lg-2 col-xs-5"> <a href="#"><input type="button" value="en cours"></a></div>#}
+                        {#<div class="col-lg-4 col-xs-1"></div>#}
+
+
+                    {#{% elseif is_granted('ROLE_USER') %}#}
+                    {#<!-- BOUTON USER -->#}
+
+
+
+                    {#{% endif %}#}
+
+
+                {#</div>#}
+
+
+
+        {#</div>#}
+    {#</nav>#}
 
 
 </header>
@@ -38,33 +168,28 @@
 {% block body %}{% endblock %}
 
 
-
-
-
-
-
 <footer>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-lg-4 col-xs-4">
                 <p id="float_right">Site réalisé par </p>
             </div>
 
-            <div class="col-xs-4">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-4">
-                <a id="btn_logo" role="button" data-toggle="modal" data-target="#myModal"><img
-                            src="{{ asset('bundles/elevenmx/img/WCS-logo.png') }}" alt="log_WCS"/></a>
+            <div class="col-lg-4 col-xs-4">
+                <div class="col-lg-4 col-xs-0"></div>
+                <div class="col-lg-8 col-xs4">
+                    <a id="btn_logo" role="button" data-toggle="modal" data-target="#myModal"><img
+                                src="{{ asset('bundles/elevenmx/img/WCS-logo.png') }}" alt="logo_WCS" id="logo_wcs"/></a>
                 </div>
-                <div class="col-xs-4"></div>
+                <div class="col-lg-4 col-xs-4"></div>
 
             </div>
 
 
-            <div class="col-xs-4 txt_footer">
-            <!-- Large modal -->
-            <a href=".bs-example-modal-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Mentions
-                Légales</a>
+            <div class="col-lg-4 col-xs-4 txt_footer">
+                <!-- Large modal -->
+                <a href=".bs-example-modal-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Mentions
+                    Légales</a>
             </div>
             <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
                  aria-labelledby="myLargeModalLabel">

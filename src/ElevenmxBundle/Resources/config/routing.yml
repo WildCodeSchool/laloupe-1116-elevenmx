@@ -13,4 +13,3 @@ elevenmx_redirection:
 elevenmx_sendMail:
     path:     /sendMail
     defaults: { _controller: ElevenmxBundle:Default:sendMail }
-
