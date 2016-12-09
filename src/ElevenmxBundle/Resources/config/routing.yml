@@ -14,3 +14,6 @@ elevenmx_sendMail:
     path:     /sendMail
     defaults: { _controller: ElevenmxBundle:Default:sendMail }
 
+elevenmx_projet:
+        resource: "@ElevenmxBundle/Resources/config/routing/projet.yml"
+        prefix:   /projet

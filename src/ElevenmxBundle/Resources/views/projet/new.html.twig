@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="projet">
+
+        <h1 class="projet_h1">Création de Projet</h1>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-2">
+                <label  style="margin-top:25%;margin-left:15%;" for="elevenmxbundle_projet_titreProjet" >{{ form_label(form.titreProjet) }}</label>
+                {{ form_widget(form.titreProjet, { 'attr': {'class': 'foo'} }) }}
+            </div>
+            <div class="col-xs-2">
+                <label  style="margin-top:25%;margin-left:15%;" for="elevenmxbundle_projet_client" >{{ form_label(form.client) }}</label>
+                {{ form_widget(form.client, { 'attr': {'class': 'foo'} }) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-2">
+                <label style="margin-top:10%;margin-left:15%;" for="elevenmxbundle_projet_produit" >{{ form_label(form.produit) }}</label>
+                {{ form_widget(form.produit, { 'attr': {'class': 'foo'} }) }}
+            </div>
+            <div class="col-xs-2">
+                <label  style="margin-top:10%;margin-left:15%;" for="elevenmxbundle_projet_marque" >{{ form_label(form.marque) }}</label>
+                {{ form_widget(form.marque, { 'attr': {'class': 'foo'} }) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-2">
+                <label  style="margin-top:10%;margin-left:15%;" for="elevenmxbundle_projet_nomGraphiste" >{{ form_label(form.nomGraphiste) }}</label>
+                {{ form_widget(form.nomGraphiste, { 'attr': {'class': 'foo'} }) }}
+            </div>
+            <div class="col-xs-2">
+                <input  type="hidden" id="elevenmxbundle_projet__token" name="elevenmxbundle_projet[_token]" value="PAwK6b__vb-PFlWJBGziA38ZNThLtF5WSwxlCUwtLe8">
+                <input  style="margin-top:20%;margin-left:10%;" type="submit" value="Création du client">
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

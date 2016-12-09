@@ -1,0 +1,24 @@
+projet_index:
+    path:     /
+    defaults: { _controller: "ElevenmxBundle:Projet:index" }
+    methods:  GET
+
+projet_show:
+    path:     /{id}/show
+    defaults: { _controller: "ElevenmxBundle:Projet:show" }
+    methods:  GET
+
+projet_new:
+    path:     /new
+    defaults: { _controller: "ElevenmxBundle:Projet:new" }
+    methods:  [GET, POST]
+
+projet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ElevenmxBundle:Projet:edit" }
+    methods:  [GET, POST]
+
+projet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ElevenmxBundle:Projet:delete" }
+    methods:  DELETE
