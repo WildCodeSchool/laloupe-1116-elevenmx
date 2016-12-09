@@ -2,13 +2,10 @@
 
 namespace ElevenmxBundle\Controller;
 
-<<<<<<< HEAD
 use ElevenmxBundle\Form\MailType;
 use ElevenmxBundle\Entity\Mail;
 use ElevenmxBundle\Repository\MailRepository;
-=======
 use ElevenmxBundle\ElevenmxBundle;
->>>>>>> fd57b986a9931d1d8abfe3081b5fdf0bcfe72d03
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormTypeInterface;
@@ -43,7 +40,7 @@ class DefaultController extends Controller
     {
         return $this->render('ElevenmxBundle:Default:formMail.html.twig');
     }
-// ******************************* envoi de mail **********************************
+// ******************************* envoi de mail et bdd **********************************
     public function sendMailAction()
     {
         $request = $this->get('request');
@@ -85,6 +82,7 @@ class DefaultController extends Controller
 
 
 }
+    // ******************************** fin d'envoi de mail et bdd ****************************************************
 
 
 
@@ -116,12 +114,8 @@ class DefaultController extends Controller
      /*   $Request = $this->getRequest();
         if ($Request->getMethod() == "POST") {
             $Subject = $Request->get("Subject");
-<<<<<<< HEAD
             $message = $Request->get("message") . " " . $Request->get("Nom") . " " . $Request->get("Prénom") . " " . $Request->get("mail") . " " . $Request->get("Téléphone") . " " . $Request->get("Entreprise") . " " . $Request->get("Login") . " " . $Request->get("Password");
-=======
-            $message = $Request->get("message") . " Bonjour patate" . $Request->get("Nom") . " " . $Request->get("Prénom") . " " . $Request->get("Mail") . " " . $Request->get("Téléphone") . " " . $Request->get("Entreprise") . " " . $Request->get("Login") . " " . $Request->get("Password");
 
->>>>>>> fd57b986a9931d1d8abfe3081b5fdf0bcfe72d03
 
 
             $message = \Swift_Message::newInstance('Test')
@@ -147,8 +141,6 @@ class DefaultController extends Controller
 
 
 
-<<<<<<< HEAD
-=======
     // ******************************** Debut Bloc redirection *************************************************
 
 
@@ -158,5 +150,4 @@ class DefaultController extends Controller
 
 
 
->>>>>>> fd57b986a9931d1d8abfe3081b5fdf0bcfe72d03
 }
