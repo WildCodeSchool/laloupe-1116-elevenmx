@@ -1,15 +1,16 @@
 <h3>You did it! You registered!</h3>
 
 
-Hi     Nom  {{ mail.nom }}
+Hi New user, you're     {#Nom  {{ mail.nom }}
 Prénom {{ mail.prenom }}
 Mail {{ mail.mail }}
 Téléphone {{ mail.Telephone }}
-Entreprise {{ mail.Entreprise }}
-Login {{ mail.Login }}
-Password {{ mail.Password }}
+Entreprise {{ mail.Entreprise }}#}
+Login  is {{ mail.Login }} and you're temporary
+Password is {{ mail.Password }}
 
-
+Please click here to connect
+{#{{ path(' chemin de la page login') }}#}
 
 ! You're successfully registered.
 
