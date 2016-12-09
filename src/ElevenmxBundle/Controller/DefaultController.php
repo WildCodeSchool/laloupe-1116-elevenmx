@@ -40,7 +40,7 @@ class DefaultController extends Controller
     {
         return $this->render('ElevenmxBundle:Default:formMail.html.twig');
     }
-// ******************************* envoi de mail et bdd **********************************
+// ******************************* envoi de mail **********************************
     public function sendMailAction()
     {
         $request = $this->get('request');
@@ -51,8 +51,6 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($mail);
             $em->flush();
-
-
             $message = \Swift_Message::newInstance()
                 ->setSubject('hello mail')
                 ->setFrom('javadescavernes38@gmail.com')
@@ -64,24 +62,17 @@ class DefaultController extends Controller
                     )
                 );
             $this->get('mailer')->send($message);
-
-
             return $this->render('ElevenmxBundle:Default:formMail.html.twig', array(
-
                 'form' => $form->createView()
-
             ));
-
         }
-
         return $this->render('ElevenmxBundle:Default:formMail.html.twig', array(
-
             'form' => $form->createView()
-
         ));
+    }
 
 
-}
+
     // ******************************** fin d'envoi de mail et bdd ****************************************************
 
 
