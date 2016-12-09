@@ -36,5 +36,5 @@ ElevenmxBundle\Entity\Mail:
         password:
             type: string
             length: 255
-            column: Pssword
+            column: Password
     lifecycleCallbacks: {  }

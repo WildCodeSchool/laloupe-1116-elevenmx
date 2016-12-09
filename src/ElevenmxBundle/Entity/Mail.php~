@@ -164,4 +164,83 @@ class Mail
     {
         return $this->entreprise;
     }
+    /**
+     * @var string
+     */
+    private $login;
+
+    /**
+     * @var string
+     */
+    private $password;
+
+
+    /**
+     * Set login
+     *
+     * @param string $login
+     * @return Mail
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+
+        return $this;
+    }
+
+    /**
+     * Get login
+     *
+     * @return string 
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return Mail
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('name', new NotBlank());
+
+        $metadata->addPropertyConstraint('telephone', new NotBlank());
+
+        $metadata->addPropertyConstraint('mail', new Email());
+
+        $metadata->addPropertyConstraint( 'message', new NotBlank());
+
+    }
+
 }

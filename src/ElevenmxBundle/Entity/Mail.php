@@ -24,8 +24,8 @@ class Mail
      */
     private $prenom;
 
-    /*
-     * @Assert\Regex(pattern="/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#
+    /**
+     * @var string
      */
     private $mail;
 
@@ -220,4 +220,6 @@ class Mail
     {
         return $this->password;
     }
+
+
 }
