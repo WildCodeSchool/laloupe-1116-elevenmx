@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <br>
+    <br>
+    <br>
+    <h1>Graphistes list</h1>
+
+
+
+    {#<table>#}
+        {#<thead>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<th>Nom</th>#}
+                {#<th>Prenom</th>#}
+                {#<th>Login</th>#}
+                {#<th>Password</th>#}
+                {#<th>Actions</th>#}
+            {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for graphiste in graphistes %}#}
+            {#<tr>#}
+                {#<td><a href="{{ path('graphiste_show', { 'id': graphiste.id }) }}">{{ graphiste.id }}</a></td>#}
+                {#<td>{{ graphiste.nom }}</td>#}
+                {#<td>{{ graphiste.prenom }}</td>#}
+                {#<td>{{ graphiste.login }}</td>#}
+                {#<td>{{ graphiste.password }}</td>#}
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('graphiste_show', { 'id': graphiste.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('graphiste_edit', { 'id': graphiste.id }) }}">edit</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
+
+    <ul>
+        <li>
+            <a href="{{ path('graphiste_new') }}">Create a new graphiste</a>
+        </li>
+    </ul>
+{% endblock %}

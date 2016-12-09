@@ -1,3 +1,7 @@
+elevenmx_graphiste:
+    resource: "@ElevenmxBundle/Resources/config/routing/graphiste.yml"
+    prefix:   /graphiste
+
 elevenmx_homepage:
     path:     /
     defaults: { _controller: ElevenmxBundle:Default:index }
@@ -9,4 +13,3 @@ elevenmx_redirection:
 elevenmx_sendMail:
     path:     /sendMail
     defaults: { _controller: ElevenmxBundle:Default:sendMail }
-
