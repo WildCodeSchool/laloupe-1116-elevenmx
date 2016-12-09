@@ -220,4 +220,6 @@ class Mail
     {
         return $this->password;
     }
+
+
 }

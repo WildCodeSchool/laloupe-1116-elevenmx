@@ -44,3 +44,41 @@
 .main-menu {
     background-color: #009DE0;
 }
+
+/*************** FOOTER ***********************/
+
+footer {
+    background-color: #000;
+    color: #fff;
+    /*position: absolute;*/
+    bottom: 0px;
+    width: 100%;
+}
+
+
+#float_right {
+    margin-top:15px;
+    float: right;
+}
+
+.txt_footer {
+    margin-top: 15px;
+}
+
+#btn_logo {
+    background-color: #000;
+}
+
+/********** Photos dans modal *******************/
+
+.eleve {
+    width: 100%;
+}
+
+.modal_mention {
+    text-align: center;
+    /*font-size: 1.35em;*/
+    color: black;
+    margin: 10px;
+}
+

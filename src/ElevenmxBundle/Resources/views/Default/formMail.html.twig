@@ -21,27 +21,31 @@
 <!--************************* Formulaire **************************-->
 
     <form action="{{ path('elevenmx_sendMail') }}" method="POST">
+        {{ form_start(form) }}
         <div class="container">
             <div class="row" id="titre">
                 <h1>Création d'un nouveau client</h1>
-            </div>
-
-            <div class="col-lg-6" id="colonegauche">
+                <div class="col-lg-6" id="colonegauche">
 
                     <h4>Nom</h4>
-                    <input type="text" name="Nom">
+                    {{ form_errors(form.nom) }}
+                    {{ form_widget(form.nom) }}
                     <br>
                     <h4>Prénom</h4>
-                    <input type="text" name="Prénom">
+                    {{ form_errors(form.prenom) }}
+                    {{ form_widget(form.prenom) }}
                     <br>
                     <h4>Mail</h4>
-                    <input type="text" name="Mail">
+                    {{ form_errors(form.mail) }}
+                    {{ form_widget(form.mail) }}
                     <br>
                     <h4>Téléphone</h4>
-                    <input type="text" name="Téléphone">
+                    {{ form_errors(form.telephone) }}
+                    {{ form_widget(form.telephone) }}
                     <br>
                     <h4>Entreprise</h4>
-                    <input type="text" name="Entreprise">
+                    {{ form_errors(form.entreprise) }}
+                    {{ form_widget(form.entreprise) }}
                     <br>
 
                   <!--************************* button and modal  **************************-->
@@ -69,9 +73,13 @@
                             <div class="row">
                                 <div class="droite">
                                     <h4>Code Utilisateur</h4>
-                                    <input type="text" name="User">
+
+                                    {{ form_errors(form.login) }}
+                                    {{ form_widget(form.login) }}
                                     <h4>Mot de passe</h4>
-                                    <input type="text" name="Password">
+
+                                    {{ form_errors(form.password) }}
+                                    {{ form_widget(form.password) }}
                                 </div>
                             </div>
                         </div>
@@ -79,10 +87,15 @@
             <!--************************* fin de nos deux champs excentrés  **************************-->
 
         </div>
-    </form>
+
         <div class="row" id="titre">
-            <a type="submit" class="btn btn-info btn-default" data-toggle="modal" data-target="#ModalGraphiste">Créer</a>
+
+            <button type="submit" class="btn btn-info btn-default" data-toggle="modal" data-target="#ModalGraphiste">Créer</button>
         </div>
+            </div>
+
+    </form>
+{{ form_end(form) }}
 
 <!--************************* end button and modal  **************************-->
 
