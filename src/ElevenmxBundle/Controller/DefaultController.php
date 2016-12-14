@@ -30,7 +30,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute("graphiste_index");
 //            http_redirect("bundle/graphiste/index.htlm.twig");
         } else {
-            echo ('client');
+            return $this->redirectToRoute('projet_index');
         }
 
         return $this->render('ElevenmxBundle:Default:index.html.twig');
