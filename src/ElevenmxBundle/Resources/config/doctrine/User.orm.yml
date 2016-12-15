@@ -1,0 +1,46 @@
+ElevenmxBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: ElevenmxBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            column: Nom
+        prenom:
+            type: string
+            length: 255
+            column: Prenom
+        telephone:
+            type: string
+            length: 255
+            column: Telephone
+        entreprise:
+            type: string
+            length: 255
+            column: Entreprise
+            nullable: True
+
+
+    oneToMany:
+        users:
+            targetEntity: ElevenmxBundle\Entity\User
+            mappedBy: id
+
+    oneToMany:
+        commentaires:
+            targetEntity: ElevenmxBundle\Entity\Commentaire
+            mappedBy: id
+
+    oneToOne:
+        categorie:
+            targetEntity: ElevenmxBundle\Entity\Categorie
+            mappedBy: id
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,25 @@
+ElevenmxBundle\Entity\Commentaire:
+    type: entity
+    table: null
+    repositoryClass: ElevenmxBundle\Repository\CommentaireRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        champsText:
+            type: string
+            length: '900'
+    lifecycleCallbacks: {  }
+
+    manyToOne:
+        projet:
+            targetEntity: ElevenmxBundle\Entity\Projet
+            inversedBy: id
+
+    manyToOne:
+        user:
+            targetEntity: ElevenmxBundle\Entity\User
+            inversedBy: id

@@ -5,9 +5,9 @@ namespace ElevenmxBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Mail
+ * Graphiste
  */
-class Mail
+class Graphiste
 {
     /**
      * @var int
@@ -27,17 +27,12 @@ class Mail
     /**
      * @var string
      */
-    private $mail;
+    private $login;
 
     /**
      * @var string
      */
-    private $telephone;
-
-    /**
-     * @var string
-     */
-    private $entreprise;
+    private $password;
 
 
     /**
@@ -54,7 +49,7 @@ class Mail
      * Set nom
      *
      * @param string $nom
-     * @return Mail
+     * @return Graphiste
      */
     public function setNom($nom)
     {
@@ -77,7 +72,7 @@ class Mail
      * Set prenom
      *
      * @param string $prenom
-     * @return Mail
+     * @return Graphiste
      */
     public function setPrenom($prenom)
     {
@@ -97,89 +92,10 @@ class Mail
     }
 
     /**
-     * Set mail
-     *
-     * @param string $mail
-     * @return Mail
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get mail
-     *
-     * @return string 
-     */
-    public function getMail()
-    {
-        return $this->mail;
-    }
-
-    /**
-     * Set telephone
-     *
-     * @param string $telephone
-     * @return Mail
-     */
-    public function setTelephone($telephone)
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
-    /**
-     * Get telephone
-     *
-     * @return string 
-     */
-    public function getTelephone()
-    {
-        return $this->telephone;
-    }
-
-    /**
-     * Set entreprise
-     *
-     * @param string $entreprise
-     * @return Mail
-     */
-    public function setEntreprise($entreprise)
-    {
-        $this->entreprise = $entreprise;
-
-        return $this;
-    }
-
-    /**
-     * Get entreprise
-     *
-     * @return string 
-     */
-    public function getEntreprise()
-    {
-        return $this->entreprise;
-    }
-    /**
-     * @var string
-     */
-    private $login;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-
-    /**
      * Set login
      *
      * @param string $login
-     * @return Mail
+     * @return Graphiste
      */
     public function setLogin($login)
     {
@@ -202,7 +118,7 @@ class Mail
      * Set password
      *
      * @param string $password
-     * @return Mail
+     * @return Graphiste
      */
     public function setPassword($password)
     {
@@ -220,6 +136,4 @@ class Mail
     {
         return $this->password;
     }
-
-
 }

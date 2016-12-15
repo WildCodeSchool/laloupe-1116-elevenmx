@@ -29,4 +29,18 @@ ElevenmxBundle\Entity\Projet:
             type: string
             length: 255
             column: Nom_Graphiste
+        status:
+            type: string
+            length: 255
+            column: Status
     lifecycleCallbacks: {  }
+
+    oneToMany:
+        commentaires:
+            targetEntity: ElevenmxBundle\Entity\Commentaire
+            mappedBy: id
+
+    manyToOne:
+        user:
+            targetEntity: ElevenmxBundle\Entity\User
+            inversedBy: id

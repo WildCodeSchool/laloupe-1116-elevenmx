@@ -2,17 +2,20 @@
 
 namespace ElevenmxBundle\Entity;
 
+/**
+ * User
+ */
+
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Mail
- */
-class Mail
+
+class User extends BaseUser
 {
     /**
-     * @var int
+     * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -24,10 +27,6 @@ class Mail
      */
     private $prenom;
 
-    /**
-     * @var string
-     */
-    private $mail;
 
     /**
      * @var string
@@ -40,10 +39,11 @@ class Mail
     private $entreprise;
 
 
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -54,7 +54,8 @@ class Mail
      * Set nom
      *
      * @param string $nom
-     * @return Mail
+     *
+     * @return User
      */
     public function setNom($nom)
     {
@@ -66,7 +67,7 @@ class Mail
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -77,7 +78,8 @@ class Mail
      * Set prenom
      *
      * @param string $prenom
-     * @return Mail
+     *
+     * @return User
      */
     public function setPrenom($prenom)
     {
@@ -89,7 +91,7 @@ class Mail
     /**
      * Get prenom
      *
-     * @return string 
+     * @return string
      */
     public function getPrenom()
     {
@@ -97,33 +99,11 @@ class Mail
     }
 
     /**
-     * Set mail
-     *
-     * @param string $mail
-     * @return Mail
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get mail
-     *
-     * @return string 
-     */
-    public function getMail()
-    {
-        return $this->mail;
-    }
-
-    /**
      * Set telephone
      *
      * @param string $telephone
-     * @return Mail
+     *
+     * @return User
      */
     public function setTelephone($telephone)
     {
@@ -135,7 +115,7 @@ class Mail
     /**
      * Get telephone
      *
-     * @return string 
+     * @return string
      */
     public function getTelephone()
     {
@@ -146,7 +126,8 @@ class Mail
      * Set entreprise
      *
      * @param string $entreprise
-     * @return Mail
+     *
+     * @return User
      */
     public function setEntreprise($entreprise)
     {
@@ -158,68 +139,79 @@ class Mail
     /**
      * Get entreprise
      *
-     * @return string 
+     * @return string
      */
     public function getEntreprise()
     {
         return $this->entreprise;
     }
+
     /**
-     * @var string
+     * @var \ElevenmxBundle\Entity\Categorie
      */
-    private $login;
+    private $categorie;
 
     /**
-     * @var string
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $password;
+    private $users;
 
 
     /**
-     * Set login
+     * Set categorie
      *
-     * @param string $login
-     * @return Mail
+     * @param \ElevenmxBundle\Entity\Categorie $categorie
+     *
+     * @return User
      */
-    public function setLogin($login)
+    public function setCategorie(\ElevenmxBundle\Entity\Categorie $categorie = null)
     {
-        $this->login = $login;
+        $this->categorie = $categorie;
 
         return $this;
     }
 
     /**
-     * Get login
+     * Get categorie
      *
-     * @return string 
+     * @return \ElevenmxBundle\Entity\Categorie
      */
-    public function getLogin()
+    public function getCategorie()
     {
-        return $this->login;
+        return $this->categorie;
     }
 
     /**
-     * Set password
+     * Add user
      *
-     * @param string $password
-     * @return Mail
+     * @param \ElevenmxBundle\Entity\User $user
+     *
+     * @return User
      */
-    public function setPassword($password)
+    public function addUser(\ElevenmxBundle\Entity\User $user)
     {
-        $this->password = $password;
+        $this->users[] = $user;
 
         return $this;
     }
 
     /**
-     * Get password
+     * Remove user
      *
-     * @return string 
+     * @param \ElevenmxBundle\Entity\User $user
      */
-    public function getPassword()
+    public function removeUser(\ElevenmxBundle\Entity\User $user)
     {
-        return $this->password;
+        $this->users->removeElement($user);
     }
 
-
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
 }

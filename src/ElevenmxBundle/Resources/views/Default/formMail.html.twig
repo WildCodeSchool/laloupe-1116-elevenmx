@@ -36,8 +36,8 @@
                     {{ form_widget(form.prenom) }}
                     <br>
                     <h4>Mail</h4>
-                    {{ form_errors(form.mail) }}
-                    {{ form_widget(form.mail) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }}
                     <br>
                     <h4>Téléphone</h4>
                     {{ form_errors(form.telephone) }}
@@ -74,12 +74,12 @@
                                 <div class="droite">
                                     <h4>Code Utilisateur</h4>
 
-                                    {{ form_errors(form.login) }}
-                                    {{ form_widget(form.login) }}
+                                    {{ form_errors(form.username) }}
+                                    {{ form_widget(form.username) }}
                                     <h4>Mot de passe</h4>
 
-                                    {{ form_errors(form.password) }}
-                                    {{ form_widget(form.password) }}
+                                    {{ form_errors(form.plain_password) }}
+                                    {{ form_widget(form.plain_password) }}
                                 </div>
                             </div>
                         </div>
