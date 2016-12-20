@@ -27,7 +27,7 @@ class DefaultController extends Controller
         } elseif ($userActif->hasRole('ROLE_ADMIN')) {
             echo ('team Admin...');
         } elseif ($userActif->hasRole('ROLE_GRAPH')) {
-            return $this->redirectToRoute("graphiste_index");
+            return $this->redirectToRoute('graphiste_listProj');
 //            http_redirect("bundle/graphiste/index.htlm.twig");
         } else {
             echo ('client');

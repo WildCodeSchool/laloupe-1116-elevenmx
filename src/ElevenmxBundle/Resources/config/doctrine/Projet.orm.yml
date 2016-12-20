@@ -29,4 +29,10 @@ ElevenmxBundle\Entity\Projet:
             type: string
             length: 255
             column: Nom_Graphiste
+
+    manyToOne:
+        graphiste:
+            targetEntity: ElevenmxBundle\Entity\Graphiste
+            inversedBy: projets
+
     lifecycleCallbacks: {  }

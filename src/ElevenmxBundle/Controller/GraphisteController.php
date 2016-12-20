@@ -3,6 +3,7 @@
 namespace ElevenmxBundle\Controller;
 
 use ElevenmxBundle\Entity\Graphiste;
+use ElevenmxBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -86,6 +87,7 @@ class GraphisteController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+        
     }
 
     /**
@@ -120,5 +122,42 @@ class GraphisteController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    
+    public function listProjAction()
+    {
+        # renvoi vers listProj.html.twig
+        /**
+         * @Route("/")
+         */
+
+        $em = $this->getDoctrine()->getManager();
+        $graphistes = $em->getRepository('ElevenmxBundle:Graphiste')->findAll();
+        $emP = $this->getDoctrine()->getManager();
+        $projets = $emP->getRepository('ElevenmxBundle:Projet')->findAll();
+
+        return $this->render('ElevenmxBundle:graphiste:listProj.html.twig', array(
+            'graphistes' => $graphistes,
+            'projets' => $projets,
+        ));
+    }
+
+    public function detailProjAction()
+    {
+        # renvoi vers detailtProj.html.twig
+        /**
+         * @Route("/")
+         */
+
+//        $em = $this->getDoctrine()->getManager();
+//        $graphistes = $em->getRepository('ElevenmxBundle:Graphiste')->find($id);
+
+        $emD = $this->getDoctrine()->getManager();
+        $projets = $emD->getRepository('ElevenmxBundle:Projet')->findAll();
+
+        return $this->render('ElevenmxBundle:graphiste:detailProj.html.twig', array(
+//            'graphistes' => $graphistes,
+            'projets' => $projets,
+        ));
     }
 }

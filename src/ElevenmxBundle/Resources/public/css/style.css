@@ -164,7 +164,7 @@ footer {
     background-color: #000;
     color: #fff;
     position: absolute;
-    bottom: 0px;
+    /*bottom: 0px;*/
     width: 100%;
 }
 
@@ -198,3 +198,65 @@ footer {
     margin: 10px;
 }
 
+
+/********************** liste projet graphiste ****************/
+
+
+.projet_index_table1
+{
+    margin-left: 15%;
+    margin-bottom: 5%;
+}
+
+#projet_ligne_aff
+{
+    border: solid;
+    margin-top: 50px;
+}
+
+#projet_ligne_bloc1_aff
+{
+    border: solid; margin-top:20px
+}
+
+.projet_bloc_h4_aff
+{
+    color: black
+}
+.projet_bloc1_h4_bis_aff
+{
+    color: black;
+    margin-top: 50px;
+}
+
+#projet_statut_red
+{
+    background-color:red;   border: solid;  margin-top:20px
+}
+
+#projet_statut_green
+{
+    background-color:green;   border: solid;  margin-top:20px
+}
+
+
+/**************************************************************/
+
+/********************** detail projet graphiste ****************/
+
+.bar_status {
+    height: 20px;
+    width: 150px;
+    background-color: aqua;
+}
+
+.bloc {
+    border: 1px solid #000;
+}
+
+.txtarea {
+    height: 50px;
+    width: 200px;
+}
+
+/**************************************************************/

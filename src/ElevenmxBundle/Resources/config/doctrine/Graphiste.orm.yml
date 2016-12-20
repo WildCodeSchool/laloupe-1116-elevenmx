@@ -21,4 +21,11 @@ ElevenmxBundle\Entity\Graphiste:
         password:
             type: string
             length: 255
+
+    manyToOne:
+        projets:
+            targetEntity: ElevenmxBundle\Entity\Projet
+            inversedBy: id
+
+
     lifecycleCallbacks: {  }

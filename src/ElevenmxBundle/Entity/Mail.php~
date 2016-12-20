@@ -221,26 +221,5 @@ class Mail
         return $this->password;
     }
 
-    /**
-     * Get message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('name', new NotBlank());
-
-        $metadata->addPropertyConstraint('telephone', new NotBlank());
-
-        $metadata->addPropertyConstraint('mail', new Email());
-
-        $metadata->addPropertyConstraint( 'message', new NotBlank());
-
-    }
 
 }

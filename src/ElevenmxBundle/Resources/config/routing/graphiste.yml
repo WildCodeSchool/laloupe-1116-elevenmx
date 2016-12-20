@@ -22,3 +22,13 @@ graphiste_delete:
     path:     /{id}/delete
     defaults: { _controller: "ElevenmxBundle:Graphiste:delete" }
     methods:  DELETE
+
+graphiste_listProj:
+    path: /listProj
+    defaults: { _controller: "ElevenmxBundle:Graphiste:listProj"}
+    methods: GET
+
+graphiste_detailProj:
+    path: /detailProj
+    defaults: { _controller: "ElevenmxBundle:Graphiste:detailProj"}
+    methods: GET

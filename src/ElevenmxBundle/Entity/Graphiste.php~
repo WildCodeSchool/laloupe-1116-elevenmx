@@ -199,18 +199,4 @@ class Graphiste
     {
         return $this->projet;
     }
-
-    /**
-     * Set projets
-     *
-     * @param \ElevenmxBundle\Entity\Projet $projets
-     *
-     * @return Graphiste
-     */
-    public function setProjets(\ElevenmxBundle\Entity\Projet $projets = null)
-    {
-        $this->projets = $projets;
-
-        return $this;
-    }
 }
