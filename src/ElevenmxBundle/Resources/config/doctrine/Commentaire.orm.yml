@@ -10,9 +10,17 @@ ElevenmxBundle\Entity\Commentaire:
                 strategy: AUTO
     fields:
         champsText:
+            type: text
+        image:
             type: string
-            length: '900'
-    lifecycleCallbacks: {  }
+            length: 255
+
+    lifecycleCallbacks:
+      prePersist: [ preUpload ]
+      preUpdate: [ preUpload ]
+      postPersist: [ upload ]
+      postUpdate: [ upload ]
+      postRemove: [ removeUpload ]
 
     manyToOne:
         projet:

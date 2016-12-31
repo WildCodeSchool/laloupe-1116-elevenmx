@@ -3,34 +3,78 @@
 {% block body %}
     <h1>Projet</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ projet.id }}</td>
-            </tr>
-            <tr>
-                <th>Titreprojet</th>
-                <td>{{ projet.titreProjet }}</td>
-            </tr>
-            <tr>
-                <th>Client</th>
-                <td>{{ projet.client }}</td>
-            </tr>
-            <tr>
-                <th>Marque</th>
-                <td>{{ projet.marque }}</td>
-            </tr>
-            <tr>
-                <th>Produit</th>
-                <td>{{ projet.produit }}</td>
-            </tr>
-            <tr>
-                <th>Nomgraphiste</th>
-                <td>{{ projet.nomGraphiste }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container-fluid">
+
+        <div class="row" >
+
+            <div class="col-xs-offset-1 col-xs-3" >
+
+                <h4>PROJET : {{ projet.titreProjet }}  </h4>
+
+                <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
+
+                <h4>NOM DU CLIENT : {{ projet.client }}</h4>
+
+                <h4>NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
+
+            </div>
+            <div class="col-xs-offset-1 col-xs-3" >
+
+            </div>
+
+            <div class="col m6 s12">
+                <div class="row">
+                    {{ form_start(form) }}
+                    <div class="input-field col s12">
+                        {{ form_label(form.champsText) }}
+                        {{ form_widget(form.champsText) }}
+                        {{ form_errors(form.champsText) }}
+                    </div>
+
+                    <div class="add_button center-align">
+                        <input class="waves-effect waves-light btn" type="submit" value="Ajouter le commentaire" />
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+                <div>
+                {% if comment != null %}
+                    <h4 class="center-align">Liste Liste des commentaires</h4>
+
+                    <div style="border: solid; margin-left: 10px" >
+                        <h4 class="center-align">Liste Liste des commentaires</h4>
+
+                        {% for comment in comment %}
+                            <div >
+
+                                <div >
+                                    <div >
+                                        <div >
+                                            <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
+                                            <p>{{ comment.Id }}</p>
+                                            <p>{{ comment.champsText }}</p>
+                                            <p> {{ comment.image }} </p>
+                                            <img src="{{ app.request.basepath }}/uploads/{{ commentgit.image }}">
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <h4 class="center-align">Pas de commentaire</h4>
+                {% endif %}
+                </div>
+            </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
 
     <ul>
         <li>
@@ -40,9 +84,7 @@
             <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+
         </li>
     </ul>
 {% endblock %}

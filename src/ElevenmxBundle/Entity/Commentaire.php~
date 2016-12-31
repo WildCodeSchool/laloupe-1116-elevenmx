@@ -7,6 +7,55 @@ namespace ElevenmxBundle\Entity;
  */
 class Commentaire
 {
+    /** ajout code pour administrer les photos */
+    public $file;
+
+    protected function getUploadDir()
+    {
+        return 'uploads';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            // do whatever you want to generate a unique name
+            $this->image = uniqid().'.'.$this->file->guessExtension();
+        }
+    }
+
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        $this->file->move($this->getUploadRootDir(), $this->image);
+
+        unset($this->file);
+    }
+
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+    /** fin ajout code pour administrer les photo */
     /**
      * @var int
      */
@@ -17,7 +66,19 @@ class Commentaire
      */
     private $champsText;
 
+    /**
+     * Set id
+     *
+     * @param string $id
+     *
+     * @return Commentaire
+     */
+    public function setid($id)
+    {
+        $this->id = $id;
 
+        return $this;
+    }
     /**
      * Get id
      *
@@ -79,5 +140,34 @@ class Commentaire
     public function getProjet()
     {
         return $this->projet;
+    }
+    /**
+     * @var string
+     */
+    private $image;
+
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Commentaire
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

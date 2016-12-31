@@ -56,4 +56,4 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/graphiste/, role: ROLE_GRAPH }
-        - { path: ^/projet/, role: ROLE_USER }
+        - { path: ^/client/, role: ROLE_USER }

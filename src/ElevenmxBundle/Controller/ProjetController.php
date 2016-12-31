@@ -2,6 +2,7 @@
 
 namespace ElevenmxBundle\Controller;
 
+use ElevenmxBundle\Entity\Commentaire;
 use ElevenmxBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,13 +56,31 @@ class ProjetController extends Controller
      * Finds and displays a projet entity.
      *
      */
-    public function showAction(Projet $projet)
+    public function showAction(Projet $projet, Request $request)
     {
-        $deleteForm = $this->createDeleteForm($projet);
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->render('ElevenmxBundle:projet:show.html.twig', array(
+        $commentaires = $em->getRepository('ElevenmxBundle:Commentaire')->findBy(
+            array('projet' => $projet->getId())
+        );
+
+        $newCommentaire = new Commentaire();
+        $form = $this->createForm('ElevenmxBundle\Form\CommentaireType', $newCommentaire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $newCommentaire->setProjet($projet);
+            $em->persist($newCommentaire);
+            $em->flush();
+
+            return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
+        }
+
+        return $this->render('@Elevenmx/projet/show.html.twig', array(
+            'comment' => $commentaires,
+            'form' => $form->createView(),
             'projet' => $projet,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

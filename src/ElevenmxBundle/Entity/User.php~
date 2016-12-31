@@ -27,10 +27,6 @@ class User extends BaseUser
      */
     private $prenom;
 
-    /**
-     * @var string
-     */
-    private $mail;
 
     /**
      * @var string
@@ -100,30 +96,6 @@ class User extends BaseUser
     public function getPrenom()
     {
         return $this->prenom;
-    }
-
-    /**
-     * Set mail
-     *
-     * @param string $mail
-     *
-     * @return User
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get mail
-     *
-     * @return string
-     */
-    public function getMail()
-    {
-        return $this->mail;
     }
 
     /**
