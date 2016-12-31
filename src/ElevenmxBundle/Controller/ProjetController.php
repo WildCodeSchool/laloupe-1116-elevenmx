@@ -61,7 +61,8 @@ class ProjetController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $commentaires = $em->getRepository('ElevenmxBundle:Commentaire')->findBy(
-            array('projet' => $projet->getId())
+            array('projet' => $projet->getId()),
+            array('id' => 'DESC')
         );
 
         $newCommentaire = new Commentaire();

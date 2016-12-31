@@ -2,62 +2,80 @@
 
 {% block body %}
     <h1>Projet</h1>
-
-    <div class="container-fluid">
-
-        <div class="row" >
-
-            <div class="col-xs-offset-1 col-xs-3" >
+    <div style="border: solid; margin-left: 10px" class="container-fluid">
+        <div style="border: solid; margin-left: 10px" class="row">
+            <div class="col-sm-6">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
-                <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
-
                 <h4>NOM DU CLIENT : {{ projet.client }}</h4>
 
+            </div>
+            <div class="col-sm-6">
+
+                <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
+
                 <h4>NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
-
-            </div>
-            <div class="col-xs-offset-1 col-xs-3" >
-
             </div>
 
-            <div class="col m6 s12">
+        </div>
+        <div style="border: solid; margin-left: 10px" class="row">
+            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row" >
+            <div >
                 <div class="row">
                     {{ form_start(form) }}
-                    <div class="input-field col s12">
+
                         {{ form_label(form.champsText) }}
                         {{ form_widget(form.champsText) }}
                         {{ form_errors(form.champsText) }}
-                    </div>
+
+                        {{ form_label(form.id) }}
+                        {{ form_widget(form.id) }}
+                        {{ form_errors(form.id) }}
+
+                        {{ form_label(form.image) }}
+                        {{ form_widget(form.image) }}
+                        {{ form_errors(form.image) }}
+
+                        {{ form_label(form.file) }}
+                        {{ form_widget(form.file) }}
+                        {{ form_errors(form.file) }}
 
                     <div class="add_button center-align">
-                        <input class="waves-effect waves-light btn" type="submit" value="Ajouter le commentaire" />
+                        <input type="submit" value="Envoyer un nouveau BAT" />
+                    </div>
+                    <div class="add_button center-align">
+                        <input class="waves-effect waves-light btn" type="submit" value="Envoyer un nouveau BAT" />
                     </div>
                     {{ form_end(form) }}
                 </div>
                 <div>
                 {% if comment != null %}
-                    <h4 class="center-align">Liste Liste des commentaires</h4>
+                    <h4 class="center-align">Liste des commentaires</h4>
 
                     <div style="border: solid; margin-left: 10px" >
-                        <h4 class="center-align">Liste Liste des commentaires</h4>
+
 
                         {% for comment in comment %}
-                            <div >
+                            <div class="container-fluid">
 
-                                <div >
-                                    <div >
-                                        <div >
-                                            <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
-                                            <p>{{ comment.Id }}</p>
-                                            <p>{{ comment.champsText }}</p>
+                                <div class="row">
+                                    <div class="col-sm-5">
+
+                                        <h4>Date : </h4>
+                                        <p>Status </p>
+                                        <p>{{ comment.champsText }}</p>
+                                    </div>
+                                    <div class="col-sm-6">
+
                                             <p> {{ comment.image }} </p>
-                                            <img src="{{ app.request.basepath }}/uploads/{{ commentgit.image }}">
-
-
-                                        </div>
-
+                                            <img src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +96,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('projet_index') }}">Back to the list</a>
+            <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
         </li>
         <li>
             <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
