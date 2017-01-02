@@ -19,14 +19,17 @@ class Mail
      * @var string
      */
     private $prenom;
+
     /**
      * @Assert\Regex(pattern="/(^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$)/")
      */
     private $mail;
+
     /**
      * @Assert\Regex(pattern="/(^0[1-9]([-. ]?[0-9]{2}){4}$)/")
      */
     private $telephone;
+
     /**
      * @var string
      */
