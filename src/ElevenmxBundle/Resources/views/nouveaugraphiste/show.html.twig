@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Nouveaugraphiste</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ nouveauGraphiste.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ nouveauGraphiste.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ nouveauGraphiste.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Codeutilisateur</th>
+                <td>{{ nouveauGraphiste.codeUtilisateur }}</td>
+            </tr>
+            <tr>
+                <th>Motdepasse</th>
+                <td>{{ nouveauGraphiste.motDePasse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('nouveaugraphiste_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('nouveaugraphiste_edit', { 'id': nouveauGraphiste.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

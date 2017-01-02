@@ -28,14 +28,10 @@ class MailType extends AbstractType
                 'attr' => array (
                     'placeholder' => 'prenom',
                 )))
-            ->add('mail', TextType::class, array(
-                'attr' => array (
-                    'placeholder' => 'mail',
-                )))
-            ->add('telephone', NumberType::class, array(
-                'attr' => array (
-                    'placeholder' => 'telephone',
-                )))
+            ->add('mail'
+                )
+            ->add('telephone'
+                )
             ->add('entreprise', TextType::class, array (
                 'attr' => array (
                     'placeholder' => 'entreprise'

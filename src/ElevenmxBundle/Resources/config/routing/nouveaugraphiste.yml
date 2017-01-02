@@ -1,0 +1,24 @@
+nouveaugraphiste_index:
+    path:     /
+    defaults: { _controller: "ElevenmxBundle:NouveauGraphiste:index" }
+    methods:  GET
+
+nouveaugraphiste_show:
+    path:     /{id}/show
+    defaults: { _controller: "ElevenmxBundle:NouveauGraphiste:show" }
+    methods:  GET
+
+nouveaugraphiste_new:
+    path:     /new
+    defaults: { _controller: "ElevenmxBundle:NouveauGraphiste:new" }
+    methods:  [GET, POST]
+
+nouveaugraphiste_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ElevenmxBundle:NouveauGraphiste:edit" }
+    methods:  [GET, POST]
+
+nouveaugraphiste_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ElevenmxBundle:NouveauGraphiste:delete" }
+    methods:  DELETE
