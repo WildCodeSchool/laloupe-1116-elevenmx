@@ -13,7 +13,11 @@ class GraphisteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('login')->add('password')        ;
+        $builder->add('nom')
+                ->add('prenom')
+                ->add('login')
+                ->add('password')
+        ;
     }
     
     /**

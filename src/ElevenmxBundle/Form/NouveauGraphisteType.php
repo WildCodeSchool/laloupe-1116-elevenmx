@@ -13,7 +13,11 @@ class NouveauGraphisteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('codeUtilisateur')->add('motDePasse')        ;
+        $builder->add('nom')
+                ->add('prenom')
+                ->add('codeUtilisateur')
+                ->add('motDePasse')
+        ;
     }
     
     /**

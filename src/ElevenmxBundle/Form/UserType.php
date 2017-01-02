@@ -22,6 +22,9 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            /**
+             * @Assert\Regex(pattern="/(^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$)/")
+             */
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array(
                 'label' => 'E-mail :',
                 'translation_domain' => 'FOSUserBundle'
@@ -41,10 +44,7 @@ class UserType extends AbstractType
                 'attr' => array (
                     'placeholder' => 'prenom',
                 )))
-            ->add('telephone', NumberType::class, array(
-                'attr' => array (
-                    'placeholder' => 'telephone',
-                )))
+            ->add('telephone')
             ->add('entreprise', TextType::class, array (
                 'attr' => array (
                     'placeholder' => 'entreprise'

@@ -2,10 +2,12 @@
 
 namespace ElevenmxBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * NouveauGraphiste
+ * Graphiste
  */
-class NouveauGraphiste
+class Graphiste
 {
     /**
      * @var int
@@ -25,18 +27,18 @@ class NouveauGraphiste
     /**
      * @var string
      */
-    private $codeUtilisateur;
+    private $login;
 
     /**
      * @var string
      */
-    private $motDePasse;
+    private $password;
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer 
      */
     public function getId()
     {
@@ -47,8 +49,7 @@ class NouveauGraphiste
      * Set nom
      *
      * @param string $nom
-     *
-     * @return NouveauGraphiste
+     * @return Graphiste
      */
     public function setNom($nom)
     {
@@ -60,7 +61,7 @@ class NouveauGraphiste
     /**
      * Get nom
      *
-     * @return string
+     * @return string 
      */
     public function getNom()
     {
@@ -71,8 +72,7 @@ class NouveauGraphiste
      * Set prenom
      *
      * @param string $prenom
-     *
-     * @return NouveauGraphiste
+     * @return Graphiste
      */
     public function setPrenom($prenom)
     {
@@ -84,7 +84,7 @@ class NouveauGraphiste
     /**
      * Get prenom
      *
-     * @return string
+     * @return string 
      */
     public function getPrenom()
     {
@@ -92,50 +92,48 @@ class NouveauGraphiste
     }
 
     /**
-     * Set codeUtilisateur
+     * Set login
      *
-     * @param string $codeUtilisateur
-     *
-     * @return NouveauGraphiste
+     * @param string $login
+     * @return Graphiste
      */
-    public function setCodeUtilisateur($codeUtilisateur)
+    public function setLogin($login)
     {
-        $this->codeUtilisateur = $codeUtilisateur;
+        $this->login = $login;
 
         return $this;
     }
 
     /**
-     * Get codeUtilisateur
+     * Get login
      *
-     * @return string
+     * @return string 
      */
-    public function getCodeUtilisateur()
+    public function getLogin()
     {
-        return $this->codeUtilisateur;
+        return $this->login;
     }
 
     /**
-     * Set motDePasse
+     * Set password
      *
-     * @param string $motDePasse
-     *
-     * @return NouveauGraphiste
+     * @param string $password
+     * @return Graphiste
      */
-    public function setMotDePasse($motDePasse)
+    public function setPassword($password)
     {
-        $this->motDePasse = $motDePasse;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get motDePasse
+     * Get password
      *
-     * @return string
+     * @return string 
      */
-    public function getMotDePasse()
+    public function getPassword()
     {
-        return $this->motDePasse;
+        return $this->password;
     }
 }
