@@ -1,0 +1,33 @@
+ElevenmxBundle\Entity\Commentaire:
+    type: entity
+    table: null
+    repositoryClass: ElevenmxBundle\Repository\CommentaireRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        champsText:
+            type: text
+        image:
+            type: string
+            length: 255
+
+    lifecycleCallbacks:
+      prePersist: [ preUpload ]
+      preUpdate: [ preUpload ]
+      postPersist: [ upload ]
+      postUpdate: [ upload ]
+      postRemove: [ removeUpload ]
+
+    manyToOne:
+        projet:
+            targetEntity: ElevenmxBundle\Entity\Projet
+            inversedBy: id
+
+    manyToOne:
+        user:
+            targetEntity: ElevenmxBundle\Entity\User
+            inversedBy: id

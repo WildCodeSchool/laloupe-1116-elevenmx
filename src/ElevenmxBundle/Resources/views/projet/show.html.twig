@@ -2,47 +2,124 @@
 
 {% block body %}
     <h1>Projet</h1>
+    <div style="border: solid" class="container-fluid">
+        <div style="border: solid; margin-left: 10px" class="row">
+            <div class="col-sm-6">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ projet.id }}</td>
-            </tr>
-            <tr>
-                <th>Titreprojet</th>
-                <td>{{ projet.titreProjet }}</td>
-            </tr>
-            <tr>
-                <th>Client</th>
-                <td>{{ projet.client }}</td>
-            </tr>
-            <tr>
-                <th>Marque</th>
-                <td>{{ projet.marque }}</td>
-            </tr>
-            <tr>
-                <th>Produit</th>
-                <td>{{ projet.produit }}</td>
-            </tr>
-            <tr>
-                <th>Nomgraphiste</th>
-                <td>{{ projet.nomGraphiste }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <h4>PROJET : {{ projet.titreProjet }}  </h4>
+
+                <h4>NOM DU CLIENT : {{ projet.client }}</h4>
+
+            </div>
+            <div class="col-sm-6">
+
+                <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
+
+                <h4>NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
+            </div>
+
+        </div>
+        <div style="border: solid; margin-left: 10px" class="row">
+            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+        </div>
+    </div>
+
+    <div style="border: solid;color: blue; margin-left: 10px" class="container-fluid">
+        <div style="border: solid; color:brown; margin-top: 10px;height: 50px" class="row">
+            <div style="border: solid; color:red;height: 20px" class="col-sm-6">
+
+
+
+            </div>
+            <div style="border: solid; color:yellow;height: 20px" class="col-sm-6">
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="container-fluid">
+        <div class="row" >
+            <div >
+                <div class="row">
+                    {{ form_start(form) }}
+
+                        {{ form_label(form.champsText) }}
+                        {{ form_widget(form.champsText) }}
+                        {{ form_errors(form.champsText) }}
+
+                        {{ form_label(form.id) }}
+                        {{ form_widget(form.id) }}
+                        {{ form_errors(form.id) }}
+
+                        {{ form_label(form.image) }}
+                        {{ form_widget(form.image) }}
+                        {{ form_errors(form.image) }}
+
+                        {{ form_label(form.file) }}
+                        {{ form_widget(form.file) }}
+                        {{ form_errors(form.file) }}
+
+                    <div class="add_button center-align">
+                        <input type="submit" value="Envoyer un nouveau BAT" />
+                    </div>
+                    <div class="add_button center-align">
+                        <input class="waves-effect waves-light btn" type="submit" value="Envoyer un nouveau BAT" />
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+                <div>
+                {% if comment != null %}
+                    <h4 class="center-align">Liste des commentaires</h4>
+
+                    <div style="border: solid; margin-left: 10px" >
+
+
+                        {% for comment in comment %}
+                            <div class="container-fluid">
+
+                                <div class="row">
+                                    <div class="col-sm-5">
+
+                                        <h4>Date : </h4>
+                                        <p>Status </p>
+                                        <p>{{ comment.champsText }}</p>
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                            <p> {{ comment.image }} </p>
+                                            <img src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <h4 class="center-align">Pas de commentaire</h4>
+                {% endif %}
+                </div>
+            </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
 
     <ul>
         <li>
-            <a href="{{ path('projet_index') }}">Back to the list</a>
+            <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
         </li>
         <li>
             <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+
         </li>
     </ul>
 {% endblock %}

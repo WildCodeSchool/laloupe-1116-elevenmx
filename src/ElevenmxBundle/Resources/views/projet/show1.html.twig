@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Projet</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ projet.id }}</td>
+        </tr>
+        <tr>
+            <th>Titreprojet</th>
+            <td>{{ projet.titreProjet }}</td>
+        </tr>
+        <tr>
+            <th>Client</th>
+            <td>{{ projet.client }}</td>
+        </tr>
+        <tr>
+            <th>Marque</th>
+            <td>{{ projet.marque }}</td>
+        </tr>
+        <tr>
+            <th>Produit</th>
+            <td>{{ projet.produit }}</td>
+        </tr>
+        <tr>
+            <th>Nomgraphiste</th>
+            <td>{{ projet.nomGraphiste }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('projet_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

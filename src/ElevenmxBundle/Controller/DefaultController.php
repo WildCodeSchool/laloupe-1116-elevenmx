@@ -2,7 +2,8 @@
 
 namespace ElevenmxBundle\Controller;
 
-use ElevenmxBundle\Form\MailType;
+use ElevenmxBundle\Form\UserType;
+use ElevenmxBundle\Entity\User;
 use ElevenmxBundle\Entity\Mail;
 use ElevenmxBundle\Repository\MailRepository;
 use ElevenmxBundle\ElevenmxBundle;
@@ -44,12 +45,12 @@ class DefaultController extends Controller
     public function sendMailAction()
     {
         $request = $this->get('request');
-        $mail = new Mail();
-        $form = $this->createForm(new MailType(), $mail);
+        $user = new User();
+        $form = $this->createForm(new UserType(), $user);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($mail);
+            $em->persist($user);
             $em->flush();
             $message = \Swift_Message::newInstance()
                 ->setSubject('hello mail')
@@ -58,7 +59,7 @@ class DefaultController extends Controller
                 ->setBody(
                     $this->renderView(
                         'Emails/registration.html.twig',
-                        array('mail' => $mail)
+                        array('user' => $user)
                     )
                 );
             $this->get('mailer')->send($message);
