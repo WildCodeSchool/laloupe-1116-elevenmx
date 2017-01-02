@@ -3,6 +3,7 @@
 namespace ElevenmxBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Mail
@@ -25,12 +26,12 @@ class Mail
     private $prenom;
 
     /**
-     * @var string
+     * @Assert\Regex(pattern="/(^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$)/")
      */
     private $mail;
 
     /**
-     * @var string
+     * @Assert\Regex(pattern="/(^0[1-9]([-. ]?[0-9]{2}){4}$)/")
      */
     private $telephone;
 

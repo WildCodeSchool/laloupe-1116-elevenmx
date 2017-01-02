@@ -23,7 +23,7 @@ ElevenmxBundle\Entity\Mail:
             column: Mail
         telephone:
             type: string
-            length: 255
+            length: 14
             column: Telephone
         entreprise:
             type: string

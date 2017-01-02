@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 id="newgraph">Création d'un nouveau graphiste</h1>
+
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-2 col-xs-12">
+            <label  style="margin-top:25%;margin-left:15%;" for="elevenmxbundle_nouveaugraphiste_Nom" >{{ form_label(form.nom) }}</label>
+            {{ form_widget(form.nom, { 'attr': {'class': 'foo'} }) }}
+        </div>
+        <div class="col-lg-2 col-xs-12">
+            <label  style="margin-top:25%;margin-left:15%;" for="elevenmxbundle_nouveaugraphiste_Prenom" >{{ form_label(form.prenom) }}</label>
+            {{ form_widget(form.prenom, { 'attr': {'class': 'foo'} }) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-2 col-xs-12 ">
+            <label style="margin-top:10%;margin-left:15%;" for="elevenmxbundle_nouveaugraphiste_codeUtilisateur" >{{ form_label(form.codeUtilisateur) }}</label>
+            {{ form_widget(form.codeUtilisateur, { 'attr': {'class': 'foo'} }) }}
+        </div>
+        <div class="col-lg-2 col-xs-12">
+            <label  style="margin-top:10%;margin-left:15%;" for="elevenmxbundle_nouveaugraphiste_motDePasse" >{{ form_label(form.motDePasse) }}</label>
+            {{ form_widget(form.motDePasse, { 'attr': {'class': 'foo'} }) }}
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="col-lg-5 col-xs-12"></div>
+        <div class="col-lg-2 col-xs-12" >
+                    {{ form_widget(form) }}
+                    <input type="submit" value="Créer un nouveau graphiste" />
+                {{ form_end(form) }}
+            </div>
+    <div class="col-lg-5 col-xs-12"></div>
+
+
+    <ul>
+        <li>
+            <a href="{{ path('nouveaugraphiste_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

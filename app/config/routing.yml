@@ -12,3 +12,7 @@ fos_user:
 
 logout:
     path: /logout
+
+elevenmx_nouveaugraphiste:
+    resource: "@ElevenmxBundle/Resources/config/routing/nouveaugraphiste.yml"
+    prefix:   /nouveaugraphiste

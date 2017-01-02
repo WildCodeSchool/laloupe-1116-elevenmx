@@ -1,0 +1,24 @@
+ElevenmxBundle\Entity\NouveauGraphiste:
+    type: entity
+    table: null
+    repositoryClass: ElevenmxBundle\Repository\NouveauGraphisteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        prenom:
+            type: string
+            length: 255
+        codeUtilisateur:
+            type: string
+            length: 255
+        motDePasse:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

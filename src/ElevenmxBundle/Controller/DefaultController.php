@@ -41,7 +41,7 @@ class DefaultController extends Controller
     {
         return $this->render('ElevenmxBundle:Default:formMail.html.twig');
     }
-// ******************************* envoi de mail **********************************
+// ******************************* envoi de mail et bdd **********************************
     public function sendMailAction()
     {
         $request = $this->get('request');

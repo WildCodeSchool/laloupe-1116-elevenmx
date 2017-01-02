@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row" id="titre">
                 <h1>Création d'un nouveau client</h1>
-                <div class="col-lg-6" id="colonegauche">
+                <div class="col-lg-6 col-xs-12" id="colonegauche">
 
                     <h4>Nom</h4>
                     {{ form_errors(form.nom) }}
@@ -47,8 +47,9 @@
                     {{ form_errors(form.entreprise) }}
                     {{ form_widget(form.entreprise) }}
                     <br>
+                    <!--************************* contenu du mail dans app/Resources/views/Emails/registration.html.twig **************************-->
 
-                  <!--************************* button and modal  **************************-->
+                    <!--************************* button and modal  **************************-->
 
                 <!-- Modal -->
                 <div id="ModalGraphiste" class="modal fade" role="dialog">
@@ -69,7 +70,7 @@
             </div>
             <!--************************* nos deux champs excentrés  **************************-->
 
-                        <div class="col-lg-6" id="colonedroite">
+                        <div class="col-lg-6 col-xs-12" id="colonedroite">
                             <div class="row">
                                 <div class="droite">
                                     <h4>Code Utilisateur</h4>

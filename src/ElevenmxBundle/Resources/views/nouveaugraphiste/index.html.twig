@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Nouveaugraphistes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Codeutilisateur</th>
+                <th>Motdepasse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nouveauGraphiste in nouveauGraphistes %}
+            <tr>
+                <td><a href="{{ path('nouveaugraphiste_show', { 'id': nouveauGraphiste.id }) }}">{{ nouveauGraphiste.id }}</a></td>
+                <td>{{ nouveauGraphiste.nom }}</td>
+                <td>{{ nouveauGraphiste.prenom }}</td>
+                <td>{{ nouveauGraphiste.codeUtilisateur }}</td>
+                <td>{{ nouveauGraphiste.motDePasse }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('nouveaugraphiste_show', { 'id': nouveauGraphiste.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('nouveaugraphiste_edit', { 'id': nouveauGraphiste.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('nouveaugraphiste_new') }}">Create a new nouveauGraphiste</a>
+        </li>
+    </ul>
+{% endblock %}
