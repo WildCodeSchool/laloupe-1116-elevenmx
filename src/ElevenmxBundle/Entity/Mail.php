@@ -1,10 +1,7 @@
 <?php
-
 namespace ElevenmxBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * Mail
  */
@@ -14,43 +11,35 @@ class Mail
      * @var int
      */
     private $id;
-
     /**
      * @var string
      */
     private $nom;
-
     /**
      * @var string
      */
     private $prenom;
-
     /**
      * @Assert\Regex(pattern="/(^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$)/")
      */
     private $mail;
-
     /**
      * @Assert\Regex(pattern="/(^0[1-9]([-. ]?[0-9]{2}){4}$)/")
      */
     private $telephone;
-
     /**
      * @var string
      */
     private $entreprise;
-
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-
     /**
      * Set nom
      *
@@ -60,20 +49,17 @@ class Mail
     public function setNom($nom)
     {
         $this->nom = $nom;
-
         return $this;
     }
-
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
         return $this->nom;
     }
-
     /**
      * Set prenom
      *
@@ -83,20 +69,17 @@ class Mail
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-
         return $this;
     }
-
     /**
      * Get prenom
      *
-     * @return string 
+     * @return string
      */
     public function getPrenom()
     {
         return $this->prenom;
     }
-
     /**
      * Set mail
      *
@@ -106,20 +89,17 @@ class Mail
     public function setMail($mail)
     {
         $this->mail = $mail;
-
         return $this;
     }
-
     /**
      * Get mail
      *
-     * @return string 
+     * @return string
      */
     public function getMail()
     {
         return $this->mail;
     }
-
     /**
      * Set telephone
      *
@@ -129,20 +109,17 @@ class Mail
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
-
         return $this;
     }
-
     /**
      * Get telephone
      *
-     * @return string 
+     * @return string
      */
     public function getTelephone()
     {
         return $this->telephone;
     }
-
     /**
      * Set entreprise
      *
@@ -152,14 +129,12 @@ class Mail
     public function setEntreprise($entreprise)
     {
         $this->entreprise = $entreprise;
-
         return $this;
     }
-
     /**
      * Get entreprise
      *
-     * @return string 
+     * @return string
      */
     public function getEntreprise()
     {
@@ -169,13 +144,10 @@ class Mail
      * @var string
      */
     private $login;
-
     /**
      * @var string
      */
     private $password;
-
-
     /**
      * Set login
      *
@@ -185,20 +157,17 @@ class Mail
     public function setLogin($login)
     {
         $this->login = $login;
-
         return $this;
     }
-
     /**
      * Get login
      *
-     * @return string 
+     * @return string
      */
     public function getLogin()
     {
         return $this->login;
     }
-
     /**
      * Set password
      *
@@ -208,19 +177,15 @@ class Mail
     public function setPassword($password)
     {
         $this->password = $password;
-
         return $this;
     }
-
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
         return $this->password;
     }
-
-
 }

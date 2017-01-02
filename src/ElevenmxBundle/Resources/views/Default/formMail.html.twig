@@ -3,22 +3,22 @@
    {% block title %} Formulaire Mail nouveau client{% endblock %}
 
 {% block body %}
-<body>
-<br>
-<br>
-<br>
-<!--************************* boutons pour le Nico **************************-->
+    <body>
+    <br>
+    <br>
+    <br>
+    <!--************************* boutons pour le Nico **************************-->
 
-                <!-- <div class="col-sm-10">
-                    <button class="buton1" type="submit">Création Client</button>
-                    <button class="buton1" type="submit">Création Projet</button>
-                    <button class="buton1" type="submit">Création Formulaire</button>
-                    <button class="buton1" type="submit">Création Graphiste</button>
-                </div>                  -->
+    <!-- <div class="col-sm-10">
+        <button class="buton1" type="submit">Création Client</button>
+        <button class="buton1" type="submit">Création Projet</button>
+        <button class="buton1" type="submit">Création Formulaire</button>
+        <button class="buton1" type="submit">Création Graphiste</button>
+    </div>                  -->
 
-<!--************************* Fin Navbar Menu **************************-->
+    <!--************************* Fin Navbar Menu **************************-->
 
-<!--************************* Formulaire **************************-->
+    <!--************************* Formulaire **************************-->
 
     <form action="{{ path('elevenmx_sendMail') }}" method="POST">
         {{ form_start(form) }}
@@ -51,56 +51,56 @@
 
                     <!--************************* button and modal  **************************-->
 
-                <!-- Modal -->
-                <div id="ModalGraphiste" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
+                    <!-- Modal -->
+                    <div id="ModalGraphiste" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"> Hey Nico !</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Ton mail a bien été envoyé ;) </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!--************************* nos deux champs excentrés  **************************-->
-
-                        <div class="col-lg-6 col-xs-12" id="colonedroite">
-                            <div class="row">
-                                <div class="droite">
-                                    <h4>Code Utilisateur</h4>
-
-                                    {{ form_errors(form.username) }}
-                                    {{ form_widget(form.username) }}
-                                    <h4>Mot de passe</h4>
-
-                                    {{ form_errors(form.plain_password) }}
-                                    {{ form_widget(form.plain_password) }}
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title"> Hey Nico !</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Ton mail a bien été envoyé ;) </p>
                                 </div>
                             </div>
+
                         </div>
+                    </div>
+                </div>
+                <!--************************* nos deux champs excentrés  **************************-->
 
-            <!--************************* fin de nos deux champs excentrés  **************************-->
+                <div class="col-lg-6 col-xs-12" id="colonedroite">
+                    <div class="row">
+                        <div class="droite">
+                            <h4>Code Utilisateur</h4>
 
-        </div>
+                            {{ form_errors(form.username) }}
+                            {{ form_widget(form.username) }}
+                            <h4>Mot de passe</h4>
 
-        <div class="row" id="titre">
+                            {{ form_errors(form.plain_password) }}
+                            {{ form_widget(form.plain_password) }}
+                        </div>
+                    </div>
+                </div>
 
-            <button type="submit" class="btn btn-info btn-default" data-toggle="modal" data-target="#ModalGraphiste">Créer</button>
-        </div>
+                <!--************************* fin de nos deux champs excentrés  **************************-->
+
             </div>
 
+            <div class="row" id="titre">
+
+                <button type="submit" class="btn btn-info btn-default" data-toggle="modal" data-target="#ModalGraphiste">Créer</button>
+            </div>
+        </div>
+
     </form>
-{{ form_end(form) }}
+    {{ form_end(form) }}
 
-<!--************************* end button and modal  **************************-->
+    <!--************************* end button and modal  **************************-->
 
-<!--************************* Fin formulaire **************************-->
+    <!--************************* Fin formulaire **************************-->
 
-</body>
+    </body>
 {% endblock %}
