@@ -85,8 +85,6 @@ class DefaultController extends Controller
 
 
 
-
-
             /* $message = \Swift_Message::newInstance('Test')
                  ->setSubject($Subject)
                  ->setFrom('javadescavernes38@gmail.com')
