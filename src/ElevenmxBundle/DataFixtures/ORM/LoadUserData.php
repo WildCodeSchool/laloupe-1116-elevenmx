@@ -9,6 +9,8 @@ use ElevenmxBundle\Entity\User;
 
 class LoadUserData implements FixtureInterface
 {
+
+//    ****************************   datafixtures create fake-users
     public function load(ObjectManager $manager)
     {
         $user = new User();
@@ -21,6 +23,9 @@ class LoadUserData implements FixtureInterface
         $user->setEmail('javadescavernes38@gmail.com');
         $user->setRoles(array('ROLE_USER'));
 
+        $manager->persist($user);
+        $manager->flush();
+
 
         $user2 = new User();
         $user2->setUsername('user2');
@@ -32,6 +37,8 @@ class LoadUserData implements FixtureInterface
         $user2->setEmail('javadescavernes2@gmail.com');
         $user2->setRoles(array('ROLE_USER'));
 
+        $manager->persist($user2);
+        $manager->flush();
 
 
         $graphiste = new User();
@@ -44,6 +51,9 @@ class LoadUserData implements FixtureInterface
         $graphiste->setEmail('Graphiste38@gmail.com');
         $graphiste->setRoles(array('ROLE_GRAPH'));
 
+        $manager->persist($graphiste);
+        $manager->flush();
+
 
         $graphiste2 = new User();
         $graphiste2->setUsername('Graphiste2');
@@ -54,6 +64,9 @@ class LoadUserData implements FixtureInterface
         $graphiste2->setEntreprise('Graphisteux');
         $graphiste2->setEmail('Graphiste2@gmail.com');
         $graphiste2->setRoles(array('ROLE_GRAPH'));
+
+        $manager->persist($graphiste2);
+        $manager->flush();
 
 
         $admin = new User();
@@ -66,6 +79,9 @@ class LoadUserData implements FixtureInterface
         $admin->setEmail('admin@gmail.com');
         $admin->setRoles(array('ROLE_ADMIN'));
 
+        $manager->persist($admin);
+        $manager->flush();
+
 
         $admin2 = new User();
         $admin2->setUsername('$admin2');
@@ -77,7 +93,7 @@ class LoadUserData implements FixtureInterface
         $admin2->setEmail('$admin2@gmail.com');
         $admin2->setRoles(array('ROLE_ADMIN'));
 
-        $manager->persist($user,$user2,$graphiste,$graphiste2,$admin,$admin2);
+        $manager->persist($admin2);
         $manager->flush();
     }
 }
