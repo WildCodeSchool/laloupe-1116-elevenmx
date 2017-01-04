@@ -10,6 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 
 
 
@@ -22,9 +25,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            /**
-             * @Assert\Regex(pattern="/(^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$)/")
-             */
+
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array(
                 'label' => 'E-mail :',
                 'translation_domain' => 'FOSUserBundle'
@@ -52,6 +53,8 @@ class UserType extends AbstractType
                 )))
 
         ;
+
+
     }
 
     /**
@@ -63,4 +66,25 @@ class UserType extends AbstractType
             'data_class' => 'ElevenmxBundle\Entity\User'
         ));
     }
+/**************************************** Regex validation mail **********************************/
+/*    public function testMail(testMail $builder, array $options)
+    {
+        $builder->add('email', 'text');
+        $builder->addValidator(new CallbackValidator(function(FormInterface $form) {
+            $myfield = $form->get('email');
+            if (!is_null($myfield->getData())) {
+                $validator = new RegexValidator();
+                $constraint = new Regex(array(
+                    'pattern' => '/#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#/'
+                ));
+                $isValid = $validator->validate($myfield->getData(), $constraint);
+                if (!$isValid) {
+                    $myfield->addError(new FormError("This field is not valid (only alphanumeric characters separated by hyphens)"));
+                }
+            }}
+        ));
+
+    }*/
+/**************************************** Fin Regex validation mail ***************************/
+
 }
