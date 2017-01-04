@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Projet</h1>
     <div style="border: solid" class="container-fluid">
-        <div style="border: solid; margin-left: 10px" class="row">
+        <div style="border: solid" class="row">
             <div class="col-sm-6">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
@@ -19,82 +19,98 @@
             </div>
 
         </div>
-        <div style="border: solid; margin-left: 10px" class="row">
+        <div style="border: solid" class="row">
             <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
         </div>
     </div>
 
-    <div style="border: solid;color: blue; margin-left: 10px" class="container-fluid">
-        <div style="border: solid; color:brown; margin-top: 10px;height: 50px" class="row">
-            <div style="border: solid; color:red;height: 20px" class="col-sm-6">
-
+    <div style="border: solid;margin-top: 10px" class="container-fluid">
+        <div style="border: solid; height: 250px; margin-top: 10px" class="row">
+            <div style="border: solid; height: 200px" class="col-sm-6">
+                {{ form_start(form) }}
+            <div style="margin-top: 2%">
+                {{ form_label(form.champsText) }}
+                {{ form_widget(form.champsText) }}
+                {{ form_errors(form.champsText) }}
+            </div>
+            <div style="display: none">
+                {{ form_label(form.id) }}
+                {{ form_widget(form.id) }}
+                {{ form_errors(form.id) }}
+            </div>
 
 
             </div>
-            <div style="border: solid; color:yellow;height: 20px" class="col-sm-6">
-
-
+            <div style="border: solid; height: 200px" class="col-sm-6">
+                <div style="margin-top: 2%">
+                {{ form_label(form.image) }}
+                {{ form_widget(form.image) }}
+                {{ form_errors(form.image) }}
+                </div>
+                <div>
+                {{ form_label(form.file) }}
+                {{ form_widget(form.file) }}
+                {{ form_errors(form.file) }}
+                </div>
             </div>
 
+            <div style="margin-left: 150px" class="add_button center-align">
+                <input style="margin-top: 10px" type="submit" value="Envoyer un nouveau BAT" />
+            </div>
+            {{ form_end(form) }}
         </div>
 
     </div>
 
 
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 50px">
         <div class="row" >
             <div >
                 <div class="row">
-                    {{ form_start(form) }}
 
-                    {{ form_label(form.champsText) }}
-                    {{ form_widget(form.champsText) }}
-                    {{ form_errors(form.champsText) }}
-
-                    {{ form_label(form.id) }}
-                    {{ form_widget(form.id) }}
-                    {{ form_errors(form.id) }}
-
-                    {{ form_label(form.image) }}
-                    {{ form_widget(form.image) }}
-                    {{ form_errors(form.image) }}
-
-                    {{ form_label(form.file) }}
-                    {{ form_widget(form.file) }}
-                    {{ form_errors(form.file) }}
-
-                    <div class="add_button center-align">
-                        <input type="submit" value="Envoyer un nouveau BAT" />
-                    </div>
-                    <div class="add_button center-align">
-                        <input class="waves-effect waves-light btn" type="submit" value="Envoyer un nouveau BAT" />
-                    </div>
-                    {{ form_end(form) }}
                 </div>
                 <div>
                     {% if comment != null %}
                         <h4 class="center-align">Liste des commentaires</h4>
 
-                        <div style="border: solid; margin-left: 10px" >
+                        <div style="border: solid" >
 
 
                             {% for comment in comment %}
                                 <div class="container-fluid">
+                                    {% if comment.id == 24 or comment.id == 26%}
+                                    <div class="row" style="border: solid;margin-top: 10px">
+                                        <div class=" col-sm-4">
 
-                                    <div class="row">
-                                        <div class="col-sm-5">
+                                            <!--<p> {{ comment.image }} </p>-->
+                                            <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                        </div>
+
+                                        <div class="col-sm-4">
 
                                             <h4>Date : </h4>
                                             <p>Status </p>
-                                            <p>{{ comment.champsText }}</p>
-                                        </div>
-                                        <div class="col-sm-6">
-
-                                            <p> {{ comment.image }} </p>
-                                            <img src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                            <p style="border: solid">{{ comment.champsText }}</p>
                                         </div>
                                     </div>
+                                    {% else %}
+                                        <div class="row" style="border: solid;margin-top: 10px">
+
+
+                                            <div class="col-sm-offset-4 col-sm-4">
+
+                                                <h4>Date : </h4>
+                                                <p>Status </p>
+                                                <p style="border: solid">{{ comment.champsText }}</p>
+                                            </div>
+                                            <div class="col-sm-4">
+
+                                                <!--<p> {{ comment.image }} </p>-->
+                                                <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             {% endfor %}
                         </div>
@@ -123,3 +139,4 @@
         </li>
     </ul>
 {% endblock %}
+
