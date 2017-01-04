@@ -8,6 +8,11 @@ projet_show:
     defaults: { _controller: "ElevenmxBundle:Projet:show" }
     methods:  [GET, POST]
 
+projet_showGraph:
+    path:     /{id}/showGraph
+    defaults: { _controller: "ElevenmxBundle:Projet:showGraph" }
+    methods:  [GET, POST]
+
 projet_new:
     path:     /new
     defaults: { _controller: "ElevenmxBundle:Projet:new" }

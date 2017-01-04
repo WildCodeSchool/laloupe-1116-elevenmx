@@ -139,4 +139,3 @@ class NouveauGraphiste
         return $this->motDePasse;
     }
 }
-
