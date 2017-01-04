@@ -786,11 +786,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/1f97ccf3c41cc811176d0e5c142e5636842a9124",
-<<<<<<< HEAD
                 "reference": "1f97ccf3c41cc811176d0e5c142e5636842a9124",
-=======
-                "reference": "694e6d36588f128e8ee0abe622bdcb4c102bd75e",
->>>>>>> fc7eaefeb553bc975ac76db74e9b84b9997724a8
                 "shasum": ""
             },
             "require": {
