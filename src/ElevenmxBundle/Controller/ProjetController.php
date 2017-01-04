@@ -39,6 +39,7 @@ class ProjetController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $projet->setStatus('Attente d\'information');
             $em = $this->getDoctrine()->getManager();
             $em->persist($projet);
             $em->flush($projet);
