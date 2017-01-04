@@ -20,6 +20,9 @@ class LoadProjetData implements FixtureInterface
         $projet1->setStatus('Attende d\'information');
         $projet1->setUser();
 
+        $manager->persist($projet1);
+        $manager->flush();
+
 
         $projet2 = new Projet();
         $projet2->setTitreProjet('$projet2');
@@ -29,6 +32,9 @@ class LoadProjetData implements FixtureInterface
         $projet2->setNomGraphiste('graphiste2');
         $projet2->setStatus('Attende d\'information');
         $projet2->setUser();
+
+        $manager->persist($projet2);
+        $manager->flush();
 
 
         $projet3 = new Projet();
@@ -40,11 +46,7 @@ class LoadProjetData implements FixtureInterface
         $projet3->setStatus('Attende d\'information');
         $projet3->setUser();
 
-
-
-
-
-        $manager->persist($projet1,$projet2,$projet3);
+        $manager->persist($projet3);
         $manager->flush();
     }
 }
