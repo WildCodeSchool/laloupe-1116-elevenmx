@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>Projet</h1>
-    <div style="border: solid" class="container-fluid">
+    <div class="container-fluid">
         <div style="border: solid" class="row">
             <div class="col-sm-6">
 
@@ -24,39 +24,34 @@
         </div>
     </div>
 
-    <div style="border: solid;margin-top: 10px" class="container-fluid">
-        <div style="border: solid; height: 250px; margin-top: 10px" class="row">
-            <div style="border: solid; height: 200px" class="col-sm-6">
+    <div class="container-fluid">
+        <div style=" height: 250px; margin-top: 50px" class="row">
+            <div style="height: 200px" class="col-sm-offset-2 col-sm-4">
                 {{ form_start(form) }}
             <div style="margin-top: 2%">
-                {{ form_label(form.champsText) }}
-                {{ form_widget(form.champsText) }}
+                <p>Commentaire</p>
+
+                {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
                 {{ form_errors(form.champsText) }}
             </div>
-            <div style="display: none">
-                {{ form_label(form.id) }}
-                {{ form_widget(form.id) }}
-                {{ form_errors(form.id) }}
-            </div>
+
 
 
             </div>
-            <div style="border: solid; height: 200px" class="col-sm-6">
-                <div style="margin-top: 2%">
-                {{ form_label(form.image) }}
-                {{ form_widget(form.image) }}
-                {{ form_errors(form.image) }}
-                </div>
-                <div>
-                {{ form_label(form.file) }}
+            <div style="height: 200px" class=" col-sm-offset-1 col-sm-4">
+
+                <div style=" margin-top: 100px">
+
                 {{ form_widget(form.file) }}
                 {{ form_errors(form.file) }}
                 </div>
             </div>
-
-            <div style="margin-left: 150px" class="add_button center-align">
+        </div>
+            <div style=" margin-top: 10px" class="row">
+            <div style="margin-left: 650px" class="add_button center-align">
                 <input style="margin-top: 10px" type="submit" value="Envoyer un nouveau BAT" />
             </div>
+
             {{ form_end(form) }}
         </div>
 
@@ -66,45 +61,48 @@
 
     <div class="container-fluid" style="margin-top: 50px">
         <div class="row" >
-            <div >
-                <div class="row">
-
+            <div class=" col-sm-2">
+                <div style="margin-left: 50px" class="add_button center-align">
+                    <input style="margin-top: 10px" type="submit" value="Envoyer un nouveau BAT" />
                 </div>
+            </div>
+            <div class=" col-sm-10">
                 <div>
                     {% if comment != null %}
-                        <h4 class="center-align">Liste des commentaires</h4>
+
 
                         <div style="border: solid" >
 
 
                             {% for comment in comment %}
                                 <div class="container-fluid">
-                                    {% if comment.id == 24 or comment.id == 26%}
-                                    <div class="row" style="border: solid;margin-top: 10px">
-                                        <div class=" col-sm-4">
+                                    {% if comment.id == 24 or comment.id == 26 or comment.id == 28 or comment.id == 30%}
+                                        <div class="row" style="margin-top: 10px">
 
-                                            <!--<p> {{ comment.image }} </p>-->
-                                            <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
-                                        </div>
+                                            <div class=" col-sm-6">
 
-                                        <div class="col-sm-4">
+                                                <!--<p> {{ comment.image }} </p>-->
+                                                <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                            </div>
 
-                                            <h4>Date : </h4>
-                                            <p>Status </p>
-                                            <p style="border: solid">{{ comment.champsText }}</p>
-                                        </div>
-                                    </div>
-                                    {% else %}
-                                        <div class="row" style="border: solid;margin-top: 10px">
-
-
-                                            <div class="col-sm-offset-4 col-sm-4">
+                                            <div class="col-sm-6">
 
                                                 <h4>Date : </h4>
                                                 <p>Status </p>
                                                 <p style="border: solid">{{ comment.champsText }}</p>
                                             </div>
-                                            <div class="col-sm-4">
+                                        </div>
+                                    {% else %}
+                                        <div class="row" style="border: solid;margin-top: 10px">
+
+
+                                            <div class="col-sm-6">
+
+                                                <h4>Date : </h4>
+                                                <p>Status </p>
+                                                <p style="border: solid">{{ comment.champsText }}</p>
+                                            </div>
+                                            <div class="col-sm-6">
 
                                                 <!--<p> {{ comment.image }} </p>-->
                                                 <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
@@ -119,7 +117,7 @@
                     {% endif %}
                 </div>
             </div>
-
+        </div>
 
 
 
