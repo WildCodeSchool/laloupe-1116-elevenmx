@@ -11,10 +11,10 @@
         <tbody>
         {% for projet in projets %}
             <tr>
-                {% if projet.client == null %}
+                {% if projet.client != null %}
                     <div class="container-fluid">
 
-                        <div class="row" >
+                        <div class="row">
                             <a href="{{ path('projet_show', { 'id': projet.id }) }}" class="">
 
                                 <div id="projet_ligne_aff" class="col-xs-offset-1 col-xs-10" >
