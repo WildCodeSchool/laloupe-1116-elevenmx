@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Projet</h1>
     <div class="container-fluid">
-        <div style="border: solid" class="row">
+        <div style="border: solid; border-width: 1px; background-color: white" class="row">
             <div class="col-sm-6">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
@@ -19,7 +18,7 @@
             </div>
 
         </div>
-        <div style="border: solid" class="row">
+        <div style="border: solid; border-width: 1px; background-color: white; padding-left: 14px" class="row">
             <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
         </div>
     </div>
@@ -63,7 +62,8 @@
         <div class="row" >
             <div class=" col-sm-2">
                 <div style="margin-left: 50px" class="add_button center-align">
-                    <input style="margin-top: 10px" type="submit" value="Envoyer un nouveau BAT" />
+                    <img style="height: 200px; width: auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
+
                 </div>
             </div>
             <div class=" col-sm-10">
@@ -71,47 +71,52 @@
                     {% if comment != null %}
 
 
-                        <div style="border: solid" >
 
 
                             {% for comment in comment %}
                                 <div class="container-fluid">
-                                    {% if comment.id == 24 or comment.id == 26 or comment.id == 28 or comment.id == 30%}
-                                        <div class="row" style="margin-top: 10px">
+                                    {% if comment.id == 2 or comment.id == 4 or comment.id == 6 or comment.id == 8 %}
+                                        <div class="row" style="margin-top: 10px; background-color: #218BC3">
 
                                             <div class=" col-sm-6">
+                                                {% if comment.image != NULL %}
+                                                    <!--<p> {{ comment.image }} </p>-->
+                                                    <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
 
-                                                <!--<p> {{ comment.image }} </p>-->
-                                                <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                {% endif %}
+
                                             </div>
 
                                             <div class="col-sm-6">
 
                                                 <h4>Date : </h4>
                                                 <p>Status </p>
-                                                <p style="border: solid">{{ comment.champsText }}</p>
+                                                <p style="border: solid; border-width: 1px">{{ comment.champsText }}</p>
                                             </div>
                                         </div>
-                                    {% else %}
-                                        <div class="row" style="border: solid;margin-top: 10px">
+
+
+                                        {% else %}
+                                        <div class="row" style="border: solid; border-width: 1px; ;margin-top: 10px; background-color: lightsteelblue ">
 
 
                                             <div class="col-sm-6">
 
                                                 <h4>Date : </h4>
                                                 <p>Status </p>
-                                                <p style="border: solid">{{ comment.champsText }}</p>
+                                                <p style="border: solid; border-width: 1px">{{ comment.champsText }}</p>
                                             </div>
                                             <div class="col-sm-6">
-
+                                                {% if comment.image != NULL %}
                                                 <!--<p> {{ comment.image }} </p>-->
                                                 <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                {% endif %}
+
                                             </div>
                                         </div>
                                     {% endif %}
                                 </div>
                             {% endfor %}
-                        </div>
                     {% else %}
                         <h4 class="center-align">Pas de commentaire</h4>
                     {% endif %}

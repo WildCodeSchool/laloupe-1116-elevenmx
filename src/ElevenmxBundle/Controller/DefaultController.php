@@ -55,7 +55,7 @@ class DefaultController extends Controller
             $message = \Swift_Message::newInstance()
                 ->setSubject('hello mail')
                 ->setFrom('javadescavernes38@gmail.com')
-                ->setTo('javadescavernes38@gmail.com')
+                ->setTo($user->getEmail())
                 ->setBody(
                     $this->renderView(
                         'Emails/registration.html.twig',
