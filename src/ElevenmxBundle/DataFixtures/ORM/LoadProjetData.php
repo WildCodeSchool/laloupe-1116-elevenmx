@@ -3,11 +3,13 @@
 
 namespace ElevenmxBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use ElevenmxBundle\Entity\Projet;
-use ElevenmxBundle\Entity\User;
-class LoadProjetData implements FixtureInterface
+
+
+class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -48,5 +50,10 @@ class LoadProjetData implements FixtureInterface
 
         $manager->persist($projet3);
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 2;
     }
 }
