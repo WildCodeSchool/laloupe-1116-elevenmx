@@ -7,36 +7,34 @@ namespace ElevenmxBundle\Entity;
  */
 class Categorie
 {
+ 
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
      * @var string
      */
-    private $graphiste;
+    private $categorie;
 
     /**
-     * @var string
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $superAdmin;
+    private $user;
 
     /**
-     * @var string
+     * Constructor
      */
-    private $admin;
-
-    /**
-     * @var string
-     */
-    private $client;
-
+    public function __construct()
+    {
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -44,98 +42,60 @@ class Categorie
     }
 
     /**
-     * Set graphiste
+     * Set categorie
      *
-     * @param string $graphiste
+     * @param string $categorie
      *
      * @return Categorie
      */
-    public function setGraphiste($graphiste)
+    public function setCategorie($categorie)
     {
-        $this->graphiste = $graphiste;
+        $this->categorie = $categorie;
 
         return $this;
     }
 
     /**
-     * Get graphiste
+     * Get categorie
      *
      * @return string
      */
-    public function getGraphiste()
+    public function getCategorie()
     {
-        return $this->graphiste;
+        return $this->categorie;
     }
 
     /**
-     * Set superAdmin
+     * Add user
      *
-     * @param string $superAdmin
+     * @param \ElevenmxBundle\Entity\User $user
      *
      * @return Categorie
      */
-    public function setSuperAdmin($superAdmin)
+    public function addUser(\ElevenmxBundle\Entity\User $user)
     {
-        $this->superAdmin = $superAdmin;
+        $this->user[] = $user;
 
         return $this;
     }
 
     /**
-     * Get superAdmin
+     * Remove user
      *
-     * @return string
+     * @param \ElevenmxBundle\Entity\User $user
      */
-    public function getSuperAdmin()
+    public function removeUser(\ElevenmxBundle\Entity\User $user)
     {
-        return $this->superAdmin;
+        $this->user->removeElement($user);
     }
 
     /**
-     * Set admin
+     * Get user
      *
-     * @param string $admin
-     *
-     * @return Categorie
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function setAdmin($admin)
+    public function getUser()
     {
-        $this->admin = $admin;
-
-        return $this;
-    }
-
-    /**
-     * Get admin
-     *
-     * @return string
-     */
-    public function getAdmin()
-    {
-        return $this->admin;
-    }
-
-    /**
-     * Set client
-     *
-     * @param string $client
-     *
-     * @return Categorie
-     */
-    public function setClient($client)
-    {
-        $this->client = $client;
-
-        return $this;
-    }
-
-    /**
-     * Get client
-     *
-     * @return string
-     */
-    public function getClient()
-    {
-        return $this->client;
+        return $this->user;
     }
 }

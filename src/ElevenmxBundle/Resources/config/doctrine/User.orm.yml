@@ -25,7 +25,7 @@ ElevenmxBundle\Entity\User:
             type: string
             length: 255
             column: Entreprise
-            nullable: True
+            nullable: true
 
 
     oneToMany:
@@ -38,9 +38,12 @@ ElevenmxBundle\Entity\User:
             targetEntity: ElevenmxBundle\Entity\Commentaire
             mappedBy: id
 
-    oneToOne:
+    manyToOne:
         categorie:
             targetEntity: ElevenmxBundle\Entity\Categorie
-            mappedBy: id
+            inversedBy: user
+            joinColumn:
+                nullable: false
+
 
     lifecycleCallbacks: {  }
