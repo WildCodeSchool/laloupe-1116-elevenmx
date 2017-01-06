@@ -25,7 +25,7 @@ ElevenmxBundle\Entity\User:
             type: string
             length: 255
             column: Entreprise
-            nullable: True
+            nullable: true
 
 
     oneToMany:
