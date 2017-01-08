@@ -14,6 +14,8 @@ ElevenmxBundle\Entity\Commentaire:
         image:
             type: string
             length: 255
+            nullable: true
+
 
     lifecycleCallbacks:
       prePersist: [ preUpload ]

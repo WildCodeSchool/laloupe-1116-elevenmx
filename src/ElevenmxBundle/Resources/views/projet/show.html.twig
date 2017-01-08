@@ -3,15 +3,15 @@
 {% block body %}
     <h1>Projet</h1>
     <div class="container-fluid">
-        <div style="border: solid" class="row">
-            <div class="col-sm-6">
+        <div  class="row">
+            <div style="border: solid;border-right: none; border-width: 1px" class="col-sm-offset-2 col-sm-4">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
                 <h4>NOM DU CLIENT : {{ projet.client }}</h4>
 
             </div>
-            <div class="col-sm-6">
+            <div style="border: solid; border-width: 1px" class="col-sm-4">
 
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
 
@@ -19,31 +19,101 @@
             </div>
 
         </div>
-        <div style="border: solid" class="row">
-            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+        <div class="row">
+            <div style="border: solid; border-top: none;border-width: 1px" class="col-sm-offset-2 col-sm-8">
+                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div style="height: 515px; margin-top: 50px; border: solid" class="row">
+            <div style="border: solid;height: 510px" class="col-sm-2">
+                <div style="border: solid; color: #0000F0;height: 150px" >
+                    <img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
+                </div>
+                <div style="border: solid; border-width: 1px;height: 50px; text-align:center" >
+                    <h4> {{ projet.titreProjet }}  </h4>
+                </div>
+                <div style="border: solid; border-width: 1px;height: 50px; text-align:center" >
+                    <h4> {{ projet.nomGraphiste }}</h4>
+                </div>
+                <div style="border: solid; border-width: 1px;height: 150px;color:red" >
+                    {% set maxValue = 0 %}
+                    {% for comment1 in comment1 %}
+                        {% set maxValue = max(comment1.id, maxValue) %}
+                    {% endfor %}
+
+                    {{maxValue}}
+
+                    {% if comment1 != null %}
+                        {% for comment1 in comment1 %}
+                            {% if comment1.id == maxValue %}
+                                <p>{{ comment1.champsText }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div style="border: solid; border-width: 1px;height: 50px" >
+                    <p style="text-align:center">Je valide le Bat</p>
+                </div>
+                <div style="border: solid; border-width: 1px;height: 50px" >
+                    <p style="text-align:center">Je NE valide PAS le Bat</p>
+                </div>
+            </div>
+            <div style="border: solid;height: 510px" class="col-sm-10">
+                {% if comment != null %}
+                    {% for comment in comment %}
+                        {% if comment.id == maxValue %}
+                            <img src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                            <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
+                            <p>test</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+            </div>
         </div>
     </div>
 
     <div class="container-fluid">
-        <div style=" height: 250px; margin-top: 50px" class="row">
-            <div style="height: 200px" class="col-sm-offset-2 col-sm-4">
-                {{ form_start(form) }}
-            <div style="margin-top: 2%">
-                <p>Commentaire</p>
+        <div style="border: solid; color:red;height: 60px; margin-top: 20px" class="row">
+        </div>
+    </div>
 
-                {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
-                {{ form_errors(form.champsText) }}
+    {{ form_start(form) }}
+    <div class="container-fluid">
+
+
+        <div style="border: solid; color:blue;height: 220px; margin-top: 20px" class="row">
+            <div style="border: solid;color:red; height: 220px" class="col-sm-offset-1 col-sm-10">
+                <p>Merci de nous indiquer les modifications que vous souhaitez apporter</p>
+
+            {{ form_widget(form.champsText,{ 'attr': {'cols': '150', 'rows': '8'} }) }}
+            {{ form_errors(form.champsText) }}
             </div>
 
 
+        </div>
 
-            </div>
-            <div style="height: 200px" class=" col-sm-offset-1 col-sm-4">
+        <div style=" border: solid;color:red; height: 100px; margin-top: 30px" class="row">
 
-                <div style=" margin-top: 100px">
+            <div style="height: 200px;margin-top: 30px" class="col-sm-offset-2 col-sm-3">
 
                 {{ form_widget(form.file) }}
                 {{ form_errors(form.file) }}
+
+            </div>
+
+            <div style="height: 200px;margin-top: 20px" class=" col-sm-offset-2 col-sm-4">
+                <div class="add_button center-align">
+                    <input style="margin-top: 10px" type="submit" value="Envoyer mes modification à {{ projet.nomGraphiste }}" />
+                </div>
+
+                <div style=" margin-top: 100px">
+
+
                 </div>
             </div>
         </div>
@@ -56,7 +126,6 @@
         </div>
 
     </div>
-
 
 
     <div class="container-fluid" style="margin-top: 50px">
@@ -76,6 +145,7 @@
 
                             {% for comment in comment %}
                                 <div class="container-fluid">
+                                    {% if comment.id != maxValue %}
                                     {% if comment.id == 24 or comment.id == 26 or comment.id == 28 or comment.id == 30%}
                                         <div class="row" style="margin-top: 10px">
 
@@ -83,6 +153,9 @@
 
                                                 <!--<p> {{ comment.image }} </p>-->
                                                 <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+
+                                                    <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
+
                                             </div>
 
                                             <div class="col-sm-6">
@@ -106,8 +179,10 @@
 
                                                 <!--<p> {{ comment.image }} </p>-->
                                                 <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
                                             </div>
                                         </div>
+                                    {% endif %}
                                     {% endif %}
                                 </div>
                             {% endfor %}
