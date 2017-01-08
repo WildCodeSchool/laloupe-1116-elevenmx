@@ -73,6 +73,7 @@ class ProjetController extends Controller
         if ($form->isSubmitted() && $form->isValid()){
 
             $newCommentaire->setProjet($projet);
+            $newCommentaire->setAffectation('client');
             $em->persist($newCommentaire);
             $em->flush();
 

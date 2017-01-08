@@ -15,7 +15,9 @@ ElevenmxBundle\Entity\Commentaire:
             type: string
             length: 255
             nullable: true
-
+        affectation:
+            type: string
+            length: 255
 
     lifecycleCallbacks:
       prePersist: [ preUpload ]

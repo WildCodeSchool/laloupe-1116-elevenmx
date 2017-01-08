@@ -137,6 +137,7 @@
             </div>
             <div class=" col-sm-10">
                 <div>
+                    {% set codeclient = "client" %}
                     {% if comment != null %}
 
 
@@ -146,7 +147,7 @@
                             {% for comment in comment %}
                                 <div class="container-fluid">
                                     {% if comment.id != maxValue %}
-                                    {% if comment.id == 24 or comment.id == 26 or comment.id == 28 or comment.id == 30%}
+                                    {% if comment.affectation == codeclient %}
                                         <div class="row" style="margin-top: 10px">
 
                                             <div class=" col-sm-6">
