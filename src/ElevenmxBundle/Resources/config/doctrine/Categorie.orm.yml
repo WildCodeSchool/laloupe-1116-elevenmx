@@ -9,18 +9,16 @@ ElevenmxBundle\Entity\Categorie:
             generator:
                 strategy: AUTO
     fields:
-        graphiste:
+        categorie:
             type: string
             length: 255
-        superAdmin:
-            type: string
-            length: 255
-        admin:
-            type: string
-            length: 255
-        client:
-            type: string
-            length: 255
+
+
+    oneToMany:
+        user:
+            targetEntity: ElevenmxBundle\Entity\User
+            mappedBy: categorie
+
     lifecycleCallbacks: {  }
 
 
