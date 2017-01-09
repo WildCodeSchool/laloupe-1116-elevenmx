@@ -1,17 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Projet</h1>
     <div class="container-fluid">
         <div  class="row">
-            <div style="border: solid;border-right: none; border-width: 1px" class="col-sm-offset-2 col-sm-4">
+            <div style="margin-top: 20px" class="col-sm-offset-2 col-sm-4">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
                 <h4>NOM DU CLIENT : {{ projet.client }}</h4>
 
             </div>
-            <div style="border: solid; border-width: 1px" class="col-sm-4">
+            <div style="margin-top: 20px" class="col-sm-4">
 
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
 
@@ -20,55 +19,63 @@
 
         </div>
         <div class="row">
-            <div style="border: solid; border-top: none;border-width: 1px" class="col-sm-offset-2 col-sm-8">
+            <div style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-5">
                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+            </div>
+            <div class="col-sm-2">
+
+                <h4 class="projet_bloc_h4_aff"> Date : </h4>
             </div>
         </div>
     </div>
 
 
     <div class="container-fluid">
-        <div style="height: 515px; margin-top: 50px; border: solid" class="row">
-            <div style="border: solid;height: 510px" class="col-sm-2">
-                <div style="border: solid; color: #0000F0;height: 150px" >
+        <div style="height: 530px; margin-top: 20px; " class="row">
+            {# boucle qui parcours tous les commentaires afin de déterminer le denier commentaire qui a été saisie
+                    id correspondant à la clé est sauvegardé dans une varible nommé maxId                     #}
+            {% set maxId = 0 %}
+            {% for comment1 in comment1 %}
+                {% set maxId = max(comment1.id, maxId) %}
+            {% endfor %}
+
+            <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
+                <div style="border: solid; border-width: 1px;height: 150px" >
                     <img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
                 </div>
-                <div style="border: solid; border-width: 1px;height: 50px; text-align:center" >
+                <div style="border: solid; border-width: 1px;height: 50px; text-align:center; background-color: lightgrey;margin-top: 5px;color:white" >
                     <h4> {{ projet.titreProjet }}  </h4>
                 </div>
-                <div style="border: solid; border-width: 1px;height: 50px; text-align:center" >
+
+                <div style="border: solid; border-width: 1px;height: 50px; text-align:center;background-color: lightgrey;margin-top: 5px;color:white" >
                     <h4> {{ projet.nomGraphiste }}</h4>
                 </div>
-                <div style="border: solid; border-width: 1px;height: 150px;color:red" >
-                    {% set maxValue = 0 %}
-                    {% for comment1 in comment1 %}
-                        {% set maxValue = max(comment1.id, maxValue) %}
-                    {% endfor %}
+                <div style="border: solid; color:red;border-width: 1px;height: 150px; margin-top: 5px" >
 
-                    {{maxValue}}
-
+                    {# On on parcours tous les commentaires afin d'afficher le dernier commentaire correspondant à la variable maxId #}
                     {% if comment1 != null %}
                         {% for comment1 in comment1 %}
-                            {% if comment1.id == maxValue %}
-                                <p>{{ comment1.champsText }}</p>
+                            {% if comment1.id == maxId %}
+                                <p style="color: black">{{ comment1.champsText }}</p>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
                 </div>
-                <div style="border: solid; border-width: 1px;height: 50px" >
-                    <p style="text-align:center">Je valide le Bat</p>
+                <div style="border: solid; color:blue; border-width: 1px;height: 50px;margin-top: 5px" >
+                    <p style="text-align:center; color:black">Je valide le Bat</p>
                 </div>
-                <div style="border: solid; border-width: 1px;height: 50px" >
-                    <p style="text-align:center">Je NE valide PAS le Bat</p>
+                <div style="border: solid; color:blue; border-width: 1px;height: 50px;margin-top: 5px" >
+                    <p style="text-align:center; color:black">Je NE valide PAS le Bat</p>
                 </div>
             </div>
-            <div style="border: solid;height: 510px" class="col-sm-10">
+            <div style="height: 530px" class="col-sm-8">
+                {# On on parcours tous les commentaires afin d'afficher la dernière image correspondant à la variable maxId #}
                 {% if comment != null %}
                     {% for comment in comment %}
-                        {% if comment.id == maxValue %}
-                            <img src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                        {% if comment.id == maxId %}
+                            <img style="height: 100%;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                             <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
-                            <p>test</p>
+
                         {% endif %}
                     {% endfor %}
                 {% endif %}
@@ -94,16 +101,13 @@
             {{ form_errors(form.champsText) }}
             </div>
 
-
         </div>
 
         <div style=" border: solid;color:red; height: 100px; margin-top: 30px" class="row">
 
             <div style="height: 200px;margin-top: 30px" class="col-sm-offset-2 col-sm-3">
-
                 {{ form_widget(form.file) }}
                 {{ form_errors(form.file) }}
-
             </div>
 
             <div style="height: 200px;margin-top: 20px" class=" col-sm-offset-2 col-sm-4">
@@ -137,53 +141,52 @@
             </div>
             <div class=" col-sm-10">
                 <div>
-                    {% set codeclient = "client" %}
-                    {% if comment != null %}
+                    {# nous voulons différencier l'affichage du client avec celui du graphiste
+                       on defini une variable codeClient qui à pour valeur client#}
+                    {% set codeClient = "client" %}
 
+                    {# vérification que la liste des commentaires n'est pas vide#}
+                    {% if comment != null %}
 
                         <div style="border: solid" >
 
-
+                            {# Parcours de tous les commentaires afin d'afficher tous les commentaires et toutes les images sauf le dernier
+                               puisque celui est affiché en haut de la page#}
                             {% for comment in comment %}
                                 <div class="container-fluid">
-                                    {% if comment.id != maxValue %}
-                                    {% if comment.affectation == codeclient %}
-                                        <div class="row" style="margin-top: 10px">
+                                    {# Affichage des informations ne correspondant pas à l'Id sauvegarder#}
+                                    {% if comment.id != maxId %}
+                                        {% if comment.affectation == codeClient %}
+                                            <div class="row" style="margin-top: 10px">
 
-                                            <div class=" col-sm-6">
+                                                <div class=" col-sm-6">
+                                                        <!--<p> {{ comment.image }} </p>-->
+                                                    <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                        <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
+                                                    </div>
 
-                                                <!--<p> {{ comment.image }} </p>-->
-                                                <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                <div class="col-sm-6">
+                                                        <h4>Date : </h4>
+                                                    <p>Status </p>
+                                                    <p style="border: solid">{{ comment.champsText }}</p>
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            <div class="row" style="border: solid;margin-top: 10px">
 
+                                                <div class="col-sm-6">
+                                                        <h4>Date : </h4>
+                                                    <p>Status </p>
+                                                    <p style="border: solid">{{ comment.champsText }}</p>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                        <!--<p> {{ comment.image }} </p>-->
+                                                    <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                                                     <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
-
+                                                </div>
                                             </div>
-
-                                            <div class="col-sm-6">
-
-                                                <h4>Date : </h4>
-                                                <p>Status </p>
-                                                <p style="border: solid">{{ comment.champsText }}</p>
-                                            </div>
-                                        </div>
-                                    {% else %}
-                                        <div class="row" style="border: solid;margin-top: 10px">
-
-
-                                            <div class="col-sm-6">
-
-                                                <h4>Date : </h4>
-                                                <p>Status </p>
-                                                <p style="border: solid">{{ comment.champsText }}</p>
-                                            </div>
-                                            <div class="col-sm-6">
-
-                                                <!--<p> {{ comment.image }} </p>-->
-                                                <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
-                                                <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
-                                            </div>
-                                        </div>
-                                    {% endif %}
+                                        {% endif %}
                                     {% endif %}
                                 </div>
                             {% endfor %}
