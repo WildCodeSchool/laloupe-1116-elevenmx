@@ -2,15 +2,15 @@
 
 {% block body %}
     <div class="container-fluid">
-        <div style="border: solid; border-width: 1px; background-color: white" class="row">
-            <div class="col-sm-6">
+        <div  class="row">
+            <div style="margin-top: 20px" class="col-sm-offset-2 col-sm-4">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
                 <h4>NOM DU CLIENT : {{ projet.client }}</h4>
 
             </div>
-            <div class="col-sm-6">
+            <div style="margin-top: 20px" class="col-sm-4">
 
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
 
@@ -18,58 +18,118 @@
             </div>
 
         </div>
-        <div style="border: solid; border-width: 1px; background-color: white; padding-left: 14px" class="row">
-            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+
+        <div class="row">
+            <div style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-5">
+                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+            </div>
+            <div class="col-sm-2">
+
+                <h4 class="projet_bloc_h4_aff"> Date : </h4>
+            </div>
+
         </div>
     </div>
 
+
     <div class="container-fluid">
+
                 {{ form_start(form) }}
 
+        <div style="height: 530px; margin-top: 20px; " class="row">
+            {# boucle qui parcours tous les commentaires afin de déterminer le denier commentaire qui a été saisie
+                    id correspondant à la clé est sauvegardé dans une varible nommé maxId                     #}
+            {% set maxId = 0 %}
+            {% for comment1 in comment1 %}
+                {% set maxId = max(comment1.id, maxId) %}
+            {% endfor %}
 
-        {#****************bouton envoyer BAT ouvre modal dans laquelle on valide l'envoi ************************#}
-            <div id="btnBATmodal" class="row">
-                <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBAT">
-                    Envoi BAT test
-                </button>
+            <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
+                <div style="border: solid; border-width: 1px;height: 150px" >
+                    <img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
+                </div>
+                <div style="border: solid; border-width: 1px;height: 50px; text-align:center; background-color: lightgrey;margin-top: 5px;color:white" >
+                    <h4> {{ projet.titreProjet }}  </h4>
+                </div>
+
+                <div style="border: solid; border-width: 1px;height: 50px; text-align:center;background-color: lightgrey;margin-top: 5px;color:white" >
+                    <h4> {{ projet.nomGraphiste }}</h4>
+                </div>
+                <div style="border: solid; color:red;border-width: 1px;height: 150px; margin-top: 5px" >
+
+                    {# On on parcours tous les commentaires afin d'afficher le dernier commentaire correspondant à la variable maxId #}
+                    {% if comment1 != null %}
+                        {% for comment1 in comment1 %}
+                            {% if comment1.id == maxId %}
+                                <p style="color: black">{{ comment1.champsText }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div id="btnBATmodal" style="border: solid; color:blue; border-width: 1px;height: 50px;margin-top: 5px" >
+                    {#****************bouton envoyer BAT ouvre modal dans laquelle on valide l'envoi ************************#}
+                        <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBAT">
+                            Je valide le BAT
+                        </button>
+                </div>
+                <div id="btnBATmodalComm" style="border: solid; color:blue; border-width: 1px;height: 50px;margin-top: 5px" >
+                    {#***************** bouton  je NE valide PAS le BAT ouvre  le champs comm de Ludo***********#}
+
+                        <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBATComm">
+                            Je ne valide pas le BAT
+                        </button>
+
+                </div>
+
             </div>
+            <div style="height: 530px" class="col-sm-8">
+                {# On on parcours tous les commentaires afin d'afficher la dernière image correspondant à la variable maxId #}
+                {% if comment != null %}
+                    {% for comment in comment %}
+                        {% if comment.id == maxId %}
+                            <img style="height: 100%;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                            <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
 
-        <div class="modal fade" id="myModalBAT" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBAT">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" style="text-align: center" id="myModalLabel">Votre attention est recquise</h4>
-                    </div>
-                    <div class="modal-body" style="background-color: red">
-                        <p>Nous ne pouvons garantir le rendu des couleurs sur un BAT par intrnet<br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModalBAT" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBAT">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" style="text-align: center" id="myModalLabel">Votre attention est recquise</h4>
+                </div>
+                <div class="modal-body" style="background-color: red">
+                    <p>Nous ne pouvons garantir le rendu des couleurs sur un BAT par intrnet<br>
                         Nous vous demandons une vérification très attentive de ce BON A TIRER et ATTIRONS VOTRE ATTENTION sur
-                            le fait que votre validation vous engage dans la réalisation de votre travail dans nos ateliers et
-                            dégage notre responsabilité en cas de contestation ultérieure.</p>
-                        {#ici confirmation de l'envoi du BAT dans la modal#}
-                        <div class="add_button center-align">
-                            <input style="margin-top: 10px" type="submit" value="Je valide le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
-                        </div>{#ici fin confirmation de l'envoi du BAT dans la modal#}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
+                        le fait que votre validation vous engage dans la réalisation de votre travail dans nos ateliers et
+                        dégage notre responsabilité en cas de contestation ultérieure.</p>
+                    {#ici confirmation de l'envoi du BAT dans la modal#}
+                    <div class="add_button center-align">
+                        <input style="margin-top: 10px" type="submit" value="Je valide le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                    </div>{#ici fin confirmation de l'envoi du BAT dans la modal#}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+    </div>
 
-                {#*****************fin bouton envoyer BAT ouvre modal dans laquelle on valide l'envoi***********#}
+    {#*****************fin bouton envoyer BAT ouvre modal dans laquelle on valide l'envoi***********#}
 
 
 
+    {{ form_start(form) }}
 
-                {#***************** bouton  je NE valide PAS le BAT ouvre  le champs comm de Ludo***********#}
-
-                <div id="btnBATmodalComm" class="row">
-                    <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBATComm">
-                        Je ne valide pas le BAT
-                    </button>
-                </div>
 
         <div class="modal fade" id="myModalBATComm" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
             <div class="modal-dialog modal-lg" role="document">
@@ -99,13 +159,13 @@
             </div>
         </div>
 
-    </div>
 
 
 
                 {#***************** fin bouton  je ne valide pas le BAT ouvre  le champs comm de Ludo***********#}
 
     {{ form_end(form) }}
+
 
 
     <div class="container-fluid" style="margin-top: 50px">
@@ -118,52 +178,58 @@
             </div>
             <div class=" col-sm-10">
                 <div>
+                    {# nous voulons différencier l'affichage du client avec celui du graphiste
+                       on defini une variable codeClient qui à pour valeur client#}
+                    {% set codeClient = "client" %}
+
+                    {# vérification que la liste des commentaires n'est pas vide#}
                     {% if comment != null %}
 
 
-
-
+                            {# Parcours de tous les commentaires afin d'afficher tous les commentaires et toutes les images sauf le dernier
+                               puisque celui est affiché en haut de la page#}
                             {% for comment in comment %}
                                 <div class="container-fluid">
-                                    {% if comment.id == 2 or comment.id == 4 or comment.id == 6 or comment.id == 8 %}
-                                        <div class="row" style="margin-top: 10px; background-color: #218BC3">
 
-                                            <div class=" col-sm-6">
-                                                {% if comment.image != NULL %}
-                                                    <!--<p> {{ comment.image }} </p>-->
-                                                    <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                    {# Affichage des informations ne correspondant pas à l'Id sauvegarder#}
+                                    {% if comment.id != maxId %}
+                                        {% if comment.affectation == codeClient %}
+                                            <div class="row" style="margin-top: 10px">
 
-                                                {% endif %}
+                                                <div class=" col-sm-6">
+                                                    {% if comment.image != NULL %}
+                                                        <!--<p> {{ comment.image }} </p>-->
+                                                        <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                        <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
+                                                    {% endif %}
 
+                                                </div>
+
+
+                                                <div class="col-sm-6">
+                                                        <h4>Date : </h4>
+                                                    <p>Status </p>
+                                                    <p style="border: solid">{{ comment.champsText }}</p>
+                                                </div>
                                             </div>
-
-                                            <div class="col-sm-6">
-
-                                                <h4>Date : </h4>
-                                                <p>Status </p>
-                                                <p style="border: solid; border-width: 1px">{{ comment.champsText }}</p>
-                                            </div>
-                                        </div>
-
-
                                         {% else %}
-                                        <div class="row" style="border: solid; border-width: 1px; ;margin-top: 10px; background-color: lightsteelblue ">
+                                            <div class="row" style="border: solid;margin-top: 10px">
 
+                                                <div class="col-sm-6">
+                                                        <h4>Date : </h4>
+                                                    <p>Status </p>
+                                                    <p style="border: solid">{{ comment.champsText }}</p>
+                                                </div>
 
-                                            <div class="col-sm-6">
-
-                                                <h4>Date : </h4>
-                                                <p>Status </p>
-                                                <p style="border: solid; border-width: 1px">{{ comment.champsText }}</p>
+                                                <div class="col-sm-6">
+                                                    {% if comment.image != NULL %}
+                                                        <!--<p> {{ comment.image }} </p>-->
+                                                        <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                        <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
+                                                    {% endif %}
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                {% if comment.image != NULL %}
-                                                <!--<p> {{ comment.image }} </p>-->
-                                                <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
-                                                {% endif %}
-
-                                            </div>
-                                        </div>
+                                        {% endif %}
                                     {% endif %}
                                 </div>
                             {% endfor %}
