@@ -24,38 +24,94 @@
     </div>
 
     <div class="container-fluid">
-        <div style=" height: 250px; margin-top: 50px" class="row">
-            <div style="height: 200px" class="col-sm-offset-2 col-sm-4">
                 {{ form_start(form) }}
-            <div style="margin-top: 2%">
-                <p>Commentaire</p>
 
-                {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
-                {{ form_errors(form.champsText) }}
+
+        {#****************bouton envoyer BAT ouvre modal dans laquelle on valide l'envoi ************************#}
+            <div id="btnBATmodal" class="row">
+                <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBAT">
+                    Envoi BAT test
+                </button>
             </div>
 
-
-
-            </div>
-            <div style="height: 200px" class=" col-sm-offset-1 col-sm-4">
-
-                <div style=" margin-top: 100px">
-
-                {{ form_widget(form.file) }}
-                {{ form_errors(form.file) }}
+        <div class="modal fade" id="myModalBAT" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBAT">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" style="text-align: center" id="myModalLabel">Votre attention est recquise</h4>
+                    </div>
+                    <div class="modal-body" style="background-color: red">
+                        <p>Nous ne pouvons garantir le rendu des couleurs sur un BAT par intrnet<br>
+                        Nous vous demandons une vérification très attentive de ce BON A TIRER et ATTIRONS VOTRE ATTENTION sur
+                            le fait que votre validation vous engage dans la réalisation de votre travail dans nos ateliers et
+                            dégage notre responsabilité en cas de contestation ultérieure.</p>
+                        {#ici confirmation de l'envoi du BAT dans la modal#}
+                        <div class="add_button center-align">
+                            <input style="margin-top: 10px" type="submit" value="Je valide le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                        </div>{#ici fin confirmation de l'envoi du BAT dans la modal#}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-            <div style=" margin-top: 10px" class="row">
-            <div style="margin-left: 650px" class="add_button center-align">
-                <input style="margin-top: 10px" type="submit" value="Envoyer un nouveau BAT" />
-            </div>
 
-            {{ form_end(form) }}
+                {#*****************fin bouton envoyer BAT ouvre modal dans laquelle on valide l'envoi***********#}
+
+
+
+
+                {#***************** bouton  je NE valide PAS le BAT ouvre  le champs comm de Ludo***********#}
+
+                <div id="btnBATmodalComm" class="row">
+                    <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBATComm">
+                        Je ne valide pas le BAT
+                    </button>
+                </div>
+
+        <div class="modal fade" id="myModalBATComm" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+
+                    {# cette div c'est le text area commentaire#}
+                    <div>
+                        <p style="text-align: center">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
+                        <div style="padding-left: 20%">
+                        {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
+                        {{ form_errors(form.champsText) }}
+                        </div>
+                    </div>
+                    {# fin div text area commentaire#}
+
+
+                    <div class="row" style="padding-left: 42%">
+                        {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
+                        {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
+                    </div>
+                    {#ici confirmation de l'envoi du BAT dans la modal#}
+                    <div>
+                        <input style="margin-left: 35%" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                    </div>
+                    {#ici fin confirmation de l'envoi du BAT dans la modal#}
+                </div>
+            </div>
         </div>
 
     </div>
 
+
+
+                {#***************** fin bouton  je ne valide pas le BAT ouvre  le champs comm de Ludo***********#}
+
+
+
+
+
+
+
+    {{ form_end(form) }}
 
 
     <div class="container-fluid" style="margin-top: 50px">
@@ -123,12 +179,9 @@
                 </div>
             </div>
         </div>
-
-
-
-        </div>
     </div>
-    </div>
+
+
 
     <ul>
         <li>

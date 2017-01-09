@@ -230,5 +230,18 @@ body{
     background-color: lightgrey;
 }
 
+#btnBATmodal{
+    margin-top: 10px;
+    margin-left: 5%;
+}
 
+#btnBATmodalComm{
+    margin-left: 5%;
+
+}
+
+#myModalBATComm{
+    margin-top: 2%;
+
+}
 /************************************ Fin Page show *******************************************************/
