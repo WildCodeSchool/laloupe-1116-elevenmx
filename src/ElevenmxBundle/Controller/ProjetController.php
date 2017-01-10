@@ -22,13 +22,32 @@ class ProjetController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
+        $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
+            array('client' => 'ludo')
+
+        );
+
+        return $this->render('ElevenmxBundle:projet:index.html.twig', array(
+            'projets' => $projets,
+        ));
+    }
+
+    /**
+     * Lists all projet entities.
+     *
+     */
+    public function indexGraphAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         //$projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-          //  array('client' => 'client1')
+          //array('client' => 'client1')
 
         //);
 
-        return $this->render('ElevenmxBundle:projet:index.html.twig', array(
+        return $this->render('ElevenmxBundle:projet:indexGraph.html.twig', array(
             'projets' => $projets,
         ));
     }
@@ -85,8 +104,6 @@ class ProjetController extends Controller
         }
 
         return $this->render('@Elevenmx/projet/show.html.twig', array(
-            'comment2' => $commentaires,
-            'comment1' => $commentaires,
             'comment' => $commentaires,
             'form' => $form->createView(),
             'projet' => $projet,
@@ -171,14 +188,16 @@ class ProjetController extends Controller
         if ($form->isSubmitted() && $form->isValid()){
 
             $newCommentaire->setProjet($projet);
+            $newCommentaire->setAffectation('graphiste');
             $em->persist($newCommentaire);
             $em->flush();
 
-            return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
+            return $this->redirectToRoute('projet_showGraph', array('id' => $projet->getId()));
         }
 
-        return $this->render('@Elevenmx/projet/show.html.twig', array(
+        return $this->render('@Elevenmx/projet/showGraph.html.twig', array(
             'comment' => $commentaires,
+            'comment1' => $commentaires,
             'form' => $form->createView(),
             'projet' => $projet,
         ));

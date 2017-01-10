@@ -1,6 +1,11 @@
 projet_index:
-    path:     /
+    path:     /index
     defaults: { _controller: "ElevenmxBundle:Projet:index" }
+    methods:  GET
+
+projet_indexGraph:
+    path:     /indexGraph
+    defaults: { _controller: "ElevenmxBundle:Projet:indexGraph" }
     methods:  GET
 
 projet_show:
