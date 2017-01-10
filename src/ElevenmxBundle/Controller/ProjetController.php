@@ -3,6 +3,7 @@
 namespace ElevenmxBundle\Controller;
 
 use ElevenmxBundle\Entity\Commentaire;
+use ElevenmxBundle\Entity\Download;
 use ElevenmxBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,7 +61,6 @@ class ProjetController extends Controller
     public function showAction(Projet $projet, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
         $commentaires = $em->getRepository('ElevenmxBundle:Commentaire')->findBy(
             array('projet' => $projet->getId()),
             array('id' => 'DESC')
@@ -73,6 +73,7 @@ class ProjetController extends Controller
         if ($form->isSubmitted() && $form->isValid()){
 
             $newCommentaire->setProjet($projet);
+            $newCommentaire->setAffectation('client');
             $em->persist($newCommentaire);
             $em->flush();
 
@@ -80,6 +81,8 @@ class ProjetController extends Controller
         }
 
         return $this->render('@Elevenmx/projet/show.html.twig', array(
+            'comment2' => $commentaires,
+            'comment1' => $commentaires,
             'comment' => $commentaires,
             'form' => $form->createView(),
             'projet' => $projet,
@@ -150,8 +153,8 @@ class ProjetController extends Controller
      */
     public function showGraphAction(Projet $projet, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
 
+        $em = $this->getDoctrine()->getManager();
         $commentaires = $em->getRepository('ElevenmxBundle:Commentaire')->findBy(
             array('projet' => $projet->getId()),
             array('id' => 'DESC')
@@ -176,5 +179,19 @@ class ProjetController extends Controller
             'projet' => $projet,
         ));
     }
-    
+
+    public function telechargementAction(){
+
+        $fichier = "586a3f67c06f9.jpeg";
+        $chemin = "web/upload/"; // emplacement de votre fichier .pdf
+
+        $download = new Download();
+        $download->setfichier($fichier);
+        $download->setChemin($chemin);
+
+        $download->setheaders('Content-disposition', 'filename=' . $fichier);
+
+        return $download;
+    }
+
 }
