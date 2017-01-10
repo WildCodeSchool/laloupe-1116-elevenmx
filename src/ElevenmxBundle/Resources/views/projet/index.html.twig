@@ -17,7 +17,7 @@
                     <div class="container-fluid">
 
                         <div class="row" >
-                            <a href="{{ path('projet_show', { 'id': projet.id }) }}" class="">
+                            <a  class="">
 
                                 <div id="projet_ligne_aff" class="col-xs-offset-1 col-xs-10" >
 
@@ -40,14 +40,21 @@
                                     </div>
                                     <div class="row" >
                                         {% if projet.titreProjet == "projet6" %}
-                                            <div class="col-xs-offset-2 col-xs-9" id="projet_statut_red">
+                                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
                                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
                                             </div>
                                         {% else %}
-                                            <div class="col-xs-offset-2 col-xs-9" id="projet_statut_green">
+                                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
                                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
                                             </div>
                                         {% endif %}
+                                        <div class="col-xs-offset-1 col-xs-1" id="projet_ligne_bloc1_aff">
+                                            <a href="{{ path('projet_show', { 'id': projet.id }) }}" >
+                                                <div>
+                                                    <h4 class="projet_bloc_h4_aff"> GERER </h4>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="row" >
                                         <div class="col-xs-offset-2 col-xs-9" style=" margin-top:10px">

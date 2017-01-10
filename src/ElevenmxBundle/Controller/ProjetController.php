@@ -23,6 +23,10 @@ class ProjetController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
+        //$projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
+          //  array('client' => 'client1')
+
+        //);
 
         return $this->render('ElevenmxBundle:projet:index.html.twig', array(
             'projets' => $projets,

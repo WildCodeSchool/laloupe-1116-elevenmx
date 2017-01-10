@@ -28,10 +28,7 @@
     width: 100%;
 }
 
-.container-fluid {
-    padding-right: 0px;
-    margin-right: -15px;
-}
+
 
 .blue {
     background-color: #009DE0;
@@ -227,16 +224,16 @@ footer {
 
 /************************************ Page show *******************************************************/
 body{
-    background-color: lightgrey;
+
 }
 
 #btnBATmodal{
     margin-top: 10px;
-    margin-left: 5%;
+    width: 100%;
 }
 
 #btnBATmodalComm{
-    margin-left: 5%;
+
 
 }
 
