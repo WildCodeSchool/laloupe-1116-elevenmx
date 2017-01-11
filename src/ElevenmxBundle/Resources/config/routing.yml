@@ -17,7 +17,3 @@ elevenmx_sendMail:
 elevenmx_projet:
     resource: "@ElevenmxBundle/Resources/config/routing/projet.yml"
     prefix:   /projet
-
-elevenmx_telechargement:
-    pattern: /telechargement
-    defaults: { _controller: ElevenmxBundle:Projet:telechargement }

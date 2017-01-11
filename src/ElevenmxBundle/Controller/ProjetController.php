@@ -180,18 +180,6 @@ class ProjetController extends Controller
         ));
     }
 
-    public function telechargementAction(){
 
-        $fichier = "586a3f67c06f9.jpeg";
-        $chemin = "web/upload/"; // emplacement de votre fichier .pdf
-
-        $download = new Download();
-        $download->setfichier($fichier);
-        $download->setChemin($chemin);
-
-        $download->setheaders('Content-disposition', 'filename=' . $fichier);
-
-        return $download;
-    }
 
 }
