@@ -25,7 +25,6 @@ class ProjetController extends Controller
         //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
             array('client' => 'ludo')
-
         );
 
         return $this->render('ElevenmxBundle:projet:index.html.twig', array(
@@ -43,8 +42,7 @@ class ProjetController extends Controller
 
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         //$projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-          //array('client' => 'client1')
-
+        //    array('projet' => $projet->getId()),
         //);
 
         return $this->render('ElevenmxBundle:projet:indexGraph.html.twig', array(
@@ -109,7 +107,34 @@ class ProjetController extends Controller
             'projet' => $projet,
         ));
     }
+    public function showGraphAction(Projet $projet, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $commentaires = $em->getRepository('ElevenmxBundle:Commentaire')->findBy(
+            array('projet' => $projet->getId()),
+            array('id' => 'DESC')
+        );
 
+        $newCommentaire = new Commentaire();
+        $form = $this->createForm('ElevenmxBundle\Form\CommentaireType', $newCommentaire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $newCommentaire->setProjet($projet);
+            $newCommentaire->setAffectation('graphiste');
+            $em->persist($newCommentaire);
+            $em->flush();
+
+            return $this->redirectToRoute('projet_showGraph', array('id' => $projet->getId()));
+        }
+
+        return $this->render('@Elevenmx/projet/showGraph.html.twig', array(
+            'comment' => $commentaires,
+            'form' => $form->createView(),
+            'projet' => $projet,
+        ));
+    }
     /**
      * Displays a form to edit an existing projet entity.
      *
@@ -172,49 +197,6 @@ class ProjetController extends Controller
      * Finds and displays a projet entity.
      *
      */
-    public function showGraphAction(Projet $projet, Request $request)
-    {
 
-        $em = $this->getDoctrine()->getManager();
-        $commentaires = $em->getRepository('ElevenmxBundle:Commentaire')->findBy(
-            array('projet' => $projet->getId()),
-            array('id' => 'DESC')
-        );
-
-        $newCommentaire = new Commentaire();
-        $form = $this->createForm('ElevenmxBundle\Form\CommentaireType', $newCommentaire);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()){
-
-            $newCommentaire->setProjet($projet);
-            $newCommentaire->setAffectation('graphiste');
-            $em->persist($newCommentaire);
-            $em->flush();
-
-            return $this->redirectToRoute('projet_showGraph', array('id' => $projet->getId()));
-        }
-
-        return $this->render('@Elevenmx/projet/showGraph.html.twig', array(
-            'comment' => $commentaires,
-            'comment1' => $commentaires,
-            'form' => $form->createView(),
-            'projet' => $projet,
-        ));
-    }
-
-    public function telechargementAction(){
-
-        $fichier = "586a3f67c06f9.jpeg";
-        $chemin = "web/upload/"; // emplacement de votre fichier .pdf
-
-        $download = new Download();
-        $download->setfichier($fichier);
-        $download->setChemin($chemin);
-
-        $download->setheaders('Content-disposition', 'filename=' . $fichier);
-
-        return $download;
-    }
 
 }

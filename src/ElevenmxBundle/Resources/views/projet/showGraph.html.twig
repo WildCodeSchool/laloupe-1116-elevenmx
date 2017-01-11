@@ -52,8 +52,8 @@
             {# boucle qui parcours tous les commentaires afin de déterminer le denier commentaire qui a été saisie
                     id correspondant à la clé est sauvegardé dans une varible nommé maxId                     #}
             {% set maxId = 0 %}
-            {% for comment1 in comment1 %}
-                {% set maxId = max(comment1.id, maxId) %}
+            {% for comment in comment %}
+                {% set maxId = max(comment.id, maxId) %}
             {% endfor %}
 
             <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
@@ -70,10 +70,10 @@
                 <div style="border: solid; color:red;border-width: 1px;height: 210px; margin-top: 5px" >
 
                     {# On on parcours tous les commentaires afin d'afficher le dernier commentaire correspondant à la variable maxId #}
-                    {% if comment1 != null %}
-                        {% for comment1 in comment1 %}
-                            {% if comment1.id == maxId %}
-                                <p style="color: black">{{ comment1.champsText }}</p>
+                    {% if comment != null %}
+                        {% for comment in comment %}
+                            {% if comment.id == maxId %}
+                                <p style="color: black">{{ comment.champsText }}</p>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
