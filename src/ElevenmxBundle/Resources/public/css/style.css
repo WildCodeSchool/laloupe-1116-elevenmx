@@ -153,30 +153,27 @@
 
 /*************** FOOTER ***********************/
 
-/*footer {*/
-    /*background-color: #000;*/
-    /*color: #fff;*/
-    /*bottom: 0;*/
-    /*width: 100%;*/
-/*}*/
+footer {
+    background-color: #000;
+    color: #fff;
+    margin-top: 21px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
 
+.txt_footer {
+    margin-top: 15px;
+}
 
-/*#float_right {*/
-    /*margin-top:15px;*/
-    /*float: right;*/
-/*}*/
+#float_right {
+    margin-top:15px;
+    float: right;
+}
 
-/*.txt_footer {*/
-    /*margin-top: 15px;*/
-/*}*/
-
-/*#btn_logo {*/
-    /*background-color: #000;*/
-/*}*/
-
-/*#logo_wcs {*/
-    /*margin-left: -20px;*/
-/*}*/
+#btn_logo {
+    background-color: #000;
+}
 /********** Photos dans modal *******************/
 
 .eleve {
@@ -189,32 +186,6 @@
     color: black;
     margin: 10px;
 }
-
-footer {
-    background-color: #000;
-    color: #fff;
-    margin-top: 21px;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-
-
-#float_right {
-    margin-top:15px;
-    float: right;
-}
-
-.txt_footer {
-    margin-top: 15px;
-}
-
-#btn_logo {
-    background-color: #000;
-}
-
-
-
 
 
 /************************************ Fin Footer ******************************************************/

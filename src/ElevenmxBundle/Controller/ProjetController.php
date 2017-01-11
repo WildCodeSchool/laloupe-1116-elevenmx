@@ -66,7 +66,7 @@ class ProjetController extends Controller
             $em->persist($projet);
             $em->flush($projet);
 
-            return $this->redirectToRoute('graphiste_new', array('id' => $projet->getId()));
+            return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
         }
 
         return $this->render('ElevenmxBundle:projet:new.html.twig', array(

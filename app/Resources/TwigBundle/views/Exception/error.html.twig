@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Une erreur est survenue.</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        La page demandée n'a pas été trouvée.
+        Veuillez verifier l'adresse demandée ou <a href="{{ path('homepage') }}">retournez à la page d'accueil</a>.
+    </p>
+{% endblock %}
