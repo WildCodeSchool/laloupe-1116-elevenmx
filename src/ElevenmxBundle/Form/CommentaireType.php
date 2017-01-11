@@ -14,7 +14,7 @@ class CommentaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('champsText')
-                ->add('file', 'file', array('label' => 'Nom Image', 'required' => false));;
+                ->add('file', 'file', array('label' => 'Nom Image', 'required' => false));
     }
 
     /**
