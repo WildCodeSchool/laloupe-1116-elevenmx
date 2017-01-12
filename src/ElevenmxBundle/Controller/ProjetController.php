@@ -120,10 +120,6 @@ class ProjetController extends Controller
                 $em->persist($projet);
             }else {}
 
-
-
-
-
             $em->flush();
 
             //$message = \Swift_Message::newInstance()

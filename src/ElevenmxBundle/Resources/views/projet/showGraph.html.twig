@@ -32,8 +32,20 @@
         </div>
 
         <div class="row">
-            <div style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-5">
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+            <div id="projet_statut_red" style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-4">
+
+                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET :
+
+                <select name="typePaiment">
+                    <option selected="selected">{{ projet.status }}</option>
+                    <option value="Maquette a faire">Maquette a faire</option>
+                    <option value="Maquette en attente de validation">Maquette en attente de validation</option>
+                    <option value="Maquette a modifier">Maquette a modifier</option>
+                    <option value="Maquette validée">Maquette validée</option>
+                    <option value="Projet terminé">Projet terminé</option>
+                    <option value="Projet terminé">Projet terminé</option>
+                </select>
+                </h4>
             </div>
             <div class="col-sm-2">
 

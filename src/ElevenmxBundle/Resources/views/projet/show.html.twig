@@ -29,13 +29,16 @@
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
 
                 <h4>NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
+
             </div>
 
         </div>
 
         <div class="row">
+            {{ form_start(form) }}
             <div style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-5">
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+
             </div>
             <div class="col-sm-2">
 
@@ -104,7 +107,7 @@
                                     dégage notre responsabilité en cas de contestation ultérieure.</p>
                                 {#ici confirmation de l'envoi du BAT dans la modal#}
                                 <div class="add_button center-align">
-                                    <input style="margin-top: 10px" type="submit" value="Je valide le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                                    <input style="margin-top: 10px" type="submit" data-dismiss="modal" value="Je valide le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
                                 </div>{#ici fin confirmation de l'envoi du BAT dans la modal#}
                             </div>
                             <div class="modal-footer">
