@@ -3,9 +3,9 @@
 namespace ElevenmxBundle\Controller;
 
 use ElevenmxBundle\Entity\Commentaire;
-use ElevenmxBundle\Entity\Download;
 use ElevenmxBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\Variable;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -61,7 +61,7 @@ class ProjetController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $projet->setStatus('Attente d\'information');
+            $projet->setStatus('Attente d information');
             $em = $this->getDoctrine()->getManager();
             $em->persist($projet);
             $em->flush($projet);
@@ -92,11 +92,53 @@ class ProjetController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+            //echo '<pre>';
+            //echo var_dump($commentaires);
+            //echo '<pre>';
+            //die();
 
             $newCommentaire->setProjet($projet);
             $newCommentaire->setAffectation('client');
             $em->persist($newCommentaire);
+            //$em->flush();
+
+            $var_id = 0;
+            foreach ($commentaires as $commentaire){
+                $vartest = $commentaire->getId();
+                if ($var_id <  $commentaire->getId()){
+                    $var_id = $commentaire->getId();
+                    $var_affectation = $commentaire->getaffectation();
+                }
+            }
+            //$vartest = $projet->getStatus();
+            if ($projet->getStatus() == 'Attente d information' && $vartest == 0){
+                $projet->setStatus('Maquette a faire');
+                $em->persist($projet);
+                //$em->flush();
+            } elseif ( $projet->getStatus() == 'Maquette en attente de validation' && $var_affectation == 'graphiste'){
+                $projet->setStatus('Maquette validée');
+                $em->persist($projet);
+            }else {}
+
+
+
+
+
             $em->flush();
+
+            //$message = \Swift_Message::newInstance()
+            //    ->setSubject('Test mail ludo 20170112 1049')
+            //    ->setFrom('javadescavernes38@gmail.com')
+            //    ->setTo('javadescavernes38@gmail.com')
+            //    ->setBody('Envoir de mail suite a la mise a jour d un commentaire');
+            //$this->get('mailer')->send($message);
+
+
+            //if ($varludo == '99'){
+             //   $projet->setStatus('Test Ludo');
+              //  $em->persist($projet);
+               // $em->flush();
+            //}
 
             return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
         }
