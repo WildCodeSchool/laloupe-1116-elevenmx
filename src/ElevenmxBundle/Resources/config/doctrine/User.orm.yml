@@ -1,6 +1,6 @@
 ElevenmxBundle\Entity\User:
     type: entity
-    table: null
+    table: user
     repositoryClass: ElevenmxBundle\Repository\UserRepository
     id:
         id:
@@ -26,6 +26,11 @@ ElevenmxBundle\Entity\User:
             length: 255
             column: Entreprise
             nullable: true
+        categorie:
+            type: string
+            length: 255
+
+
 
 
     oneToMany:
@@ -38,12 +43,7 @@ ElevenmxBundle\Entity\User:
             targetEntity: ElevenmxBundle\Entity\Commentaire
             mappedBy: id
 
-    manyToOne:
-        categorie:
-            targetEntity: ElevenmxBundle\Entity\Categorie
-            inversedBy: user
-            joinColumn:
-                nullable: false
+
 
 
     lifecycleCallbacks: {  }

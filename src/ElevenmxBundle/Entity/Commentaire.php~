@@ -144,6 +144,7 @@ class Commentaire
     /**
      * @var string
      */
+
     private $image;
 
 
@@ -169,5 +170,31 @@ class Commentaire
     public function getImage()
     {
         return $this->image;
+    }
+
+
+    private $affectation;
+    /**
+     * Set affectation
+     *
+     * @param string $affectation
+     *
+     * @return Commentaire
+     */
+    public function setaffectation($affectation)
+    {
+        $this->affectation = $affectation;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getaffectation()
+    {
+        return $this->affectation;
     }
 }

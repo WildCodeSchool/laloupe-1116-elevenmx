@@ -23,7 +23,6 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
-
                 csrf_provider: security.csrf.token_manager
                 always_use_default_target_path: true
                 default_target_path: /
@@ -43,7 +42,7 @@ security:
 
     role_hierarchy:
         ROLE_GRAPH: ROLE_USER
-        ROLE_ADMIN: [ROLE_USER, ROLE, ROLE_GRAPH]
+        ROLE_ADMIN: [ROLE_USER, ROLE_GRAPH]
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
 

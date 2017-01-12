@@ -165,7 +165,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setCategorie(\ElevenmxBundle\Entity\Categorie $categorie = null)
+    public function setCategorie($categorie)
     {
         $this->categorie = $categorie;
 
