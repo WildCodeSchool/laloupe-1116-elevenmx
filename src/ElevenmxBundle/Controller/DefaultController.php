@@ -4,7 +4,6 @@ namespace ElevenmxBundle\Controller;
 
 use ElevenmxBundle\Form\UserType;
 use ElevenmxBundle\Entity\User;
-use ElevenmxBundle\Entity\Mail;
 use ElevenmxBundle\Repository\MailRepository;
 use ElevenmxBundle\ElevenmxBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,13 +19,13 @@ class DefaultController extends Controller
         // debut test
         $em = $this->getDoctrine()->getManager();
         $userActif = $this->getUser();
-        if (!$userActif){
+        if (!$userActif) {
 //            echo ('Pas connecté !');
             return $this->redirectToRoute("fos_user_security_login");
         } elseif ($userActif->hasRole('ROLE_SUPER_ADMIN')) {
-            echo ('Soupppppppppppeeeeeeeeeeeeeeeeeeer Admin !');
+            echo('Soupppppppppppeeeeeeeeeeeeeeeeeeer Admin !');
         } elseif ($userActif->hasRole('ROLE_ADMIN')) {
-            echo ('team Admin...');
+            echo('team Admin...');
         } elseif ($userActif->hasRole('ROLE_GRAPH')) {
             return $this->redirectToRoute("graphiste_index");
 //            http_redirect("bundle/graphiste/index.htlm.twig");
@@ -41,13 +40,21 @@ class DefaultController extends Controller
     {
         return $this->render('ElevenmxBundle:Default:formMail.html.twig');
     }
+
 // ******************************* envoi de mail et bdd **********************************
     public function sendMailAction()
     {
         $request = $this->get('request');
         $user = new User();
         $form = $this->createForm(new UserType(), $user);
+
+        // modification pour avoir un id 1 dans categorie -> DOIT valider l'user dans php my admin...
+
+        $em = $this->getDoctrine()->getManager();
+        $categorie = $em->getRepository('ElevenmxBundle:Categorie')->findOneBy(array('id' => '1'));
+        $user->setCategorie($categorie);
         $form->handleRequest($request);
+
         if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
@@ -71,73 +78,9 @@ class DefaultController extends Controller
             'form' => $form->createView()
         ));
     }
-
-
-
+}
     // ******************************** fin d'envoi de mail et bdd ****************************************************
 
 
 
 
-
-
-
-
-
-
-            /* $message = \Swift_Message::newInstance('Test')
-                 ->setSubject($Subject)
-                 ->setFrom('javadescavernes38@gmail.com')
-                 ->setTo('javadescavernes38@gmail.com')
-                 ->setBody($body);
-
-             $this->get('mailer')->send($message);
-
-             return $this->render('ElevenmxBundle:Default:formMail.html.twig');*/
-
-
-
-
-
-        // fin envoi BDD ******************************************************
-
-     /*   $Request = $this->getRequest();
-        if ($Request->getMethod() == "POST") {
-            $Subject = $Request->get("Subject");
-            $message = $Request->get("message") . " " . $Request->get("Nom") . " " . $Request->get("Prénom") . " " . $Request->get("mail") . " " . $Request->get("Téléphone") . " " . $Request->get("Entreprise") . " " . $Request->get("Login") . " " . $Request->get("Password");
-
-
-
-            $message = \Swift_Message::newInstance('Test')
-                ->setSubject('Votre inscription ElevenMx')
-                ->setFrom('javadescavernes38@gmail.com')
-                ->setTo('javadescavernes38@gmail.com')
-                ->setBody($message);
-            $this->get('mailer')->send($message);
-
-
-            return $this->render('ElevenmxBundle:Default:formMail.html.twig');
-
-        }
-        return array(
-            'form' => $form->createView()
-        );*/
-
-
-
-
-
-    // ******************************** fin d'envoi de mail ****************************************************
-
-
-
-    // ******************************** Debut Bloc redirection *************************************************
-
-
-
-
-    // ******************************** Fin Bloc redirection *************************************************
-
-
-
-}

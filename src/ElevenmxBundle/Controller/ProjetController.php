@@ -6,6 +6,7 @@ use ElevenmxBundle\Entity\Commentaire;
 use ElevenmxBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use ElevenmxBundle\Entity\User;
 
 /**
  * Projet controller.
@@ -23,7 +24,7 @@ class ProjetController extends Controller
 
         //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-            array('client' => 'ludo')
+            array('client' => 'user')
         );
 
         return $this->render('ElevenmxBundle:projet:index.html.twig', array(
@@ -97,8 +98,14 @@ class ProjetController extends Controller
             $em->persist($newCommentaire);
             $em->flush();
 
+
+
             return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
         }
+
+
+
+
 
         return $this->render('@Elevenmx/projet/show.html.twig', array(
             'comment' => $commentaires,
@@ -106,6 +113,8 @@ class ProjetController extends Controller
             'projet' => $projet,
         ));
     }
+
+
     public function showGraphAction(Projet $projet, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -125,8 +134,24 @@ class ProjetController extends Controller
             $em->persist($newCommentaire);
             $em->flush();
 
+            // ******************************* envoi de mail auto quand graph met a jour le statut **********************************
+            $user = new User();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Mise à jour de votre prjet')
+                ->setFrom('javadescavernes38@gmail.com')
+                ->setTo('javadescavernes38@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'Emails/registrationAuto.html.twig',
+                        array('user' => $user)
+                    )
+                );
+            $this->get('mailer')->send($message);
+
             return $this->redirectToRoute('projet_showGraph', array('id' => $projet->getId()));
         }
+        // ******************************** fin d'envoi de mail auto quand graph met a jour le statut *******************************
 
         return $this->render('@Elevenmx/projet/showGraph.html.twig', array(
             'comment' => $commentaires,

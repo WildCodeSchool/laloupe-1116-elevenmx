@@ -200,18 +200,22 @@ footer {
 /************************************ Fin Formulaire création graphiste *******************************************************/
 
 /************************************ Page show *******************************************************/
-body{
-
-}
 
 #btnBATmodal{
     margin-top: 10px;
     width: 100%;
+   border: solid;
+    color:blue;
+    border-width: 1px;
+    height: 50px;
 }
 
 #btnBATmodalComm{
-
-
+    border: solid;
+    color:blue;
+    border-width: 1px;
+    height: 50px;
+    margin-top: 5px;
 }
 
 #myModalBATComm{
