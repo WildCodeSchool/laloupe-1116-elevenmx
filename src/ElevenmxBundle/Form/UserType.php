@@ -47,10 +47,10 @@ class UserType extends AbstractType
                 )))
             ->add('telephone')
             ->add('entreprise', TextType::class, array (
+                'required' => false,
                 'attr' => array (
                     'placeholder' => 'entreprise',
                     'nullable' => true,
-                    'required' => false
                 )))
             ->add('categorie', ChoiceType::class, array(
                 'choices' => array(
