@@ -51,6 +51,16 @@ class UserType extends AbstractType
                     'placeholder' => 'entreprise'
 
                 )))
+            ->add('categorie', ChoiceType::class, array(
+                'choices' => array(
+                    'client'    => 'client',
+                    'graphiste' => 'graphiste',
+                    'admin'     => 'admin'
+                ),
+                'attr' => array(
+                    'placeholder' => 'Catégorie'
+                )
+            ))
 
         ;
 

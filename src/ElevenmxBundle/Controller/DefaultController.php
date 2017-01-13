@@ -4,13 +4,10 @@ namespace ElevenmxBundle\Controller;
 
 use ElevenmxBundle\Form\UserType;
 use ElevenmxBundle\Entity\User;
-use ElevenmxBundle\Repository\MailRepository;
-use ElevenmxBundle\ElevenmxBundle;
+use ElevenmxBundle\Entity\Categorie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\FormTypeInterface;
-use  Symfony\Component\Form\ResolvedFormTypeInterface;
-use Symfony\Component\Form\Form;
+
 
 class DefaultController extends Controller
 {
@@ -48,6 +45,7 @@ class DefaultController extends Controller
         $user = new User();
         $form = $this->createForm(new UserType(), $user);
 
+
         // modification pour avoir un id 1 dans categorie -> DOIT valider l'user dans php my admin...
 
         $em = $this->getDoctrine()->getManager();
@@ -55,10 +53,27 @@ class DefaultController extends Controller
         $user->setCategorie($categorie);
         $form->handleRequest($request);
 
+
+
+        $form->handleRequest($request);
+        $user->setEnabled(1);
+
+        $categorie = $form->get('categorie')->getData();
+        if ($categorie == 'client') {
+            $user->setRoles(array('ROLE_USER'));
+        } elseif ($categorie == 'admin') {
+            $user->setRoles(array('ROLE_ADMIN'));
+        } else {
+            $user->setRoles(array('ROLE_GRAPH'));
+        }
+        $plainpassword = $form->get('plain_password')->getData();
+
+
         if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
             $message = \Swift_Message::newInstance()
                 ->setSubject('hello mail')
                 ->setFrom('javadescavernes38@gmail.com')
@@ -66,7 +81,7 @@ class DefaultController extends Controller
                 ->setBody(
                     $this->renderView(
                         'Emails/registration.html.twig',
-                        array('user' => $user)
+                        array('user' => $user, 'plainpassword' => $plainpassword)
                     )
                 );
             $this->get('mailer')->send($message);

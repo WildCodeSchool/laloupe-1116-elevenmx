@@ -13,12 +13,6 @@ ElevenmxBundle\Entity\Categorie:
             type: string
             length: 255
 
-
-    oneToMany:
-        user:
-            targetEntity: ElevenmxBundle\Entity\User
-            mappedBy: categorie
-
     lifecycleCallbacks: {  }
 
 
