@@ -35,7 +35,7 @@ class UserType extends AbstractType
                 'translation_domain' => 'FOSUserBundle'
             ))
             ->add('plain_password', 'password', array(
-                'label' => 'Mot de Passe : '
+                'label' => 'Mot de Passe* : '
             ))
             ->add('nom', TextType::class, array(
                 'attr' => array (
@@ -48,8 +48,9 @@ class UserType extends AbstractType
             ->add('telephone')
             ->add('entreprise', TextType::class, array (
                 'attr' => array (
-                    'placeholder' => 'entreprise'
-
+                    'placeholder' => 'entreprise',
+                    'nullable' => true,
+                    'required' => false
                 )))
             ->add('categorie', ChoiceType::class, array(
                 'choices' => array(
