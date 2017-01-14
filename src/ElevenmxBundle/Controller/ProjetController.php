@@ -145,6 +145,7 @@ class ProjetController extends Controller
             'projet' => $projet,
         ));
     }
+
     public function showGraphAction(Projet $projet, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -162,6 +163,8 @@ class ProjetController extends Controller
             $newCommentaire->setProjet($projet);
             $newCommentaire->setAffectation('graphiste');
             $em->persist($newCommentaire);
+
+
             $em->flush();
 
             return $this->redirectToRoute('projet_showGraph', array('id' => $projet->getId()));
@@ -179,9 +182,11 @@ class ProjetController extends Controller
      */
     public function editAction(Request $request, Projet $projet)
     {
+
         $deleteForm = $this->createDeleteForm($projet);
         $editForm = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
         $editForm->handleRequest($request);
+die();
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -193,6 +198,59 @@ class ProjetController extends Controller
             'projet' => $projet,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing projet entity.
+     *
+     */
+    public function editGraphAction(Request $request, Projet $projet)
+    {
+        $editForm = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
+        $editForm->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
+        $commentaires = $em->getRepository('ElevenmxBundle:Commentaire')->findBy(
+            array('projet' => $projet->getId()),
+            array('id' => 'DESC')
+        );
+
+        $newCommentaire = new Commentaire();
+        $form = $this->createForm('ElevenmxBundle\Form\CommentaireType', $newCommentaire);
+        $form->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+
+            $projet->setStatus($projet->getStatus());
+            $em->flush();
+            //$this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('projet_editGraph', array('id' => $projet->getId()));
+        }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $newCommentaire->setProjet($projet);
+            $newCommentaire->setAffectation('graphiste');
+            $em->persist($newCommentaire);
+
+            $vartest = $projet->getStatus();
+
+            $projet->setTitreProjet('projet8');
+            $projet->setStatus($vartest);
+
+            $em->flush();
+            return $this->redirectToRoute('projet_editGraph', array('id' => $projet->getId()));
+        }
+
+        return $this->render('ElevenmxBundle:projet:editGraph.html.twig', array(
+            'projet' => $projet,
+            'form' => $form->createView(),
+            'edit_form' => $editForm->createView(),
+            'comment' => $commentaires,
+
         ));
     }
 

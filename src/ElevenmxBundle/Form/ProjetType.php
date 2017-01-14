@@ -44,15 +44,7 @@ class ProjetType extends AbstractType
                     ),
                     // *this line is important*
                     'choices_as_values' => true,))
-                ->add('status', ChoiceType::class, array(
-                    'choices'  => array(
-                        'Maquette a faire' => true,
-                        'Maquette en attente de validation' => true,
-                        'Maquette validée' => true,
-                        'Yannick' => true,
-                    ),
-                    // *this line is important*
-                    'choices_as_values' => true,));
+                ->add('status');
     }
     
     /**
