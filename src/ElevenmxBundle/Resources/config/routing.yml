@@ -22,4 +22,8 @@ elevenmx_produit:
         resource: "@ElevenmxBundle/Resources/config/routing/produit.yml"
         prefix:   /produit
 
+elevenmx_marque:
+        resource: "@ElevenmxBundle/Resources/config/routing/marque.yml"
+        prefix:   /marque
+
 

@@ -1,7 +1,7 @@
-ElevenmxBundle\Entity\Produit:
+ElevenmxBundle\Entity\Marque:
     type: entity
     table: null
-    repositoryClass: ElevenmxBundle\Repository\ProduitRepository
+    repositoryClass: ElevenmxBundle\Repository\MarqueRepository
     id:
         id:
             type: integer
@@ -12,4 +12,8 @@ ElevenmxBundle\Entity\Produit:
         nom:
             type: string
             length: 255
+        image:
+            type: string
+            length: 255
+
     lifecycleCallbacks: {  }

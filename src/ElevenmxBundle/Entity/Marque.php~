@@ -3,9 +3,9 @@
 namespace ElevenmxBundle\Entity;
 
 /**
- * Produit
+ * Marque
  */
-class Produit
+class Marque
 {
     /**
      * @var int
@@ -16,7 +16,6 @@ class Produit
      * @var string
      */
     private $nom;
-
 
     /**
      * Get id
@@ -33,7 +32,7 @@ class Produit
      *
      * @param string $nom
      *
-     * @return Produit
+     * @return Marque
      */
     public function setNom($nom)
     {
@@ -50,5 +49,35 @@ class Produit
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * @var string
+     */
+    private $image;
+
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Marque
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

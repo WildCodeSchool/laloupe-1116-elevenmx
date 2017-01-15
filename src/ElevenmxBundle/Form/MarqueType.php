@@ -6,14 +6,16 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProduitType extends AbstractType
+class MarqueType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')        ;
+        $builder
+            ->add('nom')
+            ->add('image');
     }
     
     /**
@@ -22,7 +24,7 @@ class ProduitType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ElevenmxBundle\Entity\Produit'
+            'data_class' => 'ElevenmxBundle\Entity\Marque'
         ));
     }
 
@@ -31,7 +33,7 @@ class ProduitType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'elevenmxbundle_produit';
+        return 'elevenmxbundle_marque';
     }
 
 

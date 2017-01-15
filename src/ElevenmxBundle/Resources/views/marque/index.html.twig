@@ -4,34 +4,36 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-offset-3 col-sm-5">
-                <h1>Liste des Produits</h1>
+                <h1>Liste des Marques</h1>
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <div style="margin-top: 20px" class="container">
         <div class="row">
-            <div class="col-sm-offset-4 col-sm-3">
+            <div class="col-sm-offset-4 col-sm-5">
                 <table>
                     <thead>
                         <tr>
-                            <!--<th style="border: 1px solid black;">Id</th>-->
-                            <th style="border: 1px solid black;">Nom</th>
-                            <th style="border: 1px solid black;">Actions</th>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Image</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                    {% for produit in produits %}
+                    {% for marque in marques %}
                         <tr>
-                            <!--<td style="border: 1px solid black;"><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>-->
-                            <td style="border: 1px solid black;">{{ produit.nom }}</td>
-                            <td style="border: 1px solid black;">
+                            <td><a href="{{ path('marque_show', { 'id': marque.id }) }}">{{ marque.id }}</a></td>
+                            <td>{{ marque.nom }}</td>
+                            <td>{{ marque.image }}</td>
+                            <td>
                                 <ul>
                                     <li>
-                                        <a href="{{ path('produit_show', { 'id': produit.id }) }}">Visualisation</a>
+                                        <a href="{{ path('marque_show', { 'id': marque.id }) }}">visualisation</a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('produit_edit', { 'id': produit.id }) }}">Modification</a>
+                                        <a href="{{ path('marque_edit', { 'id': marque.id }) }}">Modification</a>
                                     </li>
                                 </ul>
                             </td>
@@ -45,10 +47,10 @@
 
     <div style="margin-top: 20px" class="container">
         <div class="row">
-            <div class="col-sm-offset-4 col-sm-4">
+            <div class="col-sm-offset-3 col-sm-5">
                 <ul>
                     <li>
-                        <a href="{{ path('produit_new') }}">Création d un nouveau produit</a>
+                        <a href="{{ path('marque_new') }}">Création d'une Marque</a>
                     </li>
                 </ul>
             </div>
