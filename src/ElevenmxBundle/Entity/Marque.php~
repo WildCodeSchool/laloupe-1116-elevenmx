@@ -54,30 +54,32 @@ class Marque
     /**
      * @var string
      */
-    private $image;
+    private $image1;
 
 
     /**
-     * Set image
+     * Set image1
      *
-     * @param string $image
+     * @param string $image1
      *
      * @return Marque
      */
-    public function setImage($image)
+    public function setImage1($image1)
     {
-        $this->image = $image;
+        $this->image1 = $image1;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get image1
      *
      * @return string
      */
-    public function getImage()
+    public function getImage1()
     {
-        return $this->image;
+        return $this->image1;
     }
+
+  
 }
