@@ -16,9 +16,9 @@
 {% endblock %}
 
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+{#{% if error %}#}
+    {#<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+{#{% endif %}#}
 
     <form action="{{ path("fos_user_security_check") }}" method="post">
     {% if csrf_token %}
