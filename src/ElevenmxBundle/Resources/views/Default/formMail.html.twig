@@ -18,23 +18,23 @@
                 <h1>Création d'un nouveau client</h1>
                 <div class="col-lg-6 col-xs-12" id="colonegauche">
 
-                    <h4>Nom</h4>
+                    <h4>Nom *</h4>
                     {{ form_errors(form.nom) }}
                     {{ form_widget(form.nom) }}
                     <br>
-                    <h4>Prénom</h4>
+                    <h4>Prénom *</h4>
                     {{ form_errors(form.prenom) }}
                     {{ form_widget(form.prenom) }}
                     <br>
-                    <h4>Mail</h4>
+                    <h4>Mail *</h4>
                     {{ form_errors(form.email) }}
                     {{ form_widget(form.email) }}
                     <br>
-                    <h4>Téléphone</h4>
+                    <h4>Téléphone *</h4>
                     {{ form_errors(form.telephone) }}
                     {{ form_widget(form.telephone) }}
                     <br>
-                    <h4>Entreprise</h4>
+                    <h4>Entreprise </h4>
                     {{ form_errors(form.entreprise) }}
                     {{ form_widget(form.entreprise) }}
                     <br>
@@ -66,15 +66,15 @@
                 <div class="col-lg-6 col-xs-12" id="colonedroite">
                     <div class="row">
                         <div class="droite">
-                            <h4>Code Utilisateur</h4>
+                            <h4>Code Utilisateur *</h4>
 
                             {{ form_errors(form.username) }}
                             {{ form_widget(form.username) }}
-                            <h4>Catégorie</h4>
+                            <h4>Catégorie *</h4>
 
                             {{ form_errors(form.categorie) }}
                             {{ form_widget(form.categorie) }}
-                            <h4>Mot de passe</h4>
+                            <h4>Mot de passe *</h4>
 
                             {{ form_errors(form.plain_password) }}
                             {{ form_widget(form.plain_password) }}
@@ -87,9 +87,9 @@
             </div>
 
             <div class="row" id="titre">
-
                 <button type="submit" class="btn btn-info btn-default" data-toggle="modal" data-target="#ModalGraphiste">Créer</button>
             </div>
+            <p>* Les champs portants un astérisque sont obligatoires</p>
         </div>
 
     </form>

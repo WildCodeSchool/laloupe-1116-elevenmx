@@ -24,7 +24,7 @@ class ProjetController extends Controller
 
         //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-            array('client' => 'user')
+            array('client' => 'user')//je sélect les projets dont le code client = user
         );
 
         return $this->render('ElevenmxBundle:projet:index.html.twig', array(
@@ -49,6 +49,23 @@ class ProjetController extends Controller
             'projets' => $projets,
         ));
     }
+
+
+    public function indexHistoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
+        $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
+            array('status' => 'Projet terminé')//chercher par tableau status terminé  littéralement
+        );
+
+        return $this->render('ElevenmxBundle:projet:indexHisto.html.twig', array(
+            'projets' => $projets,
+        ));
+    }
+//projet.status == "Projet terminé" a transfo sans twig pour controller
+
 
     /**
      * Creates a new projet entity.

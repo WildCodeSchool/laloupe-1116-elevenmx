@@ -26,6 +26,7 @@ ElevenmxBundle\Entity\User:
             length: 255
             column: Entreprise
             nullable: true
+            required: false
         categorie:
             type: string
             length: 255

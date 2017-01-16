@@ -53,9 +53,6 @@ class DefaultController extends Controller
         $user->setCategorie($categorie);
         $form->handleRequest($request);
 
-
-
-        
         $user->setEnabled(1);
 
         $categorie = $form->get('categorie')->getData();
