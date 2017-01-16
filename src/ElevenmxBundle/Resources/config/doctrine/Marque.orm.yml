@@ -1,0 +1,19 @@
+ElevenmxBundle\Entity\Marque:
+    type: entity
+    table: null
+    repositoryClass: ElevenmxBundle\Repository\MarqueRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        image:
+            type: string
+            length: 255
+
+    lifecycleCallbacks: {  }

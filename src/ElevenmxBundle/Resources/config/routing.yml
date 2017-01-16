@@ -18,6 +18,14 @@ elevenmx_projet:
     resource: "@ElevenmxBundle/Resources/config/routing/projet.yml"
     prefix:   /projet
 
+elevenmx_produit:
+        resource: "@ElevenmxBundle/Resources/config/routing/produit.yml"
+        prefix:   /produit
+
+elevenmx_marque:
+        resource: "@ElevenmxBundle/Resources/config/routing/marque.yml"
+        prefix:   /marque
+
 elevenmx_sendMailGraph:
     path:     /showGraph
     defaults: { _controller: ElevenmxBundle:Default:sendMailGraph }

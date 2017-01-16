@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-5">
+                <h1>Visualisation du Produit</h1>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px" class="container">
+        <div class="row">
+            <div class="col-sm-offset-5 col-sm-2">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ produit.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ produit.nom }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px" class="container">
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-2">
+                <ul>
+                    <li>
+                        <a href="{{ path('produit_index') }}">Retour à la liste</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('produit_edit', { 'id': produit.id }) }}">Modification</a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                            <input type="submit" value="Suppréssion">
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

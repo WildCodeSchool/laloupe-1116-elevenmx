@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-5">
+                <h1>Liste des Marques</h1>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px" class="container">
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-5">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for marque in marques %}
+                        <tr>
+                            <td><a href="{{ path('marque_show', { 'id': marque.id }) }}">{{ marque.id }}</a></td>
+                            <td>{{ marque.nom }}</td>
+                            <td>{{ marque.image }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('marque_show', { 'id': marque.id }) }}">visualisation</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('marque_edit', { 'id': marque.id }) }}">Modification</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px" class="container">
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-5">
+                <ul>
+                    <li>
+                        <a href="{{ path('marque_new') }}">Création d'une Marque</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

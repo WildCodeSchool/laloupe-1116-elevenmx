@@ -12,9 +12,10 @@
 {% endblock %}
 
 {% block body %}
-
+    {% set varludo = 99 %}
     <div class="container-fluid">
         <h4> liste des commentaires coté client </h4>
+        <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
         <div  class="row">
             <div style="margin-top: 20px" class="col-sm-offset-2 col-sm-4">
 
@@ -28,13 +29,16 @@
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
 
                 <h4>NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
+
             </div>
 
         </div>
 
         <div class="row">
+            {{ form_start(form) }}
             <div style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-5">
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+
             </div>
             <div class="col-sm-2">
 
@@ -56,7 +60,7 @@
             {% for comment in comment %}
                 {% set maxId = max(comment.id, maxId) %}
             {% endfor %}
-
+            {{ dump() }}
             <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
                 <div style="border: solid; border-width: 1px;height: 150px" >
                     <img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
@@ -130,6 +134,7 @@
                     </div>
                 </div>
 
+
             </div>
             <div style="height: 530px" class="col-sm-8">
                 {# On on parcours tous les commentaires afin d'afficher la dernière image correspondant à la variable maxId #}
@@ -149,35 +154,34 @@
         </div>
     </div>
 
-        <div class="modal fade" id="myModalBATComm" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
+    <div class="modal fade" id="myModalBATComm" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
 
-                    {# cette div c'est le text area commentaire#}
-                    <div>
-                        <p style="text-align: center">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
-                        <div style="padding-left: 20%">
+                {# cette div c'est le text area commentaire#}
+                <div>
+                    <p style="text-align: center">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
+                    <div style="padding-left: 20%">
                         {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
                         {{ form_errors(form.champsText) }}
-                        </div>
                     </div>
-                    {# fin div text area commentaire#}
-
-
-                    <div class="row" style="padding-left: 42%">
-                        {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
-                        {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
-                    </div>
-                    {#ici confirmation de l'envoi du BAT dans la modal#}
-                    <div>
-                        <input style="margin-left: 35%" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
-                    </div>
-                    {#ici fin confirmation de l'envoi du BAT dans la modal#}
                 </div>
+                {# fin div text area commentaire#}
+
+                <div class="row" style="padding-left: 42%">
+                    {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
+                    {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
+                </div>
+                {#ici confirmation de l'envoi du BAT dans la modal#}
+                <div>
+                    <input style="margin-left: 35%" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                </div>
+                {#ici fin confirmation de l'envoi du BAT dans la modal#}
             </div>
         </div>
+    </div>
 
-                {#***************** fin bouton  je NE valide PAS le BAT qui ouvre le champs comm de Ludo***********#}
+            {#***************** fin bouton  je ne valide pas le BAT ouvre  le champs comm de Ludo***********#}
 
 
     <div class="container-fluid" style="margin-top: 50px">

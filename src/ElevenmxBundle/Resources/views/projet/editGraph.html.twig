@@ -6,13 +6,15 @@
     Il faut ajouter le twig parent pour qui utilise les balises scrip du fichier base #}
     {{ parent() }}
     <script type="text/javascript">
-        window.setTimeout("window.location.reload();",60000);
+        window.setTimeout("window.location.reload();",600000);
     </script>
 
 {% endblock %}
 
 {% block body %}
     <div class="container-fluid">
+
+
         <h4> liste des commentaires coté graphiste </h4>
         <div  class="row">
             <div style="margin-top: 20px" class="col-sm-offset-2 col-sm-4">
@@ -34,17 +36,22 @@
         <div class="row">
             <div id="projet_statut_red" style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-4">
 
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET :
+                {{ form_start(edit_form) }}
+                {#{{ form_start(edit_form.status) }}#}
+                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status) }}</h4>
+                    <input type="submit" value="validation du status" />
+                {#{{ form_end(edit_form.status) }}#}
+                {{ form_end(edit_form) }}
 
-                <select name="typePaiment">
-                    <option selected="selected">{{ projet.status }}</option>
-                    <option value="Maquette a faire">Maquette a faire</option>
-                    <option value="Maquette en attente de validation">Maquette en attente de validation</option>
-                    <option value="Maquette a modifier">Maquette a modifier</option>
-                    <option value="Maquette validée">Maquette validée</option>
-                    <option value="Projet terminé">Projet terminé</option>
-                    <option value="Projet terminé">Projet terminé</option>
-                </select>
+                <!--<select name="typePaiment">
+                    <option selected="selected">{#{{ form_widget(edit_form.status) }}#}</option>
+                        <option value="Maquette a faire">Maquette a faire</option>
+                        <option value="Maquette en attente de validation">Maquette en attente de validation</option>
+                        <option value="Maquette a modifier">Maquette a modifier</option>
+                        <option value="Maquette validée">Maquette validée</option>
+                        <option value="Projet terminé">Projet terminé</option>
+                        <option value="Projet terminé">Projet terminé</option>
+                    </select>-->
                 </h4>
             </div>
             <div class="col-sm-2">
@@ -92,50 +99,15 @@
                 </div>
 
                 <div id="btnBATmodalComm" style="border: solid; color:blue; border-width: 1px;height: 50px;margin-top: 5px" >
+                    {#***************** bouton  je NE valide PAS le BAT ouvre  le champs comm de Ludo***********#}
 
-
-
-                    {#***************** Envoyer le BAT au client ouverture modale ***********#}
+                    <!-- <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBATComm">
+                            Je ne valide pas le BAT
+                        </button>-->
                     <div style="text-align: center;margin-top: 15px">
-                        <a data-toggle="modal" data-target="#myModalBATCommGraph">Envoyer le BAT</a>
+                        <a data-toggle="modal" data-target="#myModalBATComm">Envoyer le BAT</a>
                     </div>
                 </div>
-                {#*****************fin envois du BAT au client ouverture modale ***********#}
-
-                {# *********** modal du graphiste pour laisser le commentaire au client ************* #}
-            <form action="{{ path('elevenmx_sendMailGraph') }}" method="POST">
-                {{ form_start(form) }}
-                    <div class="modal fade" id="myModalBATCommGraph" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-
-                                {# cette div c'est le text area commentaire#}
-                                <div>
-                                    <p style="text-align: center">Laisser un commentaire au client.</p>
-                                    <div style="padding-left: 20%">
-                                        {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
-                                        {{ form_errors(form.champsText) }}
-                                    </div>
-                                </div>
-                                {# fin div text area commentaire#}
-
-
-                                <div class="row" style="padding-left: 42%">
-                                    {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
-                                    {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
-                                </div>
-                                {#ici confirmation de l'envoi du BAT dans la modal#}
-                                <div>
-                                    <input style="margin-left: 40%" type="submit" value="Envoyer le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
-                                </div>
-                                {#ici fin confirmation de l'envoi du BAT dans la modal#}
-                            </div>
-                        </div>
-                    </div>
-            </form>
-                {{ form_end(form) }}
-                {# ****************** fin modal du graphiste pour laisser le commentaire au client ***************** #}
-
 
             </div>
             <div style="height: 530px" class="col-sm-8">
@@ -147,7 +119,7 @@
                                 <img style="height: 100%;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                                 <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
                             {% else %}
-                                <p> Pas d'image envoyée</p>
+                                <P> Pas d'image envoyée</P>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
@@ -159,8 +131,73 @@
     </div>
 
 
+    <div class="modal fade" id="myModalBAT" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBAT">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" style="text-align: center" id="myModalLabel">Votre attention est recquise</h4>
+                </div>
+                <div class="modal-body" style="background-color: red">
+                    <p>Nous ne pouvons garantir le rendu des couleurs sur un BAT par intrnet<br>
+                        Nous vous demandons une vérification très attentive de ce BON A TIRER et ATTIRONS VOTRE ATTENTION sur
+                        le fait que votre validation vous engage dans la réalisation de votre travail dans nos ateliers et
+                        dégage notre responsabilité en cas de contestation ultérieure.</p>
+                    {#ici confirmation de l'envoi du BAT dans la modal#}
+                    <div class="add_button center-align">
+                        <input style="margin-top: 10px" type="submit" value="Je valide le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                    </div>{#ici fin confirmation de l'envoi du BAT dans la modal#}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#*****************fin bouton envoyer BAT ouvre modal dans laquelle on valide l'envoi***********#}
+
+
 
     {{ form_start(form) }}
+
+
+    <div class="modal fade" id="myModalBATComm" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                {# cette div c'est le text area commentaire#}
+                <div>
+                    <p style="text-align: center">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
+                    <div style="padding-left: 20%">
+                        {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
+                        {{ form_errors(form.champsText) }}
+                    </div>
+                </div>
+                {# fin div text area commentaire#}
+
+
+                <div class="row" style="padding-left: 42%">
+                    {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
+                    {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
+                </div>
+                {#ici confirmation de l'envoi du BAT dans la modal#}
+                <div>
+                    <input style="margin-left: 35%" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                </div>
+                {#ici fin confirmation de l'envoi du BAT dans la modal#}
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {#***************** fin bouton  je ne valide pas le BAT ouvre  le champs comm de Ludo***********#}
+
+
+
+
 
     <div class="container-fluid" style="margin-top: 50px">
         <div class="row" >
