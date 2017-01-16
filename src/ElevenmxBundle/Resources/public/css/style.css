@@ -111,13 +111,13 @@
 
 #projet_ligne_aff
 {
-    border: solid;
+    border: solid black;
     margin-top: 50px;
 }
 
 #projet_ligne_bloc1_aff
 {
-    border: solid;
+    border: solid black;
     margin-top:20px
 }
 
@@ -133,27 +133,28 @@
 #projet_statut_red
 {
     background-color:red;
-    border: solid;
+    border: solid black;
     margin-top:20px
 }
 #projet_statut_green
 {
     background-color:green;
-    border: solid;
+    border: solid black;
     margin-top:20px
 }
-#projet_statut_white
+#projet_statut_blanc
 {
     background-color:white;
-    border: solid;
+    border: solid black;
     margin-top:20px
 }
 #projet_statut_orange
 {
     background-color:orange;
-    border: solid;
+    border: solid black;
     margin-top:20px
 }
+
 /************************************ Fin Formulaire liste projet vi index *******************************************************/
 
 /************************************ Debut Formulaire liste commentaires *******************************************************/
@@ -212,18 +213,22 @@ footer {
 /************************************ Fin Formulaire création graphiste *******************************************************/
 
 /************************************ Page show *******************************************************/
-body{
-
-}
 
 #btnBATmodal{
     margin-top: 10px;
     width: 100%;
+   border: solid;
+    color:blue;
+    border-width: 1px;
+    height: 50px;
 }
 
 #btnBATmodalComm{
-
-
+    border: solid;
+    color:blue;
+    border-width: 1px;
+    height: 50px;
+    margin-top: 5px;
 }
 
 #myModalBATComm{

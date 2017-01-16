@@ -26,4 +26,7 @@ elevenmx_marque:
         resource: "@ElevenmxBundle/Resources/config/routing/marque.yml"
         prefix:   /marque
 
+elevenmx_sendMailGraph:
+    path:     /showGraph
+    defaults: { _controller: ElevenmxBundle:Default:sendMailGraph }
 

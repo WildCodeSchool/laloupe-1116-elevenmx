@@ -9,7 +9,8 @@ security:
         fos_userbundle:
             id: fos_user.user_provider.username_email
         in_memory:
-            memory: ~
+            memory:
+
 
 
 
@@ -22,17 +23,15 @@ security:
         main:
             pattern: ^/
             form_login:
+                login_path: fos_user_security_login #********************************************** ajout Max
+                check_path: fos_user_security_check #********************************************** ajout Max
                 provider: fos_userbundle
-
                 csrf_provider: security.csrf.token_manager
                 always_use_default_target_path: true
                 default_target_path: /
 
             logout:       true
             anonymous:    true
-
-        main:
-            anonymous: ~
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -43,7 +42,7 @@ security:
 
     role_hierarchy:
         ROLE_GRAPH: ROLE_USER
-        ROLE_ADMIN: [ROLE_USER, ROLE, ROLE_GRAPH]
+        ROLE_ADMIN: [ROLE_USER, ROLE_GRAPH]
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
 

@@ -6,7 +6,7 @@
     Il faut ajouter le twig parent pour qui utilise les balises scrip du fichier base #}
     {{ parent() }}
     <script type="text/javascript">
-        window.setTimeout("window.location.reload();",60000);
+        window.setTimeout("window.location.reload();",600000);
     </script>
 
 {% endblock %}
@@ -84,8 +84,8 @@
                     {% endif %}
                 </div>
 
-                <div id="btnBATmodal" style="border: solid; color:blue; border-width: 1px;height: 50px;margin-top: 5px" >
-                    {#****************bouton envoyer BAT ouvre modal dans laquelle on valide l'envoi ************************#}
+                {#****************bouton envoyer BAT qui ouvre la modal dans laquelle on valide l'envoi final du BAT ************************#}
+                <div id="btnBATmodal">
                         <!-- <button style="color: black" type="button"  data-toggle="modal" data-target="#myModalBAT">
                             Je valide le BAT
                         </button> -->
@@ -93,6 +93,7 @@
                             <a data-toggle="modal" data-target="#myModalBAT">Je valide le BAT</a>
                         </div>
                 </div>
+
                 <div class="modal fade" id="myModalBAT" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBAT">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -101,25 +102,29 @@
                                 <h4 class="modal-title" style="text-align: center" id="myModalLabel">Votre attention est recquise</h4>
                             </div>
                             <div class="modal-body" style="background-color: red">
-                                <p>Nous ne pouvons garantir le rendu des couleurs sur un BAT par intrnet<br>
+                                <p>Nous ne pouvons garantir le rendu des couleurs sur un BAT par internet<br>
                                     Nous vous demandons une vérification très attentive de ce BON A TIRER et ATTIRONS VOTRE ATTENTION sur
                                     le fait que votre validation vous engage dans la réalisation de votre travail dans nos ateliers et
                                     dégage notre responsabilité en cas de contestation ultérieure.</p>
-                                {#ici confirmation de l'envoi du BAT dans la modal#}
+
+                                {##### ici confirmation de l'envoi du BAT dans la modal #####}
                                 <div class="add_button center-align">
-                                    <input style="margin-top: 10px" type="submit" data-dismiss="modal" value="Je valide le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
-                                </div>{#ici fin confirmation de l'envoi du BAT dans la modal#}
+                                    <input type="submit" data-dismiss="modal" value="Je valide le BAT" role="button"/>
+                                </div>{##### ici fin confirmation de l'envoi du BAT dans la modal #####}
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {#*****************fin bouton envoyer BAT ouvre modal dans laquelle on valide l'envoi***********#}
-                <div id="btnBATmodalComm" style="border: solid; color:blue; border-width: 1px;height: 50px;margin-top: 5px" >
-                    {#***************** bouton  je NE valide PAS le BAT ouvre  le champs comm de Ludo***********#}
+                {#*****************fin bouton envoyer BAT qui ouvre la modal dans laquelle on valide l'envoi final du BAT ***********#}
+
+
+
+                {#***************** bouton  je NE valide PAS le BAT qui ouvre le champs comm de Ludo***********#}
+                <div id="btnBATmodalComm">
 
                     <!-- <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBATComm">
                             Je ne valide pas le BAT
@@ -128,34 +133,7 @@
                         <a data-toggle="modal" data-target="#myModalBATComm">Je NE valide PAS le BAT</a>
                     </div>
                 </div>
-                <div class="modal fade" id="myModalBATComm" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
 
-                            {# cette div c'est le text area commentaire#}
-                            <div>
-                                <p style="text-align: center">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
-                                <div style="padding-left: 20%">
-                                    {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
-                                    {{ form_errors(form.champsText) }}
-                                </div>
-                            </div>
-                            {# fin div text area commentaire#}
-
-                            <div class="row" style="padding-left: 42%">
-                                {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
-                                {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
-                            </div>
-                            {#ici confirmation de l'envoi du BAT dans la modal#}
-                            <div>
-                                <input style="margin-left: 35%" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
-                            </div>
-                            {#ici fin confirmation de l'envoi du BAT dans la modal#}
-                        </div>
-                    </div>
-                </div>
-
-                {#***************** fin bouton  je ne valide pas le BAT ouvre  le champs comm de Ludo***********#}
 
             </div>
             <div style="height: 530px" class="col-sm-8">
@@ -176,11 +154,34 @@
         </div>
     </div>
 
+    <div class="modal fade" id="myModalBATComm" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
 
+                {# cette div c'est le text area commentaire#}
+                <div>
+                    <p style="text-align: center">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
+                    <div style="padding-left: 20%">
+                        {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
+                        {{ form_errors(form.champsText) }}
+                    </div>
+                </div>
+                {# fin div text area commentaire#}
 
+                <div class="row" style="padding-left: 42%">
+                    {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
+                    {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
+                </div>
+                {#ici confirmation de l'envoi du BAT dans la modal#}
+                <div>
+                    <input style="margin-left: 35%" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                </div>
+                {#ici fin confirmation de l'envoi du BAT dans la modal#}
+            </div>
+        </div>
+    </div>
 
-
-
+            {#***************** fin bouton  je ne valide pas le BAT ouvre  le champs comm de Ludo***********#}
 
 
     <div class="container-fluid" style="margin-top: 50px">

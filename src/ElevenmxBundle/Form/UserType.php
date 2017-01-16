@@ -35,7 +35,7 @@ class UserType extends AbstractType
                 'translation_domain' => 'FOSUserBundle'
             ))
             ->add('plain_password', 'password', array(
-                'label' => 'Mot de Passe : '
+                'label' => 'Mot de Passe* : '
             ))
             ->add('nom', TextType::class, array(
                 'attr' => array (
@@ -47,10 +47,21 @@ class UserType extends AbstractType
                 )))
             ->add('telephone')
             ->add('entreprise', TextType::class, array (
+                'required' => false,
                 'attr' => array (
-                    'placeholder' => 'entreprise'
-
+                    'placeholder' => 'entreprise',
+                    'nullable' => true,
                 )))
+            ->add('categorie', ChoiceType::class, array(
+                'choices' => array(
+                    'client'    => 'client',
+                    'graphiste' => 'graphiste',
+                    'admin'     => 'admin'
+                ),
+                'attr' => array(
+                    'placeholder' => 'Catégorie'
+                )
+            ))
 
         ;
 
@@ -66,25 +77,6 @@ class UserType extends AbstractType
             'data_class' => 'ElevenmxBundle\Entity\User'
         ));
     }
-/**************************************** Regex validation mail **********************************/
-/*    public function testMail(testMail $builder, array $options)
-    {
-        $builder->add('email', 'text');
-        $builder->addValidator(new CallbackValidator(function(FormInterface $form) {
-            $myfield = $form->get('email');
-            if (!is_null($myfield->getData())) {
-                $validator = new RegexValidator();
-                $constraint = new Regex(array(
-                    'pattern' => '/#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#/'
-                ));
-                $isValid = $validator->validate($myfield->getData(), $constraint);
-                if (!$isValid) {
-                    $myfield->addError(new FormError("This field is not valid (only alphanumeric characters separated by hyphens)"));
-                }
-            }}
-        ));
 
-    }*/
-/**************************************** Fin Regex validation mail ***************************/
 
 }

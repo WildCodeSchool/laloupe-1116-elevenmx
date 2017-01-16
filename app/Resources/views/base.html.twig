@@ -121,21 +121,65 @@
             <div class="col-lg-4 col-xs-4">
                 <div class="col-lg-4 col-xs-0"></div>
                 <div class="col-lg-8 col-xs4">
-                    <a id="btn_logo" role="button" data-toggle="modal" data-target="#myModal"><img
+                    <a id="btn_logo" role="button" data-backdrop="false" data-toggle="modal" data-target="#myModal"><img
                                 src="{{ asset('bundles/elevenmx/img/WCS-logo.png') }}" alt="logo_WCS"
                                 id="logo_wcs"/></a>
                 </div>
                 <div class="col-lg-4 col-xs-4"></div>
+            </div>
 
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabelID">Site réalisé par:</h4></div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-4"><a class="btn btn-default"
+                                                         href="{{ asset('https://fr.linkedin.com/in/maxime-coustes') }}"
+                                                         target="_blank" role="button">Maxime</a></div>
+                                <div class="col-xs-4"><a class="btn btn-default"
+                                                         href="{{ asset('https://fr.linkedin.com/in/ludovic-quouillault-787914125') }}"
+                                                         target="_blank" role="button">Ludovic</a></div>
+                                <div class="col-xs-4"><a class="btn btn-default"
+                                                         href="{{ asset('https://fr.linkedin.com/in/yannick-le-corre-96019812a') }}"
+                                                         target="_blank" role="button">Yannick</a></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4"><img
+                                            src="{{ asset('bundles/elevenmx/img/COUSTES_Maxime.JPG') }}"
+                                            alt="Maxime" class="thumbnail eleve"/></div>
+                                <div class="col-xs-4"><img
+                                            src="{{ asset('bundles/elevenmx/img/QUOUILLAUD_Ludovic.JPG') }}"
+                                            alt="Ludovic" class="thumbnail eleve"/></div>
+                                <div class="col-xs-4"><img
+                                            src="{{ asset('bundles/elevenmx/img/Le_Corre_Yannick.JPG') }}"
+                                            alt="Yannick" class="thumbnail eleve"/></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-xs-4"><a class="btn btn-default"
+                                                         href="{{ asset('http://www.wildcodeschool.fr') }}"
+                                                         target="_blank" role="button">contacter l'école</a>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
             <div class="col-lg-4 col-xs-4 txt_footer">
                 <!-- Large modal -->
-                <a href=".bs-example-modal-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Mentions
+                <a href=".bs-example-modal-lg" data-toggle="modal" data-backdrop="false" data-target=".bs-example-modal-lg">Mentions
                     Légales</a>
             </div>
-            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="document"
                  aria-labelledby="myLargeModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="col-xs-12">
@@ -206,55 +250,13 @@
             </div>
 
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Site réalisé par:</h4></div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-xs-4"><a class="btn btn-default"
-                                                     href="{{ asset('https://fr.linkedin.com/in/maxime-coustes') }}"
-                                                     target="_blank" role="button">Maxime</a></div>
-                            <div class="col-xs-4"><a class="btn btn-default"
-                                                     href="{{ asset('https://fr.linkedin.com/in/ludovic-quouillault-787914125') }}"
-                                                     target="_blank" role="button">Ludovic</a></div>
-                            <div class="col-xs-4"><a class="btn btn-default"
-                                                     href="{{ asset('https://fr.linkedin.com/in/yannick-le-corre-96019812a') }}"
-                                                     target="_blank" role="button">Yannick</a></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-4"><img
-                                        src="{{ asset('bundles/elevenmx/img/COUSTES_Maxime.JPG') }}"
-                                        alt="Maxime" class="thumbnail eleve"/></div>
-                            <div class="col-xs-4"><img
-                                        src="{{ asset('bundles/elevenmx/img/QUOUILLAUD_Ludovic.JPG') }}"
-                                        alt="Ludovic" class="thumbnail eleve"/></div>
-                            <div class="col-xs-4"><img
-                                        src="{{ asset('bundles/elevenmx/img/Le_Corre_Yannick.JPG') }}"
-                                        alt="Yannick" class="thumbnail eleve"/></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="row">
-                            <div class="col-xs-4"><a class="btn btn-default"
-                                                     href="{{ asset('http://www.wildcodeschool.fr') }}"
-                                                     target="_blank" role="button">contacter l'école</a>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 
 </footer>
 
 {% block javascripts %}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 {% endblock %}

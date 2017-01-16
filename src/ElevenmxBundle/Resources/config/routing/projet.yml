@@ -8,6 +8,11 @@ projet_indexGraph:
     defaults: { _controller: "ElevenmxBundle:Projet:indexGraph" }
     methods:  GET
 
+projet_indexHisto:
+    path:     /indexHisto
+    defaults: { _controller: "ElevenmxBundle:Projet:indexHisto" }
+    methods:  GET
+
 projet_show:
     path:     /{id}/show
     defaults: { _controller: "ElevenmxBundle:Projet:show" }

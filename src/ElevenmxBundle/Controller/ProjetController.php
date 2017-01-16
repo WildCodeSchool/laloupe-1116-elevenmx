@@ -7,6 +7,7 @@ use ElevenmxBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Variable;
 use Symfony\Component\HttpFoundation\Request;
+use ElevenmxBundle\Entity\User;
 
 /**
  * Projet controller.
@@ -24,7 +25,7 @@ class ProjetController extends Controller
 
         //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-            array('client' => 'ludo')
+            array('client' => 'user')//je sélect les projets dont le code client = user
         );
 
         return $this->render('ElevenmxBundle:projet:index.html.twig', array(
@@ -49,6 +50,23 @@ class ProjetController extends Controller
             'projets' => $projets,
         ));
     }
+
+
+    public function indexHistoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
+        $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
+            array('status' => 'Projet terminé')//chercher par tableau status terminé  littéralement
+        );
+
+        return $this->render('ElevenmxBundle:projet:indexHisto.html.twig', array(
+            'projets' => $projets,
+        ));
+    }
+//projet.status == "Projet terminé" a transfo sans twig pour controller
+
 
     /**
      * Creates a new projet entity.
@@ -122,20 +140,6 @@ class ProjetController extends Controller
 
             $em->flush();
 
-            //$message = \Swift_Message::newInstance()
-            //    ->setSubject('Test mail ludo 20170112 1049')
-            //    ->setFrom('javadescavernes38@gmail.com')
-            //    ->setTo('javadescavernes38@gmail.com')
-            //    ->setBody('Envoir de mail suite a la mise a jour d un commentaire');
-            //$this->get('mailer')->send($message);
-
-
-            //if ($varludo == '99'){
-             //   $projet->setStatus('Test Ludo');
-              //  $em->persist($projet);
-               // $em->flush();
-            //}
-
             return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
         }
 
@@ -145,7 +149,7 @@ class ProjetController extends Controller
             'projet' => $projet,
         ));
     }
-
+    
     public function showGraphAction(Projet $projet, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -167,8 +171,24 @@ class ProjetController extends Controller
 
             $em->flush();
 
+            // ******************************* envoi de mail auto quand graph met a jour le statut **********************************
+            $user = new User();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Mise à jour de votre prjet')
+                ->setFrom('javadescavernes38@gmail.com')
+                ->setTo('javadescavernes38@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'Emails/registrationAuto.html.twig',
+                        array('user' => $user)
+                    )
+                );
+            $this->get('mailer')->send($message);
+
             return $this->redirectToRoute('projet_showGraph', array('id' => $projet->getId()));
         }
+        // ******************************** fin d'envoi de mail auto quand graph met a jour le statut *******************************
 
         return $this->render('@Elevenmx/projet/showGraph.html.twig', array(
             'comment' => $commentaires,
@@ -293,6 +313,5 @@ die();
      * Finds and displays a projet entity.
      *
      */
-
 
 }
