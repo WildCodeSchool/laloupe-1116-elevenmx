@@ -12,8 +12,13 @@ ElevenmxBundle\Entity\Marque:
         nom:
             type: string
             length: 255
-        image:
+        image1:
             type: string
             length: 255
-
-    lifecycleCallbacks: {  }
+            nullable: true
+    lifecycleCallbacks:
+          prePersist: [ preUpload1 ]
+          preUpdate: [ preUpload1 ]
+          postPersist: [ upload1  ]
+          postUpdate: [ upload1 ]
+          postRemove: [ removeUpload1 ]

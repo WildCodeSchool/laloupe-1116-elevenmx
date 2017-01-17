@@ -26,7 +26,8 @@
                         <tr>
                             <td><a href="{{ path('marque_show', { 'id': marque.id }) }}">{{ marque.id }}</a></td>
                             <td>{{ marque.nom }}</td>
-                            <td>{{ marque.image }}</td>
+                            <td>{{ marque.image1 }}</td>
+                            <td><img style="height: 150px; width: auto" src="{{ app.request.basepath }}/uploads/{{ marque.image1 }}"></td>
                             <td>
                                 <ul>
                                     <li>

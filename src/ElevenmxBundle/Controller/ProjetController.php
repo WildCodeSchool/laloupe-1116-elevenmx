@@ -25,7 +25,7 @@ class ProjetController extends Controller
 
         //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-            array('client' => 'user')//je sélect les projets dont le code client = user
+            array('client' => 'ludo')//je sélect les projets dont le code client = user
         );
 
         return $this->render('ElevenmxBundle:projet:index.html.twig', array(
@@ -149,7 +149,7 @@ class ProjetController extends Controller
             'projet' => $projet,
         ));
     }
-    
+
     public function showGraphAction(Projet $projet, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
