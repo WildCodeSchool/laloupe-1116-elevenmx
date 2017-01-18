@@ -13,10 +13,6 @@ ElevenmxBundle\Entity\Projet:
             type: string
             length: 255
             column: Titre_Projet
-        client:
-            type: string
-            length: 255
-            column: Client
         marque:
             type: string
             length: 255
@@ -43,4 +39,4 @@ ElevenmxBundle\Entity\Projet:
     manyToOne:
         user:
             targetEntity: ElevenmxBundle\Entity\User
-            inversedBy: id
+            inversedBy: projets

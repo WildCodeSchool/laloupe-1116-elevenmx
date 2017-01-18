@@ -110,7 +110,7 @@ class Marque
     /**
      * @var string
      */
-    private $image1;
+    private $image;
 
 
     /**
@@ -120,9 +120,9 @@ class Marque
      *
      * @return Marque
      */
-    public function setImage1($image1)
+    public function setImage($image)
     {
-        $this->image1 = $image1;
+        $this->image = $image;
 
         return $this;
     }
@@ -132,10 +132,11 @@ class Marque
      *
      * @return string
      */
-    public function getImage1()
+    public function getImage()
     {
-        return $this->image1;
+        return $this->image;
     }
+<<<<<<< HEAD
     /**
      * @var string
      */
@@ -165,4 +166,6 @@ class Marque
     {
         return $this->image;
     }
+=======
+>>>>>>> 93f46ed4574efa1144bda47d5bed687fe68ac60a
 }

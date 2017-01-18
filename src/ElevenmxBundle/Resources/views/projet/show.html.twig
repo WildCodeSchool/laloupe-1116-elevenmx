@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block body %}
-    {% set varludo = 99 %}
+    {#{% set varludo = 99 %}#}
     <div class="container-fluid">
         <h4> liste des commentaires coté client </h4>
         <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
@@ -21,7 +21,7 @@
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
-                <h4>NOM DU CLIENT : {{ projet.client }}</h4>
+                <h4>NOM DU CLIENT : {{ projet.user }}</h4>
 
             </div>
             <div style="margin-top: 20px" class="col-sm-4">
@@ -60,7 +60,7 @@
             {% for comment in comment %}
                 {% set maxId = max(comment.id, maxId) %}
             {% endfor %}
-            {{ dump() }}
+            {#{{ dump() }}#}
             <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
                 <div style="border: solid; border-width: 1px;height: 150px" >
                     <img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
@@ -254,17 +254,17 @@
 
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
-        </li>
-        <li>
-            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
-        </li>
-        <li>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('projet_index') }}">Retour a la liste des projets</a>#}
+        {#</li>#}
+        {#<li>#}
+            {#<a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>#}
+        {#</li>#}
+        {#<li>#}
 
-        </li>
-    </ul>
+        {#</li>#}
+    {#</ul>#}
 {% endblock %}
 
 

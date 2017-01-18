@@ -21,7 +21,10 @@
     font-size: 30px;
     padding-right: 30px;
     margin-top: 25px;
+}
 
+#log_off:hover {
+    text-decoration: none;
 }
 
 .full {

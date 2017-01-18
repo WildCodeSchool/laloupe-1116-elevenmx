@@ -235,4 +235,57 @@ class User extends BaseUser
 
 
 
+    /**
+     * @var string
+     */
+    private $projets;
+
+
+    /**
+     * Set projets
+     *
+     * @param string $projets
+     *
+     * @return User
+     */
+    public function setProjets($projets)
+    {
+        $this->projets = $projets;
+
+        return $this;
+    }
+
+    /**
+     * Get projets
+     *
+     * @return string
+     */
+    public function getProjets()
+    {
+        return $this->projets;
+    }
+
+    /**
+     * Add projet
+     *
+     * @param \ElevenmxBundle\Entity\Projet $projet
+     *
+     * @return User
+     */
+    public function addProjet(\ElevenmxBundle\Entity\Projet $projet)
+    {
+        $this->projets[] = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Remove projet
+     *
+     * @param \ElevenmxBundle\Entity\Projet $projet
+     */
+    public function removeProjet(\ElevenmxBundle\Entity\Projet $projet)
+    {
+        $this->projets->removeElement($projet);
+    }
 }

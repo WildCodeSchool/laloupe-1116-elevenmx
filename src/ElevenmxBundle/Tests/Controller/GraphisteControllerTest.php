@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class GraphisteControllerTest extends WebTestCase
 {
+
+
+    
+
     /*
     public function testCompleteScenario()
     {

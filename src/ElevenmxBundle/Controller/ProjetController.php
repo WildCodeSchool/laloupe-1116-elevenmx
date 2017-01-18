@@ -4,10 +4,10 @@ namespace ElevenmxBundle\Controller;
 
 use ElevenmxBundle\Entity\Commentaire;
 use ElevenmxBundle\Entity\Projet;
+use ElevenmxBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Variable;
 use Symfony\Component\HttpFoundation\Request;
-use ElevenmxBundle\Entity\User;
 
 /**
  * Projet controller.
@@ -25,8 +25,9 @@ class ProjetController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
+        $user= $this->get('security.context')->getToken()->getUser();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-            array('client' => 'user')//je sélect les projets dont le code client = user
+            array('user' => $user)//je sélect les projets dont le code client = user
         );
 
         return $this->render('ElevenmxBundle:projet:index.html.twig', array(
@@ -77,10 +78,10 @@ class ProjetController extends Controller
     {
         $projet = new Projet();
         $form = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
+        $projet->setStatus('Attente d\'information');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $projet->setStatus('Attente d information');
             $em = $this->getDoctrine()->getManager();
             $em->persist($projet);
             $em->flush($projet);
@@ -176,7 +177,7 @@ class ProjetController extends Controller
             $user = new User();
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Mise à jour de votre prjet')
+                ->setSubject('Mise à jour de votre projet')
                 ->setFrom('javadescavernes38@gmail.com')
                 ->setTo('javadescavernes38@gmail.com')
                 ->setBody(
