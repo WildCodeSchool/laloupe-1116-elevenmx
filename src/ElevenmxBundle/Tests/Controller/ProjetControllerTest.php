@@ -10,8 +10,11 @@ class ProjetControllerTest extends WebTestCase
     /**
      * @return mixed
      */
+
+    /*//debut dojo test
     public static function testlogin()
     {
+        //debut dojo test
         $fixtures = array(
             'ElevenmxBundle\DataFixtures\ORM\LoadUserData',
             'ElevenmxBundle\DataFixtures\ORM\LoadProjetData'
@@ -41,6 +44,7 @@ class ProjetControllerTest extends WebTestCase
 
         $this->assertEquals(true,true);
     }
+    //fin dojo test*/
     
     /*
     public function testCompleteScenario()

@@ -19,7 +19,7 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
         $projet1->setProduit('Moto');
         $projet1->setMarque('Honda');
         $projet1->setNomGraphiste('graphiste');
-        $projet1->setStatus('Attende d\'information');
+        $projet1->setStatus('Attente d\'information');
         $projet1->setUser();
 
         $manager->persist($projet1);
@@ -32,7 +32,7 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
         $projet2->setProduit('Casque');
         $projet2->setMarque('Yamaha');
         $projet2->setNomGraphiste('graphiste2');
-        $projet2->setStatus('Attende d\'information');
+        $projet2->setStatus('Attente d\'information');
         $projet2->setUser();
 
         $manager->persist($projet2);
@@ -45,7 +45,7 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
         $projet3->setProduit('Combi');
         $projet3->setMarque('BMW');
         $projet3->setNomGraphiste('graphiste');
-        $projet3->setStatus('Attende d\'information');
+        $projet3->setStatus('Attente d\'information');
         $projet3->setUser();
 
         $manager->persist($projet3);

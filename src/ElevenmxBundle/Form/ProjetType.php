@@ -18,8 +18,17 @@ class ProjetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('titreProjet')
-
-                ->add('client', EntityType::class, array(
+                ->add('client', ChoiceType::class, array(
+                    'choices'  => array(
+                        'Who' => true,
+                        'Whoo' => true,
+                        'Whooo' => true,
+                        'Whoooo' => true,
+                    ),
+                    // *this line is important*
+                    'choices_as_values' => true,
+                ))
+                /*->add('client', EntityType::class, array(
                     'class' => 'ElevenmxBundle\Entity\User',
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('u')
@@ -29,28 +38,35 @@ class ProjetType extends AbstractType
                     },
                     'choice_label' => 'nom',
                     'choices_as_values' => true,
-                ))
-
-                ->add('marque', EntityType::class, array(
+                ))*/
+/*//                ->add('marque')*/
+                /*->add('marque', EntityType::class, array(
                     'class' => 'ElevenmxBundle\Entity\Marque',
                     'query_builder' => function (EntityRepository $er) {
-                        return $er->createQueryBuilder('u')
-                            ->orderBy('u.nom', 'ASC');
+                        return $er->createQueryBuilder('m')
+                            ->orderBy('m.nom', 'ASC');
                     },
                     'choice_label' => 'nom',
                     'choices_as_values' => true,
+                ))*/
+                ->add('produit', ChoiceType::class, array(
+                    'choices'  => array(
+                        'Casque' => true,
+                        'Combinaison' => true,
+                        'Moto' => true,
+                    ),
+                    // *this line is important*
+                    'choices_as_values' => true,
                 ))
-
-                ->add('produit', EntityType::class, array(
+                /*->add('produit', EntityType::class, array(
                     'class' => 'ElevenmxBundle\Entity\Produit',
                     'query_builder' => function (EntityRepository $er) {
-                        return $er->createQueryBuilder('u')
-                            ->orderBy('u.nom', 'ASC');
+                        return $er->createQueryBuilder('p')
+                            ->orderBy('p.nom', 'ASC');
                     },
                     'choice_label' => 'nom',
                     'choices_as_values' => true,
-                ))
-
+                ))*/
                 ->add('nomGraphiste', ChoiceType::class, array(
                     'choices'  => array(
                         'Nico' => true,
@@ -60,18 +76,19 @@ class ProjetType extends AbstractType
                     ),
                     // *this line is important*
                     'choices_as_values' => true,))
-                ->add('nomGraphiste', EntityType::class, array(
+                ->add('status')
+                /*->add('nomGraphiste', EntityType::class, array(
                     'class' => 'ElevenmxBundle\Entity\User',
                     'query_builder' => function (EntityRepository $er) {
-                        return $er->createQueryBuilder('u')
-                            ->orWhere('u.categorie like :graph')
-                            ->orderBy('u.nom', 'ASC')
+                        return $er->createQueryBuilder('n')
+                            ->orWhere('n.categorie like :graph')
+                            ->orderBy('n.nom', 'ASC')
                             ->setParameter('graph', 'graphiste') ;
                     },
                     'choice_label' => 'nom',
                     'choices_as_values' => true,
-                ))
-                ;
+                ))*/
+        ;
     }
     
     /**
