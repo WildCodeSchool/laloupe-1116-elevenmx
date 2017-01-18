@@ -21,12 +21,12 @@ class Marque
     }
 
 
-    public function getWebPath1()
+    public function getWebPath()
     {
         return null === $this->image1 ? null : $this->getUploadDir().'/'.$this->image1;
     }
 
-    public function getAbsolutePath1()
+    public function getAbsolutePath()
     {
         return null === $this->image1 ? null : $this->getUploadRootDir().'/'.$this->image1;
     }
@@ -57,7 +57,7 @@ class Marque
 
     public function removeUpload1()
     {
-        if ($file = $this->getAbsolutePath1()) {
+        if ($file = $this->getAbsolutePath()) {
             unlink($file);
         }
     }
@@ -110,7 +110,7 @@ class Marque
     /**
      * @var string
      */
-    private $image;
+    private $image1;
 
 
     /**
@@ -120,9 +120,9 @@ class Marque
      *
      * @return Marque
      */
-    public function setImage($image)
+    public function setImage1($image1)
     {
-        $this->image = $image;
+        $this->image1 = $image1;
 
         return $this;
     }
@@ -132,11 +132,10 @@ class Marque
      *
      * @return string
      */
-    public function getImage()
+    public function getImage1()
     {
-        return $this->image;
+        return $this->image1;
     }
-<<<<<<< HEAD
     /**
      * @var string
      */
@@ -166,6 +165,4 @@ class Marque
     {
         return $this->image;
     }
-=======
->>>>>>> 93f46ed4574efa1144bda47d5bed687fe68ac60a
 }
