@@ -1,15 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block javascripts %}
-    {# Le fait de mettre un ebalise scrit pour le time out, les modals de bootstrap ne fonctionnait plus
-    Cela inible les balises script placés dans le fichier
-    Il faut ajouter le twig parent pour qui utilise les balises scrip du fichier base #}
-    {{ parent() }}
-    <script type="text/javascript">
-        window.setTimeout("window.location.reload();",60000);
-    </script>
 
-{% endblock %}
 
 {% block body %}
     <div class="container-fluid">
@@ -37,7 +28,7 @@
             </div>
             <div class="col-sm-2">
 
-                <h4 class="projet_bloc_h4_aff"> Date : </h4>
+                <h4 class="projet_bloc_h4_aff"> Date : {{ projet.dateCreationProjet }} </h4>
             </div>
 
         </div>
@@ -229,5 +220,16 @@
 
         </li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {# Le fait de mettre un ebalise scrit pour le time out, les modals de bootstrap ne fonctionnait plus
+    Cela inible les balises script placés dans le fichier
+    Il faut ajouter le twig parent pour qui utilise les balises scrip du fichier base #}
+    {{ parent() }}
+    <script type="text/javascript">
+        window.setTimeout("window.location.reload();",60000);
+    </script>
+
 {% endblock %}
 

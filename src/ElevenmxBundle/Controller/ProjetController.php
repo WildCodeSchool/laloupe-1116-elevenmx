@@ -7,6 +7,7 @@ use ElevenmxBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ElevenmxBundle\Entity\User;
+use ElevenmxBundle\Form\RechercheType;
 
 /**
  * Projet controller.
@@ -14,6 +15,32 @@ use ElevenmxBundle\Entity\User;
  */
 class ProjetController extends Controller
 {
+    /*public function rechercheAction()
+    {
+        $form = $this->createForm(new RechercheType());
+        return $this->render('ElevenmxBundle:Default/Recherche/modulesUsed:recherche.html.twig', array(
+            'form' => $form,
+        ));
+    }
+
+    public function rechercheTraitementAction()
+    {
+        $form = $this->createForm(new RechercheType());
+
+
+        if ($this->get('request')->getMethod() == 'POST')
+        {
+            $form->bind($this->get('request'));
+        $em = $this->getDoctrine()->getManager();
+        $projets = $em->getRepository('ElevenmxBundle:Projet')->recherche($form['recherche']->getData());
+        }
+
+        return $this->render('ElevenmxBundle:Default:index.html.twig', array(
+            'projets' => $projets,
+        ));
+    }*/
+
+
     /**
      * Lists all projet entities.
      *
@@ -55,7 +82,6 @@ class ProjetController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
             array('status' => 'Projet terminé')//chercher par tableau status terminé  littéralement
         );
@@ -64,7 +90,6 @@ class ProjetController extends Controller
             'projets' => $projets,
         ));
     }
-//projet.status == "Projet terminé" a transfo sans twig pour controller
 
 
     /**
@@ -232,11 +257,5 @@ class ProjetController extends Controller
             ->getForm()
         ;
     }
-
-
-    /**
-     * Finds and displays a projet entity.
-     *
-     */
 
 }

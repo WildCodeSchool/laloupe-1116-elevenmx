@@ -43,7 +43,8 @@ class ProjetType extends AbstractType
                         'Yannick' => true,
                     ),
                     // *this line is important*
-                    'choices_as_values' => true,));
+                    'choices_as_values' => true,))
+                ->add('dateCreationProjet');
     }
     
     /**

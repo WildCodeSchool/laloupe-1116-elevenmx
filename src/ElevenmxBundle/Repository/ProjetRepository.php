@@ -10,4 +10,17 @@ namespace ElevenmxBundle\Repository;
  */
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
+/*
+    public function recherche($chaine)
+    {
+        $qb = $this->createQueryBuilder('u')
+                    ->select('u')
+                    ->where('u.nom like :chaine')
+                    ->orderBy('u.id')
+                    ->setParameter('chaine', $chaine);
+
+                return $qb->getQuery()->getResult();
+
+    }*/
+
 }

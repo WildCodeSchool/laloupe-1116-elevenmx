@@ -37,6 +37,11 @@ class Projet
      */
     private $nomGraphiste;
 
+    /**
+     * @var string
+     */
+    public $dateCreationProjet;
+
 
     /**
      * Get id
@@ -70,6 +75,26 @@ class Projet
     public function getTitreProjet()
     {
         return $this->titreProjet;
+    }
+
+    /**
+     * Set dateCreationProjet
+     *
+     * @return string
+     */
+    public function setDateCreationProjet()
+    {
+        return $this->dateCreationProjet;
+    }
+
+    /**
+     * Get dateCreationProjet
+     *
+     * @return string
+     */
+    public function getDateCreationProjet()
+    {
+        return $this->dateCreationProjet;
     }
 
     /**
@@ -172,6 +197,19 @@ class Projet
      */
     private $status;
 
+    /**
+     * Add dateCreationProjet
+     *
+     * @param \ElevenmxBundle\Entity\Commentaire $dateCreationProjet
+     *
+     * @return Projet
+     */
+    public function addDateCreationProjet(\ElevenmxBundle\Entity\Commentaire $dateCreationProjet)
+    {
+        $this->dateCreationProjet[] = $dateCreationProjet;
+
+        return $this;
+    }
 
     /**
      * Set status

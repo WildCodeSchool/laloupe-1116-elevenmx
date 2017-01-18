@@ -33,6 +33,10 @@ ElevenmxBundle\Entity\Projet:
             type: string
             length: 255
             column: Status
+        dateCreationProjet:
+            type: string
+            length: 255
+            column: date_Creation_Projet
     lifecycleCallbacks: {  }
 
     oneToMany:
