@@ -35,7 +35,7 @@ class ProjetType extends AbstractType
                     ),
                     // *this line is important*
 
-                    'choices_as_values' => true,))
+                    'choices_as_values' => true,));
 //                ->add('status');
 
     }
