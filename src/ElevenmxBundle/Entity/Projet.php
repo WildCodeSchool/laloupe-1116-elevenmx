@@ -255,7 +255,7 @@ class Projet
      *
      * @return Projet
      */
-    public function setUsers(\ElevenmxBundle\Entity\User $users = null)
+    public function setUsers(\ElevenmxBundle\Entity\User $users)
     {
         $this->users = $users;
 
@@ -299,7 +299,7 @@ class Projet
      *
      * @return Projet
      */
-    public function setUser(\ElevenmxBundle\Entity\User $user = null)
+    public function setUser(\ElevenmxBundle\Entity\User $user)
     {
         $this->user = $user;
 

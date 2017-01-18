@@ -31,10 +31,10 @@ ElevenmxBundle\Entity\User:
             type: string
             length: 255
 
-
-
-
     oneToMany:
+        projets:
+            targetEntity: ElevenmxBundle\Entity\Projet
+            mappedBy: user
         users:
             targetEntity: ElevenmxBundle\Entity\User
             mappedBy: id
