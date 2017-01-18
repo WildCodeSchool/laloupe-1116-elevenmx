@@ -20,12 +20,13 @@ class ProjetController extends Controller
      *
      */
     public function indexAction()
+
     {
         $em = $this->getDoctrine()->getManager();
 
         //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-            array('client' => 'ludo')//je sélect les projets dont le code client = user
+            array('client' => 'user')//je sélect les projets dont le code client = user
         );
 
         return $this->render('ElevenmxBundle:projet:index.html.twig', array(

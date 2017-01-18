@@ -6,6 +6,42 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ProjetControllerTest extends WebTestCase
 {
+
+    /**
+     * @return mixed
+     */
+    public static function testlogin()
+    {
+        $fixtures = array(
+            'ElevenmxBundle\DataFixtures\ORM\LoadUserData',
+            'ElevenmxBundle\DataFixtures\ORM\LoadProjetData'
+        );
+        $this->fixtures = $this->loadFixtures($fixtures, null, 'doctrine', true)->getReferenceRepository();
+
+        $this->assertTrue($crawler->filter('form input[name="_username"]')->count() == 1);
+        $this->assertTrue($crawler->filter('form input[name="_password"]')->count() == 1);
+
+        $form = $crawler->selectButton('Se Connecter')->form();
+        $form['_username'] = 'user';
+        $form['_password'] = 'test';
+        $crawler = $user->submit($form);
+
+
+
+        // Il faut suivre la redirection
+        $this->assertEquals(302, $user->getResponse()->getStatusCode());
+        $crawler = $user->followRedirect();
+        $this->assertEquals('Application\Src\ElevenmxBundle\Controller\Projetcontroler::indexAction', $user->getRequest()->attributes->get('_controller'));
+
+        $user = static::createUser(array(),array(
+            'PHP_AUTH_USER' => 'user',
+            'PHP_AUTH_PW' => 'test'
+        ));
+
+
+        $this->assertEquals(true,true);
+    }
+    
     /*
     public function testCompleteScenario()
     {

@@ -21,12 +21,12 @@ class Marque
     }
 
 
-    public function getWebPath1()
+    public function getWebPath()
     {
         return null === $this->image1 ? null : $this->getUploadDir().'/'.$this->image1;
     }
 
-    public function getAbsolutePath1()
+    public function getAbsolutePath()
     {
         return null === $this->image1 ? null : $this->getUploadRootDir().'/'.$this->image1;
     }
@@ -57,7 +57,7 @@ class Marque
 
     public function removeUpload1()
     {
-        if ($file = $this->getAbsolutePath1()) {
+        if ($file = $this->getAbsolutePath()) {
             unlink($file);
         }
     }
