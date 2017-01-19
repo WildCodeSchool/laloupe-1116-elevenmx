@@ -18,7 +18,19 @@ class ProjetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('titreProjet')
-                ->add('user')
+//                ->add('user')
+                ->add('user', EntityType::class, array(
+                        'class' => 'ElevenmxBundle\Entity\User',
+                        'property' => 'username',
+                        'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('m')
+                                ->orwhere('m.categorie like :categorie')
+                                ->orderBy('m.username', 'ASC')
+                                ->setParameter('categorie', 'client') ;
+                        },
+                        'choice_label' => 'username',
+                        'choices_as_values' => true,
+                    ))
                 ->add('marque')
                 /*->add('marque', EntityType::class, array(
                     'class' => 'ElevenmxBundle\Entity\Marque',
@@ -40,7 +52,7 @@ class ProjetType extends AbstractType
                     // *this line is important*
                     'choices_as_values' => true,
                 ))*/
-                ->add('nomGraphiste', ChoiceType::class, array(
+                /*->add('nomGraphiste', ChoiceType::class, array(
                     'choices'  => array(
                         'Nico' => 'Nico',
                         'Ludo' => 'Ludo',
@@ -49,8 +61,20 @@ class ProjetType extends AbstractType
                     ),
                     // *this line is important*
 
-                    'choices_as_values' => true,));
+                    'choices_as_values' => true,));*/
 //                ->add('status');
+                ->add('nomGraphiste', EntityType::class, array(
+                    'class' => 'ElevenmxBundle\Entity\User',
+                    'property' => 'username',
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('m')
+                            ->orwhere('m.categorie like :categorie')
+                            ->orderBy('m.username', 'ASC')
+                            ->setParameter('categorie', 'graphiste') ;
+                    },
+                    'choice_label' => 'username',
+                    'choices_as_values' => true,
+                ));
 
     }
     
