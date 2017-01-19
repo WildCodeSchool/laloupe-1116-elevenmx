@@ -13,10 +13,6 @@ ElevenmxBundle\Entity\Projet:
             type: string
             length: 255
             column: Titre_Projet
-        produit:
-            type: string
-            length: 255
-            column: Produit
         nomGraphiste:
             type: string
             length: 255
@@ -39,4 +35,8 @@ ElevenmxBundle\Entity\Projet:
 
         marque:
             targetEntity: ElevenmxBundle\Entity\Marque
+            inversedBy: projets
+
+        produit:
+            targetEntity: ElevenmxBundle\Entity\Produit
             inversedBy: projets

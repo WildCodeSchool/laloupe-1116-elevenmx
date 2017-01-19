@@ -30,7 +30,8 @@ class ProjetType extends AbstractType
                     'choice_label' => 'nom',
                     'choices_as_values' => true,
                 ))*/
-                ->add('produit', ChoiceType::class, array(
+                ->add('produit')
+                /*->add('produit', ChoiceType::class, array(
                     'choices'  => array(
                         'Casque' => 'Casque',
                         'Combinaison' => 'Combinaison',
@@ -38,7 +39,7 @@ class ProjetType extends AbstractType
                     ),
                     // *this line is important*
                     'choices_as_values' => true,
-                ))
+                ))*/
                 ->add('nomGraphiste', ChoiceType::class, array(
                     'choices'  => array(
                         'Nico' => 'Nico',
@@ -70,6 +71,5 @@ class ProjetType extends AbstractType
     {
         return 'elevenmxbundle_projet';
     }
-
 
 }

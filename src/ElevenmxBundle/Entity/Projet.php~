@@ -248,7 +248,7 @@ class Projet
     /**
      * @var \ElevenmxBundle\Entity\Marque
      */
-    private $marque1;
+    private $marque;
 
 
     /**
@@ -258,9 +258,9 @@ class Projet
      *
      * @return Projet
      */
-    public function setMarque1(\ElevenmxBundle\Entity\Marque $marque1 = null)
+    public function setMarque(\ElevenmxBundle\Entity\Marque $marque = null)
     {
-        $this->marque1 = $marque1;
+        $this->marque = $marque;
 
         return $this;
     }
@@ -270,8 +270,8 @@ class Projet
      *
      * @return \ElevenmxBundle\Entity\Marque
      */
-    public function getMarque1()
+    public function getMarque()
     {
-        return $this->marque1;
+        return $this->marque;
     }
 }

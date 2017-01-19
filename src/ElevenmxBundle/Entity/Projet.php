@@ -21,7 +21,6 @@ class Projet
     /**
      * @var string
      */
-//    private $marque1;
 
     /**
      * @var string
@@ -90,29 +89,6 @@ class Projet
         return $this->titreProjet;
     }
 
-     /**
-     * Set marque1
-     *
-     * @param string $marque1
-     *
-     * @return Projet
-     */
-/*    public function setMarque1($marque1)
-    {
-        $this->marque1 = $marque1;
-
-        return $this;
-    }*/
-
-    /**
-     * Get marque1
-     *
-     * @return string
-     */
-/*    public function getMarque1()
-    {
-        return $this->marque1;
-    }*/
 
     /**
      * Set produit
