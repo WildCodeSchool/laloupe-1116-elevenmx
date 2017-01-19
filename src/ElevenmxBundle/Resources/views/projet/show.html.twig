@@ -1,29 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block javascripts %}
-    {# Le fait de mettre un ebalise scrit pour le time out, les modals de bootstrap ne fonctionnait plus
-    Cela inible les balises script placés dans le fichier
-    Il faut ajouter le twig parent pour qui utilise les balises scrip du fichier base #}
-    {{ parent() }}
-    <script type="text/javascript">
-        window.setTimeout("window.location.reload();",600000);
-    </script>
-
-{% endblock %}
 
 {% block body %}
 
     <div class="container-fluid">
         <h4> liste des commentaires coté client </h4>
         <div  class="row">
-            <div style="margin-top: 20px" class="col-sm-offset-2 col-sm-4">
+            <div class="col-sm-offset-2 col-sm-4 projetetnomclient">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
                 <h4>NOM DU CLIENT : {{ projet.client }}</h4>
 
             </div>
-            <div style="margin-top: 20px" class="col-sm-4">
+            <div class="col-sm-4 produitnomgraphiste">
 
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
 
@@ -33,7 +23,7 @@
         </div>
 
         <div class="row">
-            <div style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-5">
+            <div class="col-sm-offset-2 col-sm-5 statutetdate">
                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
             </div>
             <div class="col-sm-2">
@@ -49,7 +39,7 @@
 
         {{ form_start(form) }}
 
-        <div style="height: 530px; margin-top: 20px; " class="row">
+        <div class="row containergrosplan">
             {# boucle qui parcours tous les commentaires afin de déterminer le denier commentaire qui a été saisie
                     id correspondant à la clé est sauvegardé dans une varible nommé maxId                     #}
             {% set maxId = 0 %}
@@ -57,24 +47,24 @@
                 {% set maxId = max(comment.id, maxId) %}
             {% endfor %}
 
-            <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
-                <div style="border: solid; border-width: 1px;height: 150px" >
-                    <img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
+            <div class="col-sm-offset-1 col-sm-2">
+                <div class="cadremarque" >
+                    <img class="imgshow" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
                 </div>
-                <div style="border: solid; border-width: 1px;height: 50px; text-align:center; background-color: lightgrey;margin-top: 5px;color:white" >
+                <div class="nomprojetnomgraphiste" >
                     <h4> {{ projet.titreProjet }}  </h4>
                 </div>
 
-                <div style="border: solid; border-width: 1px;height: 50px; text-align:center;background-color: lightgrey;margin-top: 5px;color:white" >
+                <div class="nomprojetnomgraphiste" >
                     <h4> {{ projet.nomGraphiste }}</h4>
                 </div>
-                <div style="border: solid; color:red;border-width: 1px;height: 150px; margin-top: 5px" >
+                <div class="cadrerougecommentaire" >
 
                     {# On on parcours tous les commentaires afin d'afficher le dernier commentaire correspondant à la variable maxId #}
                     {% if comment != null %}
                         {% for comment in comment %}
                             {% if comment.id == maxId %}
-                                <p style="color: black">{{ comment.champsText }}</p>
+                                <p class ="textcadrerougecommentaire" >{{ comment.champsText }}</p>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
@@ -82,10 +72,7 @@
 
                 {#****************bouton envoyer BAT qui ouvre la modal dans laquelle on valide l'envoi final du BAT ************************#}
                 <div id="btnBATmodal">
-                        <!-- <button style="color: black" type="button"  data-toggle="modal" data-target="#myModalBAT">
-                            Je valide le BAT
-                        </button> -->
-                        <div style="text-align: center;margin-top: 15px">
+                        <div class="boutonjevalideBAT">
                             <a data-toggle="modal" data-target="#myModalBAT">Je valide le BAT</a>
                         </div>
                 </div>
@@ -95,7 +82,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" style="text-align: center" id="myModalLabel">Votre attention est recquise</h4>
+                                <h4 class="modal-title myModalLabel">Votre attention est recquise</h4>
                             </div>
                             <div class="modal-body" style="background-color: red">
                                 <p>Nous ne pouvons garantir le rendu des couleurs sur un BAT par internet<br>
@@ -121,26 +108,25 @@
 
                 {#***************** bouton  je NE valide PAS le BAT qui ouvre le champs comm de Ludo***********#}
                 <div id="btnBATmodalComm">
-
                     <!-- <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBATComm">
                             Je ne valide pas le BAT
                         </button>-->
-                    <div style="text-align: center;margin-top: 15px">
+                    <div class="boutonjenevalidepasBAT">
                         <a data-toggle="modal" data-target="#myModalBATComm">Je NE valide PAS le BAT</a>
                     </div>
                 </div>
 
             </div>
-            <div style="height: 530px" class="col-sm-8">
+            <div class="col-sm-8 imggrosplan">
                 {# On on parcours tous les commentaires afin d'afficher la dernière image correspondant à la variable maxId #}
                 {% if comment != null %}
                     {% for comment in comment %}
                         {% if comment.id == maxId %}
                             {% if comment.image != NULL %}
-                                <img style="height: 100%;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                <img class="imggrosplan" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                                 <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
                             {% else %}
-                                <P> Pas d'image envoyée</P>
+                                <p> Pas d'image envoyée</p>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
@@ -155,8 +141,8 @@
 
                     {# cette div c'est le text area commentaire#}
                     <div>
-                        <p style="text-align: center">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
-                        <div style="padding-left: 20%">
+                        <p class="modal_nevalidepas">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
+                        <div class="champscommentaire">
                         {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
                         {{ form_errors(form.champsText) }}
                         </div>
@@ -164,13 +150,13 @@
                     {# fin div text area commentaire#}
 
 
-                    <div class="row" style="padding-left: 42%">
+                    <div class="row btnparcourir">
                         {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
                         {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
                     </div>
                     {#ici confirmation de l'envoi du BAT dans la modal#}
                     <div>
-                        <input style="margin-left: 35%" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                        <input id="btnsendnewBAT" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
                     </div>
                     {#ici fin confirmation de l'envoi du BAT dans la modal#}
                 </div>
@@ -180,7 +166,7 @@
                 {#***************** fin bouton  je NE valide PAS le BAT qui ouvre le champs comm de Ludo***********#}
 
 
-    <div class="container-fluid" style="margin-top: 50px">
+    <div class="container-fluid container-commentaires" >
         <div class="row" >
 
             <div  class="col-sm-offset-1 col-sm-10">
@@ -201,12 +187,12 @@
                                     {# Affichage des informations ne correspondant pas à l'Id sauvegarder#}
                                     {% if comment.id != maxId %}
                                         {% if comment.affectation == codeClient %}
-                                            <div class="row" style="border:solid;border-width: 1px; margin-top: 10px">
+                                            <div class="row eachcommentclient">
 
                                                 <div class=" col-sm-6">
                                                     {% if comment.image != NULL %}
                                                         <!--<p> {{ comment.image }} </p>-->
-                                                        <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                        <img class="eachimgmin" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                                                         <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
                                                     {% endif %}
 
@@ -216,22 +202,22 @@
                                                 <div class="col-sm-6">
                                                         <h4>Date : {{ 'now'|date('m/d/Y') }}</h4>
 
-                                                    <p style="border: solid;border-width: 1px">{{ comment.champsText }}</p>
+                                                    <p class="champstxtcommclient">{{ comment.champsText }}</p>
                                                 </div>
                                             </div>
                                         {% else %}
-                                            <div class="row" style="border: solid;border-width: 1px; margin-top: 10px">
+                                            <div class="row champstxtcommgraph">
 
                                                 <div class="col-sm-6">
                                                         <h4>Date : </h4>
 
-                                                    <p style="border: solid;border-width: 1px">{{ comment.champsText }}</p>
+                                                    <p class="eachcommentgraph">{{ comment.champsText }}</p>
                                                 </div>
 
                                                 <div class="col-sm-6">
                                                     {% if comment.image != NULL %}
                                                         <!--<p> {{ comment.image }} </p>-->
-                                                        <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                        <img class="eachimgmin" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                                                         <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
                                                     {% endif %}
                                                 </div>
@@ -262,5 +248,14 @@
         </li>
     </ul>
 {% endblock %}
+ {% block javascripts %}
+     {# Le fait de mettre une balise script pour le time out, les modals de bootstrap ne fonctionnait plus
+     Cela inible les balises script placés dans le fichier
+     Il faut ajouter le twig parent pour qui utilise les balises scrip du fichier base #}
+     {{ parent() }}
+     <script type="text/javascript">
+         window.setTimeout("window.location.reload();",600000);
+     </script>
 
+ {% endblock %}
 

@@ -15,30 +15,6 @@ use ElevenmxBundle\Form\RechercheType;
  */
 class ProjetController extends Controller
 {
-    /*public function rechercheAction()
-    {
-        $form = $this->createForm(new RechercheType());
-        return $this->render('ElevenmxBundle:Default/Recherche/modulesUsed:recherche.html.twig', array(
-            'form' => $form,
-        ));
-    }
-
-    public function rechercheTraitementAction()
-    {
-        $form = $this->createForm(new RechercheType());
-
-
-        if ($this->get('request')->getMethod() == 'POST')
-        {
-            $form->bind($this->get('request'));
-        $em = $this->getDoctrine()->getManager();
-        $projets = $em->getRepository('ElevenmxBundle:Projet')->recherche($form['recherche']->getData());
-        }
-
-        return $this->render('ElevenmxBundle:Default:index.html.twig', array(
-            'projets' => $projets,
-        ));
-    }*/
 
 
     /**

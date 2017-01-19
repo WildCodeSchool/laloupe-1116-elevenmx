@@ -17,10 +17,10 @@ class ProjetType extends AbstractType
         $builder->add('titreProjet')
                 ->add('client', ChoiceType::class, array(
                     'choices'  => array(
-                        'Who' => true,
-                        'Whoo' => true,
-                        'Whooo' => true,
-                        'Whoooo' => true,
+                        'Client' => true,
+                        'Cliente' => true,
+                        'Cliient' => true,
+                        'Cliiente' => true,
                     ),
                     // *this line is important*
                     'choices_as_values' => true,
