@@ -79,6 +79,7 @@ class ProjetController extends Controller
         $projet = new Projet();
         $form = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
         $projet->setStatus('Attente d\'information');
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -13,10 +13,6 @@ ElevenmxBundle\Entity\Projet:
             type: string
             length: 255
             column: Titre_Projet
-        marque:
-            type: string
-            length: 255
-            column: Marque
         produit:
             type: string
             length: 255
@@ -39,4 +35,8 @@ ElevenmxBundle\Entity\Projet:
     manyToOne:
         user:
             targetEntity: ElevenmxBundle\Entity\User
+            inversedBy: projets
+
+        marque:
+            targetEntity: ElevenmxBundle\Entity\Marque
             inversedBy: projets

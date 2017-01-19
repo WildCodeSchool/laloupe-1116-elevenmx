@@ -7,6 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class ProjetType extends AbstractType
 {
     /**
@@ -17,6 +20,16 @@ class ProjetType extends AbstractType
         $builder->add('titreProjet')
                 ->add('user')
                 ->add('marque')
+                /*->add('marque', EntityType::class, array(
+                    'class' => 'ElevenmxBundle\Entity\Marque',
+                    'property' => 'nom_marque',
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('m')
+                            ->orderBy('m.nom', 'ASC');
+                    },
+                    'choice_label' => 'nom',
+                    'choices_as_values' => true,
+                ))*/
                 ->add('produit', ChoiceType::class, array(
                     'choices'  => array(
                         'Casque' => 'Casque',

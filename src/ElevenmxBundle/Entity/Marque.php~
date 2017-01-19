@@ -165,4 +165,91 @@ class Marque
     {
         return $this->image;
     }
+
+
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $projets;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->projets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add projet
+     *
+     * @param \ElevenmxBundle\Entity\Projet $projet
+     *
+     * @return Marque
+     */
+    public function addProjet(\ElevenmxBundle\Entity\Projet $projet)
+    {
+        $this->projets[] = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Remove projet
+     *
+     * @param \ElevenmxBundle\Entity\Projet $projet
+     */
+    public function removeProjet(\ElevenmxBundle\Entity\Projet $projet)
+    {
+        $this->projets->removeElement($projet);
+    }
+
+    /**
+     * Get projets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjets()
+    {
+        return $this->projets;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $projet;
+
+
+    /**
+     * Get projet
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjet()
+    {
+        return $this->projet;
+    }
+
+
+
+    /**
+     * Set projets
+     *
+     * @param string $projets
+     *
+     * @return Marque
+     */
+    public function setProjets($projets)
+    {
+        $this->projets = $projets;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
 }
