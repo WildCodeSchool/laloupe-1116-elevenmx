@@ -131,12 +131,11 @@
 .projet_bloc1_h4_bis_aff
 {
     color: black;
-    margin-top: 50px;
 }
 #projet_statut_red
 {
     background-color:red;
-    border: solid black;
+    border: solid black 1px;
     margin-top:20px
 }
 #projet_statut_green

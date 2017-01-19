@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Variable;
 use Symfony\Component\HttpFoundation\Request;
 
-use ElevenmxBundle\Entity\User;
 use ElevenmxBundle\Form\RechercheType;
 
 /**

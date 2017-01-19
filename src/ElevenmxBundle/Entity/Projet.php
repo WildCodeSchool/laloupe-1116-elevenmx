@@ -33,10 +33,6 @@ class Projet
      */
     private $nomGraphiste;
 
-    /**
-     * @var string
-     */
-    private $status;
 
     /**
 
@@ -117,19 +113,7 @@ class Projet
         return $this->dateCreationProjet;
     }
 
-    /**
-     * Set client
-     *
-     * @param string $client
-     *
-     * @return Projet
-     */
-    public function setClient($client)
-    {
-        $this->client = $client;
 
-        return $this;
-    }
 
     /**
      * Set produit

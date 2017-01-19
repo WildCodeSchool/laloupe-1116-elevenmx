@@ -5,11 +5,11 @@
     <div class="container-fluid">
         <h4> liste des commentaires coté graphiste </h4>
         <div  class="row">
-            <div class="col-sm-offset-2 col-sm-4 projetetnomclient">
+            <div class="col-sm-offset-3 col-sm-4 projetetnomclient">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
-                <h4>NOM DU CLIENT : {{ projet.client }}</h4>
+                <h4>NOM DU CLIENT : {{ projet.user }}</h4>
 
             </div>
             <div class="col-sm-4 produitnomgraphiste">
@@ -23,11 +23,47 @@
 
         <div class="row">
 
-            <div id="projet_statut_red"  class="col-sm-offset-2 col-sm-4 statutetdate">
+            <div class="col-sm-offset-3 col-sm-5 statutetdate">
 
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET :
+                    <div class="row" >
+                        {% if projet.status == "Attente d'information" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
 
-                <select name="typePaiment">
+                        {% elseif projet.status == "Maquette a faire" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% elseif projet.status == "Maquette en attente de validation" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% elseif projet.status == "Maquette a modifier" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% elseif projet.status == "Maquette validée" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_blanc">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% elseif projet.status == "Projet terminé"  %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_blanc">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% else %}
+                            <div class="col-xs-offset-2 col-xs-7" >
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Statut inconnu</h4>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                <select name="typePaiment" class="col-xs-offset-4">
                     <option selected="selected">{{ projet.status }}</option>
                     <option value="Maquette a faire">Maquette a faire</option>
                     <option value="Maquette en attente de validation">Maquette en attente de validation</option>
@@ -36,7 +72,6 @@
                     <option value="Projet terminé">Projet terminé</option>
                     <option value="Projet terminé">Projet terminé</option>
                 </select>
-                </h4>
             </div>
             <div class="col-sm-2">
 
