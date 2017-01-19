@@ -7,6 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class ProjetType extends AbstractType
 {
     /**
@@ -15,36 +18,30 @@ class ProjetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('titreProjet')
-                ->add('client', ChoiceType::class, array(
-                    'choices'  => array(
-                        'Client' => true,
-                        'Cliente' => true,
-                        'Cliient' => true,
-                        'Cliiente' => true,
-                    ),
-                    // *this line is important*
-                    'choices_as_values' => true,
-                ))
+                ->add('user')
                 ->add('marque')
+
                 ->add('produit', ChoiceType::class, array(
                     'choices'  => array(
-                        'Casque' => true,
-                        'Combinaison' => true,
-                        'Moto' => true,
+                        'Casque' => 'Casque',
+                        'Combinaison' => 'Combinaison',
+                        'Moto' => 'Moto',
                     ),
                     // *this line is important*
                     'choices_as_values' => true,
                 ))
                 ->add('nomGraphiste', ChoiceType::class, array(
                     'choices'  => array(
-                        'Nico' => true,
-                        'Ludo' => true,
-                        'Max' => true,
-                        'Yannick' => true,
+                        'Nico' => 'Nico',
+                        'Ludo' => 'Ludo',
+                        'Max' => 'Max',
+                        'Yannick' => 'Yannick',
                     ),
                     // *this line is important*
                     'choices_as_values' => true,))
                 ->add('dateCreationProjet');
+
+
     }
     
     /**

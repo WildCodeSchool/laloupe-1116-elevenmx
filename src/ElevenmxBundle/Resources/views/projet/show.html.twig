@@ -2,15 +2,16 @@
 
 
 {% block body %}
-
+    {#{% set varludo = 99 %}#}
     <div class="container-fluid">
         <h4> liste des commentaires coté client </h4>
+        <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
         <div  class="row">
             <div class="col-sm-offset-2 col-sm-4 projetetnomclient">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
-                <h4>NOM DU CLIENT : {{ projet.client }}</h4>
+                <h4>NOM DU CLIENT : {{ projet.user }}</h4>
 
             </div>
             <div class="col-sm-4 produitnomgraphiste">
@@ -18,11 +19,14 @@
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
 
                 <h4>NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
+
             </div>
 
         </div>
 
         <div class="row">
+
+            {{ form_start(form) }}
             <div class="col-sm-offset-2 col-sm-5 statutetdate">
                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
             </div>
@@ -50,6 +54,7 @@
             <div class="col-sm-offset-1 col-sm-2">
                 <div class="cadremarque" >
                     <img class="imgshow" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
+
                 </div>
                 <div class="nomprojetnomgraphiste" >
                     <h4> {{ projet.titreProjet }}  </h4>
@@ -116,6 +121,7 @@
                     </div>
                 </div>
 
+
             </div>
             <div class="col-sm-8 imggrosplan">
                 {# On on parcours tous les commentaires afin d'afficher la dernière image correspondant à la variable maxId #}
@@ -135,9 +141,9 @@
         </div>
     </div>
 
-        <div class="modal fade" id="myModalBATComm" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
+    <div class="modal fade" id="myModalBATComm" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
 
                     {# cette div c'est le text area commentaire#}
                     <div>
@@ -147,8 +153,7 @@
                         {{ form_errors(form.champsText) }}
                         </div>
                     </div>
-                    {# fin div text area commentaire#}
-
+                {# fin div text area commentaire#}
 
                     <div class="row btnparcourir">
                         {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
@@ -159,11 +164,17 @@
                         <input id="btnsendnewBAT" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
                     </div>
                     {#ici fin confirmation de l'envoi du BAT dans la modal#}
+
+                {#ici confirmation de l'envoi du BAT dans la modal#}
+                <div>
+                    <input style="margin-left: 35%" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
                 </div>
+                {#ici fin confirmation de l'envoi du BAT dans la modal#}
             </div>
         </div>
+    </div>
 
-                {#***************** fin bouton  je NE valide PAS le BAT qui ouvre le champs comm de Ludo***********#}
+            {#***************** fin bouton  je ne valide pas le BAT ouvre  le champs comm de Ludo***********#}
 
 
     <div class="container-fluid container-commentaires" >
@@ -236,17 +247,17 @@
 
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
-        </li>
-        <li>
-            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
-        </li>
-        <li>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('projet_index') }}">Retour a la liste des projets</a>#}
+        {#</li>#}
+        {#<li>#}
+            {#<a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>#}
+        {#</li>#}
+        {#<li>#}
 
-        </li>
-    </ul>
+        {#</li>#}
+    {#</ul>#}
 {% endblock %}
  {% block javascripts %}
      {# Le fait de mettre une balise script pour le time out, les modals de bootstrap ne fonctionnait plus

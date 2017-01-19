@@ -4,12 +4,8 @@ namespace ElevenmxBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class GraphisteControllerTest extends WebTestCase
+class MarqueControllerTest extends WebTestCase
 {
-
-
-    
-
     /*
     public function testCompleteScenario()
     {
@@ -17,13 +13,13 @@ class GraphisteControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/graphiste/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /graphiste/");
+        $crawler = $client->request('GET', '/marque/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /marque/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'elevenmxbundle_graphiste[field_name]'  => 'Test',
+            'elevenmxbundle_marque[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -37,7 +33,7 @@ class GraphisteControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'elevenmxbundle_graphiste[field_name]'  => 'Foo',
+            'elevenmxbundle_marque[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

@@ -20,9 +20,9 @@ class DefaultController extends Controller
 //            echo ('Pas connecté !');
             return $this->redirectToRoute("fos_user_security_login");
         } elseif ($userActif->hasRole('ROLE_SUPER_ADMIN')) {
-            echo('Soupppppppppppeeeeeeeeeeeeeeeeeeer Admin !');
+            return $this->redirectToRoute("graphiste_index");
         } elseif ($userActif->hasRole('ROLE_ADMIN')) {
-            echo('team Admin...');
+            return $this->redirectToRoute("graphiste_index");
         } elseif ($userActif->hasRole('ROLE_GRAPH')) {
             return $this->redirectToRoute("graphiste_index");
 //            http_redirect("bundle/graphiste/index.htlm.twig");
@@ -53,7 +53,6 @@ class DefaultController extends Controller
         $user->setCategorie($categorie);
         $form->handleRequest($request);
 
-
         $user->setEnabled(1);
 
         $categorie = $form->get('categorie')->getData();
@@ -73,9 +72,10 @@ class DefaultController extends Controller
             $em->flush();
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('hello mail')
+                ->setSubject('Inscription à Eleven MX')
                 ->setFrom('javadescavernes38@gmail.com')
                 ->setTo($user->getEmail())
+                ->setContentType('text/html')
                 ->setBody(
                     $this->renderView(
                         'Emails/registration.html.twig',

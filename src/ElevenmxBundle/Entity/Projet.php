@@ -7,8 +7,9 @@ namespace ElevenmxBundle\Entity;
  */
 class Projet
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -20,12 +21,7 @@ class Projet
     /**
      * @var string
      */
-    private $client;
-
-    /**
-     * @var string
-     */
-    private $marque;
+//    private $marque1;
 
     /**
      * @var string
@@ -40,13 +36,36 @@ class Projet
     /**
      * @var string
      */
+    private $status;
+
+    /**
+
+     * @var string
+     */
     public $dateCreationProjet;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $commentaires;
+
+    /**
+     * @var \ElevenmxBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -76,6 +95,7 @@ class Projet
     {
         return $this->titreProjet;
     }
+
 
     /**
      * Set dateCreationProjet
@@ -109,40 +129,6 @@ class Projet
         $this->client = $client;
 
         return $this;
-    }
-
-    /**
-     * Get client
-     *
-     * @return string
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-    /**
-     * Set marque
-     *
-     * @param string $marque
-     *
-     * @return Projet
-     */
-    public function setMarque($marque)
-    {
-        $this->marque = $marque;
-
-        return $this;
-    }
-
-    /**
-     * Get marque
-     *
-     * @return string
-     */
-    public function getMarque()
-    {
-        return $this->marque;
     }
 
     /**
@@ -234,18 +220,6 @@ class Projet
     {
         return $this->status;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $commentaire;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->commentaire = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add commentaire
@@ -256,7 +230,7 @@ class Projet
      */
     public function addCommentaire(\ElevenmxBundle\Entity\Commentaire $commentaire)
     {
-        $this->commentaire[] = $commentaire;
+        $this->commentaires[] = $commentaire;
 
         return $this;
     }
@@ -268,57 +242,8 @@ class Projet
      */
     public function removeCommentaire(\ElevenmxBundle\Entity\Commentaire $commentaire)
     {
-        $this->commentaire->removeElement($commentaire);
+        $this->commentaires->removeElement($commentaire);
     }
-
-    /**
-     * Get commentaire
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCommentaire()
-    {
-        return $this->commentaire;
-    }
-    /**
-     * @var \ElevenmxBundle\Entity\User
-     */
-    private $users;
-
-
-    /**
-     * Set users
-     *
-     * @param \ElevenmxBundle\Entity\User $users
-     *
-     * @return Projet
-     */
-    public function setUsers(\ElevenmxBundle\Entity\User $users = null)
-    {
-        $this->users = $users;
-
-        return $this;
-    }
-
-    /**
-     * Get users
-     *
-     * @return \ElevenmxBundle\Entity\User
-     */
-    public function getUsers()
-    {
-        return $this->users;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $commentaires;
-
-    /**
-     * @var \ElevenmxBundle\Entity\User
-     */
-    private $user;
-
 
     /**
      * Get commentaires
@@ -352,5 +277,36 @@ class Projet
     public function getUser()
     {
         return $this->user;
+    }
+
+
+    /**
+     * @var \ElevenmxBundle\Entity\Marque
+     */
+    private $marque;
+
+
+    /**
+     * Set marque
+     *
+     * @param \ElevenmxBundle\Entity\Marque $marque
+     *
+     * @return Projet
+     */
+    public function setMarque(\ElevenmxBundle\Entity\Marque $marque = null)
+    {
+        $this->marque = $marque;
+
+        return $this;
+    }
+
+    /**
+     * Get marque
+     *
+     * @return \ElevenmxBundle\Entity\Marque
+     */
+    public function getMarque()
+    {
+        return $this->marque;
     }
 }

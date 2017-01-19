@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div style="margin-top: 20px" class="container">
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-4">
+                <h1>Création du produit</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="margin-top: 20px" class="row">
+            <div class="col-sm-offset-4 col-sm-4">
+
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input style="margin-top: 20px" type="submit" value="Création" />
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px"class="container">
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-4">
+                <ul>
+                    <li>
+                        <a href="{{ path('produit_index') }}">Retour à la liste</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -33,6 +33,11 @@ projet_edit:
     defaults: { _controller: "ElevenmxBundle:Projet:edit" }
     methods:  [GET, POST]
 
+projet_editGraph:
+    path:     /{id}/editGraph
+    defaults: { _controller: "ElevenmxBundle:Projet:editGraph" }
+    methods:  [GET, POST]
+
 projet_delete:
     path:     /{id}/delete
     defaults: { _controller: "ElevenmxBundle:Projet:delete" }

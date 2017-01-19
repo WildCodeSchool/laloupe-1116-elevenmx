@@ -1,0 +1,32 @@
+ElevenmxBundle\Entity\Marque:
+    type: entity
+    table: null
+    repositoryClass: ElevenmxBundle\Repository\MarqueRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        image1:
+            type: string
+            length: 255
+            nullable: true
+
+    oneToMany:
+        projets:
+            targetEntity: ElevenmxBundle\Entity\Projet
+            mappedBy: marque
+
+    lifecycleCallbacks:
+          prePersist: [ preUpload1 ]
+          preUpdate: [ preUpload1 ]
+          postPersist: [ upload1  ]
+          postUpdate: [ upload1 ]
+          postRemove: [ removeUpload1 ]
+
+
