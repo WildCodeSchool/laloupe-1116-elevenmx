@@ -18,7 +18,6 @@ class ProjetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('titreProjet')
-//                ->add('user')
                 ->add('user', EntityType::class, array(
                         'class' => 'ElevenmxBundle\Entity\User',
                         'property' => 'username',
@@ -32,37 +31,7 @@ class ProjetType extends AbstractType
                         'choices_as_values' => true,
                     ))
                 ->add('marque')
-                /*->add('marque', EntityType::class, array(
-                    'class' => 'ElevenmxBundle\Entity\Marque',
-                    'property' => 'nom_marque',
-                    'query_builder' => function (EntityRepository $er) {
-                        return $er->createQueryBuilder('m')
-                            ->orderBy('m.nom', 'ASC');
-                    },
-                    'choice_label' => 'nom',
-                    'choices_as_values' => true,
-                ))*/
                 ->add('produit')
-                /*->add('produit', ChoiceType::class, array(
-                    'choices'  => array(
-                        'Casque' => 'Casque',
-                        'Combinaison' => 'Combinaison',
-                        'Moto' => 'Moto',
-                    ),
-                    // *this line is important*
-                    'choices_as_values' => true,
-                ))*/
-                /*->add('nomGraphiste', ChoiceType::class, array(
-                    'choices'  => array(
-                        'Nico' => 'Nico',
-                        'Ludo' => 'Ludo',
-                        'Max' => 'Max',
-                        'Yannick' => 'Yannick',
-                    ),
-                    // *this line is important*
-
-                    'choices_as_values' => true,));*/
-//                ->add('status');
                 ->add('nomGraphiste', EntityType::class, array(
                     'class' => 'ElevenmxBundle\Entity\User',
                     'property' => 'username',
@@ -74,7 +43,9 @@ class ProjetType extends AbstractType
                     },
                     'choice_label' => 'username',
                     'choices_as_values' => true,
-                ));
+                ))
+            ->add('dateCreationProjet')
+        ;
 
     }
     

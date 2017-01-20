@@ -30,3 +30,7 @@ elevenmx_sendMailGraph:
     path:     /showGraph
     defaults: { _controller: ElevenmxBundle:Default:sendMailGraph }
 
+#elevenmx_recherche:
+#    path:     /recherche
+#    defaults: { _controller: ElevenmxBundle:showGraph:rechercheTraitement }
+

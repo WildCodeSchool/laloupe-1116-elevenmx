@@ -10,4 +10,5 @@ namespace ElevenmxBundle\Repository;
  */
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

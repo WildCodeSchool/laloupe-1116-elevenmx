@@ -21,7 +21,6 @@ class Projet
     /**
      * @var string
      */
-//    private $marque1;
 
     /**
      * @var string
@@ -33,10 +32,12 @@ class Projet
      */
     private $nomGraphiste;
 
+
     /**
+
      * @var string
      */
-    private $status;
+    public $dateCreationProjet;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -90,29 +91,27 @@ class Projet
         return $this->titreProjet;
     }
 
-     /**
-     * Set marque1
-     *
-     * @param string $marque1
-     *
-     * @return Projet
-     */
-/*    public function setMarque1($marque1)
-    {
-        $this->marque1 = $marque1;
-
-        return $this;
-    }*/
 
     /**
-     * Get marque1
+     * Set dateCreationProjet
      *
      * @return string
      */
-/*    public function getMarque1()
+    public function setDateCreationProjet()
     {
-        return $this->marque1;
-    }*/
+        return $this->dateCreationProjet;
+    }
+
+    /**
+     * Get dateCreationProjet
+     *
+     * @return string
+     */
+    public function getDateCreationProjet()
+    {
+        return $this->dateCreationProjet;
+    }
+
 
     /**
      * Set produit
@@ -160,6 +159,24 @@ class Projet
     public function getNomGraphiste()
     {
         return $this->nomGraphiste;
+    }
+    /**
+     * @var string
+     */
+    private $status;
+
+    /**
+     * Add dateCreationProjet
+     *
+     * @param \ElevenmxBundle\Entity\Commentaire $dateCreationProjet
+     *
+     * @return Projet
+     */
+    public function addDateCreationProjet(\ElevenmxBundle\Entity\Commentaire $dateCreationProjet)
+    {
+        $this->dateCreationProjet[] = $dateCreationProjet;
+
+        return $this;
     }
 
     /**

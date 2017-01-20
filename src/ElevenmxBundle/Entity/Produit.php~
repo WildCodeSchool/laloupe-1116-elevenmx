@@ -126,4 +126,10 @@ class Produit
     {
         return $this->oneToMany;
     }
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
 }

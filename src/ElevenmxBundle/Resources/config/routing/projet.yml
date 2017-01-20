@@ -42,3 +42,4 @@ projet_delete:
     path:     /{id}/delete
     defaults: { _controller: "ElevenmxBundle:Projet:delete" }
     methods:  DELETE
+

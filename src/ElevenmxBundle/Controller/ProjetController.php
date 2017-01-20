@@ -9,12 +9,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Variable;
 use Symfony\Component\HttpFoundation\Request;
 
+use ElevenmxBundle\Form\RechercheType;
+
 /**
  * Projet controller.
  *
  */
 class ProjetController extends Controller
 {
+
+
     /**
      * Lists all projet entities.
      *
@@ -58,7 +62,6 @@ class ProjetController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
             array('status' => 'Projet terminé')//chercher par tableau status terminé  littéralement
         );
@@ -67,7 +70,6 @@ class ProjetController extends Controller
             'projets' => $projets,
         ));
     }
-//projet.status == "Projet terminé" a transfo sans twig pour controller
 
 
     /**
@@ -310,11 +312,5 @@ die();
             ->getForm()
         ;
     }
-
-
-    /**
-     * Finds and displays a projet entity.
-     *
-     */
 
 }

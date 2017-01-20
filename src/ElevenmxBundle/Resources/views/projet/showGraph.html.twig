@@ -1,28 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block javascripts %}
-    {# Le fait de mettre un ebalise scrit pour le time out, les modals de bootstrap ne fonctionnait plus
-    Cela inible les balises script placés dans le fichier
-    Il faut ajouter le twig parent pour qui utilise les balises scrip du fichier base #}
-    {{ parent() }}
-    <script type="text/javascript">
-        window.setTimeout("window.location.reload();",60000);
-    </script>
-
-{% endblock %}
 
 {% block body %}
     <div class="container-fluid">
         <h4> liste des commentaires coté graphiste </h4>
         <div  class="row">
-            <div style="margin-top: 20px" class="col-sm-offset-2 col-sm-4">
+            <div class="col-sm-offset-3 col-sm-4 projetetnomclient">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
-                <h4>NOM DU CLIENT : {{ projet.client }}</h4>
+                <h4>NOM DU CLIENT : {{ projet.user }}</h4>
 
             </div>
-            <div style="margin-top: 20px" class="col-sm-4">
+            <div class="col-sm-4 produitnomgraphiste">
 
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
 
@@ -32,11 +22,48 @@
         </div>
 
         <div class="row">
-            <div id="projet_statut_red" style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-4">
 
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET :
+            <div class="col-sm-offset-3 col-sm-5 statutetdate">
 
-                <select name="typePaiment">
+                    <div class="row" >
+                        {% if projet.status == "Attente d'information" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% elseif projet.status == "Maquette a faire" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% elseif projet.status == "Maquette en attente de validation" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% elseif projet.status == "Maquette a modifier" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% elseif projet.status == "Maquette validée" %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_blanc">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% elseif projet.status == "Projet terminé"  %}
+                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_blanc">
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                            </div>
+
+                        {% else %}
+                            <div class="col-xs-offset-2 col-xs-7" >
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Statut inconnu</h4>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                <select name="typePaiment" class="col-xs-offset-4">
                     <option selected="selected">{{ projet.status }}</option>
                     <option value="Maquette a faire">Maquette a faire</option>
                     <option value="Maquette en attente de validation">Maquette en attente de validation</option>
@@ -45,11 +72,10 @@
                     <option value="Projet terminé">Projet terminé</option>
                     <option value="Projet terminé">Projet terminé</option>
                 </select>
-                </h4>
             </div>
             <div class="col-sm-2">
 
-                <h4 class="projet_bloc_h4_aff"> Date : </h4>
+                <h4 class="projet_bloc_h4_aff"> Date de création : {{ projet.dateCreationProjet }} </h4>
             </div>
 
         </div>
@@ -60,7 +86,7 @@
 
         {{ form_start(form) }}
 
-        <div style="height: 530px; margin-top: 20px; " class="row">
+        <div class="row containergrosplan">
             {# boucle qui parcours tous les commentaires afin de déterminer le denier commentaire qui a été saisie
                     id correspondant à la clé est sauvegardé dans une varible nommé maxId                     #}
             {% set maxId = 0 %}
@@ -68,35 +94,35 @@
                 {% set maxId = max(comment.id, maxId) %}
             {% endfor %}
 
-            <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
-                <div style="border: solid; border-width: 1px;height: 150px" >
-                    <img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
+            <div class="col-sm-offset-1 col-sm-2">
+                <div class="cadremarque">
+                    <img class="imgshow" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
                 </div>
-                <div style="border: solid; border-width: 1px;height: 50px; text-align:center; background-color: lightgrey;margin-top: 5px;color:white" >
+                <div class="nomprojetnomgraphiste" >
                     <h4> {{ projet.titreProjet }}  </h4>
                 </div>
 
-                <div style="border: solid; border-width: 1px;height: 50px; text-align:center;background-color: lightgrey;margin-top: 5px;color:white" >
+                <div class="nomprojetnomgraphiste">
                     <h4> {{ projet.nomGraphiste }}</h4>
                 </div>
-                <div style="border: solid; color:red;border-width: 1px;height: 210px; margin-top: 5px" >
+                <div class="cadrerougecommentaireGraph" >
 
                     {# On on parcours tous les commentaires afin d'afficher le dernier commentaire correspondant à la variable maxId #}
                     {% if comment != null %}
                         {% for comment in comment %}
                             {% if comment.id == maxId %}
-                                <p style="color: black">{{ comment.champsText }}</p>
+                                <p  class ="textcadrerougecommentaire">{{ comment.champsText }}</p>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
                 </div>
 
-                <div id="btnBATmodalComm" style="border: solid; color:blue; border-width: 1px;height: 50px;margin-top: 5px" >
+                <div id="btnBATmodalComm">
 
 
 
                     {#***************** Envoyer le BAT au client ouverture modale ***********#}
-                    <div style="text-align: center;margin-top: 15px">
+                    <div class="boutonjevalideBAT">
                         <a data-toggle="modal" data-target="#myModalBATCommGraph">Envoyer le BAT</a>
                     </div>
                 </div>
@@ -111,8 +137,8 @@
 
                                 {# cette div c'est le text area commentaire#}
                                 <div>
-                                    <p style="text-align: center">Laisser un commentaire au client.</p>
-                                    <div style="padding-left: 20%">
+                                    <p class=" myModalLabel">Laisser un commentaire au client.</p>
+                                    <div class="champscommentaire">
                                         {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
                                         {{ form_errors(form.champsText) }}
                                     </div>
@@ -120,13 +146,13 @@
                                 {# fin div text area commentaire#}
 
 
-                                <div class="row" style="padding-left: 42%">
+                                <div class="row btnparcourir">
                                     {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
                                     {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
                                 </div>
                                 {#ici confirmation de l'envoi du BAT dans la modal#}
                                 <div>
-                                    <input style="margin-left: 40%" type="submit" value="Envoyer le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                                    <input id="btnsendBATgraph" type="submit" value="Envoyer le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
                                 </div>
                                 {#ici fin confirmation de l'envoi du BAT dans la modal#}
                             </div>
@@ -138,13 +164,13 @@
 
 
             </div>
-            <div style="height: 530px" class="col-sm-8">
+            <div class="col-sm-8 containergrosplanGraph">
                 {# On on parcours tous les commentaires afin d'afficher la dernière image correspondant à la variable maxId #}
                 {% if comment != null %}
                     {% for comment in comment %}
                         {% if comment.id == maxId %}
                             {% if comment.image != NULL %}
-                                <img style="height: 100%;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                <img class="imggrosplan" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                                 <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
                             {% else %}
                                 <p> Pas d'image envoyée</p>
@@ -162,7 +188,7 @@
 
     {{ form_start(form) }}
 
-    <div class="container-fluid" style="margin-top: 50px">
+    <div class="container-fluid container-commentaires">
         <div class="row" >
 
             <div  class="col-sm-offset-1 col-sm-10">
@@ -182,12 +208,12 @@
                                 {# Affichage des informations ne correspondant pas à l'Id sauvegarder#}
                                 {% if comment.id != maxId %}
                                     {% if comment.affectation == codeClient %}
-                                        <div class="row" style="border:solid;border-width: 1px; margin-top: 10px">
+                                        <div class="row champstxtcommgraph">
 
                                             <div class=" col-sm-6">
                                                 {% if comment.image != NULL %}
                                                     <!--<p> {{ comment.image }} </p>-->
-                                                    <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                    <img class="eachimgmin" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                                                     <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
                                                 {% endif %}
 
@@ -196,22 +222,22 @@
                                             <div class="col-sm-6">
                                                 <h4>Date : </h4>
                                                 <p>Status </p>
-                                                <p style="border: solid;border-width: 1px">{{ comment.champsText }}</p>
+                                                <p class="eachcommentgraph" >{{ comment.champsText }}</p>
                                             </div>
                                         </div>
                                     {% else %}
-                                        <div class="row" style="border: solid;border-width: 1px; margin-top: 10px">
+                                        <div class="row champstxtcommgraph">
 
                                             <div class="col-sm-6">
                                                 <h4>Date : </h4>
                                                 <p>Status </p>
-                                                <p style="border: solid;border-width: 1px">{{ comment.champsText }}</p>
+                                                <p class="eachcommentgraph">{{ comment.champsText }}</p>
                                             </div>
 
                                             <div class="col-sm-6">
                                                 {% if comment.image != NULL %}
                                                     <!--<p> {{ comment.image }} </p>-->
-                                                    <img style="height: 200px;width: auto" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                    <img class="eachimgmin" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
                                                     <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
                                                 {% endif %}
                                             </div>
@@ -241,5 +267,16 @@
 
         </li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {# Le fait de mettre un ebalise scrit pour le time out, les modals de bootstrap ne fonctionnait plus
+    Cela inible les balises script placés dans le fichier
+    Il faut ajouter le twig parent pour qui utilise les balises scrip du fichier base #}
+    {{ parent() }}
+    <script type="text/javascript">
+        window.setTimeout("window.location.reload();",60000);
+    </script>
+
 {% endblock %}
 
