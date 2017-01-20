@@ -204,7 +204,7 @@ footer {
     color: #fff;
     margin-top: 21px;
     width: 100%;
-    bottom: 0;
+    position: absolute;
 }
 
 .txt_footer {

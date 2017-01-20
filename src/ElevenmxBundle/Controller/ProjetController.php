@@ -80,6 +80,7 @@ class ProjetController extends Controller
     {
         $projet = new Projet();
         $form = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
+
         $projet->setStatus('Attente d\'information');
 
         $form->handleRequest($request);
@@ -134,7 +135,7 @@ class ProjetController extends Controller
                 }
             }
             //$vartest = $projet->getStatus();
-            if ($projet->getStatus() == 'Attente d information' && $vartest == 0){
+            if ($projet->getStatus() == 'Attente d\'information' && $var_id == 0){
                 $projet->setStatus('Maquette a faire');
                 $em->persist($projet);
                 //$em->flush();
