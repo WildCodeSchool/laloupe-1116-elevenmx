@@ -12,7 +12,7 @@
         {% for projet in projets %}
             <tr>
 
-                {% if projet.client != NULL %}
+                {% if projet.user != NULL %}
 
                     <div class="container-fluid">
 
@@ -33,7 +33,7 @@
                                             <h4 class="projet_bloc1_h4_bis_aff">NOM DU PRODUIT : {{ projet.produit }}</h4>
                                         </div>
                                         <div class="col-xs-offset-1 col-xs-4" id="projet_ligne_bloc1_aff">
-                                            <h4 class="projet_bloc_h4_aff">NOM DU CLIENT : {{ projet.client }}</h4>
+                                            <h4 class="projet_bloc_h4_aff">NOM DU CLIENT : {{ projet.user }}</h4>
 
                                             <h4 class="projet_bloc1_h4_bis_aff">NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
                                         </div>
