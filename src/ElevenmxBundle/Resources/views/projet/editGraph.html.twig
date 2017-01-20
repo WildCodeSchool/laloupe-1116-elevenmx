@@ -36,12 +36,12 @@
         <div class="row">
             <div id="projet_statut_red" style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-4">
 
-                {{ form_start(edit_form) }}
+                {#{{ form_start(edit_form) }}#}
                 {#{{ form_start(edit_form.status) }}#}
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status) }}</h4>
+                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                     <input type="submit" value="validation du status" />
                 {#{{ form_end(edit_form.status) }}#}
-                {{ form_end(edit_form) }}
+                {#{{ form_end(edit_form) }}#}
 
                 <!--<select name="typePaiment">
                     <option selected="selected">{#{{ form_widget(edit_form.status) }}#}</option>

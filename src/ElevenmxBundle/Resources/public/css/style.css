@@ -204,6 +204,7 @@ footer {
     color: #fff;
     margin-top: 21px;
     width: 100%;
+    bottom: 0;
 }
 
 .txt_footer {
@@ -471,6 +472,7 @@ footer {
 .newformmarque {
     margin-top:10%;
     margin-right:15%;
+    width: 300px
 }
 .newformproduit {
     margin-top:10%;
@@ -507,3 +509,9 @@ td, th /* Mettre une bordure sur les td ET les th */
     border: 1px solid black;
 }
 /************************************ Fin Page produit *******************************************************/
+
+select {
+    height: 25px;
+    width: 150px;
+}
+

@@ -21,7 +21,6 @@ class Projet
     /**
      * @var string
      */
-//    private $marque1;
 
     /**
      * @var string
@@ -93,6 +92,7 @@ class Projet
     }
 
 
+
     /**
      * Set dateCreationProjet
      *
@@ -112,7 +112,6 @@ class Projet
     {
         return $this->dateCreationProjet;
     }
-
 
 
     /**
