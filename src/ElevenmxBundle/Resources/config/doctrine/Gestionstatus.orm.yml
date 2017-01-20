@@ -1,0 +1,15 @@
+ElevenmxBundle\Entity\Gestionstatus:
+    type: entity
+    table: null
+    repositoryClass: ElevenmxBundle\Repository\GestionstatusRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        statut:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

@@ -28,7 +28,43 @@
 
             {{ form_start(form) }}
             <div class="col-sm-offset-3 col-sm-5 statutetdate">
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : </h4>
+                <div class="row" >
+                    {% if projet.status == "Attente d'information" %}
+                        <div class="col-xs-offset-3 col-xs-7" id="projet_statut_red">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                        </div>
+
+                    {% elseif projet.status == "Maquette a faire" %}
+                        <div class="col-xs-offset-3 col-xs-7" id="projet_statut_green">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                        </div>
+
+                    {% elseif projet.status == "Maquette en attente de validation" %}
+                        <div class="col-xs-offset-3 col-xs-7" id="projet_statut_red">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                        </div>
+
+                    {% elseif projet.status == "Maquette a modifier" %}
+                        <div class="col-xs-offset-3 col-xs-7" id="projet_statut_green">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                        </div>
+
+                    {% elseif projet.status == "Maquette validée" %}
+                        <div class="col-xs-offset-3 col-xs-7" id="projet_statut_blanc">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                        </div>
+
+                    {% elseif projet.status == "Projet terminé"  %}
+                        <div class="col-xs-offset-3 col-xs-7" id="projet_statut_blanc">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                        </div>
+
+                    {% else %}
+                        <div class="col-xs-offset-3 col-xs-7" >
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Statut inconnu</h4>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
             <div class="col-sm-2">
 

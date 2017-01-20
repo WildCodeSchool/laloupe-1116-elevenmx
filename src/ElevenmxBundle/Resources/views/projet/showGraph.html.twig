@@ -25,59 +25,51 @@
 
             <div class="col-sm-offset-3 col-sm-5 statutetdate">
 
-                    <div class="row" >
                         {% if projet.status == "Attente d'information" %}
-                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
+                            <div class="col-xs-offset-3 col-xs-7" id="projet_statut_green">
                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                             </div>
 
                         {% elseif projet.status == "Maquette a faire" %}
-                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
+                            <div class="col-xs-offset-3 col-xs-7" id="projet_statut_red">
                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                             </div>
 
                         {% elseif projet.status == "Maquette en attente de validation" %}
-                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
+                            <div class="col-xs-offset-3 col-xs-7" id="projet_statut_green">
                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                             </div>
 
                         {% elseif projet.status == "Maquette a modifier" %}
-                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
+                            <div class="col-xs-offset-3 col-xs-7" id="projet_statut_orange">
                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                             </div>
 
                         {% elseif projet.status == "Maquette validée" %}
-                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_blanc">
+                            <div class="col-xs-offset-3 col-xs-7" id="projet_statut_orange">
                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                             </div>
 
                         {% elseif projet.status == "Projet terminé"  %}
-                            <div class="col-xs-offset-2 col-xs-7" id="projet_statut_blanc">
+                            <div class="col-xs-offset-3 col-xs-7" id="projet_statut_blanc">
                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                             </div>
 
                         {% else %}
-                            <div class="col-xs-offset-2 col-xs-7" >
-                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Statut inconnu</h4>
+                            <div class="col-xs-offset-3 col-xs-7" >
+                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Status inconnu</h4>
                             </div>
                         {% endif %}
-                    </div>
 
                 <select name="typePaiment" class="col-xs-offset-4">
                     <option selected="selected">{{ projet.status }}</option>
-                    <option value="Maquette a faire">Maquette a faire</option>
-                    <option value="Maquette en attente de validation">Maquette en attente de validation</option>
-                    <option value="Maquette a modifier">Maquette a modifier</option>
-                    <option value="Maquette validée">Maquette validée</option>
-                    <option value="Projet terminé">Projet terminé</option>
-                    <option value="Projet terminé">Projet terminé</option>
+                    <option value="Maquette a faire" class="projet_statut_red_dd">Maquette a faire</option>
+                    <option value="Maquette en attente de validation" class="projet_statut_green_dd">Maquette en attente de validation</option>
+                    <option value="Maquette a modifier" class="projet_statut_orange_dd">Maquette a modifier</option>
+                    <option value="Maquette validée" class="projet_statut_orange_dd">Maquette validée</option>
+                    <option value="Projet terminé" class="projet_statut_blanc_dd">Projet terminé</option>
                 </select>
             </div>
-            <div class="col-sm-2">
-
-                <h4 class="projet_bloc_h4_aff"> Date de création : {{ projet.dateCreationProjet }} </h4>
-            </div>
-
         </div>
     </div>
 

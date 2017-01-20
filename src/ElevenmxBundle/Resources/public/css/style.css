@@ -114,19 +114,20 @@
 
 #projet_ligne_aff
 {
-    border: solid black;
+    border: solid black ;
     margin-top: 50px;
 }
 
 #projet_ligne_bloc1_aff
 {
-    border: solid black;
-    margin-top:20px
+    border: solid black ;
+    margin-top:20px;
 }
 
 .projet_bloc_h4_aff
 {
-    color: black
+    color: black;
+
 }
 .projet_bloc1_h4_bis_aff
 {
@@ -136,25 +137,58 @@
 {
     background-color:red;
     border: solid black 1px;
-    margin-top:20px
+    margin-top:20px;
+    text-align: center;
 }
 #projet_statut_green
 {
     background-color:green;
-    border: solid black;
-    margin-top:20px
+    border: solid black 1px;
+    margin-top:20px;
+    text-align: center;
 }
 #projet_statut_blanc
 {
     background-color:white;
-    border: solid black;
-    margin-top:20px
+    border: solid black 1px;
+    margin-top:20px;
+    text-align: center;
 }
 #projet_statut_orange
 {
     background-color:orange;
-    border: solid black;
-    margin-top:20px
+    border: solid black 1px;
+    margin-top:20px;
+    text-align: center;
+}
+
+.projet_statut_red_dd
+{
+    background-color:red;
+    border: solid black 1px;
+    margin-top:1px;
+    text-align: center;
+}
+.projet_statut_green_dd
+{
+    background-color:green;
+    border: solid black 1px;
+    margin-top:1px;
+    text-align: center;
+}
+.projet_statut_blanc_dd
+{
+    background-color:white;
+    border: solid black 1px;
+    margin-top:1px;
+    text-align: center;
+}
+.projet_statut_orange_dd
+{
+    background-color:orange;
+    border: solid black 1px;
+    margin-top:1px;
+    text-align: center;
 }
 
 /************************************ Fin Formulaire liste projet vi index *******************************************************/
@@ -412,6 +446,13 @@ footer {
 
 #espacesousgerer {
     margin-top:10px;
+}
+
+#search {
+    margin-left: 75%;
+}
+.titelsearch{
+    margin-left: 75%;
 }
 /************************************ Fin Page IndexGraph *******************************************************/
 

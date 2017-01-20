@@ -6,6 +6,7 @@ use ElevenmxBundle\Entity\NouveauGraphiste;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+
 /**
  * Nouveaugraphiste controller.
  *
@@ -33,14 +34,15 @@ class NouveauGraphisteController extends Controller
      */
     public function newAction(Request $request)
     {
-        $nouveauGraphiste = new Nouveaugraphiste();
+
+        $nouveauGraphiste = new NouveauGraphiste();
         $form = $this->createForm('ElevenmxBundle\Form\NouveauGraphisteType', $nouveauGraphiste);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($nouveauGraphiste);
-            $em->flush($nouveauGraphiste);
+            $em->flush();
 
             return $this->redirectToRoute('nouveaugraphiste_show', array('id' => $nouveauGraphiste->getId()));
         }

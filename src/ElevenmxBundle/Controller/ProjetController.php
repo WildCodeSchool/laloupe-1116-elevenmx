@@ -155,6 +155,7 @@ class ProjetController extends Controller
         ));
     }
 
+
     public function showGraphAction(Projet $projet, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -167,12 +168,13 @@ class ProjetController extends Controller
         $form = $this->createForm('ElevenmxBundle\Form\CommentaireType', $newCommentaire);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()){
 
             $newCommentaire->setProjet($projet);
             $newCommentaire->setAffectation('graphiste');
             $em->persist($newCommentaire);
-
+            $form->get('projet.status')->getData();
 
             $em->flush();
 
@@ -201,6 +203,8 @@ class ProjetController extends Controller
             'projet' => $projet,
         ));
     }
+
+
     /**
      * Displays a form to edit an existing projet entity.
      *
@@ -272,6 +276,7 @@ die();
 
         return $this->render('ElevenmxBundle:projet:editGraph.html.twig', array(
             'projet' => $projet,
+            'gestionstatus' => $gestionstatus,
             'form' => $form->createView(),
             'edit_form' => $editForm->createView(),
             'comment' => $commentaires,
