@@ -3,6 +3,7 @@
 
 {% block body %}
     {#{% set varludo = 99 %}#}
+    {{ dump() }}
     <div class="container-fluid">
         <h4> liste des commentaires coté client </h4>
         <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
@@ -29,7 +30,7 @@
             {{ form_start(form) }}
             <div class="col-sm-offset-3 col-sm-5 statutetdate">
                 <div class="row" >
-                    {% if projet.status == "Attente d'information" %}
+                    {% if  projet.status == "Attente d'information" %}
                         <div class="col-xs-offset-3 col-xs-7" id="projet_statut_red">
                             <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                         </div>

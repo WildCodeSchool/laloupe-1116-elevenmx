@@ -13,7 +13,7 @@
 
 {% block body %}
     <div class="container-fluid">
-
+{{ dump() }}
 
         <h4> liste des commentaires coté graphiste </h4>
         <div  class="row">
@@ -36,22 +36,29 @@
         <div class="row">
             <div id="projet_statut_red" style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-4">
 
-                {#{{ form_start(edit_form) }}#}
-                {#{{ form_start(edit_form.status) }}#}
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
-                    <input type="submit" value="validation du status" />
-                {#{{ form_end(edit_form.status) }}#}
-                {#{{ form_end(edit_form) }}#}
 
-                <!--<select name="typePaiment">
-                    <option selected="selected">{#{{ form_widget(edit_form.status) }}#}</option>
-                        <option value="Maquette a faire">Maquette a faire</option>
-                        <option value="Maquette en attente de validation">Maquette en attente de validation</option>
-                        <option value="Maquette a modifier">Maquette a modifier</option>
-                        <option value="Maquette validée">Maquette validée</option>
-                        <option value="Projet terminé">Projet terminé</option>
-                        <option value="Projet terminé">Projet terminé</option>
-                    </select>-->
+
+               {# {{ form_start(form1.status) }}
+                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(form1.status, { 'attr': {'class': 'foo'} }) }}</h4>
+                <input type="submit" value="validation du status" />
+                {{ form_end(form1.status) }}#}
+
+
+                {{ form_start(edit_form) }}
+                <div class="hidden">
+                    {{ form_widget(edit_form.titreProjet) }}
+                    {{ form_widget(edit_form.user) }}
+                    {{ form_widget(edit_form.nomGraphiste) }}
+                    {{ form_widget(edit_form.produit) }}
+                    {{ form_widget(edit_form.marque) }}
+                    {{ form_widget(edit_form.dateCreationProjet) }}
+                </div>
+
+                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                <input type="submit" value="validation du status" />
+                {{ form_end(edit_form) }}
+
+
                 </h4>
             </div>
             <div class="col-sm-2">

@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="projet">
-
+{{ dump() }}
         <h1 class="projet_h1">Création de Projet</h1>
         {{ form_start(form) }}
         <div class="row">
@@ -39,6 +39,9 @@
 
         <div class="col-xs-2 col-lg-12"><br> 
             <input class="newcreationprojet" type="submit" value="Création du projet">
+        </div>
+        <div class="hidden">
+            {{ form_widget(form.status) }}
         </div>
 
         {{ form_end(form) }}

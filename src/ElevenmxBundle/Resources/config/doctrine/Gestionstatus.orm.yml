@@ -12,4 +12,10 @@ ElevenmxBundle\Entity\Gestionstatus:
         statut:
             type: string
             length: 255
+
+    oneToMany:
+        projets:
+            targetEntity: ElevenmxBundle\Entity\Projet
+            mappedBy: gestionstatus
+
     lifecycleCallbacks: {  }

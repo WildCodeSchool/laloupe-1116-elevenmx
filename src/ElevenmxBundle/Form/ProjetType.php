@@ -45,6 +45,7 @@ class ProjetType extends AbstractType
                     'choices_as_values' => true,
                 ))
             ->add('dateCreationProjet')
+            ->add('status')
         ;
 
     }

@@ -17,10 +17,6 @@ ElevenmxBundle\Entity\Projet:
             type: string
             length: 255
             column: Nom_Graphiste
-        status:
-            type: string
-            length: 255
-            column: Status
         dateCreationProjet:
             type: string
             length: 255
@@ -43,4 +39,8 @@ ElevenmxBundle\Entity\Projet:
 
         produit:
             targetEntity: ElevenmxBundle\Entity\Produit
+            inversedBy: projets
+
+        status:
+            targetEntity: ElevenmxBundle\Entity\Gestionstatus
             inversedBy: projets
