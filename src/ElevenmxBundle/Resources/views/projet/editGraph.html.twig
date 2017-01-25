@@ -84,7 +84,9 @@
 
             <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
                 <div style="border: solid; border-width: 1px;height: 150px" >
-                    <img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
+                    {#<img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">#}
+                    <img class="imgshow" src="{{ app.request.basepath }}/uploads/{{ projet.marque.image1 }}">
+
                 </div>
                 <div style="border: solid; border-width: 1px;height: 50px; text-align:center; background-color: lightgrey;margin-top: 5px;color:white" >
                     <h4> {{ projet.titreProjet }}  </h4>
