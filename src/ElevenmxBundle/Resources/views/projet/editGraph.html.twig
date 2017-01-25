@@ -17,14 +17,14 @@
 
         <h4> liste des commentaires coté graphiste </h4>
         <div  class="row">
-            <div style="margin-top: 20px" class="col-sm-offset-2 col-sm-4">
+            <div style="margin-top: 20px" class="col-sm-offset-3 col-sm-4">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 
                 <h4>NOM DU CLIENT : {{ projet.user }}</h4>
 
             </div>
-            <div style="margin-top: 20px" class="col-sm-4">
+            <div class="col-sm-4 produitnomgraphiste">
 
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
 
@@ -34,7 +34,7 @@
         </div>
 
         <div class="row">
-            <div id="projet_statut_red" style="border: solid; border-width: 1px" class="col-sm-offset-2 col-sm-4">
+            <div  class="col-sm-offset-3 col-sm-6 statutetdate">
 
 
 
@@ -53,18 +53,53 @@
                     {{ form_widget(edit_form.marque) }}
                     {{ form_widget(edit_form.dateCreationProjet) }}
                 </div>
+                <div>
+                {% if projet.status == "Attente d'information" %}
+                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_green">
+                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                    </div>
 
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
-                <input type="submit" value="validation du status" />
+                {% elseif projet.status == "Maquette a faire" %}
+                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_red">
+                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                    </div>
+
+                {% elseif projet.status == "Maquette en attente de validation" %}
+                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_green">
+                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                    </div>
+
+                {% elseif projet.status == "Maquette a modifier" %}
+                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_orange">
+                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                    </div>
+
+                {% elseif projet.status == "Maquette validée" %}
+                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_orange">
+                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                    </div>
+
+                {% elseif projet.status == "Projet terminé"  %}
+                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_blanc">
+                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                    </div>
+
+                {% else %}
+                    <div class="col-xs-offset-1 col-xs-10" >
+                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                    </div>
+                {% endif %}
+                </div>
+                <div class="col-xs-offset-5 col-xs-2">
+                    <input type="submit" value="Modification du status" />
+                </div>
+
                 {{ form_end(edit_form) }}
 
 
                 </h4>
             </div>
-            <div class="col-sm-2">
 
-                <h4 class="projet_bloc_h4_aff"> Date : </h4>
-            </div>
 
         </div>
     </div>
@@ -85,7 +120,7 @@
             <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
                 <div style="border: solid; border-width: 1px;height: 150px" >
                     {#<img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">#}
-                    <img class="imgshow" src="{{ app.request.basepath }}/uploads/{{ projet.marque.image1 }}">
+                    <img style="height: 100%;width: auto;margin-left: 20%" src="{{ app.request.basepath }}/uploads/{{ projet.marque.image1 }}">
 
                 </div>
                 <div style="border: solid; border-width: 1px;height: 50px; text-align:center; background-color: lightgrey;margin-top: 5px;color:white" >
