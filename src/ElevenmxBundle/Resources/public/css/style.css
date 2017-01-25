@@ -239,12 +239,19 @@
 
 /*************** FOOTER ***********************/
 
+body {
+    position: absolute;
+    right:0;
+    left: 0;
+    
+}
+
 footer {
     background-color: #000;
     color: #fff;
     margin-top: 21px;
     width: 100%;
-
+    position: absolute;
 }
 
 .txt_footer {
@@ -259,6 +266,9 @@ footer {
 #btn_logo {
     background-color: #000;
 }
+
+
+
 
 /********** Photos dans modal *******************/
 

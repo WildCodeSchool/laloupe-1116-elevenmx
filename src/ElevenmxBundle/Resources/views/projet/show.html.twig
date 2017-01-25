@@ -2,30 +2,28 @@
 
 
 {% block body %}
+
     {#{% set varludo = 99 %}#}
     <div class="container-fluid">
+
         {#<h4> liste des commentaires coté client </h4>#}
         <div class="row">
+
             <div class="col-xs-2"></div>
-        <div class="col-xs-6"> <a href="{{ path('projet_index') }}"><input type="button" value="Retour à la liste" class="bouton4"></a></div>
+            <div class="col-xs-6"><a href="{{ path('projet_index') }}"><input type="button" value="Retour à la liste"
+                                                                              class="bouton4"></a></div>
+            <div class="col-xs-4"></div>
         </div>
 
-        <div class="col-xs-2"></div>
-
-        <div  class="row">
-            <div class="col-sm-offset-3 col-sm-4 projetetnomclient">
-
-                <h4>PROJET : {{ projet.titreProjet }}  </h4>
-
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3 col-xs-12 projetetnomclient">
+                <h4>PROJET : {{ projet.titreProjet }}</h4>
                 <h4>NOM DU CLIENT : {{ projet.user }}</h4>
-
             </div>
-            <div class="col-sm-4 produitnomgraphiste">
-
+            <div class="col-lg-3 col-xs-12 produitnomgraphiste">
                 <h4>NOM DU PRODUIT : {{ projet.produit }}</h4>
-
                 <h4>NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
-
             </div>
 
         </div>
@@ -34,10 +32,10 @@
 
             {{ form_start(form) }}
             <div class="col-sm-offset-3 col-sm-5 statutetdate">
-                <div class="row" >
+                <div class="row">
                     {% if projet.status == "Attente d'information" %}
                         <div class="col-xs-offset-3 col-xs-7" id="projet_statut_red">
-                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : <br />{{ projet.status }}</h4>
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : <br/>{{ projet.status }}</h4>
                         </div>
 
                     {% elseif projet.status == "Maquette a faire" %}
@@ -60,13 +58,13 @@
                             <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                         </div>
 
-                    {% elseif projet.status == "Projet terminé"  %}
+                    {% elseif projet.status == "Projet terminé" %}
                         <div class="col-xs-offset-3 col-xs-7" id="projet_statut_blanc">
                             <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                         </div>
 
                     {% else %}
-                        <div class="col-xs-offset-3 col-xs-7" >
+                        <div class="col-xs-offset-3 col-xs-7">
                             <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Statut inconnu</h4>
                         </div>
                     {% endif %}
@@ -78,6 +76,7 @@
             </div>
 
         </div>
+
     </div>
 
 
@@ -94,24 +93,25 @@
             {% endfor %}
 
             <div class="col-sm-offset-1 col-sm-2">
-                <div class="cadremarque" >
-                    <img class="imgshow" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
+                <div class="cadremarque">
+                    <img class="imgshow"
+                         src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">
 
                 </div>
-                <div class="nomprojetnomgraphiste" >
+                <div class="nomprojetnomgraphiste">
                     <h4> {{ projet.titreProjet }}  </h4>
                 </div>
 
-                <div class="nomprojetnomgraphiste" >
+                <div class="nomprojetnomgraphiste">
                     <h4> {{ projet.nomGraphiste }}</h4>
                 </div>
-                <div class="cadrerougecommentaire" >
+                <div class="cadrerougecommentaire">
 
                     {# On on parcours tous les commentaires afin d'afficher le dernier commentaire correspondant à la variable maxId #}
                     {% if comment != null %}
                         {% for comment in comment %}
                             {% if comment.id == maxId %}
-                                <p class ="textcadrerougecommentaire" >{{ comment.champsText }}</p>
+                                <p class="textcadrerougecommentaire">{{ comment.champsText }}</p>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
@@ -119,22 +119,25 @@
 
                 {#****************bouton envoyer BAT qui ouvre la modal dans laquelle on valide l'envoi final du BAT ************************#}
                 <div id="btnBATmodal">
-                        <div class="boutonjevalideBAT">
-                            <a data-toggle="modal" data-target="#myModalBAT">Je valide le BAT</a>
-                        </div>
+                    <div class="boutonjevalideBAT">
+                        <a data-toggle="modal" data-target="#myModalBAT">Je valide le BAT</a>
+                    </div>
                 </div>
 
                 <div class="modal fade" id="myModalBAT" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBAT">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title myModalLabel">Votre attention est recquise</h4>
                             </div>
                             <div class="modal-body" style="background-color: red">
                                 <p>Nous ne pouvons garantir le rendu des couleurs sur un BAT par internet<br>
-                                    Nous vous demandons une vérification très attentive de ce BON A TIRER et ATTIRONS VOTRE ATTENTION sur
-                                    le fait que votre validation vous engage dans la réalisation de votre travail dans nos ateliers et
+                                    Nous vous demandons une vérification très attentive de ce BON A TIRER et ATTIRONS
+                                    VOTRE ATTENTION sur
+                                    le fait que votre validation vous engage dans la réalisation de votre travail dans
+                                    nos ateliers et
                                     dégage notre responsabilité en cas de contestation ultérieure.</p>
 
                                 {##### ici confirmation de l'envoi du BAT dans la modal #####}
@@ -172,7 +175,8 @@
                         {% if comment.id == maxId %}
                             {% if comment.image != NULL %}
                                 <img class="imggrosplan" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
-                                <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
+                                <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}"
+                                   download="{{ comment.image }}">Télécharger l'image</a>
                             {% else %}
                                 <p> Pas d'image envoyée</p>
                             {% endif %}
@@ -187,37 +191,40 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
-                    {# cette div c'est le text area commentaire#}
-                    <div>
-                        <p class="modal_nevalidepas">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
-                        <div class="champscommentaire">
+                {# cette div c'est le text area commentaire#}
+                <div>
+                    <p class="modal_nevalidepas">Pourquoi ne validez-vous pas le « Bon à tirer » ? <br>Laissez un
+                        commentaire à {{ projet.nomGraphiste }}. <br>Vous avez la possibilité d’importer des fichiers
+                        pour nous joindre un logo demandé ou une image pour illustrer vos modifications.</p>
+                    <div class="champscommentaire">
                         {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
                         {{ form_errors(form.champsText) }}
-                        </div>
                     </div>
+                </div>
                 {# fin div text area commentaire#}
 
-                    <div class="row btnparcourir">
-                        {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
-                        {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
-                    </div>
-                    {#ici confirmation de l'envoi du BAT dans la modal#}
-                    <div>
-                        <input id="btnsendnewBAT" type="submit" value="Envoyer un nouveau BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
-                    </div>
-                    {#ici fin confirmation de l'envoi du BAT dans la modal#}
+                <div class="row btnparcourir">
+                    {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
+                    {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
+                </div>
+                {#ici confirmation de l'envoi du BAT dans la modal#}
+                <div>
+                    <input id="btnsendnewBAT" type="submit" value="Envoyer un nouveau BAT" role="button"
+                           data-toggle="modalBAT" data-target="modalBAT"/>
+                </div>
+                {#ici fin confirmation de l'envoi du BAT dans la modal#}
 
             </div>
         </div>
     </div>
 
-            {#***************** fin bouton  je ne valide pas le BAT ouvre  le champs comm de Ludo***********#}
+    {#***************** fin bouton  je ne valide pas le BAT ouvre  le champs comm de Ludo***********#}
 
 
-    <div class="container-fluid container-commentaires" >
-        <div class="row" >
+    <div class="container-fluid container-commentaires">
+        <div class="row">
 
-            <div  class="col-sm-offset-1 col-sm-10">
+            <div class="col-sm-offset-1 col-sm-10">
                 <div>
                     {# nous voulons différencier l'affichage du client avec celui du graphiste
                        on defini une variable codeClient qui à pour valeur client#}
@@ -227,53 +234,57 @@
                     {% if comment != null %}
 
 
-                            {# Parcours de tous les commentaires afin d'afficher tous les commentaires et toutes les images sauf le dernier
-                               puisque celui est affiché en haut de la page#}
-                            {% for comment in comment %}
-                                <div class="container-fluid">
+                        {# Parcours de tous les commentaires afin d'afficher tous les commentaires et toutes les images sauf le dernier
+                           puisque celui est affiché en haut de la page#}
+                        {% for comment in comment %}
+                            <div class="container-fluid">
 
-                                    {# Affichage des informations ne correspondant pas à l'Id sauvegarder#}
-                                    {% if comment.id != maxId %}
-                                        {% if comment.affectation == codeClient %}
-                                            <div class="row eachcommentclient">
+                                {# Affichage des informations ne correspondant pas à l'Id sauvegarder#}
+                                {% if comment.id != maxId %}
+                                    {% if comment.affectation == codeClient %}
+                                        <div class="row eachcommentclient">
 
-                                                <div class=" col-sm-6">
-                                                    {% if comment.image != NULL %}
-                                                        <!--<p> {{ comment.image }} </p>-->
-                                                        <img class="eachimgmin" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
-                                                        <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
-                                                    {% endif %}
+                                            <div class=" col-sm-6">
+                                                {% if comment.image != NULL %}
+                                                    <!--<p> {{ comment.image }} </p>-->
+                                                    <img class="eachimgmin"
+                                                         src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                    <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}"
+                                                       download="{{ comment.image }}">Télécharger l'image</a>
+                                                {% endif %}
 
-                                                </div>
-
-
-                                                <div class="col-sm-6">
-                                                        <h4>Date : {{ 'now'|date('m/d/Y') }}</h4>
-
-                                                    <p class="champstxtcommclient">{{ comment.champsText }}</p>
-                                                </div>
                                             </div>
-                                        {% else %}
-                                            <div class="row champstxtcommgraph">
 
-                                                <div class="col-sm-6">
-                                                        <h4>Date : </h4>
 
-                                                    <p class="eachcommentgraph">{{ comment.champsText }}</p>
-                                                </div>
+                                            <div class="col-sm-6">
+                                                <h4>Date : {{ 'now'|date('m/d/Y') }}</h4>
 
-                                                <div class="col-sm-6">
-                                                    {% if comment.image != NULL %}
-                                                        <!--<p> {{ comment.image }} </p>-->
-                                                        <img class="eachimgmin" src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
-                                                        <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}" download="{{ comment.image }}">Télécharger l'image</a>
-                                                    {% endif %}
-                                                </div>
+                                                <p class="champstxtcommclient">{{ comment.champsText }}</p>
                                             </div>
-                                        {% endif %}
+                                        </div>
+                                    {% else %}
+                                        <div class="row champstxtcommgraph">
+
+                                            <div class="col-sm-6">
+                                                <h4>Date : </h4>
+
+                                                <p class="eachcommentgraph">{{ comment.champsText }}</p>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                {% if comment.image != NULL %}
+                                                    <!--<p> {{ comment.image }} </p>-->
+                                                    <img class="eachimgmin"
+                                                         src="{{ app.request.basepath }}/uploads/{{ comment.image }}">
+                                                    <a href="{{ app.request.basepath }}/uploads/{{ comment.image }}"
+                                                       download="{{ comment.image }}">Télécharger l'image</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
                                     {% endif %}
-                                </div>
-                            {% endfor %}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
                     {% else %}
                         <h4 class="center-align">Pas de commentaire</h4>
                     {% endif %}
@@ -284,25 +295,16 @@
 
     {{ form_end(form) }}
 
-    {#<ul>#}
-        {#<li>#}
-            {#<a href="{{ path('projet_index') }}">Retour a la liste des projets</a>#}
-        {#</li>#}
-        {#<li>#}
-            {#<a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>#}
-        {#</li>#}
-        {#<li>#}
 
-        {#</li>#}
-    {#</ul>#}
 {% endblock %}
+
  {% block javascripts %}
      {# Le fait de mettre une balise script pour le time out, les modals de bootstrap ne fonctionnait plus
      Cela inible les balises script placés dans le fichier
      Il faut ajouter le twig parent pour qui utilise les balises scrip du fichier base #}
      {{ parent() }}
      <script type="text/javascript">
-         window.setTimeout("window.location.reload();",600000);
+         window.setTimeout("window.location.reload();", 600000);
      </script>
 
  {% endblock %}
