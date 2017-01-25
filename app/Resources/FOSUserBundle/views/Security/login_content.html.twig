@@ -4,18 +4,10 @@
 
 {% block fos_user_content %}{#ajout Max#}
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/elevenmx/css/login.css') }}">
 
 {% endblock %}
 
 {% block javascripts %}
-
-    <script type="text/javascript">
-        window.setTimeout("window.location.reload();",600000);
-    </script>
-
 {% endblock %}
 
 
@@ -33,44 +25,150 @@
     <!-- header -->
     <header>
 
-        <div class="super-container">
-            <div class="logo">
-                <img src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/logo.png">
-            </div>
-            <div class="logoelevenmxmin">
-                <img src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/elevenmx_min.png" alt='elevenmx'>
-                <h1 id="eleven-h1">Spécialiste du kit déco motocross</h1>
-            </div>
-        </div>
 
-        <div class="main-menu">
-            <div class="container1">
+
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+
+
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+
+                    <ul class="nav navbar-nav navbar-left">
+                        <div class="col-xs-1"><img src="{{ asset('bundles/elevenmx/img/mini-logo.png') }}" class="logo_emx"></div>
+
+                    </ul>
+
+                    <ul class="nav navbar-nav logo_css">
+                        <li><img src="{{ asset('bundles/elevenmx/img/elevenmx_min.png') }}" id="elevenmx_img"></li>
+                        <br>
+                        <li><h1 id="eleven-h1">Spécialiste du kit déco motocross</h1></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <div class="col-xs-1"><a href="{{ path('fos_user_security_logout') }}"
+                                                 class="glyphicon glyphicon-off" id="log_off"></a></div>
+                    </ul>
+                </div>
+
 
             </div>
-        </div>
+
+
+            <div class="blue">
+
+                <div class="row">
+
+                    <div class="col-xs-12 hidden-sm hidden-lg">
+
+                        <img src="{{ asset('bundles/elevenmx/img/elevenmx_min.png') }}" class="micro_logo">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </nav>
 
     </header>
+
+
     <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-offset-2 col-xs-6">
 
-                    <img class="img" src="{{ asset('bundles/elevenmx/img/livia.jpg') }}" alt="test"  />
+        <div class="row">
+            <div class="col-lg-1">
+                <!-- marge gauche -->
+            </div>
 
 
-                </div>
-                <div class="col-xs-2" style="margin-top:10%;">
-                    <label style="margin-top:10%;margin-left:15%;" for="username">{{ 'Code Client'|trans }}</label>
-                    <input type="text" class="btn btn-default" id="username" name="_username" value="{{ last_username }}" required="required" />
-                    </br>
-                    <label style="margin-top:10%;margin-left:15%;" for="password">{{ 'Mot de Passe'|trans }}</label>
-                    <input type="password" class="btn btn-default" id="password" name="_password" required="required" />
-                    </br>
-                    <input  type="checkbox" id="remember_me" name="_remember_me" value="on" style="margin-top:20%;margin-left:5%;"/>
-                    <label for="remember_me">{{ 'Se souvenir de moi'|trans }}</label>
-                    <input style="margin-top:10%;margin-left:15%;" type="submit" class="btn btn-success" id="login" name="_submit" value="{{ 'Se connecter'|trans }}" />
-                </div>
+            <div class="col-lg-6 hidden-sm hidden-xs">
+
+                <img src="{{ asset('bundles/elevenmx/img/livia.jpg') }}" alt="lancelot_elevenmx"  />
+
 
             </div>
+
+
+            <div class="col-lg-1">
+                <!-- marge droite -->
+            </div>
+
+
+            <div class="col-lg-3" id="login_bloc">
+
+
+                <div class="row">
+
+
+
+                    <div class="col-lg-4 col-xs-offset-2 col-xs-10">
+                        <label for="username">{{ 'Code Client'|trans }}</label>
+                    </div>
+
+                    <div class="col-lg-8 col-xs-offset-2 col-xs-10">
+                        <input type="text" class="btn btn-default" id="username" name="_username" value="{{ last_username }}" required="required" />
+                    </div>
+
+
+
+
+                </div>
+
+
+                <div  class="row">
+
+                    <div class="col-lg-4 col-xs-offset-2 col-xs-10">
+                        <label for="password">{{ 'Mot de Passe'|trans }}</label>
+                    </div>
+
+                    <div class="col-lg-8 col-xs-offset-2 col-xs-10">
+                        <input type="password" class="btn btn-default" id="password" name="_password" required="required" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-1"></div>
+
+                    <div class="col-lg-10 col-xs-offset-2 col-xs-10">
+                        <input  type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                        <label for="remember_me">{{ 'Se souvenir de moi'|trans }}</label>
+                    </div>
+
+                    <div class="col-lg-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10 col-xs-offset-2 col-xs-10">
+                    <input type="submit" class="btn btn-success" id="login" name="_submit" value="{{ 'Se connecter'|trans }}" />
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-1">
+
+            </div>
+
+
+        </div>
+
+
+
     </div>
 
     </body>
@@ -84,22 +182,22 @@
 <footer>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-lg-4 hidden-sm hidden-xs">
                 <p id="float_right">Site réalisé par </p>
             </div>
 
-            <div class="col-xs-4">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-4">
+            <div class="col-lg-4 col-sm-6 col-xs-6">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
                     <a id="btn_logo" role="button" data-toggle="modal" data-target="#myModal"><img
                                 src="{{ asset('bundles/elevenmx/img/WCS-logo.png') }}" alt="log_WCS"/></a>
                 </div>
-                <div class="col-xs-4"></div>
+                <div class="col-lg-4 hidden-sm hidden-xs"></div>
 
             </div>
 
 
-            <div class="col-xs-4 txt_footer">
+            <div class="col-lg-4 col-sm-6 col-xs-6 txt_footer">
                 <!-- Large modal -->
                 <a href=".bs-example-modal-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Mentions
                     Légales</a>
@@ -107,15 +205,15 @@
             <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
                  aria-labelledby="myLargeModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div class="col-xs-12">
+                    <div class="col-lg-12">
                         <div class="modal-content">
 
                             <div class="modal-header">
 
-                                <p class="modal_mention">Propriétaire du site : XXX<br/>Sigle : XXX<br/>Contact mail :
-                                    XXX<br/> Contact téléphonique : XXX
-                                    <br/> Directeur de publication : XXX <br/> Responsable de
-                                    rédaction : XXX <br/> Webmaster : XXX
+                                <p class="modal_mention">Propriétaire du site : Christophe COISPEAU<br/>Contact mail :
+                                    contact@elevenmx.com<br/> Contact téléphonique : 06 27 22 33 60
+                                    <br/> Directeur de publication : Christophe COISPEAU <br/> Responsable de
+                                    rédaction : Christophe COISPEAU <br/>
 
                                 </p>
 
@@ -132,7 +230,7 @@
                                     fichiers, représentations graphiques, photographiques, numériques ou
                                     audiovisuelles ou de tout élément figurant sur le site ou encore de tout ou
                                     partie du site lui-même sont formellement interdites sans l'accord écrit et
-                                    préalable du XXX. Les marques éventuellement citées sur le site sont la
+                                    préalable de la société "SARL Eleven MX". Les marques éventuellement citées sur le site sont la
                                     propriété de leurs titulaires respectifs. Collecte des données personnelles
                                     Les informations recueillies sur le formulaire de contact sont nécessaires
                                     pour traiter votre demande d'informations ou pour votre adhésion. Elles font
@@ -141,7 +239,7 @@
                                     janvier 1978 modifiée, vous bénéficiez d’un droit d’accès et de
                                     rectification aux informations qui vous concernent. Si vous souhaitez
                                     exercer ce droit et obtenir communication des informations vous concernant,
-                                    veuillez vous adresser au XXX. Décharge de responsabilité : le contenu de
+                                    veuillez vous adresser au responsable de magasin. Décharge de responsabilité : le contenu de
                                     ce site web est amené à évoluer régulièrement. Nous déclinons toute
                                     responsabilité concernant l'exactitude, l'exhaustivité et la qualité des
                                     informations offertes. Nous déclinons toute responsabilité pour d'éventuels
@@ -157,7 +255,20 @@
                                     soumis au droit français et tout litige éventuel s'y rapportant sera soumis
                                     à la compétence des tribunaux français.
 
+                                    SARL Eleven MX
+                                    16 rue de duan
+                                    28160 YEVRES - FRANCE
+                                    Tél. 06 27 22 33 60
+                                    contact@elevenmx.com
+
+
+
+                                    RCS CHARTRES 529 552 218
+                                    Sarl au capital de 3000 euros
+                                    TVA Intracommunautaire : FR75529552218
+                                    Responsable de la publication : Christophe COISPEAU
                                 </p>
+
 
                             </div>
                             <div class="modal-footer">

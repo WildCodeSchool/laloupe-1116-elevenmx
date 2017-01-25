@@ -61,38 +61,40 @@
         <!-- BOUTON SUPER ADMIN -->
         <div class="col-lg-1 col-xs-1"></div>
         <div class="col-lg-2 col-xs-2"></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="new client"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="new projet"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="new client" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="new projet" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives" class="bouton4"></a></div>
         <div class="col-lg-1 col-xs-1"></div>
 
         {% elseif is_granted('ROLE_ADMIN') %}
         <!-- BOUTON ADMIN -->
         <div class="col-lg-1 col-xs-1"></div>
         <div class="col-lg-2 col-xs-2"></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="new client"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="new projet"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="new client" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="new projet" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives" class="bouton4"></a></div>
         <div class="col-lg-1 col-xs-1"></div>
 
         {% elseif is_granted('ROLE_GRAPH') %}
         <!-- BOUTON GRAPH -->
         <div class="col-lg-4 col-xs-1"></div>
 
-        <div class="col-lg-2 col-xs-5"> <a href="#"><input type="button" value="archives"></a></div>
-        <div class="col-lg-2 col-xs-5"> <a href="#"><input type="button" value="en cours"></a></div>
+        <div class="col-lg-2 col-xs-5"> <a href="#"><input type="button" value="archives" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-5"> <a href="#"><input type="button" value="en cours" class="bouton4"></a></div>
         <div class="col-lg-4 col-xs-1"></div>
 
 
         {% elseif is_granted('ROLE_USER') %}
         <!-- BOUTON USER -->
-            <div class="col-lg-4 col-xs-1"></div>
+            <div class="col-lg-4 col-xs-2"></div>
 
-            <div class="col-lg-4 col-xs-5"> <a href="{{ path('fos_user_change_password') }}"><input type="button" value="Modifier mon mot de passe"></a></div>
+            <div class="col-lg-2 col-xs-8"> <a href="{{ path('fos_user_change_password') }}"><input type="button" value="Modifier mon mot de passe" class="bouton4"></a></div>
 
-            <div class="col-lg-4 col-xs-1"></div>
+
+
+            <div class="col-lg-4 col-xs-2"></div>
 
 
 
@@ -110,7 +112,7 @@
 
 {% block body %}{% endblock %}
 
-
+</body>
 
 
 
@@ -118,75 +120,30 @@
 <footer>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4 col-xs-4">
+            <div class="col-lg-4 hidden-sm hidden-xs">
                 <p id="float_right">Site réalisé par </p>
             </div>
 
-            <div class="col-lg-4 col-xs-4">
-                <div class="col-lg-4 col-xs-0"></div>
-                <div class="col-lg-8 col-xs4">
-                    <a id="btn_logo" role="button" data-backdrop="false" data-toggle="modal" data-target="#myModal"><img
-                                src="{{ asset('bundles/elevenmx/img/WCS-logo.png') }}" alt="logo_WCS"
-                                id="logo_wcs"/></a>
+            <div class="col-lg-4 col-sm-6 col-xs-6">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <a id="btn_logo" role="button" data-toggle="modal" data-target="#myModal"><img
+                                src="{{ asset('bundles/elevenmx/img/WCS-logo.png') }}" alt="log_WCS"/></a>
                 </div>
-                <div class="col-lg-4 col-xs-4"></div>
-            </div>
+                <div class="col-lg-4 hidden-sm hidden-xs"></div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabelID">Site réalisé par:</h4></div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xs-4"><a class="btn btn-default"
-                                                         href="{{ asset('https://fr.linkedin.com/in/maxime-coustes') }}"
-                                                         target="_blank" role="button">Maxime</a></div>
-                                <div class="col-xs-4"><a class="btn btn-default"
-                                                         href="{{ asset('https://fr.linkedin.com/in/ludovic-quouillault-787914125') }}"
-                                                         target="_blank" role="button">Ludovic</a></div>
-                                <div class="col-xs-4"><a class="btn btn-default"
-                                                         href="{{ asset('https://fr.linkedin.com/in/yannick-le-corre-96019812a') }}"
-                                                         target="_blank" role="button">Yannick</a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-4"><img
-                                            src="{{ asset('bundles/elevenmx/img/COUSTES_Maxime.JPG') }}"
-                                            alt="Maxime" class="thumbnail eleve"/></div>
-                                <div class="col-xs-4"><img
-                                            src="{{ asset('bundles/elevenmx/img/QUOUILLAUD_Ludovic.JPG') }}"
-                                            alt="Ludovic" class="thumbnail eleve"/></div>
-                                <div class="col-xs-4"><img
-                                            src="{{ asset('bundles/elevenmx/img/Le_Corre_Yannick.JPG') }}"
-                                            alt="Yannick" class="thumbnail eleve"/></div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-xs-4"><a class="btn btn-default"
-                                                         href="{{ asset('http://www.wildcodeschool.fr') }}"
-                                                         target="_blank" role="button">contacter l'école</a>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
 
-            <div class="col-lg-4 col-xs-4 txt_footer">
+            <div class="col-lg-4 col-sm-6 col-xs-6 txt_footer">
                 <!-- Large modal -->
-                <a href=".bs-example-modal-lg" data-toggle="modal" data-backdrop="false" data-target=".bs-example-modal-lg">Mentions
+                <a href=".bs-example-modal-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Mentions
                     Légales</a>
             </div>
-            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="document"
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
                  aria-labelledby="myLargeModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div class="col-xs-12">
+                    <div class="col-lg-12">
                         <div class="modal-content">
 
                             <div class="modal-header">
@@ -267,7 +224,50 @@
             </div>
 
         </div>
-
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Site réalisé par:</h4></div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-4"><a class="btn btn-default"
+                                                     href="{{ asset('https://fr.linkedin.com/in/maxime-coustes') }}"
+                                                     target="_blank" role="button">Maxime</a></div>
+                            <div class="col-xs-4"><a class="btn btn-default"
+                                                     href="{{ asset('https://fr.linkedin.com/in/ludovic-quouillault-787914125') }}"
+                                                     target="_blank" role="button">Ludovic</a></div>
+                            <div class="col-xs-4"><a class="btn btn-default"
+                                                     href="{{ asset('https://fr.linkedin.com/in/yannick-le-corre-96019812a') }}"
+                                                     target="_blank" role="button">Yannick</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4"><img
+                                        src="{{ asset('bundles/elevenmx/img/COUSTES_Maxime.JPG') }}"
+                                        alt="Maxime" class="thumbnail eleve"/></div>
+                            <div class="col-xs-4"><img
+                                        src="{{ asset('bundles/elevenmx/img/QUOUILLAUD_Ludovic.JPG') }}"
+                                        alt="Ludovic" class="thumbnail eleve"/></div>
+                            <div class="col-xs-4"><img
+                                        src="{{ asset('bundles/elevenmx/img/Le_Corre_Yannick.JPG') }}"
+                                        alt="Yannick" class="thumbnail eleve"/></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-xs-4"><a class="btn btn-default"
+                                                     href="{{ asset('http://www.wildcodeschool.fr') }}"
+                                                     target="_blank" role="button">contacter l'école</a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </footer>
@@ -277,7 +277,7 @@
 
 {% block javascripts %}{% endblock %}
 
-</body>
+
 </html>
 
 

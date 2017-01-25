@@ -114,13 +114,13 @@
 
 #projet_ligne_aff
 {
-    border: solid black ;
+    border: 1px solid black ;
     margin-top: 50px;
 }
 
 #projet_ligne_bloc1_aff
 {
-    border: solid black ;
+    border: 1px solid black ;
     margin-top:20px;
 }
 
@@ -191,9 +191,49 @@
     text-align: center;
 }
 
+.marque {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.nowrap {
+    white-space:nowrap;
+}
+
 /************************************ Fin Formulaire liste projet vi index *******************************************************/
 
+/*************** Style Boutons **************/
 
+.bouton4 {
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #22313b);
+    background-image: -moz-linear-gradient(top, #3498db, #22313b);
+    background-image: -ms-linear-gradient(top, #3498db, #22313b);
+    background-image: -o-linear-gradient(top, #3498db, #22313b);
+    background-image: linear-gradient(to bottom, #3498db, #22313b);
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    line-height: 20px;
+    margin-top: -5px;
+}
+
+.bouton4:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3465d9);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3465d9);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3465d9);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3465d9);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3465d9);
+    text-decoration: none;
+}
+
+/********************************************/
 
 
 
@@ -204,7 +244,7 @@ footer {
     color: #fff;
     margin-top: 21px;
     width: 100%;
-    position: absolute;
+
 }
 
 .txt_footer {
@@ -219,6 +259,7 @@ footer {
 #btn_logo {
     background-color: #000;
 }
+
 /********** Photos dans modal *******************/
 
 .eleve {

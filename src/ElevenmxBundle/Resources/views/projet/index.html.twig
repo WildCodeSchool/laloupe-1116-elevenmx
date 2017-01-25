@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 class="projet_h1">Liste des Projets pour le client</h1>
+    <h1 class="projet_h1">Liste de vos projet</h1>
 
     <table class="projet_index_table1">
         <thead>
@@ -22,17 +22,19 @@
                                 <div id="projet_ligne_aff" class="col-xs-offset-1 col-xs-10" >
 
                                     <div class="row" >
-                                        <div class="col-xs-1">
+                                        <div class="col-lg-1">
 
-                                            <img src="http://www.elevenmx.com/skin/frontend/tm_themes/theme741/images/logo.png">
+                                            <img src="{{ asset('bundles/elevenmx/img/logo.png') }}" class="marque hidden-xs hidden-sm">
+                                            <img src="{{ asset('bundles/elevenmx/img/mini-logo.png') }}" class="marque hidden-lg">
+
                                         </div>
 
-                                        <div class="col-xs-offset-1 col-xs-4" id="projet_ligne_bloc1_aff">
+                                        <div class="col-lg-offset-1 col-lg-4" id="projet_ligne_bloc1_aff">
                                             <h4 class="projet_bloc_h4_aff">PROJET : {{ projet.titreProjet }}  </h4>
 
                                             <h4 class="projet_bloc1_h4_bis_aff">NOM DU PRODUIT : {{ projet.produit }}</h4>
                                         </div>
-                                        <div class="col-xs-offset-1 col-xs-4" id="projet_ligne_bloc1_aff">
+                                        <div class="col-lg-offset-1 col-lg-4" id="projet_ligne_bloc1_aff">
                                             <h4 class="projet_bloc_h4_aff">NOM DU CLIENT : {{ projet.user }}</h4>
 
                                             <h4 class="projet_bloc1_h4_bis_aff">NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
@@ -41,42 +43,43 @@
 
                                     <div class="row" >
                                         {% if projet.status == "Attente d'information" %}
-                                           <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
-                                               <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
+                                           <div class="col-lg-offset-2 col-lg-7" id="projet_statut_red">
+                                               <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET :
+                                                   <br />{{ projet.status }}</h4>
                                            </div>
 
                                        {% elseif projet.status == "Maquette a faire" %}
-                                           <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
+                                           <div class="col-lg-offset-2 col-lg-7" id="projet_statut_green">
                                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                            </div>
 
                                        {% elseif projet.status == "Maquette en attente de validation" %}
-                                           <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
+                                           <div class="col-lg-offset-2 col-lg-7" id="projet_statut_red">
                                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                            </div>
 
                                        {% elseif projet.status == "Maquette a modifier" %}
-                                           <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
+                                           <div class="col-lg-offset-2 col-lg-7" id="projet_statut_green">
                                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                            </div>
 
                                        {% elseif projet.status == "Maquette validée" %}
-                                           <div class="col-xs-offset-2 col-xs-7" id="projet_statut_blanc">
+                                           <div class="col-lg-offset-2 col-lg-7" id="projet_statut_blanc">
                                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                            </div>
 
                                        {% elseif projet.status == "Projet terminé"  %}
-                                           <div class="col-xs-offset-2 col-xs-7" id="projet_statut_blanc">
+                                           <div class="col-lg-offset-2 col-lg-7" id="projet_statut_blanc">
                                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                            </div>
 
                                        {% else %}
-                                            <div class="col-xs-offset-2 col-xs-7" >
+                                            <div class="col-lg-offset-2 col-lg-7" >
                                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Status inconnu</h4>
                                             </div>
                                        {% endif %}
 
-                                        <div class="col-xs-offset-1 col-xs-1" id="projet_ligne_bloc1_aff">
+                                        <div class="col-lg-offset-1 col-lg-1" id="projet_ligne_bloc1_aff">
                                             <a href="{{ path('projet_show', { 'id': projet.id }) }}" >
                                                 <div>
                                                     <h4 class="projet_bloc_h4_aff"> GERER </h4>
@@ -86,7 +89,7 @@
                                     </div>
 
                                     <div class="row" >
-                                        <div class="col-xs-offset-2 col-xs-9" style=" margin-top:10px">
+                                        <div class="col-lg-offset-2 col-lg-9" style=" margin-top:10px">
                                         </div>
                                     </div>
                                 </div>
@@ -99,4 +102,6 @@
     </table>
 
 
+{% endblock %}
+{% block javascripts %}
 {% endblock %}
