@@ -109,7 +109,7 @@
 
         {{ form_start(form) }}
 
-        <div style="height: 530px; margin-top: 20px; " class="row">
+        <div class="row containergrosplan">
             {# boucle qui parcours tous les commentaires afin de déterminer le denier commentaire qui a été saisie
                     id correspondant à la clé est sauvegardé dans une varible nommé maxId                     #}
             {% set maxId = 0 %}
@@ -117,32 +117,32 @@
                 {% set maxId = max(comment.id, maxId) %}
             {% endfor %}
 
-            <div style="height: 500px" class="col-sm-offset-1 col-sm-2">
+            <div class="col-sm-offset-1 col-sm-2 cadremarque">
                 <div style="border: solid; border-width: 1px;height: 150px" >
                     {#<img style="height: 140px; width: auto;display: block; margin: 0 auto" src="http://freevectorlogo.net/wp-content/uploads/2011/05/honda-bike-vector-400x400.jpg">#}
                     <img style="height: 100%;width: auto;margin-left: 20%" src="{{ app.request.basepath }}/uploads/{{ projet.marque.image1 }}">
 
                 </div>
-                <div style="border: solid; border-width: 1px;height: 50px; text-align:center; background-color: lightgrey;margin-top: 5px;color:white" >
+                <div class="nomprojetnomgraphiste" >
                     <h4> {{ projet.titreProjet }}  </h4>
                 </div>
 
-                <div style="border: solid; border-width: 1px;height: 50px; text-align:center;background-color: lightgrey;margin-top: 5px;color:white" >
+                <div class="nomprojetnomgraphiste" >
                     <h4> {{ projet.nomGraphiste }}</h4>
                 </div>
-                <div style="border: solid; color:red;border-width: 1px;height: 210px; margin-top: 5px" >
+                <div class="cadrerougecommentaireGraph" >
 
                     {# On on parcours tous les commentaires afin d'afficher le dernier commentaire correspondant à la variable maxId #}
                     {% if comment != null %}
                         {% for comment in comment %}
                             {% if comment.id == maxId %}
-                                <p style="color: black">{{ comment.champsText }}</p>
+                                <p class ="textcadrerougecommentaire">{{ comment.champsText }}</p>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
                 </div>
 
-                <div id="btnBATmodalComm" style="border: solid; color:blue; border-width: 1px;height: 50px;margin-top: 5px" >
+                <div id="btnBATmodalComm" >
                     {#***************** bouton  je NE valide PAS le BAT ouvre  le champs comm de Ludo***********#}
 
                     <!-- <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModalBATComm">
