@@ -252,6 +252,7 @@ footer {
     margin-top: 21px;
     width: 100%;
     position: absolute;
+    bottom: 0;
 }
 
 .txt_footer {
@@ -563,6 +564,10 @@ td, th /* Mettre une bordure sur les td ET les th */
 
 select {
     height: 25px;
-    width: 150px;
+    width: 170px;
+}
+.selectlg {
+    height: 25px;
+    width: 350px;
 }
 

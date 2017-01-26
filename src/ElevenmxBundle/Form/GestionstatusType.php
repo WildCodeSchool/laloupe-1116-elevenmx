@@ -20,12 +20,6 @@ class GestionstatusType extends AbstractType
     }
 
 
-
-
-
-
-
-
     /**
      * {@inheritdoc}
      */

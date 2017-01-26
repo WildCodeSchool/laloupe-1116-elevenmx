@@ -80,22 +80,25 @@ class ProjetController extends Controller
     {
         $projet = new Projet();
         $form = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
+        $em = $this->getDoctrine()->getManager();
+        $gestionstatus = $em->getRepository('ElevenmxBundle:Gestionstatus')->findOneBy(array('statut' => 'Attente d\'information'));
 
-        $projet->setStatus('Attente d\'information');
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $projet->setStatus($gestionstatus);
             $em->persist($projet);
             $em->flush($projet);
 
-            return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
+            return $this->redirectToRoute('projet_editGraph', array('id' => $projet->getId()));
         }
 
         return $this->render('ElevenmxBundle:projet:new.html.twig', array(
             'projet' => $projet,
             'form' => $form->createView(),
+            'gestionstatus' => $gestionstatus,
         ));
     }
 
@@ -111,36 +114,42 @@ class ProjetController extends Controller
             array('id' => 'DESC')
         );
 
+        $gestionstatuss = $em->getRepository('ElevenmxBundle:Gestionstatus')->findAll();
+
+        $gestionstatus1 = $em->getRepository('ElevenmxBundle:Gestionstatus')->findOneBy(array('statut' => 'Maquette a faire'));
+
         $newCommentaire = new Commentaire();
         $form = $this->createForm('ElevenmxBundle\Form\CommentaireType', $newCommentaire);
         $form->handleRequest($request);
 
+        $var_idstatus = 0;
+        foreach ($gestionstatuss as $gestionstatus){
+
+            if ($gestionstatus->getStatut() ==  'Maquette a faire'){
+                $var_idstatus = $gestionstatus->getId();
+            }
+        }
+
         if ($form->isSubmitted() && $form->isValid()){
-            //echo '<pre>';
-            //echo var_dump($commentaires);
-            //echo '<pre>';
-            //die();
 
             $newCommentaire->setProjet($projet);
             $newCommentaire->setAffectation('client');
             $em->persist($newCommentaire);
-            //$em->flush();
 
             $var_id = 0;
             foreach ($commentaires as $commentaire){
-                $vartest = $commentaire->getId();
+                $var_id = $commentaire->getId();
                 if ($var_id <  $commentaire->getId()){
                     $var_id = $commentaire->getId();
                     $var_affectation = $commentaire->getaffectation();
                 }
             }
-            //$vartest = $projet->getStatus();
+
             if ($projet->getStatus() == 'Attente d\'information' && $var_id == 0){
-                $projet->setStatus('Maquette a faire');
+                $projet->setStatus($gestionstatus1);
                 $em->persist($projet);
-                //$em->flush();
             } elseif ( $projet->getStatus() == 'Maquette en attente de validation' && $var_affectation == 'graphiste'){
-                $projet->setStatus('Maquette validée');
+                $projet->setStatus($gestionstatus1);
                 $em->persist($projet);
             }else {}
 
@@ -150,7 +159,10 @@ class ProjetController extends Controller
         }
 
         return $this->render('@Elevenmx/projet/show.html.twig', array(
+            'var_idstatus' => $var_idstatus,
             'comment' => $commentaires,
+            'gestionstatuss' => $gestionstatuss,
+            'gestionstatus1' => $gestionstatus1,
             'form' => $form->createView(),
             'projet' => $projet,
         ));
@@ -237,10 +249,26 @@ die();
      */
     public function editGraphAction(Request $request, Projet $projet)
     {
+        $em = $this->getDoctrine()->getManager();
+        $gestionstatuss = $em->getRepository('ElevenmxBundle:Gestionstatus')->findAll();
+        $var_new_status=0;
+        $gestionstatus1 = $em->getRepository('ElevenmxBundle:Gestionstatus')->findOneBy(array('id' => $var_new_status));
+
+        $var_idstatus = 0;
+        $var_idprojet = 0;
+
+        foreach ($gestionstatuss as $gestionstatus){
+            if ($gestionstatus->getStatut() ==  $projet->getStatus()){
+                $var_idstatus = $projet->getStatus();
+            }
+        }
+
         $editForm = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
         $editForm->handleRequest($request);
 
-        $em = $this->getDoctrine()->getManager();
+        $form1 = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
+        $form1->handleRequest($request);
+
         $commentaires = $em->getRepository('ElevenmxBundle:Commentaire')->findBy(
             array('projet' => $projet->getId()),
             array('id' => 'DESC')
@@ -251,13 +279,25 @@ die();
         $form->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
-
             $projet->setStatus($projet->getStatus());
             $em->flush();
             //$this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('projet_editGraph', array('id' => $projet->getId()));
+        }
+
+        if ($form1->isSubmitted() ) {
+
+//            $var_idprojet =$projet->getId();
+//            $var_new_status=$projet->getStatus();
+//
+//            $gestionstatus1 = $em->getRepository('ElevenmxBundle:Gestionstatus')->findOneBy(array('id' => $var_new_status));
+//            $projet->setStatus($gestionstatus1);
+
+           $em->persist($projet);
+           /* $em->flush();*/
+
+
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -268,7 +308,7 @@ die();
 
             $vartest = $projet->getStatus();
 
-            $projet->setTitreProjet('projet8');
+            //$projet->setTitreProjet('projet8');
             $projet->setStatus($vartest);
 
             $em->flush();
@@ -276,9 +316,14 @@ die();
         }
 
         return $this->render('ElevenmxBundle:projet:editGraph.html.twig', array(
+            '$var_idstatus' => $var_idstatus,
+            '$var_new_status' => $var_new_status,
+            'var_idprojet' => $var_idprojet,
+            '$gestionstatus1' => $gestionstatus1,
+            '$gestionstatuss' => $gestionstatuss,
             'projet' => $projet,
-            'gestionstatus' => $gestionstatus,
             'form' => $form->createView(),
+            'form1' => $form1->createView(),
             'edit_form' => $editForm->createView(),
             'comment' => $commentaires,
 
