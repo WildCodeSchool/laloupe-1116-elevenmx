@@ -20,11 +20,11 @@ class DefaultController extends Controller
 //            echo ('Pas connecté !');
             return $this->redirectToRoute("fos_user_security_login");
         } elseif ($userActif->hasRole('ROLE_SUPER_ADMIN')) {
-            return $this->redirectToRoute("graphiste_index");
+            return $this->redirectToRoute("projet_indexGraph");
         } elseif ($userActif->hasRole('ROLE_ADMIN')) {
-            return $this->redirectToRoute("graphiste_index");
+            return $this->redirectToRoute("projet_indexGraph");
         } elseif ($userActif->hasRole('ROLE_GRAPH')) {
-            return $this->redirectToRoute("graphiste_index");
+            return $this->redirectToRoute("projet_indexGraph");
 //            http_redirect("bundle/graphiste/index.htlm.twig");
         } else {
             return $this->redirectToRoute('projet_index');

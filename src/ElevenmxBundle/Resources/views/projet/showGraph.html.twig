@@ -121,36 +121,36 @@
                 {#*****************fin envois du BAT au client ouverture modale ***********#}
 
                 {# *********** modal du graphiste pour laisser le commentaire au client ************* #}
-            <form action="{{ path('elevenmx_sendMailGraph') }}" method="POST">
-                {{ form_start(form) }}
-                    <div class="modal fade" id="myModalBATCommGraph" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
+                <form action="{{ path('elevenmx_sendMailGraph') }}" method="POST">
+                    {{ form_start(form) }}
+                        <div class="modal fade" id="myModalBATCommGraph" tabindex="-1" role="dialog" aria-labelledby="myModalLabelBATComm">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
 
-                                {# cette div c'est le text area commentaire#}
-                                <div>
-                                    <p class=" myModalLabel">Laisser un commentaire au client.</p>
-                                    <div class="champscommentaire">
-                                        {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
-                                        {{ form_errors(form.champsText) }}
+                                    {# cette div c'est le text area commentaire#}
+                                    <div>
+                                        <p class=" myModalLabel">Laisser un commentaire au client.</p>
+                                        <div class="champscommentaire">
+                                            {{ form_widget(form.champsText,{ 'attr': {'cols': '60', 'rows': '10'} }) }}
+                                            {{ form_errors(form.champsText) }}
+                                        </div>
                                     </div>
-                                </div>
-                                {# fin div text area commentaire#}
+                                    {# fin div text area commentaire#}
 
 
-                                <div class="row btnparcourir">
-                                    {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
-                                    {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
+                                    <div class="row btnparcourir">
+                                        {{ form_widget(form.file) }}{#ça c'est le bouton parcourir#}
+                                        {{ form_errors(form.file) }}{#ça c'est le bouton parcourir#}
+                                    </div>
+                                    {#ici confirmation de l'envoi du BAT dans la modal#}
+                                    <div>
+                                        <input id="btnsendBATgraph" type="submit" value="Envoyer le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
+                                    </div>
+                                    {#ici fin confirmation de l'envoi du BAT dans la modal#}
                                 </div>
-                                {#ici confirmation de l'envoi du BAT dans la modal#}
-                                <div>
-                                    <input id="btnsendBATgraph" type="submit" value="Envoyer le BAT" role="button" data-toggle="modalBAT" data-target="modalBAT" />
-                                </div>
-                                {#ici fin confirmation de l'envoi du BAT dans la modal#}
                             </div>
                         </div>
-                    </div>
-            </form>
+                </form>
                 {{ form_end(form) }}
                 {# ****************** fin modal du graphiste pour laisser le commentaire au client ***************** #}
 
