@@ -13,9 +13,14 @@
 
 {% block body %}
     <div class="container-fluid">
-{{ dump() }}
+{#{{ dump() }}#}
 
-        <h4> liste des commentaires coté graphiste </h4>
+        <ul>
+            <li>
+                <a href="{{ path('projet_index') }}">Retour à la liste des projets</a>
+            </li>
+        </ul>
+
         <div  class="row">
             <div style="margin-top: 20px" class="col-sm-offset-3 col-sm-4">
 
@@ -282,16 +287,6 @@
 
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
-        </li>
-        <li>
-            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
-        </li>
-        <li>
 
-        </li>
-    </ul>
 {% endblock %}
 
