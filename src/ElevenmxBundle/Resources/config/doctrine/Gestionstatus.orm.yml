@@ -12,4 +12,10 @@ ElevenmxBundle\Entity\Gestionstatus:
         statut:
             type: string
             length: 255
+
+    manyToOne:
+        projets:
+            targetEntity: ElevenmxBundle\Entity\Projet
+            inversedBy: gestionstatus
+
     lifecycleCallbacks: {  }

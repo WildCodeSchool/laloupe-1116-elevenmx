@@ -3,6 +3,7 @@
 namespace ElevenmxBundle\Controller;
 
 use ElevenmxBundle\Entity\Commentaire;
+use ElevenmxBundle\Entity\Gestionstatus;
 use ElevenmxBundle\Entity\Projet;
 use ElevenmxBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -78,21 +79,31 @@ class ProjetController extends Controller
      */
     public function newAction(Request $request)
     {
+
+        $gestionstatus = new Gestionstatus();
         $projet = new Projet();
         $form = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
-        $projet->setStatus('Attente d\'information');
+        //$projet->setStatus('Attente d\'information');
+
+
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
+            $gestionstatus = $em->getRepository('ElevenmxBundle:Gestionstatus')->findBy(
+                array('statut' => $statut->getId()),
+                array('id' => 'DESC')
+            );
             $em->persist($projet);
-            $em->flush($projet);
+            $em->flush();
 
             return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
         }
 
         return $this->render('ElevenmxBundle:projet:new.html.twig', array(
+            'gestionstatus' => $gestionstatus,
             'projet' => $projet,
             'form' => $form->createView(),
         ));
@@ -110,21 +121,24 @@ class ProjetController extends Controller
             array('id' => 'DESC')
         );
 
+        $gestionstatus1 = $em->getRepository('ElevenmxBundle:Gestionstatus')->findOneBy(array('statut' => 'Maquette a faire'));
         $newCommentaire = new Commentaire();
         $form = $this->createForm('ElevenmxBundle\Form\CommentaireType', $newCommentaire);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
-            //echo '<pre>';
-            //echo var_dump($commentaires);
-            //echo '<pre>';
-            //die();
+        if ($form->isSubmitted() && $form->isValid()){    //  ****** ICI ******
+     /*       echo '<pre>';
+            echo var_dump($commentaires);
+            echo '<pre>';
+            die();*/
 
+
+            $newStatus = $gestionstatus1;
             $newCommentaire->setProjet($projet);
             $newCommentaire->setAffectation('client');
             $em->persist($newCommentaire);
             //$em->flush();
-
+var_dump($newStatus);
             $var_id = 0;
             foreach ($commentaires as $commentaire){
                 $vartest = $commentaire->getId();
@@ -152,6 +166,7 @@ class ProjetController extends Controller
             'comment' => $commentaires,
             'form' => $form->createView(),
             'projet' => $projet,
+            'gestionstatus1' => $gestionstatus1,
         ));
     }
 
@@ -215,7 +230,7 @@ class ProjetController extends Controller
         $deleteForm = $this->createDeleteForm($projet);
         $editForm = $this->createForm('ElevenmxBundle\Form\ProjetType', $projet);
         $editForm->handleRequest($request);
-die();
+
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();

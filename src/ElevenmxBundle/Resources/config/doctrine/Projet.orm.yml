@@ -21,20 +21,21 @@ ElevenmxBundle\Entity\Projet:
             type: string
             length: 255
             column: Nom_Graphiste
-        status:
-            type: string
-            length: 255
-            column: Status
         dateCreationProjet:
             type: string
             length: 255
             column: date_Creation_Projet
+
     lifecycleCallbacks: {  }
 
     oneToMany:
         commentaires:
             targetEntity: ElevenmxBundle\Entity\Commentaire
             mappedBy: id
+        gestionstatus:
+            targetEntity: Gestionstatus
+            mappedBy: id
+
 
     manyToOne:
         user:
@@ -44,3 +45,5 @@ ElevenmxBundle\Entity\Projet:
         marque:
             targetEntity: ElevenmxBundle\Entity\Marque
             inversedBy: projets
+
+

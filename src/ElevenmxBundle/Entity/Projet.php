@@ -18,6 +18,7 @@ class Projet
      */
     private $titreProjet;
 
+
     /**
      * @var string
      */
@@ -292,5 +293,58 @@ class Projet
     public function getMarque()
     {
         return $this->marque;
+    }
+
+    /**
+     * Add status
+     *
+     * @param \ElevenmxBundle\Entity\Gestionstatus $status
+     *
+     * @return Projet
+     */
+    public function addStatus(\ElevenmxBundle\Entity\Gestionstatus $status)
+    {
+        $this->status[] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Remove status
+     *
+     * @param \ElevenmxBundle\Entity\Gestionstatus $status
+     */
+    public function removeStatus(\ElevenmxBundle\Entity\Gestionstatus $status)
+    {
+        $this->status->removeElement($status);
+    }
+    /**
+     * @var \ElevenmxBundle\Entity\Gestionstatus
+     */
+    private $gestionstatus;
+
+
+    /**
+     * Set gestionstatus
+     *
+     * @param \ElevenmxBundle\Entity\Gestionstatus $gestionstatus
+     *
+     * @return Projet
+     */
+    public function setGestionstatus(\ElevenmxBundle\Entity\Gestionstatus $gestionstatus = null)
+    {
+        $this->gestionstatus = $gestionstatus;
+
+        return $this;
+    }
+
+    /**
+     * Get gestionstatus
+     *
+     * @return \ElevenmxBundle\Entity\Gestionstatus
+     */
+    public function getGestionstatus()
+    {
+        return $this->gestionstatus;
     }
 }

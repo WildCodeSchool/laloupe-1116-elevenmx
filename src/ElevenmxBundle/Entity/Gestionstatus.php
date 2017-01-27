@@ -100,4 +100,23 @@ class Gestionstatus
     {
         return $this->projets;
     }
+
+    public function __toString()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set projets
+     *
+     * @param \ElevenmxBundle\Entity\Projet $projets
+     *
+     * @return Gestionstatus
+     */
+    public function setProjets(\ElevenmxBundle\Entity\Projet $projets = null)
+    {
+        $this->projets = $projets;
+
+        return $this;
+    }
 }

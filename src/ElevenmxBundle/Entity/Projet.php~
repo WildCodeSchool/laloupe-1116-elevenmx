@@ -293,4 +293,28 @@ class Projet
     {
         return $this->marque;
     }
+
+    /**
+     * Add status
+     *
+     * @param \ElevenmxBundle\Entity\Gestionstatus $status
+     *
+     * @return Projet
+     */
+    public function addStatus(\ElevenmxBundle\Entity\Gestionstatus $status)
+    {
+        $this->status[] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Remove status
+     *
+     * @param \ElevenmxBundle\Entity\Gestionstatus $status
+     */
+    public function removeStatus(\ElevenmxBundle\Entity\Gestionstatus $status)
+    {
+        $this->status->removeElement($status);
+    }
 }

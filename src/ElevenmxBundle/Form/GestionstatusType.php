@@ -15,7 +15,7 @@ class GestionstatusType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder                ->add('statut');
+        $builder->add('statut');
 
     }
 

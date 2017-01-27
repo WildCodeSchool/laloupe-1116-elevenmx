@@ -3,7 +3,6 @@
 
 {% block body %}
     <div class="container-fluid">
-        <h4> liste des commentaires coté graphiste </h4>
         <div  class="row">
             <div class="col-sm-offset-3 col-sm-4 projetetnomclient">
 
@@ -62,13 +61,14 @@
                         {% endif %}
 
                 <select name="typePaiment" class="col-xs-offset-4">
-                    <option selected="selected">{{ projet.status }}</option>
+                    <option selected="selected"></option>
                     <option value="Maquette a faire" class="projet_statut_red_dd">Maquette a faire</option>
                     <option value="Maquette en attente de validation" class="projet_statut_green_dd">Maquette en attente de validation</option>
                     <option value="Maquette a modifier" class="projet_statut_orange_dd">Maquette a modifier</option>
                     <option value="Maquette validée" class="projet_statut_orange_dd">Maquette validée</option>
                     <option value="Projet terminé" class="projet_statut_blanc_dd">Projet terminé</option>
                 </select>
+
             </div>
         </div>
     </div>
@@ -248,17 +248,7 @@
 
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('projet_index') }}">Retour a la liste des projets</a>
-        </li>
-        <li>
-            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">Edit</a>
-        </li>
-        <li>
 
-        </li>
-    </ul>
 {% endblock %}
 
 {% block javascripts %}
