@@ -12,6 +12,9 @@ ElevenmxBundle\Entity\Produit:
         nom:
             type: string
             length: 255
+        googleform:
+            type: string
+            length: 255
 
     oneToMany:
         projets:

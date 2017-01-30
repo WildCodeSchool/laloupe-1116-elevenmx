@@ -132,4 +132,33 @@ class Produit
         return $this->nom;
     }
 
+    /**
+     * @var string
+     */
+    private $googleform;
+
+
+    /**
+     * Set googleform
+     *
+     * @param string $googleform
+     *
+     * @return Produit
+     */
+    public function setGoogleform($googleform)
+    {
+        $this->googleform = $googleform;
+
+        return $this;
+    }
+
+    /**
+     * Get googleform
+     *
+     * @return string
+     */
+    public function getGoogleform()
+    {
+        return $this->googleform;
+    }
 }
