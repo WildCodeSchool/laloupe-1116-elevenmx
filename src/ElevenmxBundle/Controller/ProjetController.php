@@ -5,6 +5,7 @@ namespace ElevenmxBundle\Controller;
 use ElevenmxBundle\Entity\Commentaire;
 use ElevenmxBundle\Entity\Projet;
 use ElevenmxBundle\Entity\User;
+use ElevenmxBundle\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Variable;
 use Symfony\Component\HttpFoundation\Request;
@@ -87,17 +88,40 @@ class ProjetController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $produit = $em->getRepository('ElevenmxBundle:Produit')->findOneBy(array('id' => $projet->getProduit()));
             $projet->setStatus($gestionstatus);
+
             $em->persist($projet);
             $em->flush($projet);
 
-            return $this->redirectToRoute('projet_editGraph', array('id' => $projet->getId()));
+
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Création du projet')
+                ->setFrom('javadescavernes38@gmail.com')
+                ->setTo('javadescavernes38@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'Emails/registrationprojet.html.twig',
+                        array('projet' => $projet,
+                        'produit' => $produit)
+                    )
+                );
+            $this->get('mailer')->send($message);
+
+
+            return $this->redirectToRoute('projet_editGraph', array('id' => $projet->getId(),
+                'produit' => $produit,
+
+                ));
+
         }
 
         return $this->render('ElevenmxBundle:projet:new.html.twig', array(
             'projet' => $projet,
             'form' => $form->createView(),
             'gestionstatus' => $gestionstatus,
+            'user' => $user
         ));
     }
 
