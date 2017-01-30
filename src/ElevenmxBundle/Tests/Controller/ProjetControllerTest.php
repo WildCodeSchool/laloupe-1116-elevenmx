@@ -11,42 +11,52 @@ class ProjetControllerTest extends WebTestCase
      * @return mixed
      */
 
-    /*//debut dojo test
-    public static function testlogin()
+    //debut dojo test
+    public function testlogin()
     {
         //debut dojo test
         $fixtures = array(
             'ElevenmxBundle\DataFixtures\ORM\LoadUserData',
-            'ElevenmxBundle\DataFixtures\ORM\LoadProjetData'
+            'ElevenmxBundle\DataFixtures\ORM\LoadProduitData',
+            'ElevenmxBundle\DataFixtures\ORM\LoadMarqueData',
+            'ElevenmxBundle\DataFixtures\ORM\LoadGestionstatusData',
+            'ElevenmxBundle\DataFixtures\ORM\LoadProjetData',
         );
-        $this->fixtures = $this->loadFixtures($fixtures, null, 'doctrine', true)->getReferenceRepository();
 
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/login');
+
+        //$this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
         $this->assertTrue($crawler->filter('form input[name="_username"]')->count() == 1);
         $this->assertTrue($crawler->filter('form input[name="_password"]')->count() == 1);
 
-        $form = $crawler->selectButton('Se Connecter')->form();
-        $form['_username'] = 'user';
-        $form['_password'] = 'test';
-        $crawler = $user->submit($form);
+        // Sélection basée sur la valeur, l'id ou le nom des boutons
+//        $form = $crawler->selectButton('Se connecter')->form();
+        $form['_username'] = 'ludo';
+        $form['_password'] = 'ludo';
 
+        // Sélection basée sur la valeur, l'id ou le nom des boutons
+        $form = $crawler->selectButton('Se connecter')->form();
 
+        $crawler = $client->submit($form);
 
         // Il faut suivre la redirection
-        $this->assertEquals(302, $user->getResponse()->getStatusCode());
-        $crawler = $user->followRedirect();
-        $this->assertEquals('Application\Src\ElevenmxBundle\Controller\Projetcontroler::indexAction', $user->getRequest()->attributes->get('_controller'));
-
-        $user = static::createUser(array(),array(
-            'PHP_AUTH_USER' => 'user',
-            'PHP_AUTH_PW' => 'test'
-        ));
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $crawler = $client->followRedirect();
+        $this->assertEquals('ElevenmxBundle\Controller\DefaultController::indexAction', $client->getRequest()->attributes->get('_controller'));
 
 
-        $this->assertEquals(true,true);
+
+//        $client = static::createClient();
+//        $crawler = $client->request('GET', '/Projet/new');
+
+
     }
+
+
     //fin dojo test*/
     
-    /*
+/*
     public function testCompleteScenario()
     {
         // Create a new client to browse the application
@@ -89,7 +99,7 @@ class ProjetControllerTest extends WebTestCase
 
         // Check the entity has been delete on the list
         $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
-    }
+    }*/
 
-    */
+
 }

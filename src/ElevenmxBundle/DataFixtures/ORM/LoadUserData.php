@@ -29,6 +29,21 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($user);
         $manager->flush();
 
+        $user1 = new User();
+        $user1->setUsername('ludo');
+        $user1->setPlainPassword('ludo');
+        $user1->setNom('Quouillaults');
+        $user1->setPrenom('Ludovic');
+        $user1->setCategorie('client');
+        $user1->setTelephone('0987654321');
+        $user1->setEntreprise('Motomax28');
+        $user1->setEmail('ludovic.quouillault@free.fr');
+        $user1->setRoles(array('ROLE_USER'));
+        $user1->setEnabled(1);
+
+        $manager->persist($user1);
+        $manager->flush();
+
 
         $graphiste = new User();
         $graphiste->setUsername('Graphiste');
@@ -65,6 +80,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
     public function getOrder()
     {
-        return 3;
+        return 1;
     }
 }

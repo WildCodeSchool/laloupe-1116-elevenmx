@@ -292,4 +292,10 @@ class Projet
     {
         return $this->marque;
     }
+
+    public function __toString()
+    {
+        return $this->status;
+        return $this->dateCreationProjet;
+    }
 }

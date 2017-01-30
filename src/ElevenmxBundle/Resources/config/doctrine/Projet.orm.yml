@@ -20,7 +20,8 @@ ElevenmxBundle\Entity\Projet:
         dateCreationProjet:
             type: string
             length: 255
-            column: date_Creation_Projet
+            column: Date_Creation_Projet
+            nullable: true
     lifecycleCallbacks: {  }
 
     oneToMany:

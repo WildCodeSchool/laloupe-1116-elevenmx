@@ -15,7 +15,7 @@ class LoadProduitData extends AbstractFixture implements OrderedFixtureInterface
     {
         $produit1 = new Produit();
         $produit1->setNom('gant');
-
+        $this->addReference('tag_produit1', $produit1);
         $manager->persist($produit1);
         $manager->flush();
 
@@ -32,6 +32,9 @@ class LoadProduitData extends AbstractFixture implements OrderedFixtureInterface
 
         $manager->persist($produit3);
         $manager->flush();
+
+
+
     }
 
     public function getOrder()

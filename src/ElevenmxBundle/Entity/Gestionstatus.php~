@@ -100,4 +100,10 @@ class Gestionstatus
     {
         return $this->projets;
     }
+
+    public function __toString()
+    {
+        return $this->statut;
+    }
+
 }

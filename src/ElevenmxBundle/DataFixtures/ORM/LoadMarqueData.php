@@ -15,27 +15,24 @@ class LoadMarqueData extends AbstractFixture implements OrderedFixtureInterface
     {
         $marque1 = new Marque();
         $marque1->setNom('honda');
-
+        $this->addReference('tag_marque1', $marque1);
         $manager->persist($marque1);
         $manager->flush();
 
-
         $marque2 = new Marque();
         $marque2->setNom('yamaha');
-
         $manager->persist($marque2);
         $manager->flush();
 
 
         $marque3 = new Marque();
         $marque3->setNom('susuki');
-
         $manager->persist($marque3);
         $manager->flush();
     }
 
     public function getOrder()
     {
-        return 1;
+        return 3;
     }
 }
