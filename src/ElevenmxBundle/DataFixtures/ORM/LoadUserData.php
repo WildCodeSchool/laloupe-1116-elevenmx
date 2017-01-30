@@ -40,6 +40,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $user1->setEmail('ludovic.quouillault@free.fr');
         $user1->setRoles(array('ROLE_USER'));
         $user1->setEnabled(1);
+        $this->addReference('tag_user1', $user1);
 
         $manager->persist($user1);
         $manager->flush();

@@ -16,7 +16,7 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
 
-        $projet1 = new Projet();
+       /* $projet1 = new Projet();
         $projet1->setTitreProjet('$projet1');
         $projet1->setProduit('1');
         $projet1->setMarque('1');
@@ -39,7 +39,6 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($projet2);
         $manager->flush();
 
-
         $projet3 = new Projet();
         $projet3->setTitreProjet('$projet3');
         $projet3->setProduit('1');
@@ -49,8 +48,7 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
         $projet3->setUser();
 
         $manager->persist($projet3);
-        $manager->flush();
-
+        $manager->flush();*/
 
         $projet4 = new Projet();
         $projet4->setTitreProjet('projet1_ludo');
@@ -59,7 +57,7 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
         $projet4->setNomGraphiste('graphiste');
         $projet4->setStatus($this->getReference('tag_gestionstatus1'));
         $projet4->setDateCreationProjet('12/01/2017');
-        $projet4->setUser();
+        $projet4->setUser($this->getReference('tag_user1'));
 
         $manager->persist($projet4);
         $manager->flush();
