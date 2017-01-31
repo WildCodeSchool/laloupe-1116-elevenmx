@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<body>
     <div class="projet">
 
         <h1 class="projet_h1">Création de Projet</h1>
         {{ form_start(form) }}
-        <div class="row">
+        <div class="row" class="pageligne">
             <div class="col-xs-offset-4 col-xs-2">
                 <label class="newformtitreprojet" for="elevenmxbundle_projet_titreProjet" >{{ form_label(form.titreProjet) }}</label>
                 {{ form_widget(form.titreProjet, { 'attr': {'class': 'foo'} }) }}
@@ -15,7 +16,7 @@
                 {{ form_widget(form.marque, { 'attr': {'class': 'foo'} }) }}
             </div>
         </div>
-        <div class="row">
+        <div class="row" class="pageligne">
             <div class="col-xs-offset-4 col-xs-2">
                 <label class="newformproduit" for="elevenmxbundle_projet_produit" >{{ form_label(form.produit) }}</label>
                 {{ form_widget(form.produit, { 'attr': {'class': 'foo'} }) }}
@@ -26,7 +27,7 @@
                 {{ form_widget(form.user, { 'attr': {'class': 'foo'} }) }}
             </div>
         </div>
-        <div class="row">
+        <div class="row" class="pageligne">
             <div class="col-xs-offset-4 col-xs-2">
                 <label class="newformnomgraphiste" for="elevenmxbundle_projet_nomGraphiste" >{{ form_label(form.nomGraphiste) }}</label>
                 {{ form_widget(form.nomGraphiste, { 'attr': {'class': 'foo'} }) }}
@@ -47,4 +48,5 @@
         {{ form_end(form) }}
         
     </div>
+</body>
 {% endblock %}

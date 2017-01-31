@@ -12,7 +12,7 @@ class ProjetControllerTest extends WebTestCase
      */
 
     //debut dojo test
-    public function testlogin()
+   /* public function testlogin()
     {
         //debut dojo test
         $fixtures = array(
@@ -45,35 +45,50 @@ class ProjetControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
         $this->assertEquals('ElevenmxBundle\Controller\DefaultController::indexAction', $client->getRequest()->attributes->get('_controller'));
 
-
-
 //        $client = static::createClient();
 //        $crawler = $client->request('GET', '/Projet/new');
 
-
-    }
-
-
+    }*/
     //fin dojo test*/
     
-/*
+
     public function testCompleteScenario()
     {
-        // Create a new client to browse the application
+
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/projet/new');
+        $this->assertEquals('ElevenmxBundle\Controller\ProjetController::newAction', $client->getRequest()->attributes->get('_controller'));
+        $this->assertTrue(200 === $client->getResponse()->getStatusCode());
+        $this->assertTrue($crawler->filter('.jobs td.position:contains("Expired")')->count() == 0);
+
+        $form = $crawler->selectButton('Création du projet')->form(array(
+            'elevenmxbundle_projet[titreProjet]'  => 'projet2_ludo',
+            'elevenmxbundle_projet[produit]'  => 'gant',
+            'elevenmxbundle_projet[marque]'  => 'honda',
+            'elevenmxbundle_projet[nomGraphiste]'  => 'Graphiste',
+            'elevenmxbundle_projet[status]'  => 'Attente d\'information',
+            'elevenmxbundle_projet[dateCreationProjet]'  => '2017/01/26',
+            'elevenmxbundle_projet[user]'  => 'ludo'
+
+        ));
+        $this->assertTrue($crawler = $client->submit($form));
+
+  /*      // Create a new client to browse the application
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/projet/');
+        $crawler = $client->request('GET', '/projet/new');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /projet/");
-        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+        $crawler = $client->click($crawler->selectLink('Création du projet')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'elevenmxbundle_projet[field_name]'  => 'Test',
+            'elevenmxbundle_projet[TitreProjet]'  => 'projet2_ludo',
             // ... other fields to fill
-        ));
+    ));*/
 
-        $client->submit($form);
+       /* $client->submit($form);
         $crawler = $client->followRedirect();
 
         // Check data in the show view
@@ -98,8 +113,7 @@ class ProjetControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         // Check the entity has been delete on the list
-        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
-    }*/
-
+        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());*/
+    }
 
 }

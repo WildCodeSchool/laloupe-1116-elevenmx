@@ -121,7 +121,6 @@ class ProjetController extends Controller
             'projet' => $projet,
             'form' => $form->createView(),
             'gestionstatus' => $gestionstatus,
-            'user' => $user
         ));
     }
 
