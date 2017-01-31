@@ -59,23 +59,24 @@
 
         {% if is_granted('ROLE_SUPER_ADMIN') %}
         <!-- BOUTON SUPER ADMIN -->
-        <div class="col-lg-1 col-xs-1"></div>
-        <div class="col-lg-2 col-xs-2"></div>
+        <div class="col-lg-1 col-xs-1"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="liste des projets" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="liste clients" class="bouton4"></a></div>
         <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="new client" class="bouton4"></a></div>
         <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="new projet" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives" class="bouton4"></a></div>
-        <div class="col-lg-1 col-xs-1"></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('produit_index') }}"><input type="button" value="liste produits" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('marque_index') }}"><input type="button" value="liste marques" class="bouton4"></a></div>
+        <div class="col-lg-1 col-xs-1"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives" class="bouton4"></a></div>
 
         {% elseif is_granted('ROLE_ADMIN') %}
         <!-- BOUTON ADMIN -->
         <div class="col-lg-1 col-xs-1"></div>
-        <div class="col-lg-2 col-xs-2"></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="new client" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="new projet" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="#"><input type="button" value="new form" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives" class="bouton4"></a></div>
-        <div class="col-lg-1 col-xs-1"></div>
+
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="liste des projets" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="nouveau client" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="nouveau projet" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('produit_index') }}"><input type="button" value="liste produits" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('marque_index') }}"><input type="button" value="liste marques" class="bouton4"></a></div>
+        <div class="col-lg-1 col-xs-1"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives" class="bouton4"></a></div>
 
         {% elseif is_granted('ROLE_GRAPH') %}
         <!-- BOUTON GRAPH -->
@@ -88,13 +89,10 @@
 
         {% elseif is_granted('ROLE_USER') %}
         <!-- BOUTON USER -->
-            <div class="col-lg-4 col-xs-2"></div>
-
-            <div class="col-lg-2 col-xs-8"> <a href="{{ path('fos_user_change_password') }}"><input type="button" value="Modifier mon mot de passe" class="bouton4"></a></div>
-
-
-
-            <div class="col-lg-4 col-xs-2"></div>
+            {#<div class="col-lg-2 col-xs-1"></div>#}
+            <div class="col-lg-offset-4 col-lg-2 col-xs-4 col-sm-4"> <a href="{{ path('fos_user_change_password') }}"><input type="button" value="Modifier mon mot de passe" class="bouton4"></a></div>
+            <div class="col-lg-2 col-xs-offset-2 col-xs-4 col-sm-4"> <a href="{{ path('projet_index') }}"><input type="button" value="liste des projets" class="bouton4"></a></div>
+            <div class="col-lg-4 col-xs-1"></div>
 
 
 
