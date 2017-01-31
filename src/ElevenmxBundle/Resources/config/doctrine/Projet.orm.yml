@@ -13,22 +13,15 @@ ElevenmxBundle\Entity\Projet:
             type: string
             length: 255
             column: Titre_Projet
-        marque:
-            type: string
-            length: 255
-            column: Marque
-        produit:
-            type: string
-            length: 255
-            column: Produit
         nomGraphiste:
             type: string
             length: 255
             column: Nom_Graphiste
-        status:
+        dateCreationProjet:
             type: string
             length: 255
-            column: Status
+            column: Date_Creation_Projet
+            nullable: true
     lifecycleCallbacks: {  }
 
     oneToMany:
@@ -39,4 +32,16 @@ ElevenmxBundle\Entity\Projet:
     manyToOne:
         user:
             targetEntity: ElevenmxBundle\Entity\User
+            inversedBy: projets
+
+        marque:
+            targetEntity: ElevenmxBundle\Entity\Marque
+            inversedBy: projets
+
+        produit:
+            targetEntity: ElevenmxBundle\Entity\Produit
+            inversedBy: projets
+
+        status:
+            targetEntity: ElevenmxBundle\Entity\Gestionstatus
             inversedBy: projets

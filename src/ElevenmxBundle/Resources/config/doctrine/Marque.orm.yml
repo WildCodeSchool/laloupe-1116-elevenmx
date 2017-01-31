@@ -16,9 +16,17 @@ ElevenmxBundle\Entity\Marque:
             type: string
             length: 255
             nullable: true
+
+    oneToMany:
+        projets:
+            targetEntity: ElevenmxBundle\Entity\Projet
+            mappedBy: marque
+
     lifecycleCallbacks:
           prePersist: [ preUpload1 ]
           preUpdate: [ preUpload1 ]
           postPersist: [ upload1  ]
           postUpdate: [ upload1 ]
           postRemove: [ removeUpload1 ]
+
+

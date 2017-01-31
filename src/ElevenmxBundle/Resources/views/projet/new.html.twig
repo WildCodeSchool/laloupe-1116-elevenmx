@@ -1,42 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<body>
     <div class="projet">
 
         <h1 class="projet_h1">Création de Projet</h1>
         {{ form_start(form) }}
-        <div class="row">
+        <div class="row" class="pageligne">
             <div class="col-xs-offset-4 col-xs-2">
-                <label  style="margin-top:10%;margin-right:15%;" for="elevenmxbundle_projet_titreProjet" >{{ form_label(form.titreProjet) }}</label>
+                <label class="newformtitreprojet" for="elevenmxbundle_projet_titreProjet" >{{ form_label(form.titreProjet) }}</label>
                 {{ form_widget(form.titreProjet, { 'attr': {'class': 'foo'} }) }}
             </div>
             <div class="col-xs-2">
-                <label  style="margin-top:10%;margin-right:15%;" for="elevenmxbundle_projet_marque" >{{ form_label(form.marque) }}</label>
+                <label class="newformmarque" for="elevenmxbundle_projet_marque" >{{ form_label(form.marque) }}</label>
                 {{ form_widget(form.marque, { 'attr': {'class': 'foo'} }) }}
             </div>
         </div>
-        <div class="row">
+        <div class="row" class="pageligne">
             <div class="col-xs-offset-4 col-xs-2">
-                <label style="margin-top:10%;margin-right:15%;width: 300px;" for="elevenmxbundle_projet_produit" >{{ form_label(form.produit) }}</label>
+                <label class="newformproduit" for="elevenmxbundle_projet_produit" >{{ form_label(form.produit) }}</label>
                 {{ form_widget(form.produit, { 'attr': {'class': 'foo'} }) }}
             </div>
             <div class="col-xs-2">
-                <label  style="margin-top:10%;margin-right:15%;width: 300px" for="elevenmxbundle_projet_client" >{{ form_label(form.user) }}</label>
+
+                <label class="newformclient" for="elevenmxbundle_projet_client" >{{ form_label(form.user) }}</label>
                 {{ form_widget(form.user, { 'attr': {'class': 'foo'} }) }}
             </div>
         </div>
-        <div class="row">
+        <div class="row" class="pageligne">
             <div class="col-xs-offset-4 col-xs-2">
-                <label  style="margin-top:10%;margin-right:15%;width: 300px" for="elevenmxbundle_projet_nomGraphiste" >{{ form_label(form.nomGraphiste) }}</label>
+                <label class="newformnomgraphiste" for="elevenmxbundle_projet_nomGraphiste" >{{ form_label(form.nomGraphiste) }}</label>
                 {{ form_widget(form.nomGraphiste, { 'attr': {'class': 'foo'} }) }}
+            </div>
+            <div class="col-xs-2">
+                <label class="newformdatecreationprojet" for="elevenmxbundle_projet_dateCreationProjet" >{{ form_label(form.dateCreationProjet) }}</label>
+                {{ form_widget(form.dateCreationProjet, { 'attr': {'class': 'foo'} }) }}
             </div>
         </div>
 
         <div class="col-xs-2 col-lg-12"><br> 
-            <input style="display: block; margin: auto;" type="submit" value="Création du projet">
+            <input class="newcreationprojet" type="submit" value="Création du projet">
+        </div>
+        <div class="hidden">
+            {{ form_widget(form.status) }}
         </div>
 
         {{ form_end(form) }}
         
     </div>
+</body>
 {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gestionstatuses list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gestionstatus in gestionstatuses %}
+            <tr>
+                <td><a href="{{ path('gestionstatus_show', { 'id': gestionstatus.id }) }}">{{ gestionstatus.id }}</a></td>
+                <td>{{ gestionstatus.statut }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('gestionstatus_show', { 'id': gestionstatus.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('gestionstatus_edit', { 'id': gestionstatus.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gestionstatus_new') }}">Create a new gestionstatus</a>
+        </li>
+    </ul>
+{% endblock %}

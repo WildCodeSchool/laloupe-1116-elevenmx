@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div class="container">
         <div class="row">
             <div class="col-sm-offset-3 col-sm-5">
@@ -17,7 +18,9 @@
                         <tr>
                             <!--<th style="border: 1px solid black;">Id</th>-->
                             <th style="border: 1px solid black;">Nom</th>
+                            <th style="border: 1px solid black;">URL Googleform</th>
                             <th style="border: 1px solid black;">Actions</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -25,6 +28,7 @@
                         <tr>
                             <!--<td style="border: 1px solid black;"><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>-->
                             <td style="border: 1px solid black;">{{ produit.nom }}</td>
+                            <td style="border: 1px solid black;">{{ produit.googleform }}</td>
                             <td style="border: 1px solid black;">
                                 <ul>
                                     <li>

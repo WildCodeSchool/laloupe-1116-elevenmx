@@ -7,6 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class ProjetType extends AbstractType
 {
     /**
@@ -15,28 +18,35 @@ class ProjetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('titreProjet')
-                ->add('user')
+                ->add('user', EntityType::class, array(
+                        'class' => 'ElevenmxBundle\Entity\User',
+                        'property' => 'username',
+                        'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('m')
+                                ->orwhere('m.categorie like :categorie')
+                                ->orderBy('m.username', 'ASC')
+                                ->setParameter('categorie', 'client') ;
+                        },
+                        'choice_label' => 'username',
+                        'choices_as_values' => true,
+                    ))
                 ->add('marque')
-                ->add('produit', ChoiceType::class, array(
-                    'choices'  => array(
-                        'Casque' => 'Casque',
-                        'Combinaison' => 'Combinaison',
-                        'Moto' => 'Moto',
-                    ),
-                    // *this line is important*
+                ->add('produit')
+                ->add('nomGraphiste', EntityType::class, array(
+                    'class' => 'ElevenmxBundle\Entity\User',
+                    'property' => 'username',
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('m')
+                            ->orwhere('m.categorie like :categorie')
+                            ->orderBy('m.username', 'ASC')
+                            ->setParameter('categorie', 'graphiste') ;
+                    },
+                    'choice_label' => 'username',
                     'choices_as_values' => true,
                 ))
-                ->add('nomGraphiste', ChoiceType::class, array(
-                    'choices'  => array(
-                        'Nico' => 'Nico',
-                        'Ludo' => 'Ludo',
-                        'Max' => 'Max',
-                        'Yannick' => 'Yannick',
-                    ),
-                    // *this line is important*
-
-                    'choices_as_values' => true,));
-//                ->add('status');
+            ->add('dateCreationProjet')
+            ->add('status')
+        ;
 
     }
     
@@ -57,6 +67,5 @@ class ProjetType extends AbstractType
     {
         return 'elevenmxbundle_projet';
     }
-
 
 }

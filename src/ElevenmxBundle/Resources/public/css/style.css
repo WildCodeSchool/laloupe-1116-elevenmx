@@ -114,66 +114,144 @@
 
 #projet_ligne_aff
 {
-    border: solid black;
+    border: 1px solid black ;
     margin-top: 50px;
 }
 
 #projet_ligne_bloc1_aff
 {
-    border: solid black;
-    margin-top:20px
+    border: 1px solid black ;
+    margin-top:20px;
 }
 
 .projet_bloc_h4_aff
 {
-    color: black
+    color: black;
+
 }
 .projet_bloc1_h4_bis_aff
 {
     color: black;
-    margin-top: 50px;
 }
 #projet_statut_red
 {
     background-color:red;
-    border: solid black;
-    margin-top:20px
+    border: solid black 1px;
+    margin-top:20px;
+    text-align: center;
 }
 #projet_statut_green
 {
     background-color:green;
-    border: solid black;
-    margin-top:20px
+    border: solid black 1px;
+    margin-top:20px;
+    text-align: center;
 }
 #projet_statut_blanc
 {
     background-color:white;
-    border: solid black;
-    margin-top:20px
+    border: solid black 1px;
+    margin-top:20px;
+    text-align: center;
 }
 #projet_statut_orange
 {
     background-color:orange;
-    border: solid black;
-    margin-top:20px
+    border: solid black 1px;
+    margin-top:20px;
+    text-align: center;
+}
+
+.projet_statut_red_dd
+{
+    background-color:red;
+    border: solid black 1px;
+    margin-top:1px;
+    text-align: center;
+}
+.projet_statut_green_dd
+{
+    background-color:green;
+    border: solid black 1px;
+    margin-top:1px;
+    text-align: center;
+}
+.projet_statut_blanc_dd
+{
+    background-color:white;
+    border: solid black 1px;
+    margin-top:1px;
+    text-align: center;
+}
+.projet_statut_orange_dd
+{
+    background-color:orange;
+    border: solid black 1px;
+    margin-top:1px;
+    text-align: center;
+}
+
+.marque {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.nowrap {
+    white-space:nowrap;
 }
 
 /************************************ Fin Formulaire liste projet vi index *******************************************************/
 
-/************************************ Debut Formulaire liste commentaires *******************************************************/
+/*************** Style Boutons **************/
 
+.bouton4 {
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #22313b);
+    background-image: -moz-linear-gradient(top, #3498db, #22313b);
+    background-image: -ms-linear-gradient(top, #3498db, #22313b);
+    background-image: -o-linear-gradient(top, #3498db, #22313b);
+    background-image: linear-gradient(to bottom, #3498db, #22313b);
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    line-height: 20px;
+    margin-top: -5px;
+}
 
-/***********************************  Fin Formulaire liste commentaires   *******************************************************/
+.bouton4:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3465d9);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3465d9);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3465d9);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3465d9);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3465d9);
+    text-decoration: none;
+}
+
+/********************************************/
 
 
 
 /*************** FOOTER ***********************/
+
+body {
+    position: absolute;
+    right:0;
+    left: 0;
+    min-height: 100vh;
+}
 
 footer {
     background-color: #000;
     color: #fff;
     margin-top: 21px;
     width: 100%;
+    position: absolute;
     bottom: 0;
 }
 
@@ -189,6 +267,10 @@ footer {
 #btn_logo {
     background-color: #000;
 }
+
+
+
+
 /********** Photos dans modal *******************/
 
 .eleve {
@@ -212,11 +294,61 @@ footer {
     text-align: center;
   }
 
+.nomgraphiste {
+    margin-top:25%;
+    margin-left:15%;
+}
+
+.prenomgraphiste {
+    margin-top:25%;
+    margin-left:15%;
+}
+
+.codeutilisateurgraphiste {
+    margin-top:10%;
+    margin-left:15%;
+}
+
+.motdepassegraphiste {
+    margin-top:10%;
+    margin-left:15%;
+}
 /************************************ Fin Formulaire création graphiste *******************************************************/
+/************************************ Page projet edit *******************************************************/
+.edittitreprojet {
+    margin-top:25%;
+    margin-left:15%;
+}
 
-/************************************ Page show *******************************************************/
+.editformclient {
+    margin-top:25%;
+    margin-left:15%;
+}
 
-#btnBATmodal{
+.editformproduit {
+    margin-top:25%;
+    margin-left:15%;
+}
+
+.editformmarque {
+    margin-top:25%;
+    margin-left:15%;
+}
+
+.editformnomgraphiste {
+    margin-top:25%;
+    margin-left:15%;
+}
+
+.editinput {
+    margin-top:35%;
+    margin-left:15%;
+}
+/************************************ Fin de page projet edit *******************************************************/
+
+/************************************ Page show et showGraph *******************************************************/
+
+#btnBATmodal {
     margin-top: 10px;
     width: 100%;
    border: solid;
@@ -225,7 +357,7 @@ footer {
     height: 50px;
 }
 
-#btnBATmodalComm{
+#btnBATmodalComm {
     border: solid;
     color:blue;
     border-width: 1px;
@@ -233,16 +365,214 @@ footer {
     margin-top: 5px;
 }
 
-#myModalBATComm{
+#myModalBATComm {
     margin-top: 2%;
 
 }
-/************************************ Fin Page show *******************************************************/
+
+.projetetnomclient {
+    margin-top: 20px;
+}
+.produitnomgraphiste {
+    margin-top: 20px;
+}
+
+.statutetdate {
+    border: solid;
+    border-width: 1px;
+}
+.containergrosplan {
+    height: 530px;
+    margin-top: 20px;
+}
+.containergrosplanGraph {
+    height: 530px;
+}
+
+.cadremarque {
+    border: solid;
+    border-width: 1px;
+    height: 150px;
+}
+
+.imgshow {
+    height: 140px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.nomprojetnomgraphiste {
+    border: solid;
+    border-width: 1px;
+    height: 50px;
+    text-align:center;
+    background-color: lightgrey;
+    margin-top: 5px;
+    color:white;
+}
+.cadrerougecommentaire{
+    border: solid;
+    color:red;
+    border-width: 1px;
+    height: 150px;
+    margin-top: 5px;
+}
+.cadrerougecommentaireGraph{
+    border: solid;
+    color:red;
+    border-width: 1px;
+    height: 210px;
+    margin-top: 5px;
+}
+.textcadrerougecommentaire {
+    color: black;
+}
+
+.boutonjevalideBAT {
+    text-align: center;
+    margin-top: 15px
+}
+
+.myModalLabel {
+    text-align: center
+}
+
+.boutonjenevalidepasBAT {
+    text-align: center;
+    margin-top: 15px
+}
+
+.imggrosplan {
+    height: 100%;
+    width: auto;
+}
+
+.modal_nevalidepas {
+    text-align: center;
+}
+.champscommentaire {
+    padding-left: 20%;
+}
+.btnparcourir {
+    padding-left: 42%;
+}
+#btnsendnewBAT {
+    margin-left: 35%;
+}
+#btnsendBATgraph {
+    margin-left: 40%;
+}
+
+.container-commentaires {
+    margin-top: 50px;
+}
+
+.eachcommentclient {
+    border:solid;
+    border-width: 1px;
+    margin-top: 10px;
+}
+.eachimgmin {
+    height: 200px;
+    width: auto;
+}
+.champstxtcommclient {
+    border: solid;
+    border-width: 1px;
+}
+
+.champstxtcommgraph {
+    border: solid;
+    border-width: 1px;
+    margin-top: 10px;
+}
+.eachcommentgraph {
+    border: solid;
+    border-width: 1px;
+}
+
+/************************************ Fin Page show et showGraph *******************************************************/
 
 
+/************************************ Page IndexGraph *******************************************************/
+
+#espacesousgerer {
+    margin-top:10px;
+}
+
+#search {
+    margin-left: 75%;
+}
+.titelsearch{
+    margin-left: 75%;
+}
+/************************************ Fin Page IndexGraph *******************************************************/
+
+/************************************ Page IndexHisto *******************************************************/
+.espacesousstatut {
+    margin-top:10px;
+}
+/************************************ Fin Page IndexHisto *******************************************************/
+
+/************************************ Page New *******************************************************/
+.newformtitreprojet {
+    margin-top:10%;
+    margin-right:15%;
+}
+
+.newformmarque {
+    margin-top:10%;
+    margin-right:15%;
+    width: 300px
+}
+.newformproduit {
+    margin-top:10%;
+    margin-right:15%;
+    width: 300px;
+}
+
+.newformclient {
+    margin-top:10%;
+    margin-right:15%;
+    width: 300px
+}
+
+.newformnomgraphiste {
+    margin-top:10%;
+    margin-right:15%;
+    width: 300px
+}
+
+.newformdatecreationprojet {
+    margin-top:10%;
+    margin-right:15%;
+    width: 300px
+}
+
+.newcreationprojet {
+    display: block;
+    margin: auto;
+}
+/*********************************** Fin page New *******************************/
 /************************************ debut Page produit *******************************************************/
 td, th /* Mettre une bordure sur les td ET les th */
 {
     border: 1px solid black;
 }
 /************************************ Fin Page produit *******************************************************/
+
+select {
+    height: 25px;
+    width: 170px;
+}
+.selectlg {
+    height: 25px;
+    width: 350px;
+}
+
+.pageligne{
+    margin-right: 0;
+    margin-left: 0;
+}
+

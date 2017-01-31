@@ -3,9 +3,9 @@
 namespace ElevenmxBundle\Entity;
 
 /**
- * Produit
+ * Gestionstatus
  */
-class Produit
+class Gestionstatus
 {
     /**
      * @var int
@@ -15,7 +15,7 @@ class Produit
     /**
      * @var string
      */
-    private $nom;
+    private $statut;
 
 
     /**
@@ -29,28 +29,31 @@ class Produit
     }
 
     /**
-     * Set nom
+     * Set statut
      *
-     * @param string $nom
+     * @param string $statut
      *
-     * @return Produit
+     * @return Gestionstatus
      */
-    public function setNom($nom)
+    public function setStatut($statut)
     {
-        $this->nom = $nom;
+        $this->statut = $statut;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get statut
      *
      * @return string
      */
-    public function getNom()
+    public function getStatut()
     {
-        return $this->nom;
+        return $this->statut;
     }
+
+
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
@@ -69,7 +72,7 @@ class Produit
      *
      * @param \ElevenmxBundle\Entity\Projet $projet
      *
-     * @return Produit
+     * @return Gestionstatus
      */
     public function addProjet(\ElevenmxBundle\Entity\Projet $projet)
     {
@@ -97,68 +100,10 @@ class Produit
     {
         return $this->projets;
     }
-    /**
-     * @var string
-     */
-    private $oneToMany;
-
-
-    /**
-     * Set oneToMany
-     *
-     * @param string $oneToMany
-     *
-     * @return Produit
-     */
-    public function setOneToMany($oneToMany)
-    {
-        $this->oneToMany = $oneToMany;
-
-        return $this;
-    }
-
-    /**
-     * Get oneToMany
-     *
-     * @return string
-     */
-    public function getOneToMany()
-    {
-        return $this->oneToMany;
-    }
 
     public function __toString()
     {
-        return $this->nom;
+        return $this->statut;
     }
 
-    /**
-     * @var string
-     */
-    private $googleform;
-
-
-    /**
-     * Set googleform
-     *
-     * @param string $googleform
-     *
-     * @return Produit
-     */
-    public function setGoogleform($googleform)
-    {
-        $this->googleform = $googleform;
-
-        return $this;
-    }
-
-    /**
-     * Get googleform
-     *
-     * @return string
-     */
-    public function getGoogleform()
-    {
-        return $this->googleform;
-    }
 }

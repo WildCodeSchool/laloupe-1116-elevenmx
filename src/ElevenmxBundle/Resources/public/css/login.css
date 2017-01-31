@@ -1,3 +1,89 @@
+/****************** NAVBAR *****************/
+
+#elevenmx_img {
+    padding-top: 25px;
+    margin-left: 100px;
+}
+
+#eleven-h1 {
+    margin-left: 70px;
+    left: 157px;
+    font-size: 17px;
+    color: #fff;
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+#log_off {
+    color: #fff;
+    font-size: 30px;
+    padding-right: 30px;
+    margin-top: 25px;
+}
+
+#log_off:hover {
+    text-decoration: none;
+}
+
+.full {
+    width: 100%;
+}
+
+
+
+.blue {
+    background-color: #009DE0;
+    height: 60px;
+    width: 100%;
+    margin-bottom: -1px;
+    padding-top: 15px;
+}
+
+
+.logo_emx {
+    position: relative;
+    top: 50px;
+    left: 50px;
+    z-index: 100;
+}
+
+@media screen and (max-width: 360px) {
+    .logo_css {
+        display:none;
+
+    }
+    .logo_emx {
+        display: none;
+    }
+}
+
+#login_bloc {
+    margin-top: 100px;
+}
+
+.micro_logo {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 360px) {
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+}
+
+
+/************************************ Fin  Menu Navbar *******************************************************/
+
+
+
+
+
+
 .btn-success{
     background-color: #009DE0;
 }
@@ -7,42 +93,42 @@
 
 
 
-.super-container {
-    width: 100%;
-    background: black;
-    height: 100px;
-}
-.container1 {
-    width: 100%;
-    background-color: #009DE0;
-    height: 60px;
-    padding-top: 15px;
-}
-.logo {
-    padding: 20px;
-    margin-left : 100px;
-}
-.buton1 {
-    margin-left: 100px;
-}
-.logoelevenmxmin {
-    position: absolute;
-    z-index: 500;
-    top: 40px;
-    left: 300px;
-    height : 22px;
-    width: 272px;
-}
-#eleven-h1 {
-    margin-left: 0;
-    margin : 5px;
-    left: 157px;
-    font-size: 17px;
-    color: white;
-}
-.main-menu {
-    background-color: #009DE0;
-}
+/*.super-container {*/
+    /*width: 100%;*/
+    /*background: black;*/
+    /*height: 100px;*/
+/*}*/
+/*.container1 {*/
+    /*width: 100%;*/
+    /*background-color: #009DE0;*/
+    /*height: 60px;*/
+    /*padding-top: 15px;*/
+/*}*/
+/*.logo {*/
+    /*padding: 20px;*/
+    /*margin-left : 100px;*/
+/*}*/
+/*.buton1 {*/
+    /*margin-left: 100px;*/
+/*}*/
+/*.logoelevenmxmin {*/
+    /*position: absolute;*/
+    /*z-index: 500;*/
+    /*top: 40px;*/
+    /*left: 300px;*/
+    /*height : 22px;*/
+    /*width: 272px;*/
+/*}*/
+/*#eleven-h1 {*/
+    /*margin-left: 0;*/
+    /*margin : 5px;*/
+    /*left: 157px;*/
+    /*font-size: 17px;*/
+    /*color: white;*/
+/*}*/
+/*.main-menu {*/
+    /*background-color: #009DE0;*/
+/*}*/
 
 /*************** FOOTER ***********************/
 

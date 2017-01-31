@@ -1,7 +1,7 @@
-ElevenmxBundle\Entity\Produit:
+ElevenmxBundle\Entity\Gestionstatus:
     type: entity
     table: null
-    repositoryClass: ElevenmxBundle\Repository\ProduitRepository
+    repositoryClass: ElevenmxBundle\Repository\GestionstatusRepository
     id:
         id:
             type: integer
@@ -9,17 +9,13 @@ ElevenmxBundle\Entity\Produit:
             generator:
                 strategy: AUTO
     fields:
-        nom:
-            type: string
-            length: 255
-        googleform:
+        statut:
             type: string
             length: 255
 
     oneToMany:
         projets:
             targetEntity: ElevenmxBundle\Entity\Projet
-            mappedBy: produit
+            mappedBy: gestionstatus
 
     lifecycleCallbacks: {  }
-
