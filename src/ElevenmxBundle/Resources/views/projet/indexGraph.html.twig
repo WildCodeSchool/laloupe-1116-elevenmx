@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ dump() }}
 
     <h1 class="projet_h1">Liste des Projets Pour le Graphiste</h1>
 
@@ -62,7 +63,7 @@
                                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                             </div>
 
-                                        {% elseif projet.status == "Maquette a modifier" %}
+                                        {% elseif projet.status == "Maquette à modifier" %}
                                             <div class="col-xs-offset-2 col-xs-7" id="projet_statut_orange">
                                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                             </div>
@@ -79,7 +80,7 @@
 
                                         {% else %}
                                             <div class="col-xs-offset-2 col-xs-7" >
-                                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Status inconnu</h4>
+                                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Statut inconnu</h4>
                                             </div>
                                         {% endif %}
 
