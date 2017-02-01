@@ -10,50 +10,50 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container produit">
         <div class="row">
-            <div class="col-sm-offset-4 col-sm-3">
-                <table>
-                    <thead>
-                        <tr>
-                            <!--<th style="border: 1px solid black;">Id</th>-->
-                            <th style="border: 1px solid black;">Nom</th>
-                            <th style="border: 1px solid black;">URL Googleform</th>
-                            <th style="border: 1px solid black;">Actions</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for produit in produits %}
-                        <tr>
-                            <!--<td style="border: 1px solid black;"><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>-->
-                            <td style="border: 1px solid black;">{{ produit.nom }}</td>
-                            <td style="border: 1px solid black;">{{ produit.googleform }}</td>
-                            <td style="border: 1px solid black;">
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('produit_show', { 'id': produit.id }) }}">Visualisation</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('produit_edit', { 'id': produit.id }) }}">Modification</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+            <div class="col-sm-offset-2 col-sm-2">
+                <th>Nom</th>
+            </div>
+            <div class="col-sm-offset-1 col-sm-2">
+                <th>URL Googleform</th>
+            </div>
+            <div class="col-sm-offset-1 col-sm-2">
+                <th>Actions</th>
             </div>
         </div>
+        <div class="row produit">
+
+            <tbody>
+            {% for produit in produits %}
+
+                <!--<td style="border: 1px solid black;"><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>-->
+                <div class="col-sm-offset-2 col-sm-2">
+                    <td>{{ produit.nom }}</td>
+                </div>
+                <div class="col-sm-offset-1 col-sm-2">
+                    <td>{{ produit.googleform }}</td>
+                </div>
+                <div class="col-sm-offset-1 col-sm-2">
+                    <td>
+                        <ul>
+                            <a href="{{ path('produit_edit', { 'id': produit.id }) }}">Modification</a>
+                        </ul>
+                    </td>
+                </div>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
     </div>
 
-    <div style="margin-top: 20px" class="container">
-        <div class="row">
+    <div class="container">
+        <div class="row produit_action">
             <div class="col-sm-offset-4 col-sm-4">
                 <ul>
-                    <li>
-                        <a href="{{ path('produit_new') }}">Création d un nouveau produit</a>
-                    </li>
+                    <a href="{{ path('produit_new') }}">Création d un nouveau produit</a>
                 </ul>
             </div>
         </div>
