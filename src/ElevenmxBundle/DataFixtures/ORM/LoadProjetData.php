@@ -3,17 +3,20 @@
 
 namespace ElevenmxBundle\DataFixtures\ORM;
 
+
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use ElevenmxBundle\Entity\Projet;
 
 
+
 class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $projet1 = new Projet();
+
+       /* $projet1 = new Projet();
         $projet1->setTitreProjet('$projet1');
         $projet1->setProduit('1');
         $projet1->setMarque('1');
@@ -36,7 +39,6 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($projet2);
         $manager->flush();
 
-
         $projet3 = new Projet();
         $projet3->setTitreProjet('$projet3');
         $projet3->setProduit('1');
@@ -46,11 +48,23 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
         $projet3->setUser();
 
         $manager->persist($projet3);
+        $manager->flush();*/
+
+        $projet4 = new Projet();
+        $projet4->setTitreProjet('projet1_ludo');
+        $projet4->setProduit($this->getReference('tag_produit1'));
+        $projet4->setMarque($this->getReference('tag_marque1'));
+        $projet4->setNomGraphiste('graphiste');
+        $projet4->setStatus($this->getReference('tag_gestionstatus1'));
+        $projet4->setDateCreationProjet('12/01/2017');
+        $projet4->setUser($this->getReference('tag_user1'));
+
+        $manager->persist($projet4);
         $manager->flush();
     }
 
     public function getOrder()
     {
-        return 4;
+        return 5;
     }
 }

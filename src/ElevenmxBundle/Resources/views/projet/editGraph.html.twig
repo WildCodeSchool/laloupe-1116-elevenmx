@@ -12,19 +12,18 @@
 {% endblock %}
 
 {% block body %}
-    {{ dump(app) }}
 
     <div class="container-fluid">
 {#{{ dump() }}#}
 
-        <ul>
-            <li>
-                <a href="{{ path('projet_index') }}">Retour à la liste des projets</a>
-            </li>
-        </ul>
+        {#<ul>#}
+            {#<li>#}
+                {#<a href="{{ path('projet_index') }}">Retour à la liste des projets</a>#}
+            {#</li>#}
+        {#</ul>#}
 
         <div  class="row">
-            <div style="margin-top: 20px" class="col-sm-offset-3 col-sm-4">
+            <div class="col-sm-offset-3 col-sm-4 projetetnomclient">
 
                 <h4>PROJET : {{ projet.titreProjet }}  </h4>
 

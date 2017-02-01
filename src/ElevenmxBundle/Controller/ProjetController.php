@@ -84,7 +84,6 @@ class ProjetController extends Controller
         $em = $this->getDoctrine()->getManager();
         $gestionstatus = $em->getRepository('ElevenmxBundle:Gestionstatus')->findOneBy(array('statut' => 'Attente d\'information'));
 
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
