@@ -1,16 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ dump() }}
 
     <h1 class="projet_h1">Liste des Projets Pour le Graphiste</h1>
-
-
-
-            {# ****************************** Champs de recherche *************************************** #}
-    <div class="row">
-        <h4 class="titelsearch">Entrez votre recherche :</h4>
-                    <input type="text" placeholder="Entrez votre recherche" id="search"> {#id pour cibler notre champs lors de l'execution de jquery#}
-    </div>
 
         {# ****************************** Fin Champs de recherche *************************************** #}
 
@@ -21,6 +14,11 @@
 
 
                     <div class="container-fluid filtre">{# la classe filtre permet de cibler la zone de recherche de notre jquery#}
+                        {# ****************************** Champs de recherche *************************************** #}
+                        <div class="row">
+                            <h4 class="titelsearch">Entrez votre recherche :</h4>
+                            <input type="text" placeholder="Entrez votre recherche" id="search"> {#id pour cibler notre champs lors de l'execution de jquery#}
+                        </div>
 
                         <div class="row" >
 
@@ -43,7 +41,7 @@
 
                                             <h4 class="projet_bloc1_h4_bis_aff">NOM DU GRAPHISTE : {{ projet.nomGraphiste }}</h4>
                                         </div>
-                                        <div class="col-xs-offset-1 col-sm-2">
+                                        <div class="col-xs-offset-1 col-sm-4">
 
                                             <h4 class="projet_bloc_h4_aff"> Date de création : {{ projet.dateCreationProjet }} </h4>
                                         </div>
@@ -65,7 +63,7 @@
                                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                             </div>
 
-                                        {% elseif projet.status == "Maquette a modifier" %}
+                                        {% elseif projet.status == "Maquette à modifier" %}
                                             <div class="col-xs-offset-2 col-xs-7" id="projet_statut_orange">
                                                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                             </div>
@@ -82,7 +80,7 @@
 
                                         {% else %}
                                             <div class="col-xs-offset-2 col-xs-7" >
-                                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Status inconnu</h4>
+                                                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Statut inconnu</h4>
                                             </div>
                                         {% endif %}
 

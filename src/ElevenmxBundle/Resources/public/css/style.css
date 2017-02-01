@@ -556,10 +556,10 @@ footer {
 }
 /*********************************** Fin page New *******************************/
 /************************************ debut Page produit *******************************************************/
-td, th /* Mettre une bordure sur les td ET les th */
-{
-    border: 1px solid black;
-}
+/*td, th !* Mettre une bordure sur les td ET les th *!*/
+/*{*/
+    /*border: 1px solid black;*/
+/*}*/
 /************************************ Fin Page produit *******************************************************/
 
 select {
@@ -567,7 +567,7 @@ select {
     width: 170px;
 }
 .selectlg {
-    height: 25px;
+    height: 35px;
     width: 350px;
 }
 
@@ -576,3 +576,15 @@ select {
     margin-left: 0;
 }
 
+.produit{
+    margin-top: 20px
+}
+.produit_action{
+    margin-top: 80px
+}
+.marque{
+    margin-top: 20px
+}
+.marque_action{
+    margin-top: 80px
+}

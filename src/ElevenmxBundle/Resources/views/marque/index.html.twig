@@ -11,48 +11,50 @@
 
     <div style="margin-top: 20px" class="container">
         <div class="row">
-            <div class="col-sm-offset-4 col-sm-5">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nom</th>
-                            <th>Image</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for marque in marques %}
-                        <tr>
-                            <td><a href="{{ path('marque_show', { 'id': marque.id }) }}">{{ marque.id }}</a></td>
-                            <td>{{ marque.nom }}</td>
-                            <td>{{ marque.image1 }}</td>
-                            <td><img style="height: 150px; width: auto" src="{{ app.request.basepath }}/uploads/{{ marque.image1 }}"></td>
-                            <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('marque_show', { 'id': marque.id }) }}">visualisation</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('marque_edit', { 'id': marque.id }) }}">Modification</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+            <div class="col-sm-offset-2 col-sm-1">
+                <th>Nom</th>
+            </div>
+
+            <div class="col-sm-offset-1 col-sm-2">
+                <th>Image</th>
+            </div>
+            <div class="col-sm-offset-1 col-sm-2">
+                <th>Actions</th>
             </div>
         </div>
+
+        <tbody>
+        {% for marque in marques %}
+            <div class="row">
+
+                <div class="col-sm-offset-2 col-sm-1">
+                    <td>{{ marque.nom }}</td>
+                </div>
+
+                <div class="col-sm-offset-1 col-sm-2">
+                    <td><img style="height: 150px; width: auto" src="{{ app.request.basepath }}/uploads/{{ marque.image1 }}"></td>
+                </div>
+                <div class="col-sm-offset-1 col-sm-2">
+                    <td>
+                        <ul>
+                            <a href="{{ path('marque_edit', { 'id': marque.id }) }}">Modification</a>
+                        </ul>
+                    </td>
+                </div>
+            </div>
+        {% endfor %}
+
+        </tbody>
+
+    </div>
+
     </div>
 
     <div style="margin-top: 20px" class="container">
         <div class="row">
-            <div class="col-sm-offset-3 col-sm-5">
+            <div class="col-sm-offset-3 col-sm-3">
                 <ul>
-                    <li>
-                        <a href="{{ path('marque_new') }}">Création d'une Marque</a>
-                    </li>
+                    <a href="{{ path('marque_new') }}">Création d'une Marque</a>
                 </ul>
             </div>
         </div>

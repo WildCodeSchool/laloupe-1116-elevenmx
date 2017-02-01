@@ -10,25 +10,44 @@
         </div>
     </div>
 
-    <div style="margin-top: 20px" class="container">
-        <div class="row">
-            <div class="col-sm-offset-4 col-sm-4">
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
+    <div class="container">
 
-               <input type="submit" value="Création" />
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-2">
+                <label class="newformtitreprojet" >{{ form_label(form.nom) }}</label>
+                {{ form_widget(form.nom) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-2">
+                <label class="newformtitreprojet" >{{ form_label(form.image1) }}</label>
+                {{ form_widget(form.image1) }}
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-sm-offset-4 col-sm-2">
+                <label class="newformtitreprojet" >{{ form_label(form.file1) }}</label>
+                {{ form_widget(form.file1) }}
+            </div>
+        </div>
+
+        <div class="row marque">
+            <div class="col-sm-offset-4 col-sm-2">
+                <input type="submit" value="Création" />
                 {{ form_end(form) }}
             </div>
         </div>
     </div>
 
-    <div style="margin-top: 20px" class="container">
-        <div class="row">
-            <div class="col-sm-offset-4 col-sm-4">
+    <div class="container">
+        <div class="row marque_action">
+            <div class="col-sm-offset-3 col-sm-4">
                 <ul>
-                    <li>
+
                         <a href="{{ path('marque_index') }}">Retour à la liste</a>
-                    </li>
+
                 </ul>
             </div>
         </div>

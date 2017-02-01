@@ -49,9 +49,6 @@ class ProjetController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
-        //$projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-        //    array('projet' => $projet->getId()),
-        //);
 
         return $this->render('ElevenmxBundle:projet:indexGraph.html.twig', array(
             'projets' => $projets,

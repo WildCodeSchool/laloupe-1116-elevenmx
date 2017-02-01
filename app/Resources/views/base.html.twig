@@ -7,7 +7,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" media="screen"
               href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ asset('bundles/elevenmx/css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/elevenmx/css/style.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('logo_mini.ico') }}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,30 +59,30 @@
 
         {% if is_granted('ROLE_SUPER_ADMIN') %}
         <!-- BOUTON SUPER ADMIN -->
-        <div class="col-lg-1 col-xs-1"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="liste des projets" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="liste clients" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="new client" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="new projet" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('produit_index') }}"><input type="button" value="liste produits" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('marque_index') }}"><input type="button" value="liste marques" class="bouton4"></a></div>
+        <div class="col-lg-1 col-xs-1"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="Liste des projets" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="Liste clients" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="Nouvel utilisateur" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="Nouveay projet" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('produit_index') }}"><input type="button" value="Liste produits" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('marque_index') }}"><input type="button" value="Liste marques" class="bouton4"></a></div>
         <div class="col-lg-1 col-xs-1"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives" class="bouton4"></a></div>
 
         {% elseif is_granted('ROLE_ADMIN') %}
         <!-- BOUTON ADMIN -->
         <div class="col-lg-1 col-xs-1"></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="liste des projets" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="nouveau client" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="nouveau projet" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('produit_index') }}"><input type="button" value="liste produits" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-2"> <a href="{{ path('marque_index') }}"><input type="button" value="liste marques" class="bouton4"></a></div>
-        <div class="col-lg-1 col-xs-1"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="Liste des projets" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('elevenmx_sendMail') }}"><input type="button" value="Nouvel utilisateur" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('projet_new') }}"><input type="button" value="Nouveau projet" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('produit_index') }}"><input type="button" value="Liste des produits" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-2"> <a href="{{ path('marque_index') }}"><input type="button" value="Liste des marques" class="bouton4"></a></div>
+        <div class="col-lg-1 col-xs-1"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="Archives" class="bouton4"></a></div>
 
         {% elseif is_granted('ROLE_GRAPH') %}
         <!-- BOUTON GRAPH -->
         <div class="col-lg-4 col-xs-1"></div>
 
-        <div class="col-lg-2 col-xs-5"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="archives" class="bouton4"></a></div>
-        <div class="col-lg-2 col-xs-5"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="en cours" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-5"> <a href="{{ path('projet_indexHisto') }}"><input type="button" value="Archives" class="bouton4"></a></div>
+        <div class="col-lg-2 col-xs-5"> <a href="{{ path('projet_indexGraph') }}"><input type="button" value="En cours" class="bouton4"></a></div>
         <div class="col-lg-4 col-xs-1"></div>
 
 
@@ -90,7 +90,7 @@
         <!-- BOUTON USER -->
             {#<div class="col-lg-2 col-xs-1"></div>#}
             <div class="col-lg-offset-4 col-lg-2 col-xs-4 col-sm-4"> <a href="{{ path('fos_user_change_password') }}"><input type="button" value="Modifier mon mot de passe" class="bouton4"></a></div>
-            <div class="col-lg-2 col-xs-offset-2 col-xs-4 col-sm-4"> <a href="{{ path('projet_index') }}"><input type="button" value="liste des projets" class="bouton4"></a></div>
+            <div class="col-lg-2 col-xs-offset-2 col-xs-4 col-sm-4"> <a href="{{ path('projet_index') }}"><input type="button" value="Liste des projets" class="bouton4"></a></div>
             <div class="col-lg-4 col-xs-1"></div>
 
 
