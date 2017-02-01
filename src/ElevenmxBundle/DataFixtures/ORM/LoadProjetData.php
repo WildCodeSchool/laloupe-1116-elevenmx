@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 namespace ElevenmxBundle\DataFixtures\ORM;
 
 
@@ -48,7 +48,7 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
         $projet3->setUser();
 
         $manager->persist($projet3);
-        $manager->flush();*/
+        $manager->flush();
 
         $projet4 = new Projet();
         $projet4->setTitreProjet('projet1_ludo');
@@ -67,4 +67,4 @@ class LoadProjetData extends AbstractFixture implements OrderedFixtureInterface
     {
         return 5;
     }
-}
+}*/
