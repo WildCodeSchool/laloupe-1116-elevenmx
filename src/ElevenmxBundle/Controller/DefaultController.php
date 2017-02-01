@@ -73,7 +73,7 @@ class DefaultController extends Controller
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Inscription à Eleven MX')
-                ->setFrom('javadescavernes38@gmail.com')
+                ->setFrom('contact@elevenmx.com')
                 ->setTo($user->getEmail())
                 ->setContentType('text/html')
                 ->setBody(
