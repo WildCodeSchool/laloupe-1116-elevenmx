@@ -11,6 +11,8 @@
 
                 {% if projet.user != null %}
 
+                    {% if projet.status == 'Projet terminé' %}
+
 
                         <div class="container-fluid">
 
@@ -38,40 +40,11 @@
                                         </div>
 
                                         <div class="row" >
-                                           {% if projet.status == "Attente d information" %}
-                                                <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
-                                                    <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
-                                                </div>
-                                           {% elseif projet.status == "Maquette a faire" %}
-                                                <div class="col-xs-offset-2 col-xs-7" id="projet_statut_red">
-                                                    <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
-                                                </div>
-
-                                           {% elseif projet.status == "Maquette en attente de validation" %}
-                                                <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
-                                                    <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
-                                                </div>
-
-                                           {% elseif projet.status == "Maquette à modifier" %}
-                                                <div class="col-xs-offset-2 col-xs-7" id="projet_statut_orange">
-                                                    <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
-                                                </div>
-
-                                           {% elseif projet.status == "Maquette validée" %}
-                                                <div class="col-xs-offset-2 col-xs-7" id="projet_statut_orange">
-                                                    <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
-                                                </div>#}
-
-                                           {% elseif projet.status == "Projet terminé"  %}
+                                            {% if projet.status == "Projet terminé"  %}
                                                 <div class="col-xs-offset-2 col-xs-7" id="projet_statut_blanc">
                                                     <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                                 </div>
-
-                                           {% else %}
-                                                <div class="col-xs-offset-2 col-xs-7" >
-                                                    <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : Statut inconnu</h4>
-                                                </div>
-                                           {% endif %}
+                                            {% endif %}
                                             <div class="col-xs-offset-1 col-xs-1" id="projet_ligne_bloc1_aff">
                                                 <a href="{{ path('projet_show', { 'id': projet.id }) }}" >
                                                     <div>
@@ -88,6 +61,7 @@
                                 </a>
                             </div>
                         </div>
+                    {% endif %}
                 {% endif %}
             </tr>
         {% endfor %}

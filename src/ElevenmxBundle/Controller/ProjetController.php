@@ -61,7 +61,7 @@ class ProjetController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-            array('status' => 'Projet terminé')//chercher par tableau status terminé  littéralement
+            array('status' => 5)//chercher par tableau status terminé  littéralement et valeur 5 à changer en fonction de la BDD finale
         );
 
         return $this->render('ElevenmxBundle:projet:indexHisto.html.twig', array(
