@@ -63,6 +63,7 @@ class ProjetController extends Controller
             array('status' => 'Projet terminé')//chercher par tableau status terminé  littéralement
         );*/
 
+
         return $this->render('ElevenmxBundle:projet:indexHisto.html.twig', array(
             'projets' => $projets,
         ));
