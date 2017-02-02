@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ dump() }}
 
     <h1 class="projet_h1">Liste des Projets Pour le Graphiste</h1>
 
@@ -10,7 +9,7 @@
         {% for projet in projets %}
 
 
-                {% if projet.user != NULL %}
+                {% if projet.user != NULL and projet.status != "Projet terminé"%}
 
 
                     <div class="container-fluid filtre">{# la classe filtre permet de cibler la zone de recherche de notre jquery#}

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ dump() }}
+
     <h1 class="projet_h1">Historique de vos projets</h1>
     <table class="projet_index_table1">
 
@@ -11,7 +11,7 @@
         {% for projet in projets %}
             <tr>
 
-                {% if projet.user != null %}
+                {% if projet.user != null and projet.status == "Projet terminé" %}
 
 
                         <div class="container-fluid">
@@ -40,7 +40,7 @@
                                         </div>
 
                                         <div class="row" >
-                                           {% if projet.status == "Attente d information" %}
+                                           {% if projet.status == "Attente d\'information" %}
                                                 <div class="col-xs-offset-2 col-xs-7" id="projet_statut_green">
                                                     <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ projet.status }}</h4>
                                                 </div>

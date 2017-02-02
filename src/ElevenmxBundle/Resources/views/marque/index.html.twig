@@ -9,9 +9,9 @@
         </div>
     </div>
 
-    <div style="margin-top: 20px" class="container">
+    <div class="container marque">
         <div class="row">
-            <div class="col-sm-offset-2 col-sm-1">
+            <div class="col-sm-offset-5 col-sm-1">
                 <th>Nom</th>
             </div>
 
@@ -27,12 +27,12 @@
         {% for marque in marques %}
             <div class="row">
 
-                <div class="col-sm-offset-2 col-sm-1">
+                <div class="col-sm-offset-5 col-sm-1">
                     <td>{{ marque.nom }}</td>
                 </div>
 
                 <div class="col-sm-offset-1 col-sm-2">
-                    <td><img style="height: 150px; width: auto" src="{{ app.request.basepath }}/uploads/{{ marque.image1 }}"></td>
+                    <td><img class="img_marque" src="{{ app.request.basepath }}/uploads/{{ marque.image1 }}"></td>
                 </div>
                 <div class="col-sm-offset-1 col-sm-2">
                     <td>

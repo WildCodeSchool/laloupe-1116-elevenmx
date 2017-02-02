@@ -588,3 +588,7 @@ select {
 .marque_action{
     margin-top: 80px
 }
+.img_marque{
+    height: 150px;
+    width: auto
+}
