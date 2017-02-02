@@ -384,4 +384,23 @@ die();
         ;
     }
 
+    public function valideBatAction(Projet $projet){
+
+        $em = $this->getDoctrine()->getManager();
+        $gestionstatus1 = $em->getRepository('ElevenmxBundle:Gestionstatus')->findOneBy(array('statut' => 'Maquette validée'));
+//        il faut refaire une lecture du projet avant la mise car il pert le lien
+        $projet->getId();
+        $projet->setStatus($gestionstatus1);
+
+//        echo '<pre>';
+//        var_dump($projet);
+//        echo '<pre>';
+//        die();
+
+        $em->persist($projet);
+        $em->flush();
+
+        return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
+
+    }
 }

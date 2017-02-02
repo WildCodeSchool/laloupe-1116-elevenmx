@@ -150,7 +150,9 @@
 
                                 {##### ici confirmation de l'envoi du BAT dans la modal #####}
                                 <div class="add_button center-align">
-                                    <input type="submit" data-dismiss="modal" value="Je valide le BAT" role="button"/>
+                                    <button type="submit"> <a href="{{ path('projet_valideBat', {'id': projet.id}) }}">
+                                        Je valide le BAT</a></button>
+                                     {#<input type="submit"   data-dismiss="modal" value="Je valide le BAT" role="button"/>#}
                                 </div>{##### ici fin confirmation de l'envoi du BAT dans la modal #####}
                             </div>
                             <div class="modal-footer">
