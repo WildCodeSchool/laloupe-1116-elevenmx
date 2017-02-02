@@ -17,8 +17,9 @@ class ProjetType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titreProjet')
+        $builder->add('titreProjet', null, array('label' => 'Nom du projet'))
                 ->add('user', EntityType::class, array(
+                        'label' => 'Nom de l\'utilisateur',
                         'class' => 'ElevenmxBundle\Entity\User',
                         'property' => 'username',
                         'query_builder' => function (EntityRepository $er) {
@@ -33,6 +34,7 @@ class ProjetType extends AbstractType
                 ->add('marque')
                 ->add('produit')
                 ->add('nomGraphiste', EntityType::class, array(
+                    'label' => 'Nom du Graphiste',
                     'class' => 'ElevenmxBundle\Entity\User',
                     'property' => 'username',
                     'query_builder' => function (EntityRepository $er) {
@@ -44,7 +46,7 @@ class ProjetType extends AbstractType
                     'choice_label' => 'username',
                     'choices_as_values' => true,
                 ))
-            ->add('dateCreationProjet')
+            ->add('dateCreationProjet', null, array('label' => 'Date de création du projet'))
             ->add('status')
         ;
 

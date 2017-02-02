@@ -66,6 +66,12 @@
     text-align: center;
     color: #222222;;
 }
+#versusfooterindexGraph{
+    padding-bottom: 55px;
+}
+#versusfooterindexHisto{
+    padding-bottom: 55px;
+}
 
 .droite {
     display: inline-block;
@@ -563,7 +569,7 @@ td, th /* Mettre une bordure sur les td ET les th */
 /************************************ Fin Page produit *******************************************************/
 
 select {
-    height: 25px;
+    height: 35px;
     width: 170px;
 }
 .selectlg {
