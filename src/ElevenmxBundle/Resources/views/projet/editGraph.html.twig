@@ -14,12 +14,12 @@
 {% block body %}
 
     <div class="container-fluid">
-{#{{ dump() }}#}
+        {#{{ dump() }}#}
 
         {#<ul>#}
-            {#<li>#}
-                {#<a href="{{ path('projet_index') }}">Retour à la liste des projets</a>#}
-            {#</li>#}
+        {#<li>#}
+        {#<a href="{{ path('projet_index') }}">Retour à la liste des projets</a>#}
+        {#</li>#}
         {#</ul>#}
 
         <div  class="row">
@@ -44,10 +44,10 @@
 
 
 
-               {# {{ form_start(form1.status) }}
-                <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(form1.status, { 'attr': {'class': 'foo'} }) }}</h4>
-                <input type="submit" value="validation du status" />
-                {{ form_end(form1.status) }}#}
+                {# {{ form_start(form1.status) }}
+                 <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(form1.status, { 'attr': {'class': 'foo'} }) }}</h4>
+                 <input type="submit" value="validation du status" />
+                 {{ form_end(form1.status) }}#}
 
 
                 {{ form_start(edit_form) }}
@@ -60,41 +60,41 @@
                     {{ form_widget(edit_form.dateCreationProjet) }}
                 </div>
                 <div>
-                {% if projet.status == "Attente d'information" %}
-                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_green">
-                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
-                    </div>
+                    {% if projet.status == "Attente d'information" %}
+                        <div class="col-xs-offset-1 col-xs-10" id="projet_statut_green">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                        </div>
 
-                {% elseif projet.status == "Maquette a faire" %}
-                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_red">
-                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
-                    </div>
+                    {% elseif projet.status == "Maquette a faire" %}
+                        <div class="col-xs-offset-1 col-xs-10" id="projet_statut_red">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                        </div>
 
-                {% elseif projet.status == "Maquette en attente de validation" %}
-                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_green">
-                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
-                    </div>
+                    {% elseif projet.status == "Maquette en attente de validation" %}
+                        <div class="col-xs-offset-1 col-xs-10" id="projet_statut_green">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                        </div>
 
-                {% elseif projet.status == "Maquette a modifier" %}
-                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_orange">
-                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
-                    </div>
+                    {% elseif projet.status == "Maquette a modifier" %}
+                        <div class="col-xs-offset-1 col-xs-10" id="projet_statut_orange">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                        </div>
 
-                {% elseif projet.status == "Maquette validée" %}
-                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_orange">
-                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
-                    </div>
+                    {% elseif projet.status == "Maquette validée" %}
+                        <div class="col-xs-offset-1 col-xs-10" id="projet_statut_orange">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                        </div>
 
-                {% elseif projet.status == "Projet terminé"  %}
-                    <div class="col-xs-offset-1 col-xs-10" id="projet_statut_blanc">
-                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
-                    </div>
+                    {% elseif projet.status == "Projet terminé"  %}
+                        <div class="col-xs-offset-1 col-xs-10" id="projet_statut_blanc">
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                        </div>
 
-                {% else %}
-                    <div class="col-xs-offset-1 col-xs-10" >
-                        <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
-                    </div>
-                {% endif %}
+                    {% else %}
+                        <div class="col-xs-offset-1 col-xs-10" >
+                            <h4 class="projet_bloc_h4_aff"> STATUT DU PROJET : {{ form_widget(edit_form.status, { attr : { 'class': 'selectlg'}}) }}</h4>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="col-xs-offset-5 col-xs-2">
                     <input type="submit" value="Modification du statut" />
@@ -289,4 +289,3 @@
 
 
 {% endblock %}
-

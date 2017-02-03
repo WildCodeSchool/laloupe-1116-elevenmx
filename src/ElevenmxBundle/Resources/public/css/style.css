@@ -66,15 +66,11 @@
     text-align: center;
     color: #222222;;
 }
-#versusfooterindexGraph{
+.versusfooterindexGraph{
     padding-bottom: 55px;
 }
-#versusfooterindexHisto{
-    padding-bottom: 55px;
-}
-#versusfooterEditgraph{
-    padding-bottom: 55px;
-}
+
+
 
 .droite {
     display: inline-block;
@@ -261,7 +257,7 @@ footer {
     margin-top: 21px;
     width: 100%;
     position: absolute;
-    bottom: 0;
+    /*bottom: 0;*/
 }
 
 .txt_footer {
