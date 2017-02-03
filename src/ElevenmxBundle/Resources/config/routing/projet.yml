@@ -43,3 +43,7 @@ projet_delete:
     defaults: { _controller: "ElevenmxBundle:Projet:delete" }
     methods:  DELETE
 
+projet_valideBat:
+    path:     /{id}/valideBat
+    defaults: { _controller: "ElevenmxBundle:Projet:valideBat" }
+    methods:  [GET, POST]

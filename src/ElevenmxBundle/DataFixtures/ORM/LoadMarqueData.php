@@ -1,5 +1,5 @@
 <?php
-
+/*
 
 namespace ElevenmxBundle\DataFixtures\ORM;
 
@@ -53,4 +53,4 @@ class LoadMarqueData extends AbstractFixture implements OrderedFixtureInterface
     {
         return 3;
     }
-}
+}*/

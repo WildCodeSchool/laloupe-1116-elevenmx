@@ -14,7 +14,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 //    ****************************   datafixtures create fake-users
     public function load(ObjectManager $manager)
     {
-        $user = new User();
+    /*    $user = new User();
         $user->setUsername('user');
         $user->setPlainPassword('test');
         $user->setNom('Descavernes');
@@ -61,16 +61,16 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($graphiste);
         $manager->flush();
 
-
+*/
         $admin = new User();
-        $admin->setUsername('admin');
-        $admin->setPlainPassword('admin');
-        $admin->setNom('admin');
-        $admin->setPrenom('admin');
+        $admin->setUsername('Christophe');
+        $admin->setPlainPassword('elevenmx');
+        $admin->setNom('Coispeau');
+        $admin->setPrenom('Christophe');
         $admin->setCategorie('admin');
-        $admin->setTelephone('0987654321');
-        $admin->setEntreprise('admineux');
-        $admin->setEmail('admin@gmail.com');
+        $admin->setTelephone('0627223360');
+        $admin->setEntreprise('elevenmx');
+        $admin->setEmail('contact@elevenmx.com');
         $admin->setRoles(array('ROLE_ADMIN'));
         $admin->setEnabled(1);
 

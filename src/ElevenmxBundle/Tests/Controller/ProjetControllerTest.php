@@ -12,7 +12,7 @@ class ProjetControllerTest extends WebTestCase
      */
 
     //debut dojo test
-   /* public function testlogin()
+    public function testlogin()
     {
         //debut dojo test
         $fixtures = array(
@@ -43,16 +43,16 @@ class ProjetControllerTest extends WebTestCase
         // Il faut suivre la redirection
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $crawler = $client->followRedirect();
-        $this->assertEquals('ElevenmxBundle\Controller\DefaultController::indexAction', $client->getRequest()->attributes->get('_controller'));
+        $this->assertEquals('ElevenmxBundle\Controller\ProjetController::indexAction', $client->getRequest()->attributes->get('_controller'));
 
 //        $client = static::createClient();
 //        $crawler = $client->request('GET', '/Projet/new');
 
-    }*/
+    }
     //fin dojo test*/
     
 
-    public function testCompleteScenario()
+ /*   public function testCompleteScenario()
     {
 
         $client = static::createClient();
@@ -113,7 +113,7 @@ class ProjetControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         // Check the entity has been delete on the list
-        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());*/
-    }
+        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
+    }*/
 
 }

@@ -72,6 +72,9 @@
 #versusfooterindexHisto{
     padding-bottom: 55px;
 }
+#versusfooterEditgraph{
+    padding-bottom: 55px;
+}
 
 .droite {
     display: inline-block;
@@ -562,10 +565,10 @@ footer {
 }
 /*********************************** Fin page New *******************************/
 /************************************ debut Page produit *******************************************************/
-td, th /* Mettre une bordure sur les td ET les th */
-{
-    border: 1px solid black;
-}
+/*td, th !* Mettre une bordure sur les td ET les th *!*/
+/*{*/
+    /*border: 1px solid black;*/
+/*}*/
 /************************************ Fin Page produit *******************************************************/
 
 select {
@@ -582,3 +585,19 @@ select {
     margin-left: 0;
 }
 
+.produit{
+    margin-top: 20px
+}
+.produit_action{
+    margin-top: 80px
+}
+.marque{
+    margin-top: 20px
+}
+.marque_action{
+    margin-top: 80px
+}
+.img_marque{
+    height: 150px;
+    width: auto
+}

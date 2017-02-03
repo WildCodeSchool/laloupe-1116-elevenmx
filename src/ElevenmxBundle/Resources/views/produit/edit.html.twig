@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div style="margin-top: 20px" class="container">
+    <div class="container produit">
         <div class="row">
             <div class="col-sm-offset-3 col-sm-5">
                 <h1>Modification du Produit </h1>
@@ -9,27 +9,40 @@
         </div>
     </div>
 
-    <div style="margin-top: 20px" class="container">
+    <div class="container produit">
+        {{ form_start(edit_form) }}
         <div class="row">
-            <div class="col-sm-offset-4 col-sm-4">
-                {{ form_start(edit_form) }}
-                    {{ form_widget(edit_form) }}
-                    <input type="submit" value="Modifier" />
-                {{ form_end(edit_form) }}
+            <div class="col-sm-offset-4 col-sm-2">
+                <label class="newformtitreprojet" >{{ form_label(edit_form.nom) }}</label>
+                {{ form_widget(edit_form.nom) }}
             </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-2">
+                <label class="newformtitreprojet" >{{ form_label(edit_form.googleform) }}</label>
+                {{ form_widget(edit_form.googleform) }}
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-sm-offset-4 col-sm-2 produit">
+                    <input type="submit" value="Modifier" />
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
+
         </div>
     </div>
 
-    <div style="margin-top: 20px" class="container">
+    <div class="container produit">
         <div class="row">
-            <div class="col-sm-offset-4 col-sm-4">
+            <div class="col-sm-offset-4 col-sm-2 produit_action">
                 <ul>
                     <li>
                         <a href="{{ path('produit_index') }}">Retour à la liste</a>
                     </li>
                     <li>
                         {{ form_start(delete_form) }}
-                            <input type="submit" value="Suppréssion">
+                        <input type="submit" value="Suppréssion">
                         {{ form_end(delete_form) }}
                     </li>
                 </ul>

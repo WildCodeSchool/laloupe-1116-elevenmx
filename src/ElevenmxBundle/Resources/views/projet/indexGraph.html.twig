@@ -1,27 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ dump() }}
 
     <h1 class="projet_h1">Liste des Projets Pour le Graphiste</h1>
 
-
-
-            {# ****************************** Champs de recherche *************************************** #}
+        {# ****************************** Fin Champs de recherche *************************************** #}
     <div class="row">
         <h4 class="titelsearch">Entrez votre recherche :</h4>
-                    <input type="text" placeholder="Entrez votre recherche" id="search"> {#id pour cibler notre champs lors de l'execution de jquery#}
+        <input type="text" placeholder="Entrez votre recherche" id="search"> {#id pour cibler notre champs lors de l'execution de jquery#}
     </div>
-
-        {# ****************************** Fin Champs de recherche *************************************** #}
-
         {% for projet in projets %}
 
-                {% if (projet.status.id != 5)  %} {#cibler ici avec le chiffre l'id du statut que l'on veut écarter cf BDD #}
+                {% if projet.user != NULL and projet.status != "Projet terminé"%}
+
+
 
                     <div id="versusfooterindexGraph" class="container-fluid filtre">{# la classe filtre permet de cibler la zone de recherche de notre jquery#}
+                        {# ****************************** Champs de recherche *************************************** #}
 
-                        <div class="row" >
 
                             <div id="projet_ligne_aff" class="col-xs-offset-1 col-xs-10" >
 

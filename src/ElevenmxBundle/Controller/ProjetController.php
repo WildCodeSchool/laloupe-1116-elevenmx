@@ -29,7 +29,6 @@ class ProjetController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        //$projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
         $user= $this->get('security.context')->getToken()->getUser();
         $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
             array('user' => $user)//je sélect les projets dont le code client = user
@@ -59,10 +58,11 @@ class ProjetController extends Controller
     public function indexHistoAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $projets = $em->getRepository('ElevenmxBundle:Projet')->findAll();
+        /*$projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
+            array('status' => 'Projet terminé')//chercher par tableau status terminé  littéralement
+        );*/
 
-        $projets = $em->getRepository('ElevenmxBundle:Projet')->findBy(
-            array('status' => 5)//chercher par tableau status terminé  littéralement et valeur 5 à changer en fonction de la BDD finale
-        );
 
         return $this->render('ElevenmxBundle:projet:indexHisto.html.twig', array(
             'projets' => $projets,
@@ -141,7 +141,7 @@ class ProjetController extends Controller
         $form = $this->createForm('ElevenmxBundle\Form\CommentaireType', $newCommentaire);
         $form->handleRequest($request);
 
-        $var_idstatus = 0;
+        $var_idstatus = 0;$var_affectation="";$var_id = 0;
         foreach ($gestionstatuss as $gestionstatus){
 
             if ($gestionstatus->getStatut() ==  'Maquette a faire'){
@@ -157,7 +157,7 @@ class ProjetController extends Controller
 
             $var_id = 0;
             foreach ($commentaires as $commentaire){
-                $var_id = $commentaire->getId();
+
                 if ($var_id <  $commentaire->getId()){
                     $var_id = $commentaire->getId();
                     $var_affectation = $commentaire->getaffectation();
@@ -179,6 +179,8 @@ class ProjetController extends Controller
 
         return $this->render('@Elevenmx/projet/show.html.twig', array(
             'var_idstatus' => $var_idstatus,
+            'var_affectation' => $var_affectation,
+            'var_id ' => $var_id,
             'comment' => $commentaires,
             'gestionstatuss' => $gestionstatuss,
             'gestionstatus1' => $gestionstatus1,
@@ -383,4 +385,23 @@ die();
         ;
     }
 
+    public function valideBatAction(Projet $projet){
+
+        $em = $this->getDoctrine()->getManager();
+        $gestionstatus1 = $em->getRepository('ElevenmxBundle:Gestionstatus')->findOneBy(array('statut' => 'Maquette validée'));
+//        il faut refaire une lecture du projet avant la mise car il pert le lien
+        $projet->getId();
+        $projet->setStatus($gestionstatus1);
+
+//        echo '<pre>';
+//        var_dump($projet);
+//        echo '<pre>';
+//        die();
+
+        $em->persist($projet);
+        $em->flush();
+
+        return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
+
+    }
 }
