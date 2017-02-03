@@ -15,7 +15,7 @@ class MarqueType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('image1')
+            ->add('image1', null, array('label' => 'Nom de l\'image'))
             ->add('file1', 'file', array('label' => 'Inserer une image', 'required' => false));
     }
     

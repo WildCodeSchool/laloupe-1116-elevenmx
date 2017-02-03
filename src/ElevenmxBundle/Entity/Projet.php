@@ -298,4 +298,33 @@ class Projet
         return $this->status;
         return $this->dateCreationProjet;
     }
+    /**
+     * @var \ElevenmxBundle\Entity\Gestionstatus
+     */
+    private $statut;
+
+
+    /**
+     * Set statut
+     *
+     * @param \ElevenmxBundle\Entity\Gestionstatus $statut
+     *
+     * @return Projet
+     */
+    public function setStatut(\ElevenmxBundle\Entity\Gestionstatus $statut = null)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return \ElevenmxBundle\Entity\Gestionstatus
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
 }
