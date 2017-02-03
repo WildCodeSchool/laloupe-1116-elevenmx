@@ -1,5 +1,5 @@
 <?php
-/*
+
 
 namespace ElevenmxBundle\DataFixtures\ORM;
 
@@ -60,6 +60,6 @@ class LoadDGestionstatusData extends AbstractFixture implements OrderedFixtureIn
 
     public function getOrder()
     {
-        return 4;
+        return 2;
     }
-}*/
+}
